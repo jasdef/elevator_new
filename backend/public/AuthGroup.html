@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SCG</title>
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Datatables -->
+    <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap-select -->
+    <link rel="stylesheet" href="../vendors/bootstrap-select/css/bootstrap-select.min.css">
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <style type="text/css" media="screen">
+    #datatable tbody td {
+        vertical-align: middle;
+    }
+    </style>
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <!--Menu-->
+            <!--Top-->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="row">
+                    <div class="clearfix"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>群組管理</h2>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <div class="form-label-left" novalidate>
+                                        <div class="x_content">
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-12 col-sm-12 col-xs-12">群組名稱
+                                                </label>
+                                                <div class="col-md-10 col-sm-6 col-xs-12">
+                                                    <input id="AuthGroupName" class="date-picker form-control col-md-7 col-xs-12" placeholder="" type="text" maxlength='50' style="margin-bottom: 10px;">
+                                                </div>
+                                                <label class="control-label col-md-12 col-sm-12 col-xs-12">群組敘述
+                                                </label>
+                                                <div class="col-md-10 col-sm-6 col-xs-12">
+                                                    <textarea id="AuthGroupDescription" class="date-picker form-control col-md-7 col-xs-12" maxlength="200" rows="5" style="margin-bottom: 2vh;resize: none;"></textarea>
+                                                </div>
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <button id="AuthGroupAdd" class="btn btn-primary" style="margin-bottom: 10px;">創建群組</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="x_content">
+                                            <table id="datatable" class="table table-striped table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Id</th>
+                                                        <th>群組名稱</th>
+                                                        <th>群組描述</th>
+                                                        <th>成員</th>
+                                                        <th>功能</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /page content -->
+            <!--footer-->
+        </div>
+    </div>
+    <div id="loading-cover" style="width: 100%; height: 100%; background: rgba(0,0,0,.5); position: fixed; display: none; z-index: 999999; top: 0; left: 0;">
+        <div id="loading-icon" style="width: 85px; height: 65px; margin: -42.5px 0 0 -32.5px; top: 50%; left: 50%; position: fixed;">
+            <i class="fa fa-circle-o-notch fa-spin fa-5x fa-fw" style="color: #FFF;"></i>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- validator -->
+    <script src="../vendors/validator/validator.js"></script>
+    <!-- Datatables -->
+    <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="../vendors/jszip/dist/jszip.min.js"></script>
+    <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+    <!-- bootstrap-select -->
+    <script src="../vendors/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="../vendors/bootstrap-select/js/i18n/defaults-zh_TW.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        var table;
+        refresh();
+        $("#AuthGroupAdd").on('click', "", function(e) {
+            var AuthGroupName = $('#AuthGroupName').val().replace(/\s+/g, "");
+            var AuthGroupDescription = $('#AuthGroupDescription').val().replace(/\s+/g, "");
+            if (AuthGroupName === "" || AuthGroupDescription === "") {
+                alert("群組資訊空白");
+                return;
+            }
+            if (confirm("確定要加入嗎?")) {
+                $('#loading-cover').fadeIn(100);
+                $.ajax({
+                    type: 'POST',
+                    url: "/AuthGroup_add",
+                    data: { AuthGroupName: $('#AuthGroupName').val(), AuthGroupDescription: $('#AuthGroupDescription').val() },
+                    cache: false,
+                    async: true,
+                    dataType: 'json',
+                    success: function(msg) {
+                        if (msg.code == 0) {
+                            alert("新增成功")
+                            refresh();
+                        } else {
+                            alert("新增失敗")
+                        }
+                    },
+                    error: function(xhr, desc, err) {
+                        alert("HTTP Status code:" + xhr.status);
+                    }
+                }).done(function() {
+                    $('#loading-cover').fadeOut(100);;
+                });
+            }
+        });
+
+        function refresh() {
+            if (typeof table !== "undefined") {
+                table.destroy();
+            }
+            table = $('#datatable').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "searching": false,
+                'order': [
+                    [1, 'asc']
+                ],
+                "lengthMenu": [
+                    [30, 50, 100, -1],
+                    [30, 50, 100, "∞"]
+                ],
+                "columns": [
+                    { "data": "idAuthGroup" },
+                    { "data": "AuthGroupName" },
+                    { "data": "AuthGroupDescription" },
+                    { "data": "Member" },
+                ],
+                "columnDefs": [{
+                    "targets": 4,
+                    "defaultContent": "<button class='btn btn-info' id='modifyitem'><i class='fa fa-pencil-square-o' aria-hidden='true' dispaly='none'></i> 修改</button>" +
+                        "<button class='btn btn-danger' id='deleteitem'><i class='fa fa-pencil-square-o' aria-hidden='true' dispaly='none'></i> 刪除</button>" +
+                        "</div>"
+                }],
+                "ajax": {
+                    "url": "/AuthGroup_info",
+                    "type": "POST"
+                }
+            });
+        };
+
+        $('#datatable tbody').on('click', 'button', function(e) {
+            var data = table.row($(this).parents('tr')).data();
+            switch ($(this).attr('id')) {
+                case "modifyitem":
+                    if (confirm("確定要修改?")) {
+                        ShowEditModal(data);
+                    }
+                    break;
+                case "deleteitem":
+                    if (confirm("確定刪除嗎?")) {
+                        DeleteGroup(data.idAuthGroup);
+                    }
+                    break;
+            }
+
+        });
+
+        function DeleteGroup(id) {
+            $.ajax({
+                type: 'POST',
+                url: "/AuthGroup_delete",
+                data: { Id: id },
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(msg) {
+                    if (msg.code == -1) { msg.msg } else {
+                        alert(msg.msg);
+                        refresh();
+                    }
+                }
+            });
+        }
+
+        function ShowEditModal(data) {
+            console.log(data);
+            var html =
+                '<div class="col-sm-12">' +
+                '<div class="panel panel-warning">' +
+                '<div class="panel-heading"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 修改資料</div>' +
+                '<div class="panel-body">' +
+
+                '<div class="form-group">' +
+                '<label class="control-label">Id</label>' +
+                '<input id="editidAuthGroup" class="form-control" type="number" readonly value="' + data.idAuthGroup + '">' +
+                '</div>' +
+                '<div class="form-group">' +
+                '<label class="control-label">群組名稱</label>' +
+                '<input id="editAuthGroupName" class="form-control" maxlength="50" type="text" value="' + data.AuthGroupName + '">' +
+                '</div>' +
+                '<div class="form-group">' +
+                '<label class="control-label">群組描述</label>' +
+                '<textarea id="editAuthGroupDescription" class="form-control" maxlength="200" rows="5" style="resize: none;">' + data.AuthGroupDescription + '</textarea>' +
+                '</div>' +
+
+                '</div>' +
+                '</div>' +
+                '</div>';
+            ShowModalBox("", html);
+        }
+
+        function ShowModalBox(Title, Content) {
+            if ($('#bs-modal-box').length < 1) {
+                var html =
+                    '<div id="bs-modal-box" class="modal fade" tabindex="-1" role="dialog">' +
+                    '<div class="modal-dialog" role="document">' +
+                    '<div class="modal-content">' +
+                    '<div class="modal-header">' +
+                    '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+                    '<h4 class="modal-title"></h4>' +
+                    '</div>' +
+                    '<div class="modal-body" style="display:flow-root">' +
+                    '<p></p>' +
+                    '</div>' +
+                    '<div class="modal-footer">' +
+                    '<button id="SendEditData" type="button" class="btn btn-success">確定更新</button>' +
+                    '<button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>';
+                $('body').append(html);
+            }
+            $('#bs-modal-box h4.modal-title').html('<span class="label label-default">編輯群組</span> ' + Title);
+            $('#bs-modal-box div.modal-body').html(Content);
+            $('#bs-modal-box').modal('show')
+        }
+        $(document).on('click', '#SendEditData', SendEditData);
+
+        function SendEditData() {
+            $('#loading-cover').fadeIn(100);
+            var idAuthGroup = $('#editidAuthGroup').val();
+            var AuthGroupName = $('#editAuthGroupName').val();
+            var AuthGroupDescription = $('#editAuthGroupDescription').val();
+            var SendData = {
+                idAuthGroup: idAuthGroup,
+                AuthGroupName: AuthGroupName,
+                AuthGroupDescription: AuthGroupDescription
+            };
+            $.ajax({
+                type: 'POST',
+                url: "/AuthGroup_Modify",
+                data: SendData,
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(msg) {
+                    $('#bs-modal-box').modal('hide');
+                    refresh();
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+            }).done(function() {
+                $('#loading-cover').fadeOut(100);
+            });
+        }
+
+    });
+    </script>
+</body>
+
+</html>

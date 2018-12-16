@@ -1,0 +1,23 @@
+{
+  "name": "backend",
+  "version": "0.0.66",
+  "description": "backend",
+  "main": "server.js",
+  "dependencies": {
+    "async": "^2.5.0",
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.2",
+    "express-fileupload": "^0.3.0",
+    "express-session": "^1.15.6",
+    "mongodb": "^3.0.7",
+    "mysql": "^2.15.0",
+    "nodemailer": "^4.6.4",
+    "request": "^2.83.0",
+    "ws": "5.2.2",
+    "sfs2x-api": "1.7.11"
+  },
+  "author": {
+    "name": "arieswang"
+  }
+}

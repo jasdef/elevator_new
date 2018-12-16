@@ -1,0 +1,1370 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SCG</title>
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Datatables -->
+    <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- bootstrap-select -->
+    <link rel="stylesheet" href="../vendors/bootstrap-select/css/bootstrap-select.min.css">
+    <!-- bootstrap-tagsinput -->
+    <link rel="stylesheet" href="../vendors/bootstrap-tagsinput/css/bootstrap-tagsinput.min.css">
+    <!-- bootstrap-switch -->
+    <link rel="stylesheet" href="../vendors/bootstrap-switch/css/bootstrap3/bootstrap-switch.min.css">
+    <!-- jquery-ui -->
+    <link rel="stylesheet" href="../vendors/jquery-ui/jquery-ui.min.css">
+    <style type="text/css" media="screen">
+    .popover {
+        max-width: 700px;
+    }
+
+    .form-control[readonly] {
+        background-color: transparent;
+    }
+
+    .text-ellipsis {
+        width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        margin: 0;
+    }
+
+    #datatable tbody td {
+        vertical-align: middle;
+    }
+
+    #datatable tbody td:nth-child(9) {
+        text-align: right;
+    }
+
+    #datatable {
+        table-layout: fixed;
+    }
+
+
+    #gallery-sortable li {
+        margin: .1%;
+        width: 19.8%;
+        padding: 5px;
+    }
+
+    #gallery-sortable .pinSize {
+        overflow: hidden;
+        height: 170px;
+    }
+
+    #gallery-sortable .edit-news-content,
+    #gallery-sortable h3 {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    /*圖片選擇*/
+    #sub-gallery-sortable>li.selected[data-pid]>.thumbnail {
+        box-shadow: 0 0 1px 3px rgba(0, 130, 255, 0.7);
+        border-color: rgba(0, 0, 0, 0);
+    }
+    #sub-gallery-sortable li {
+        margin: .2%;
+        width: 19.5%;
+        height: 181px;
+        padding: 5px;
+    }
+
+    .thumbnail {
+        height: auto;
+        margin-bottom: 0px;
+    }
+
+    #sub-gallery-sortable .pinSize {
+        overflow: hidden;
+        height: 95px;
+    }
+
+    #sub-gallery-sortable .over-img-block {
+        position: relative;
+        padding: 10px;
+        width: 100%;
+        height: 100%;
+        z-index: 99;
+        margin-bottom: -95px;
+    }
+
+    #sub-gallery-sortable .edit-over-item {
+        position: relative;
+        background: rgba(180, 180, 180, .3);
+        width: 100%;
+        height: 160px;
+        padding: 32px 10px 10px 10px;
+        margin-bottom: -160px;
+        z-index: 999;
+    }
+
+    #sub-gallery-sortable p {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .label {
+        font-size: 100%;
+    }
+
+    .blur {
+        filter: blur(3px);
+    }
+    /*圖片選擇*/
+
+    textarea {
+        resize: vertical;
+    }
+
+    .edit-news-content {
+        width: 100%;
+        height: 13px;
+        display: block;
+    }
+    </style>
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <!--Menu-->
+            <!--Top-->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="row">
+                    <div class="clearfix"></div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>官網廣告設定</h2>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="col-lg-6 col-md-12 col-xs-12">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading"><i class="fa fa-book" aria-hidden="true"></i> 新增項目</div>
+                                                <div class="panel-body">
+                                                    <div class="form-group">
+                                                        <label class="control-label" id="SectionLabel" data-toggle="tooltip" data-placement="right">版位</label>
+                                                        <select name="SectionSelect" id="SectionSelect" class="form-control"></select>
+                                                        <!-- <p class="help-block">*必選項目</p> -->
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label" id="OrderLabel" data-toggle="tooltip" data-placement="right">順序</label>
+                                                        <select name="OrderSelect" id="OrderSelect" class="form-control"></select>
+                                                        <!-- <p class="help-block">*必選項目</p> -->
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="CommentInput" class="control-label" id="CommentInputLabel">廣告註解</label>
+                                                        <input type="text" name="CommentInput" id="CommentInput" class="form-control" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="URLInput" class="control-label" id="URLInputLabel">文章Id</label>
+                                                        <input type="text" name="URLInput" id="URLInput" class="form-control" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="btn-group btn-group-sm btn-group-justified">
+                                                            <a href="javascript:;" id="selectPictureWindow" class="btn btn-success" style="width: 80%;"><i class="fa fa-th" aria-hidden="true"></i> 圖片選擇</a>
+                                                            <a href="javascript:;" id="cancelSelectedPicture" class="btn btn-danger" style="width: 20%;"><i class="fa fa-undo" aria-hidden="true"></i> 取消</a>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <input type="hidden" id="pictureData" value="">
+                                                        <img id="SelectedPicturePreview" src="#" alt="Selected Picture Preview" class="img-responsive img-thumbnail hidden" />
+                                                    </div>
+
+                                                    <div class="col-md-12">
+                                                        <button type="button" id="InsertItem" class="btn btn-lg btn-primary pull-right">確定送出</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>List</h2>
+                                <div class="form-group">
+                                    <label class="control-label" data-toggle="tooltip" data-placement="right">版位檢視</label>
+                                    <select name="SectionViewSelect" id="SectionViewSelect" class="form-control"></select>
+                                    <!-- <p class="help-block">*必選項目</p> -->
+                                </div>
+                                <div class="clearfix">
+                                    <table id="datatable" class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>版位</th>
+                                                <th>順序</th>
+                                                <th>說明</th>
+                                                <th>文章Id</th>
+                                                <th>圖片</th>
+                                                <th>功能</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /page content -->
+            <!--footer-->
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- jquery-ui -->
+    <script src="../vendors/jquery-ui/jquery-ui.min.js"></script>
+    <script>
+    // $.widget.bridge('uibutton', $.ui.button);
+    $.widget.bridge('uitooltip', $.ui.tooltip);
+    </script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- iCheck -->
+    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <!-- Datatables -->
+    <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="../vendors/jszip/dist/jszip.min.js"></script>
+    <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap-select -->
+    <script src="../vendors/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="../vendors/bootstrap-select/js/i18n/defaults-zh_TW.min.js"></script>
+    <!-- bootstrap-tagsinput -->
+    <script src="../vendors/bootstrap-tagsinput/js/bootstrap-tagsinput.min.js"></script>
+    <!-- bootstrap-switch -->
+    <script src="../vendors/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('#datatable tbody').on('click', 'button', function(e) {
+            var data = table.row($(this).parents('tr')).data();
+            var jsonData = {};
+            currentRow = $(this).closest("tr");
+            var item = getItem(currentRow.find("td:eq(0)").text());
+            switch ($(this).attr('id')) {
+                case "modifyitem":
+                    var tempForm = new Object();
+                    tempForm.Id = item.Id;
+                    tempForm.Section = item.Section;
+                    tempForm.No = item.No;
+                    tempForm.Comment = item.Comment;
+                    tempForm.URL = item.URL;
+                    tempForm.Pic = item.Pic;
+                    itemEdit(tempForm);
+                    break;
+
+                case "delitem":
+                    itemDel(item.Section, item.Id);
+                    break;
+            }
+        });
+
+        function getItem(id) {
+            var item = null;
+            $.each(AllItemList, function(index, value) {
+                if (value.Id == id) {
+                    item = value;
+                    return;
+                }
+            });
+            return item;
+        }
+
+        var table = $('#datatable').DataTable({
+            destroy: true,
+            "order": [[ 0, "desc" ]],
+            "columnDefs": [
+                { "targets": 0, "width": "20px" },  //Id
+                { "targets": 1, "width": "60px" }, //版位
+                { "targets": 2, "width": "20px" }, //順序
+                { "targets": 3, "width": "220px" }, //說明
+                { "targets": 4, "width": "220px" }, //文章Id
+                { "targets": 5, "width": "220px" }, //圖片
+                {
+                    "targets": 6,
+                    "width": "100px",
+                    "defaultContent": "<div class='btn-group btn-group-sm' style='display: flex'>" +
+                        "<button class='btn btn-info' id='topitem'><i class='fa fa-pencil-square-o' aria-hidden='true'></i> 置頂</button>" +
+                        "<button class='btn btn-info' id='modifyitem'><i class='fa fa-pencil-square-o' aria-hidden='true'></i> 修改</button>" +
+                        "<button class='btn btn-danger btn-del' id='delitem'><i class='fa fa-pencil-square-o' aria-hidden='true'></i> 刪除</button>" +
+                        "</div>"
+                }
+            ]
+        });
+
+        var Type = 'WebAD';
+        var picPath = '../vendors/Backend/fileupload/album/';
+        var CDN_Domain = "";
+
+        var allImageInfo = {};
+
+        var AllItemOption = '';
+        var AllItemList = {};
+
+        var SectionOption = '';
+        var SectionList = {};
+
+        var OrderOption = '';
+        var OrderList = {};
+
+        var LangOption = '';
+        var LangList = {};
+
+        getCDNDomain();
+        getOfficialWebADItemData();
+
+
+        function getCDNDomain() {
+            $.ajax({
+                    url: '/GetCDNDomainWithENV',
+                    type: 'GET',
+                    data: { type: Type }
+                }).done(function(result) {
+                    CDN_Domain = result;
+                    console.log(CDN_Domain);
+                })
+                .fail(function() {
+                    alert("Get CDN Domain ERROR!");
+                });
+        }
+
+        function ShowModalBox(Title, Content, footer) {
+            $('#bs-modal-box').remove();
+            var html =
+                '<div id="bs-modal-box" class="modal fade" tabindex="-1" role="dialog">' +
+                '<div class="modal-dialog modal-lg" role="document">' +
+                '<div class="modal-content">' +
+                '<div class="modal-header">' +
+                '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+                '<h4 class="modal-title"></h4>' +
+                '</div>' +
+                '<div class="modal-body" style="display:flow-root">' +
+                '<p></p>' +
+                '</div>' +
+                (footer == null ? '' : '<div class="modal-footer">' + footer + '</div>') +
+                '</div>' +
+                '</div>' +
+                '</div>';
+            $('body').append(html);
+            $('#bs-modal-box h4.modal-title').html(Title);
+            $('#bs-modal-box div.modal-body').html(Content);
+            $('#bs-modal-box').modal('show')
+        }
+
+        $(document).on('change', '#SectionViewSelect', function(event) {
+            table.clear();
+            var data = [];
+            var sectionView = $('#SectionViewSelect').val();
+            $.each(AllItemList, function(index, value) {
+                if (sectionView == 0 || value.Section == sectionView - 1) {
+                    var img = '<img class="img-responsive" src="' + CDN_Domain + value.Pic + '">';
+                    data.push([
+                        value.Id,
+                        value.Section + "." + FindSectionNameById(value.Section),
+                        value.No,
+                        value.Comment,
+                        value.URL == undefined ? "" : value.URL,
+                        img
+                    ]);                    
+                }
+            });
+            table.rows.add(data).draw();            
+        });
+
+        $(document).on('change', '#SectionSelect', function(event) {
+            onSectionSelectChange();
+        });
+
+        $(document).on('change', '#edit_section', function(event) {
+            onEditSectionSelectChange();
+        });
+
+        function onSectionSelectChange() {
+            $('#OrderSelect').prop('disabled', false);
+            var index = parseInt($('#SectionSelect').val());
+            switch (index) {
+                case 1:
+                    $('#OrderSelect').prop('disabled', true);
+                    break;
+            }
+            updateOrderSelect();            
+        }
+
+        function updateSectionSelect() {
+            var sectionVal = $('#SectionSelect').val();
+            AllItemOption = '';
+            $.each(AllItemList, function(index, value) {
+                AllItemOption += '<option value="' + value.Id + '">' + value.Name + '</option>';
+            });
+
+            $('#SectionSelect').empty();
+            $('#SectionSelect').append(AllItemOption);
+            $('#SectionSelect').val(sectionVal);
+
+            onSectionSelectChange();
+        }
+
+        function updateOrderSelect() {
+            var section = $('#SectionSelect').val();
+            var newOrderArr = [];
+            $.each(AllItemList, function(index, value) {
+                if (value.Section == section) {
+                    newOrderArr.push(value.Id);
+                }
+            });
+
+            OrderOption = '';
+            for (var i = 0; i < newOrderArr.length + 1; i++) {
+                OrderOption += '<option value="' + (i + 1) + '">' + (i + 1) + '</option>';
+            }
+
+            $('#OrderSelect').empty();
+            $('#OrderSelect').append(OrderOption);
+            $('#OrderSelect').val(1);            
+        }
+
+        function onEditSectionSelectChange() {
+            $('#edit_order').prop('disabled', false);
+            var index = parseInt($('#edit_section').val());
+            switch (index) {
+                case 1:
+                    $('#edit_order').prop('disabled', true);
+                    break;
+            }
+            updateEditOrderSelect();
+        }
+
+        function updateEditOrderSelect() {
+            var section = $('#edit_section').val();
+            var order = $('#edit_order').val();
+            var newOrderArr = [];
+            $.each(AllItemList, function(index, value) {
+                if (value.Section == section) {
+                    newOrderArr.push(value.Id);
+                }
+            });
+
+            OrderOption = '';
+            for (var i = 0; i < newOrderArr.length; i++) {
+                OrderOption += '<option value="' + (i + 1) + '">' + (i + 1) + '</option>';
+            }
+
+            $('#edit_order').empty();
+            $('#edit_order').append(OrderOption);
+            $('#edit_order').val(order);            
+        }
+
+        function refresh() {
+            LoadingEff(true);
+            var data = [];
+            //取得列表
+            $.ajax({
+                type: 'POST',
+                url: "/OfficialWebADGetAllItemData",
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(msg) {
+                    AllItemList = {};
+                    $.each(msg.data, function(index, value) {
+                        AllItemList[value.Id] = value;
+                    });
+
+                    updateTableData(AllItemList);
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+            }).done(function() {
+                onSectionSelectChange();
+                updateOrderSelect();
+                LoadingEff(false);
+            });
+        }
+
+        function updateTableData(itemData) {
+            table.clear();
+            var data = [];
+            $.each(itemData, function(index, value) {
+                var img = '<img class="img-responsive" src="' + CDN_Domain + value.Pic + '">';
+                data.push([
+                    value.Id,
+                    value.Section + "." + FindSectionNameById(value.Section),
+                    value.No,
+                    value.Comment,
+                    value.URL == undefined ? "" : value.URL,
+                    img
+                ]);
+            });
+            table.rows.add(data).draw();
+        }
+
+        function FindSectionNameById(sectionId) {
+            var name = "";
+            $.each(SectionList, function(key, value) {
+                if (value.Id == sectionId) {
+                    name = value.Name;
+                }
+            });
+            return name;
+        }
+
+        function getOfficialWebADItemData() {
+            var data = new FormData();
+            $.ajax({
+                url: '/OfficialWebADGetAllItemData',
+                type: 'POST',
+                data: data,
+                cache: false,
+                async: true,
+                processData: false,
+                contentType: false,
+                success: function(data) {
+                    $.each(data.data, function(index, value) {
+                        AllItemList[value.Id] = value;
+                    });
+                }
+            }).done(function() {
+                getLangList();
+                getSectionList();
+            });
+        }  
+
+        function getLangList() {
+            $.ajax({
+                url: '/getLangList',
+                type: 'POST',
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(data) {
+                    $.each(data.data, function(index, value) {
+                        LangList[value.Code] = value.Lang.toString();
+                    });
+                    LangOption = '';
+                    LangOption += '<select class="form-control item-lang">';
+                    $.each(LangList, function(index, value) {
+                        LangOption += '<option value="' + index + '">' + value + '</option>';
+                    });
+                    LangOption += '</select>';
+                }
+            }).done(function() {
+                getGalleryData(Type);
+            });
+        }
+
+        function getSectionList() {
+            $.ajax({
+                url: '/OfficialWebADGetSection',
+                type: 'POST',
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(data) {
+                    SectionViewOption = '<option value="0">全部</option>';
+                    $.each(data.data, function(index, value) {
+                        SectionList[index + 1] = value;
+                    });
+                    $.each(SectionList, function(index, value) {
+                        var viewIndex = parseInt(index) + 1;
+                        SectionOption += '<option value="' + index + '">' + value.Name + '</option>';
+                        SectionViewOption += '<option value="' + viewIndex + '">' + value.Name + '</option>';
+                    });
+                    $('#SectionSelect').empty();
+                    $('#SectionSelect').append(SectionOption);
+                    
+                    $('#SectionViewSelect').empty();
+                    $('#SectionViewSelect').append(SectionViewOption);
+                }
+            }).done(function() {
+                updateTableData(AllItemList);
+                onSectionSelectChange();
+                updateOrderSelect();
+            });
+        }
+
+        function getImageSize(input, callback=null){
+            var _URL = window.URL || window.webkitURL;
+            var file, img;
+            file = input.files[0];
+            img = new Image();
+            img.onload = function () {
+                callback(this.width, this.height);
+            };
+            img.src = _URL.createObjectURL(file);
+        }
+
+        function isOverSizeLimit(input) {
+            if ($(input).attr('data-max-filesize') > 0) {
+                size = input.files[0].size;
+                limit = $(input).attr('data-max-filesize') * 2048;
+                if (size > limit) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return true;
+            }
+        }
+
+        function fileTypeChecker(input) {
+            if ($(input).attr('accept').length > 0) {
+                type = input.files[0].type.toString();
+                attType = $(input).attr('accept').toString();
+                if (type == attType) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+
+        function imagePreview(input, target = null) {
+            if (input.files && input.files[0]) {
+                if (target == null) {
+                    if ($(input).next().hasClass('previewImage')) {
+                        $(input).next().show();
+                    } else {
+                        $(input).after('<img src="" class="previewImage img-responsive img-thumbnail" alt="" style="margin-top: 10px;">');
+                    }
+                } else {
+                    target.removeClass('hidden');
+                }
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    if (target == null) {
+                        $(input).next().attr('src', e.target.result);
+                    } else {
+                        target.attr('src', e.target.result);
+                    }
+                }
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                if (target == null) {
+                    $(input).next().attr('src', "#");
+                } else {
+                    target.addClass('hidden');
+                    target.attr('src', "#");
+                }
+            }
+        }
+
+        function itemEdit(data) {
+            var selectPicture = data.Pic;
+            var html = 
+                '<div class="form-group">' +
+                '<label class="control-label">版位</label>' +
+                '<select name="edit_section" id="edit_section" class="form-control">' +
+                '</select>' +
+                '</div>' +
+                '<div class="form-group">' +
+                '<label class="control-label">順序</label>' +
+                '<select name="edit_order" id="edit_order" class="form-control">' +
+                '</select>' +
+                '</div>' +
+                '<div class="form-group">' +
+                '<label for="edit_comment" class="control-label">廣告註解</label>' +
+                '<input type="text" name="edit_comment" id="edit_comment" class="form-control" />' +
+                '</div>' +
+                '<div class="form-group">' +
+                '<label for="edit_URLInput" class="control-label">文章Id</label>' +
+                '<input type="text" name="edit_URLInput" id="edit_URLInput" class="form-control" />' +
+                '</div>';
+
+            html += '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">' +
+                '<hr/>' +
+                '<ul id="sub-gallery-sortable" class="list-unstyled row ui-sortable">' +
+                '</ul>' +
+                '</div>';
+
+            footer = '<button id="SendEditData" type="button" class="btn btn-success">確定</button>' +
+                '<button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>';
+
+
+            ShowModalBox('Item Edit', html, footer);
+            $('#bs-modal-box').on('shown.bs.modal', function(e) {
+                getGalleryData(Type, 'DESC', selectPicture);
+            });
+
+
+            $('#SendEditData').attr('data-pid', data.Id);
+            $('[data-toggle="tooltip"]').tooltip();
+            $('#edit_order').val(data.No);
+            $('#edit_comment').val(data.Comment);
+            $('#edit_URLInput').val(data.URL);
+
+
+            $('#edit_section').empty();
+            $('#edit_section').append(SectionOption);
+            $('#edit_section').selectpicker('val', generateSectionIdArr());
+            $('#edit_section').val(data.Section);
+            $('#edit_section').selectpicker('refresh');
+            onEditSectionSelectChange();
+            $('#edit_order').val(data.No);
+            $('#edit_order').selectpicker('refresh');
+        }
+
+        function generateSectionIdArr() {
+            var sectionIdArr = [];
+            $.each(SectionList, function(key, value) {
+                sectionIdArr.push(value.Id);
+            });
+            return sectionIdArr;
+        }
+
+        function insertNewOrder(section, insertOrder) {
+            var newOrderArr = [];
+            $.each(AllItemList, function(index, value) {
+                if (value.Section == section) {
+                    newOrderArr.push({'Id':value.Id, 'No':(value.No >= insertOrder) ? value.No + 1:value.No});
+                }
+            });
+
+            sort(newOrderArr);
+            return newOrderArr;
+        }
+
+        function modifyNewOrder(section, id, newOrder) {
+            var item = getItem(id);
+            var newOrderArr = [];
+            $.each(AllItemList, function(index, value) {
+                if (value.Section == section && value.Id != id) {
+                    newOrderArr.push({'Id':value.Id, 'No':value.No});
+                }
+            });
+
+            sort(newOrderArr);
+            newOrderArr.splice(newOrder - 1, 0, {'Id':id, 'No':newOrder});
+
+            for (var i = 0 ; i < newOrderArr.length ; ++i) {
+                newOrderArr[i].No = i + 1;
+            }
+            newOrderArr.splice(newOrder - 1, 1);
+            return newOrderArr;
+        }
+
+        function deleteNewOrder(section, id) {
+            var newOrderArr = [];
+            $.each(AllItemList, function(index, value) {
+                if (value.Section == section && value.Id != id) {
+                    newOrderArr.push({'Id':value.Id, 'No':value.No});
+                }
+            });
+
+            sort(newOrderArr);
+
+            for (var i = 0 ; i < newOrderArr.length ; ++i) {
+                newOrderArr[i].No = i + 1;
+            }
+            return newOrderArr;
+        }
+
+        function sort(data){
+            var flag = true;
+            for(var i = 0; i < data.length - 1 && flag; i++){
+                flag = false;
+                for(var j = 0; j < data.length - i - 1; j++){
+                    if(data[j+1].No < data[j].No){
+                        swap(data, j+1, j);
+                        flag = true;
+                    }
+                }
+            }
+        };
+
+        function swap(a, x, y) {
+            if (a.length === 1) return a;
+            a.splice(y, 1, a.splice(x, 1, a[y])[0]);
+            return a;
+        };
+
+        function InsertItem() {
+            var data = new FormData();
+
+            var checkDataStr = insertItemCheck();
+            if (checkDataStr != "") {
+                alert(checkDataStr);
+                return;
+            }
+
+            data.append('Section', $('#SectionSelect').val());
+            data.append('No', $('#OrderSelect').val());
+            data.append('Comment', $('#CommentInput').val());
+            data.append('URL', $('#URLInput').val());
+            data.append('Pic', $('#pictureData').val());
+            data.append('SectionOrder', JSON.stringify(insertNewOrder($('#SectionSelect').val(), $('#OrderSelect').val())));
+
+            console.log(insertNewOrder($('#SectionSelect').val(), $('#OrderSelect').val()));
+            
+            //return;
+            LoadingEff(true);
+            $.ajax({
+                url: '/OfficialWebADInsert',
+                type: 'POST',
+                data: data,
+                cache: false,
+                async: true,
+                processData: false,
+                contentType: false,
+                success: function(data) {
+                    alert(data.msg);
+                }
+            }).always(function() {
+                refresh();
+                LoadingEff(false);
+            });
+        }
+
+        function sendItemEditData() {
+            var checkStatus = false;
+            var data = new FormData();
+            var checkStr = modifyItemCheck();
+            if (checkStr != "") {
+                alert(checkStr);
+                return;
+            }
+
+            data.append('Id', $(this).attr('data-pid'));
+            data.append('Section', $('#edit_section').val());
+            data.append('No', $('#edit_order').val());
+            data.append('Comment', $('#edit_comment').val());
+            data.append('URL', $('#edit_URLInput').val());
+            data.append('Pic', $('#sub-gallery-sortable input.pictureSelected:checked').val());
+            data.append('SectionOrder', JSON.stringify(modifyNewOrder($('#edit_section').val(), $(this).attr('data-pid'), $('#edit_order').val())));
+
+            console.log(modifyNewOrder($('#edit_section').val(), $(this).attr('data-pid'), $('#edit_order').val()));
+
+            LoadingEff(true);
+            $.ajax({
+                url: '/OfficialWebADModify',
+                type: 'POST',
+                data: data,
+                cache: false,
+                async: true,
+                processData: false,
+                contentType: false,
+                success: function(data) {
+                    checkStatus = true;
+                }
+            }).always(function() {
+                if (!checkStatus) {
+                    alert('修改失敗');
+                } else {
+                    alert('修改成功');
+                }
+                refresh();
+                LoadingEff(false);
+            });
+        }
+
+        function itemDel(section, id) {
+            var confirmData = confirm("確定要刪除？");
+            var checkStatus = false;
+            var data = new FormData();
+
+            data.append('Id', id);
+            data.append('SectionOrder', JSON.stringify(deleteNewOrder(section, id)));
+
+            console.log(deleteNewOrder(section, id));
+
+            if (confirmData) {
+                $.ajax({
+                    url: '/OfficialWebADItemDel',
+                    type: 'POST',
+                    data: data,
+                    cache: false,
+                    async: true,
+                    processData: false,
+                    contentType: false,
+                    success: function(data) {
+                        checkStatus = true;
+                    }
+                }).always(function() {
+                    if (!checkStatus)
+                        alert('發生錯誤');
+                    else 
+                        alert('刪除成功');
+                    refresh();
+                });
+            }
+        }
+
+        //$(document).on('click', '#SendOrder', eachOrder);
+        $(document).on('click', '#InsertItem', InsertItem);
+        //$(document).on('click', '.item-enabled', itemEnabled);
+        //$(document).on('click', '.item-del', itemDel);
+        //$(document).on('click', '.item-edit', itemEdit);
+        $(document).on('click', '#SendEditData', sendItemEditData);
+
+        $(document).on('change', '#pictureFile', function(event) {
+            var thisValue = this;
+            getImageSize(this, function(width, height){ 
+                console.log(width, height);
+                var isOverDimension = width > 2048 || height > 2048;
+                var isOverLimit = isOverSizeLimit(thisValue);
+                var allowType = fileTypeChecker(thisValue);
+                if (isOverLimit || !allowType || isOverDimension) {
+                    $(this).val('');
+                    var msg = (isOverLimit ? "Size Over Limit \n" : "") + (!allowType ? "File Type Error" : "") + (isOverDimension ? "Dimension Over Size" : "");
+                    alert(msg);
+                    $('#SendPicture').prop('disabled', true);
+                } else {
+                    $('#SendPicture').prop('disabled', false);
+                }
+                imagePreview(thisValue, $('#picturePreview'));
+            });
+        });
+
+        function insertItemCheck() {
+            if($('#SectionSelect').val() == 1 && checkLogoCount() > 0)
+                return "遊戲LOGO無法設定超過一個, 請用修改代替!";
+
+            if (checkIsNullOrEmpty($('#SectionSelect').val()))
+                return "請選擇版位!!";
+
+            if (checkIsNullOrEmpty($('#OrderSelect').val()))
+                return "請選擇順序!!";
+
+            if (checkIsNullOrEmpty($('#CommentInput').val()))
+                return "請輸入註解!!";
+
+            if (checkIsNullOrEmpty($('#URLInput').val()))
+                return "請輸入文章Id!!";
+                
+            if (checkIsNullOrEmpty($('#pictureData').val()))
+                return "請選擇圖片!!";
+
+            return "";
+        }
+
+        function modifyItemCheck() {
+            if($('#edit_section').val() == 1 && checkLogoCount() > 0)
+                return "遊戲LOGO無法設定超過一個, 請用修改代替!";
+
+            if (checkIsNullOrEmpty($('#edit_section').val()))
+                return "請選擇版位!!";
+
+            if (checkIsNullOrEmpty($('#edit_order').val()))
+                return "請選擇順序!!";
+
+            if (checkIsNullOrEmpty($('#edit_comment').val()))
+                return "請輸入註解!!";
+
+            if (checkIsNullOrEmpty($('#edit_URLInput').val()))
+                return "請輸入文章Id!!";
+
+            if (checkIsNullOrEmpty($('#sub-gallery-sortable input.pictureSelected:checked').val()))
+                return "請選擇圖片!!";
+
+            return "";
+        }
+
+        function checkIsNullOrEmpty(obj) {
+             if (obj == 'undefined' || obj == null || obj == 0 || obj == '')
+                return true;
+            return false;
+        }
+
+        function checkLogoCount() {
+            var count = 0;
+            $.each(AllItemList, function(index, value) {
+                if (value.Section == 1) {
+                    count++;
+                }
+            });
+            return count;
+        }
+        
+        function getGalleryData(type, order = 'DESC', selectedPic = null) {
+            if(Object.keys(LangList) <=0 ){
+                alert('載入語言選單發生問題');
+                getLangList();
+            }
+            $.ajax({
+                url: '/GetPictures',
+                type: 'POST',
+                data: { type: type, order: order },
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(data) {
+                    $.each(data.data, function(index, value) {
+                        allImageInfo[value.pid] = value;
+                    });
+                    var html = '<li class="pull-left ui-disabled well" style="margin-top: 6px; height: 165px;">' +
+                        '<div class="form-group">' +
+                        '<div class="pinSize">' +
+                        '<img src="#" alt="圖片上傳預覽，檔案大小必須為800KB以內，且為jpg格式。" id="picturePreview" class="img-responsive">' +
+                        '</div>' +
+                        '<label for="pictureFile">於項目內新增相片</label>' +
+                        '<input type="file" id="pictureFile" name="pictureFile" style="width:60px; font-size:12px;" class="pull-left" accept="image/jpeg" data-max-filesize="800" />' +
+                        // '<p class="help-block">檔案大小必須為800KB以內，且為jpg格式。</p>' +
+                        '<button type="button" id="SendPicture" class="btn btn-xs btn-primary pull-right" disabled><i class="fa fa-upload" aria-hidden="true"></i></button>' +
+                        '</div>' +
+                        '</li>';
+                    $('#sub-gallery-sortable').html(html);
+                    $.each(data.data, function(index, value) {
+                        var imageSrc = CDN_Domain + value.Picture;
+                        var html = 
+                            '<li class="pull-left" data-pid="' + value.pid + '">' +
+                                '<div class="thumbnail">' + 
+                                    '<div class="edit-over-item hide">' +
+                                        '<div class="form-group form-group-sm">' + 
+                                            '<input type="text" class="form-control item-annotation" value="' + value.Annotation + '" />' + 
+                                        '</div>' +
+                                        '<div class="form-group form-group-sm">' + 
+                                            LangOption +
+                                        '</div>' +
+                                        '<div class="form-group form-group-sm">' + 
+                                            '<div class="btn-group btn-group-xs btn-group-justified">' +
+                                                '<a href="javascript:;" class="btn btn-primary edit-picture-send"><i class="fa fa-check-circle" aria-hidden="true"></i> 確定</a>' +
+                                                '<a href="javascript:;" class="btn btn-default edit-picture-cancel"><i class="fa fa-undo" aria-hidden="true"></i> 取消</a>' +
+                                            '</div>' +
+                                        '</div>' +
+                                    '</div>' +
+                                    '<div class="pinSize">' +
+                                        '<div class="over-img-block">' +
+                                            '<span class="label label-default">' + LangList[value.Lang] + '</span>' +
+                                            '<div class="pull-right">' +
+                                                '<input class="pictureSelected" type="radio" name="pictureSelected" id="pictureSelected_' + value.pid + '" value="' + value.Picture + '" data-pid="' + value.pid + '" ' + (value.Picture==selectedPic?'checked':'') + '>' +
+                                            '</div>' +
+                                        '</div>' + 
+                                        '<img src="' + imageSrc + '" alt="" class="img-responsive">' +
+                                    '</div>' +
+                                    '<div class="caption">' +
+                                        '<p>' + value.Annotation + '</p>' +
+                                        '<div class="btn-group btn-group-xs btn-group-justified">' +
+                                            '<a href="javascript:;" class="edit-picture btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i> 編輯</a>' +
+                                            '<a href="javascript:;" data-pid="' + value.pid + '" class="picture-del btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> 刪除</a>' +
+                                        '</div>' +
+                                    '</div>' +
+                                '</div>' +
+                            '</li>';
+                        $('#sub-gallery-sortable').append(html);
+                        var optionSelect = $('#sub-gallery-sortable li[data-pid="' + value.pid + '"] .over-img-block > div.form-group > select > option');
+                        $.each(optionSelect, function(index, element) {
+                            $(element).prop('selected', $(element).attr('value') == value.Lang ? true : false);
+                        });
+                    });
+                    pictureSelected();
+                    $("#sub-gallery-sortable").sortable({
+                        cursor: "move",
+                        delay: 300,
+                        tolerance: "pointer",
+                        cancel: "input, select",
+                        items: "li:not(.ui-disabled)",
+                        placeholder: "pull-left",
+                        classes: {
+                            "ui-sortable-placeholder": "ui-state-highlight"
+                        }
+                    });
+                    $("#sub-gallery-sortable").disableSelection();
+                }
+            });
+        }
+
+
+        function LoadingEff(effon) {
+            if ($('#loading-cover').length < 1) {
+                var html = '<div id="loading-cover">' +
+                    '<div id="loading-icon">' +
+                    '<i class="fa fa-circle-o-notch fa-spin fa-5x fa-fw" style="color: #FFF;"></i>'
+                '</div>' +
+                '</div>';
+                $('body').append(html);
+                $('#loading-cover').css({
+                    'width': '100%',
+                    'height': '100%',
+                    'background': 'rgba(0,0,0,.5)',
+                    'position': 'fixed',
+                    'display': 'none',
+                    'z-index': '999999',
+                    'top': '0',
+                    'left': '0'
+                });
+                $('#loading-icon').css({
+                    'width': '85px',
+                    'height': '65px',
+                    'margin': '-42.5px 0 0 -32.5px',
+                    'top': '50%',
+                    'left': '50%',
+                    'position': 'fixed'
+                });
+            }
+            if (effon) {
+                $('#loading-cover').fadeIn(100);
+            } else {
+                $('#loading-cover').fadeOut(100);
+            }
+        }
+
+        function selectPictureWindow(){
+            html = '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">' +
+            '<ul id="sub-gallery-sortable" class="list-unstyled row ui-sortable">' +
+            '</ul>' +
+            '</div>';
+
+            footer = '<div class="btn-group btn-group-lg" style="margin-right: 10px;">' + 
+                '<button id="insertPicture" type="button" class="btn btn-primary" disabled><i class="fa fa-picture-o" aria-hidden="true"></i> 確定選取</button>' +
+                '<button id="sendPictureOrder" type="button" class="btn btn-info"><i class="fa fa-sort-amount-desc" aria-hidden="true"></i> 儲存順序</button>' +
+                '</div>' +
+                '<button type="button" class="btn btn-danger btn-lg" data-dismiss="modal"><i class="fa fa-undo" aria-hidden="true"></i> 取消</button>';
+
+            ShowModalBox('Image Selector', html, footer);
+            $('#bs-modal-box').on('shown.bs.modal', function(e) {
+                getGalleryData(Type, 'ASC');
+            });
+        }
+
+        function SendPicture() {
+            var data = new FormData();
+            var files = $("#pictureFile").get(0).files;
+            if (files.length > 0) {
+                data.append("uploadImage", files[0]);
+            };
+            data.append('type', Type);
+
+            LoadingEff(true);
+            $.ajax({
+                url: '/SendPicture',
+                type: 'POST',
+                data: data,
+                cache: false,
+                async: true,
+                processData: false,
+                contentType: false,
+                success: function(data) {
+                    getGalleryData(Type, 'ASC');
+                }
+            }).always(function() {
+                LoadingEff(false);
+            });
+        }
+
+        function pictureDel() {
+            var confirmData = confirm("確定要刪除？");
+            var checkStatus = false;
+
+            if (confirmData) {
+                var pid = $(this).attr('data-pid');
+                var _element = $(this).parents('li.ui-sortable-handle');
+                $.ajax({
+                    url: '/DelPicture',
+                    type: 'POST',
+                    data: { pid: pid },
+                    cache: false,
+                    async: true,
+                    dataType: 'json',
+                    success: function(data) {
+                        _element.remove();
+                        checkStatus = true;
+                    }
+                }).always(function() {
+                    if (!checkStatus)
+                        alert('發生錯誤');
+                });
+            }
+        }
+        function pictureEdit(targetForm, targetOther){
+            if(targetForm.hasClass('hide')){
+                targetForm.removeClass('hide');
+                targetOther.addClass('blur');
+            } else {
+                targetForm.addClass('hide');
+                targetOther.removeClass('blur');
+            }
+        }
+        function pictureEditOpen(){
+            targetForm = $(this).parents('.thumbnail').find('.edit-over-item');
+            targetOther = $(this).parents('.thumbnail').find('.pinSize, .caption');
+            pictureEdit(targetForm, targetOther);
+        }
+
+        function itemEditHide(selectNum){
+            targetForm = $('#sub-gallery-sortable > li > .thumbnail').eq(selectNum).find('.edit-over-item');
+            targetOther = $('#sub-gallery-sortable > li > .thumbnail').eq(selectNum).find('.pinSize, .caption');
+            pictureEdit(targetForm, targetOther);
+        }
+
+        function editPictureSend(){
+            var pid = $(this).parents('li[data-pid]').attr('data-pid');
+            var annotation = $(this).parents('div.edit-over-item').find('.item-annotation').val();
+            var lang = $(this).parents('div.edit-over-item').find('.item-lang').val();
+            var thisEq = $(this).parents('li[data-pid]').prevAll().not('.ui-disabled').length;
+
+            if($(this).hasClass('edit-picture-send')){
+                var checkStatus = false;
+
+                $.ajax({
+                    url: '/EditPicture',
+                    type: 'POST',
+                    data: { pid: pid, annotation: annotation, lang: lang },
+                    cache: false,
+                    async: true,
+                    dataType: 'json',
+                    success: function(data) {
+                        checkStatus = true;
+                    }
+                }).always(function() {
+                    if (!checkStatus){
+                        alert('發生錯誤');
+                    }
+                    itemEditHide(thisEq);
+                    getGalleryData(Type, 'ASC');
+                });
+            } else {
+                itemEditHide(thisEq);
+            }
+        }
+
+        function sendPictureOrder() {
+            var checkStatus = false;
+            var item = $('#sub-gallery-sortable > li').not('.ui-disabled');
+            var postData = [];
+            $(item).each(function(index, el) { //.get().reverse() -> 應應 SQL ORDER BY DESC
+                postData.push({ 'pid': $(this).attr('data-pid'), 'no': index });
+            });
+            $.ajax({
+                url: '/OrderPicture',
+                type: 'POST',
+                data: JSON.stringify({ data: postData }),
+                cache: false,
+                async: true,
+                contentType: 'application/json',
+                processData: false,
+                success: function(data) {
+                    checkStatus = true;
+                }
+            }).always(function() {
+                if (!checkStatus) {
+                    alert('更新順序發生錯誤');
+                } else {
+                    alert('更新順序成功');
+                    getGalleryData(Type, 'ASC');
+                }
+            });
+        }
+
+
+        function pictureSelected(){
+            $.each($('#sub-gallery-sortable > li[data-pid]'), function(index, element) {
+                $(element).removeClass('selected');
+                if($(element).find('input.pictureSelected').prop('checked')){
+                    $(element).addClass('selected');
+                }
+            });
+            // $(this).parents('#sub-gallery-sortable > li[data-pid]').addClass('selected');
+            if($('#sub-gallery-sortable input.pictureSelected:checked').val() != null){
+                $('#insertPicture').prop('disabled', false);
+            }
+        }
+
+        function insertPicture(){
+            var insertPictureData = $('#sub-gallery-sortable input.pictureSelected:checked').val();
+            var pid = $('#sub-gallery-sortable input.pictureSelected:checked').attr('data-pid');
+            if(insertPictureData != null){
+                //$('#pictureData').val(Type + '/' + insertPictureData);
+                var imageSrc = CDN_Domain + insertPictureData;
+                $('#pictureData').val(insertPictureData);
+                $('#SelectedPicturePreview').attr('src', imageSrc);
+                $('#SelectedPicturePreview').removeClass('hidden');
+                $('#bs-modal-box').modal('hide');
+            } else {
+                alert('沒有任何選項被選擇，請選擇圖片！');
+                $('#SelectedPicturePreview').addClass('hidden');
+            }             
+        }
+
+        function cancelSelectedPicture(){
+            var confirmAlert = confirm("確定取消選取的圖片？");
+            if(confirmAlert){
+                $('#pictureData').val('');
+                $('#SelectedPicturePreview').attr('src', '#');
+                $('#SelectedPicturePreview').addClass('hidden');
+            } else {}
+        }
+
+        $(document).on('change', '.pictureSelected', pictureSelected);
+
+        $(document).on('click', '#selectPictureWindow', selectPictureWindow);
+
+        $(document).on('click', '#SendPicture', SendPicture);
+
+        $(document).on('click', '.picture-del', pictureDel);
+
+        $(document).on('click', '.edit-picture', pictureEditOpen);
+
+        $(document).on('click', '.edit-picture-send, .edit-picture-cancel', editPictureSend);
+
+        $(document).on('click', '#sendPictureOrder', sendPictureOrder);
+
+        $(document).on('click', '#insertPicture', insertPicture);
+
+        $(document).on('click', '#cancelSelectedPicture', cancelSelectedPicture);
+
+        function OutputMsg(msg) {
+            console.log(msg);
+        }
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SCG</title>
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- Datatables -->
+    <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- bootstrap-datetimepicker -->
+    <link href="../vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <!-- Ion.RangeSlider -->
+    <link href="../vendors/normalize-css/normalize.css" rel="stylesheet">
+    <link href="../vendors/ion.rangeSlider/css/ion.rangeSlider.css" rel="stylesheet">
+    <link href="../vendors/ion.rangeSlider/css/ion.rangeSlider.skinFlat.css" rel="stylesheet">
+    <style>
+    .dataTables_wrapper>.row {
+        overflow: visible!important;
+    }
+    #datatable {
+        table-layout: fixed;
+        word-break: break-all;
+    }
+    </style>
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <!--Menu-->
+            <!--Top-->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- form date pickers -->
+                        <div class="x_panel" style="">
+                            <div class="x_title">
+                                <h2>意見回饋查詢</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="x_panel">
+                                    <div class="x_content">
+                                        <div class="form-horizontal form-label-left" novalidate>
+                                            <div class="form-group">
+                                                <input type="checkbox" id="IsSearchFeedbackByTime" class="flat">
+                                                <label class="control-label" data-toggle="tooltip" data-placement="right" title="">回饋日期區間</label>
+                                                <input type="text" name="FeedbackTime" id="FeedbackTime" class="form-control" value="" />
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="checkbox" id="IsSearchFeedbackByReplyTime" class="flat">
+                                                <label class="control-label" data-toggle="tooltip" data-placement="right" title="">回覆日期區間</label>
+                                                <input type="text" name="ReplyTime" id="ReplyTime" class="form-control" value="" />
+                                            </div>
+                                            <div class="item form-group">
+                                                <label class="control-label">MemberId
+                                                </label>
+                                                <input id="MemberId" class="date-picker form-control col-md-7 col-xs-12" placeholder="" type="text">
+                                            </div>
+                                            <div class="item form-group">
+                                                <label class="col-md-6 col-sm-6 col-xs-12">意見類別</label>
+                                                <select name="mFeedbackType" id="mFeedbackType" class="form-control">
+                                                </select>
+                                            </div>
+                                            <div class="item form-group">
+                                                <label class="col-md-6 col-sm-6 col-xs-12">會員層級</label>
+                                                <select name="mVIPLV" id="mVIPLV" class="form-control">
+                                                </select>
+                                            </div>
+                                            <div class="item form-group">
+                                                <label class="control-label">儲值金額以上</label>
+                                                <input type="number" id="mOverMoney" class="form-control text-center" name="mOverMoney" value="0" min="1" style="font-size: 20px;" inputmode="numeric">
+                                            </div>
+                                            <div class="item form-group">
+                                                <label class="control-label">儲值金額以下</label>
+                                                <input type="number" id="mUnderMoney" class="form-control text-center" name="mUnderMoney" value="0" min="1" style="font-size: 20px;" inputmode="numeric">
+                                            </div>
+                                            <div class="item form-group">
+                                                <label class="control-label">玩家意見
+                                                </label>
+                                                <input id="Feedback" class="date-picker form-control col-md-7 col-xs-12" placeholder="" type="text">
+                                            </div>
+                                            <div class="item form-group">
+                                                <label class="control-label">客服名稱
+                                                </label>
+                                                <input id="StaffName" class="date-picker form-control col-md-7 col-xs-12" placeholder="" type="text">
+                                            </div>
+                                            <div class="item form-group">
+                                                <label class="control-label">客服回應
+                                                </label>
+                                                <input id="Reply" class="date-picker form-control col-md-7 col-xs-12" placeholder="" type="text">
+                                            </div>
+                                            <div class="item form-group">
+                                                <label class="col-md-6 col-sm-6 col-xs-12">意見回饋狀態</label>
+                                                <select name="mReplyStatus" id="mReplyStatus" class="form-control">
+                                                    <option value="" selected>所有</option>
+                                                    <option value="Y">已回覆</option>
+                                                    <option value="N">未回覆</option>
+                                                </select>
+                                            </div>
+                                            <div class="ln_solid"></div>
+                                            <div class="form-group">
+                                                <div class="col-md-9 col-md-offset-4">
+                                                    <button id="mClear" class="btn btn-danger">Clear</button>
+                                                    <button id="mSearch" class="btn btn-success">Search</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>意見回饋</h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <table id="datatable" class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>會員ID</th>
+                                        <th>會員名稱</th>
+                                        <th>發佈日期</th>
+                                        <th>會員層級</th>
+                                        <th>儲值金額</th>
+                                        <th>玩家意見</th>
+                                        <th>聯絡電話</th>
+                                        <th>電子郵件</th>
+                                        <th>意見類別</th>
+                                        <th>客服回應</th>
+                                        <th>客服回應時間</th>
+                                        <th>客服名稱</th>
+                                        <th>意見回饋狀態</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /page content -->
+        <!--footer-->
+    </div>
+    </div>
+    <div id="loading-cover" style="width: 100%; height: 100%; background: rgba(0,0,0,.5); position: fixed; display: none; z-index: 999999; top: 0; left: 0;">
+        <div id="loading-icon" style="width: 85px; height: 65px; margin: -42.5px 0 0 -32.5px; top: 50%; left: 50%; position: fixed;">
+            <i class="fa fa-circle-o-notch fa-spin fa-5x fa-fw" style="color: #FFF;"></i>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- iCheck -->
+    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <!-- Datatables -->
+    <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="../vendors/jszip/dist/jszip.min.js"></script>
+    <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+    <!-- Ion.RangeSlider -->
+    <script src="../vendors/ion.rangeSlider/js/ion.rangeSlider.min.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap-datetimepicker -->
+    <script src="../vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <!-- jquery.inputmask -->
+    <script src="../vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+    <!-- jQuery Knob -->
+    <script src="../vendors/jquery-knob/dist/jquery.knob.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+    <script>
+    $(document).ready(function() {
+
+        var startDate = moment().subtract(29, 'days');
+        var endDate = moment();
+        var $_GET = {};
+        var FeedbackType = [];
+        document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function() {
+            function decode(s) {
+                return decodeURIComponent(s.split("+").join(" "));
+            }
+            $_GET[decode(arguments[1])] = decode(arguments[2]);
+        });
+
+        var table = $('#datatable').DataTable({
+            destroy: true,
+            "columnDefs": [
+                { "targets": 0 },
+                { "targets": 1 },
+                { "targets": 2 },
+                { "targets": 3 },
+                { "targets": 4 },
+                { "targets": 5 },
+                { "targets": 6 },
+                { "targets": 7 },
+                { "targets": 8 },
+                { "targets": 9 },
+                { "targets": 10 },
+                { "targets": 11 },
+                { "targets": 12 },
+                { "targets": 13 }
+            ]
+        });
+
+        $.ajax({
+            type: 'POST',
+            url: "/GetFeedbackType",
+            cache: false,
+            async: true,
+            dataType: 'json',
+            success: function(msg) {
+                FeedbackType = msg.data;
+                var mySelect = $('#mFeedbackType');
+                mySelect.append(
+                    $('<option></option>').val(0).html("所有類型")
+                );
+                msg.data.forEach(function(value) {
+                    mySelect.append(
+                        $('<option></option>').val(value.Id).html(value.CommentTypeChtName)
+                    );
+                });
+            },
+            error: function(xhr, desc, err) {
+                alert("HTTP Status code:" + xhr.status);
+            }
+        }).done(function() {
+            $('#loading-cover').fadeOut(100);
+        });
+
+        $.ajax({
+            type: 'POST',
+            url: "/GetVIPLvSetting",
+            cache: false,
+            async: true,
+            dataType: 'json',
+            success: function(msg) {
+                var mySelect = $('#mVIPLV');
+                mySelect.append(
+                    $('<option></option>').val(0).html("所有層級")
+                );
+                msg.data.forEach(function(value) {
+                    mySelect.append(
+                        $('<option></option>').val(value.VIPLvId).html(value.VIPLvName)
+                    );
+                });
+            },
+            error: function(xhr, desc, err) {
+                alert("HTTP Status code:" + xhr.status);
+            }
+        }).done(function() {
+            $('#loading-cover').fadeOut(100);
+        });
+
+        function thousandComma(number){
+            var num = number == null ? '0' : number.toString();
+            var pattern = /(-?\d+)(\d{3})/;
+            while(pattern.test(num)){
+                num = num.replace(pattern, "$1,$2");
+            }
+            return num;
+        };
+
+        refresh();
+
+        function refresh() {
+            $('#loading-cover').fadeIn(100);
+            table.clear().draw();
+            var data = [];
+            //取得列表
+            $.ajax({
+                type: 'POST',
+                url: "/GetFeedback",
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(msg) {
+                    msg.data.forEach(function(value) {
+                        var TotalMoney = checkIsNullOrEmpty(value.TotalMoney) ? 0 : value.TotalMoney;
+                        var TotalRecharge = checkIsNullOrEmpty(value.TotalRecharge) ? 0 : value.TotalRecharge;
+                        data.push([
+                            value.Id,
+                            value.MemberId,
+                            checkIsNullOrEmpty(value.MemberName) ? "" : value.MemberName,
+                            moment(value.ModifyTime).format("YYYY-MM-DD HH:mm:ss"),
+                            checkIsNullOrEmpty(value.MemberVIP) ? "" : value.MemberVIP,
+                            thousandComma((TotalMoney + TotalRecharge) / 100),
+                            checkIsNullOrEmpty(value.CommentContent) ? "" : value.CommentContent,
+                            checkIsNullOrEmpty(value.CommentReplyTel) ? "" : value.CommentReplyTel,
+                            checkIsNullOrEmpty(value.CommentReplyEmail) ? "" : value.CommentReplyEmail,                            
+                            checkIsNullOrEmpty(value.CommentTypeChtName) ? "" : value.CommentTypeChtName,
+                            checkIsNullOrEmpty(value.CommentReply) ? "" : value.CommentReply,
+                            checkIsNullOrEmpty(value.ReplyTime) ? "" : moment(value.ReplyTime).format("YYYY-MM-DD HH:mm:ss"),
+                            checkIsNullOrEmpty(value.Staff) ? "" : value.Staff,
+                            checkIsNullOrEmpty(value.CommentStatus) ? "" : value.CommentStatus
+                        ]);
+
+                    });
+                    table.rows.add(data).draw();
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+            }).done(function() {
+                $('#loading-cover').fadeOut(100);
+            });
+        }
+
+        function FeedbackTimeCB(start, end) {
+            $("#IsSearchFeedbackByTime").prop("checked", true);
+        }
+
+        function ReplyTimeCB(start, end) {
+            $("#IsSearchFeedbackByReplyTime").prop("checked", true);
+        }
+
+        $("#FeedbackTime").daterangepicker({
+            locale: {
+                format: 'YYYY-MM-DD HH:mm:ss'
+            },
+            startDate: moment().startOf('day'),
+            endDate: moment().endOf('day'),
+            timePicker: true,
+            //singleDatePicker: true,
+            timePicker24Hour: true,
+            timePickerSeconds: true,
+            ranges: {
+                'Today': [moment().startOf('day'), moment().endOf('day')],
+                'Yesterday': [moment().subtract(1, 'days').startOf('day'), moment().subtract(1, 'days').endOf('day')],
+                'Last 7 Days': [moment().subtract(6, 'days').startOf('day'), moment().endOf('day')],
+                'Last 30 Days': [moment().subtract(29, 'days').startOf('day'), moment().endOf('day')],
+                'This Month': [moment().startOf('month'), moment().endOf('month')]
+            }
+        }, FeedbackTimeCB);
+
+        $('#ReplyTime').daterangepicker({
+            locale: {
+                format: 'YYYY-MM-DD HH:mm:ss'
+            },
+            startDate: moment().startOf('day'),
+            endDate: moment().endOf('day'),
+            timePicker: true,
+            //singleDatePicker: true,
+            timePicker24Hour: true,
+            timePickerSeconds: true,
+            ranges: {
+                'Today': [moment().startOf('day'), moment().endOf('day')],
+                'Yesterday': [moment().subtract(1, 'days').startOf('day'), moment().subtract(1, 'days').endOf('day')],
+                'Last 7 Days': [moment().subtract(6, 'days').startOf('day'), moment().endOf('day')],
+                'Last 30 Days': [moment().subtract(29, 'days').startOf('day'), moment().endOf('day')],
+                'This Month': [moment().startOf('month'), moment().endOf('month')]
+            }
+        }, ReplyTimeCB);
+
+        function clear(e) {
+            e.preventDefault();
+            $("#FeedbackTime").val("");
+            $("#ReplyTime").val("");
+            $('#MemberId').val("");
+            $('#mFeedbackType').val(0);
+            $('#mVIPLV').val(0);
+            $('#mOverMoney').val(0);
+            $('#mUnderMoney').val(0);
+            $('#Feedback').val("");
+            $('#StaffName').val("");
+            $('#Reply').val("");
+            $('#mReplyStatus').val(0);
+        }
+
+        function search(e) {
+            $('#loading-cover').fadeIn(100);
+            e.preventDefault();
+
+            var SendData = datacheck();
+            if (!SendData.r) {
+                return;
+            }
+            table.clear().draw();
+            var data = [];
+            //取得列表
+            $.ajax({
+                type: 'POST',
+                url: "/SearchFeedback",
+                data: SendData,
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(msg) {
+                    msg.data.forEach(function(value) {
+                        var TotalMoney = checkIsNullOrEmpty(value.TotalMoney) ? 0 : value.TotalMoney;
+                        var TotalRecharge = checkIsNullOrEmpty(value.TotalRecharge) ? 0 : value.TotalRecharge;
+                        data.push([
+                            checkIsNullOrEmpty(value.Id) ? "" : value.Id,
+                            checkIsNullOrEmpty(value.MemberId) ? "" : value.MemberId,
+                            checkIsNullOrEmpty(value.MemberName) ? "" : value.MemberName,
+                            value.ModifyTime = null ? "" : moment(value.ModifyTime).format("YYYY-MM-DD HH:mm:ss"),
+                            checkIsNullOrEmpty(value.MemberVIP) ? "" : value.MemberVIP,
+                            thousandComma((TotalMoney + TotalRecharge) / 100),
+                            checkIsNullOrEmpty(value.CommentContent) ? "" : value.CommentContent,
+                            checkIsNullOrEmpty(value.CommentReplyTel) ? "" : value.CommentReplyTel,
+                            checkIsNullOrEmpty(value.CommentReplyEmail) ? "" : value.CommentReplyEmail,
+                            checkIsNullOrEmpty(value.CommentTypeChtName) ? "" : value.CommentTypeChtName,
+                            checkIsNullOrEmpty(value.CommentReply) ? "" : value.CommentReply,
+                            checkIsNullOrEmpty(value.ReplyTime) ? "" : moment(value.ReplyTime).format("YYYY-MM-DD HH:mm:ss"),
+                            checkIsNullOrEmpty(value.Staff) ? "" : value.Staff,
+                            checkIsNullOrEmpty(value.CommentStatus) ? "" : value.CommentStatus
+                        ]);
+                    });
+                    table.rows.add(data).draw();
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+            }).done(function() {
+                $('#loading-cover').fadeOut(100);
+            });
+        }
+
+        function datacheck() {
+            var SendData = { r: true };
+
+            if ($("#IsSearchFeedbackByTime").prop("checked")) {
+                SendData.Feedback_StartDate = $('#FeedbackTime').data('daterangepicker').startDate.format('YYYY-MM-DD HH:mm:ss');
+                SendData.Feedback_EndDate = $('#FeedbackTime').data('daterangepicker').endDate.format('YYYY-MM-DD HH:mm:ss');
+            }
+            if ($("#IsSearchFeedbackByReplyTime").prop("checked")) {
+                SendData.Reply_StartDate = $('#ReplyTime').data('daterangepicker').startDate.format('YYYY-MM-DD HH:mm:ss');
+                SendData.Reply_EndDate = $('#ReplyTime').data('daterangepicker').endDate.format('YYYY-MM-DD HH:mm:ss');
+            }
+            SendData.MemberId = $('#MemberId').val().replace(/\s+/g, "");
+            SendData.FeedbackType = $('#mFeedbackType').val();
+            SendData.VIPLV = $('#mVIPLV').val();
+            SendData.OverMoney = $('#mOverMoney').val();
+            SendData.UnderMoney = $('#mUnderMoney').val();
+            SendData.Feedback = $('#Feedback').val();
+            SendData.StaffName = $('#StaffName').val();
+            SendData.Reply = $('#Reply').val();
+            SendData.ReplyStatus = $('#mReplyStatus').val();
+
+            //if (!SendData.r) { alert('Please Enter Data'); };
+            return SendData;
+        }
+
+        $(document).on('click', '#mClear', clear);
+        $(document).on('click', '#mSearch', search);
+
+        function checkIsNullOrEmpty(obj) {
+            if (obj == 'undefined' || obj == null || obj == 0 || obj == '')
+                return true;
+            return false;
+        }
+    });
+    </script>
+</body>
+
+</html>

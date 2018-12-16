@@ -1,0 +1,1978 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SCG</title>
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Datatables -->
+    <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- bootstrap-select -->
+    <link rel="stylesheet" href="../vendors/bootstrap-select/css/bootstrap-select.min.css">
+    <!-- bootstrap-tagsinput -->
+    <link rel="stylesheet" href="../vendors/bootstrap-tagsinput/css/bootstrap-tagsinput.min.css">
+    <!-- bootstrap-switch -->
+    <link rel="stylesheet" href="../vendors/bootstrap-switch/css/bootstrap3/bootstrap-switch.min.css">
+    <!-- jquery-ui -->
+    <link rel="stylesheet" href="../vendors/jquery-ui/jquery-ui.min.css">
+    <style type="text/css" media="screen">
+    .popover {
+        max-width: 700px;
+    }
+
+    .form-control[readonly] {
+        background-color: transparent;
+    }
+
+    .text-ellipsis {
+        width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        margin: 0;
+    }
+
+    #datatable tbody td {
+        vertical-align: middle;
+    }
+
+    #datatable tbody td:nth-child(9) {
+        text-align: right;
+    }
+
+    #datatable {
+        table-layout: fixed;
+    }
+
+
+    #gallery-sortable li {
+        margin: .1%;
+        width: 19.8%;
+        padding: 5px;
+    }
+
+    #gallery-sortable .pinSize {
+        overflow: hidden;
+        height: 170px;
+    }
+
+    #gallery-sortable .edit-news-content,
+    #gallery-sortable h3 {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    /*圖片選擇*/
+    #sub-gallery-sortable>li.selected[data-pid]>.thumbnail {
+        box-shadow: 0 0 1px 3px rgba(0, 130, 255, 0.7);
+        border-color: rgba(0, 0, 0, 0);
+    }
+    #sub-gallery-sortable li {
+        margin: .2%;
+        width: 19.5%;
+        height: 181px;
+        padding: 5px;
+    }
+
+    .thumbnail {
+        height: auto;
+        margin-bottom: 0px;
+    }
+
+    #sub-gallery-sortable .pinSize {
+        overflow: hidden;
+        height: 95px;
+    }
+
+    #sub-gallery-sortable .over-img-block {
+        position: relative;
+        padding: 10px;
+        width: 100%;
+        height: 100%;
+        z-index: 99;
+        margin-bottom: -95px;
+    }
+
+    #sub-gallery-sortable .edit-over-item {
+        position: relative;
+        background: rgba(180, 180, 180, .3);
+        width: 100%;
+        height: 160px;
+        padding: 32px 10px 10px 10px;
+        margin-bottom: -160px;
+        z-index: 999;
+    }
+
+    #sub-gallery-sortable p {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .label {
+        font-size: 100%;
+    }
+
+    .blur {
+        filter: blur(3px);
+    }
+    /*圖片選擇*/
+
+    textarea {
+        resize: vertical;
+    }
+
+    .edit-news-content {
+        width: 100%;
+        height: 13px;
+        display: block;
+    }
+    </style>
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <!--Menu-->
+            <!--Top-->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="row">
+                    <div class="clearfix"></div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>廣告燈箱設定</h2>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="col-lg-6 col-md-12 col-xs-12">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading"><i class="fa fa-book" aria-hidden="true"></i> 新增項目</div>
+                                                <div class="panel-body">
+                                                    <div class="form-group">
+                                                        <label for="itemDescript" class="control-label">敘述</label>
+                                                        <input type="text" name="itemDescript" id="itemDescript" class="form-control" maxlength="50"/>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label" id="AudienceLabel" data-toggle="tooltip" data-placement="right" title="必選項目">受眾選擇*(下一階段實作)</label>
+                                                        <select name="AudienceSelect" id="AudienceSelect" class="form-control">
+                                                        </select>
+                                                        <p class="help-block">*必選項目</p>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">類型</label>
+                                                        <select name="MainTypeSelect" id="MainTypeSelect" class="form-control">
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label" id="SubTypeLabel">子類型</label>
+                                                        <select name="SubTypeSelect" id="SubTypeSelect" class="form-control">
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="URLInput" class="control-label" id="URLInputLabel">自訂網址</label>
+                                                        <input type="text" name="URLInput" id="URLInput" class="form-control" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="LinkedRewardInput" class="control-label" id="LinkedRewardLabel">連結獎勵設定</label>
+                                                        <input type="text" name="LinkedRewardInput" id="LinkedRewardInput" class="form-control" />
+                                                    </div>
+                                                    <!-- <div class="form-group">
+                                                        <label class="control-label" id="LocationLabel">出現時機</label>
+                                                        <select class="selectpicker form-control" multiple="" id="LocationSelect">
+                                                        </select>
+                                                    </div> -->
+                                                    <div class="form-group">
+                                                        <label class="control-label">啟用時間 <i aria-hidden="true"></i></label>
+                                                        <input type="text" name="ActiveTime" id="ActiveTime" class="form-control" value="" />
+                                                    </div>
+                                                    
+                                                    <div class="form-group">
+                                                        <div class="btn-group btn-group-sm btn-group-justified">
+                                                            <a href="javascript:;" id="selectPictureWindow" class="btn btn-success" style="width: 80%;"><i class="fa fa-th" aria-hidden="true"></i> 圖片選擇</a>
+                                                            <a href="javascript:;" id="cancelSelectedPicture" class="btn btn-danger" style="width: 20%;"><i class="fa fa-undo" aria-hidden="true"></i> 取消</a>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <input type="hidden" id="pictureData" value="">
+                                                        <img id="SelectedPicturePreview" src="#" alt="Selected Picture Preview" class="img-responsive img-thumbnail hidden" />
+                                                    </div>
+
+                                                    <div class="col-md-12">
+                                                        <button type="button" id="InsertItem" class="btn btn-lg btn-primary pull-right">確定送出</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>List</h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <ul id="gallery-sortable" class="list-unstyled row">
+                                    <li class="pull-left">
+                                        <div class="thumbnail">
+                                            <div class="pinSize">
+                                                <img data-src="#" alt="" class="img-responsive">
+                                            </div>
+                                            <div class="caption">
+                                                <h3>title</h3>
+                                                <p class="edit-adwindow-content text-ellipsis"></p>
+                                                <p class="edit-adwindow-audience text-ellipsis"></p>
+                                                <!-- <p class="edit-adwindow-location text-ellipsis"></p> -->
+                                                <p class="edit-adwindow-type text-ellipsis"></p>
+                                                <p class="edit-adwindow-subtype text-ellipsis"></p>
+                                                <p class="edit-adwindow-start-time pull-right"><i class="fa fa-calendar" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="開始時間（網站不會顯示）"></i> <span></span></p>
+                                                <p class="edit-adwindow-end-time pull-right"><i class="fa fa-calendar" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="結束時間（網站不會顯示）"></i> <span></span></p>
+                                                <div class="btn-group btn-group-justified">
+                                                    <a href="javascript:;" title="" class="item-enabled btn btn-default"><i class="fa" aria-hidden="true"></i> <span>顯示</span></a>
+                                                    <a href="javascript:;" title="" class="item-edit btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 編輯</a>
+                                                    <a href="javascript:;" title="" class="item-top btn btn-default"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 置頂</a>
+                                                    <a href="javascript:;" title="" class="item-del btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> 刪除</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <button id="SendOrder" type="button" class="btn btn-success btn-lg pull-right" disabled="disabled">送出順序</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /page content -->
+            <!--footer-->
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- jquery-ui -->
+    <script src="../vendors/jquery-ui/jquery-ui.min.js"></script>
+    <script>
+    // $.widget.bridge('uibutton', $.ui.button);
+    $.widget.bridge('uitooltip', $.ui.tooltip);
+    </script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- iCheck -->
+    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <!-- Datatables -->
+    <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="../vendors/jszip/dist/jszip.min.js"></script>
+    <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap-select -->
+    <script src="../vendors/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="../vendors/bootstrap-select/js/i18n/defaults-zh_TW.min.js"></script>
+    <!-- bootstrap-tagsinput -->
+    <script src="../vendors/bootstrap-tagsinput/js/bootstrap-tagsinput.min.js"></script>
+    <!-- bootstrap-switch -->
+    <script src="../vendors/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        var Type = 'ADLambox';
+        //var picPath = '../vendors/Backend/fileupload/album/';
+
+        var CDN_Domain = "";
+
+        $('#URLInput').hide();
+        $('#URLInputLabel').hide();
+        
+        getCDNDomain();
+
+
+        function getCDNDomain() {
+            $.ajax({
+                    url: '/GetCDNDomainWithENV',
+                    type: 'GET',
+                    data: { type: Type }
+                }).done(function(result) {
+                    CDN_Domain = result;
+                    console.log(CDN_Domain);
+                })
+                .fail(function() {
+                    alert("Get CDN Domain ERROR!");
+                });
+        }
+        
+        // $('#LocationSelect').selectpicker({
+        //     showTick: true,
+        //     hideDisable: true
+        // });
+
+        $("#gallery-sortable").sortable({
+            cursor: "move",
+            delay: 200,
+            tolerance: "pointer",
+            cancel: ".ui-state-disabled",
+            update: function( event, ui ) {
+                $('#SendOrder').prop("disabled", false);
+            }
+        });
+
+        $("#gallery-sortable").disableSelection();
+
+        $('#ActiveTime').daterangepicker({
+            locale: {
+                format: 'YYYY-MM-DD HH:mm:ss'
+            },
+            startDate: moment(),
+            endDate: moment(),
+            timePicker: true,
+            timePicker24Hour: true,
+            timePickerSeconds: true,
+            ranges: {
+                'Today': [moment().startOf('day'), moment().endOf('day')],
+                'Tomorrow': [moment().add(1, 'days').startOf('day'), moment().add(1, 'days').endOf('day')],
+                '7 Days': [moment().startOf('day'), moment().add(6, 'days').endOf('day')],
+                '30 Days': [moment().startOf('day'), moment().add(29, 'days').endOf('day')],
+                'This Month': [moment().startOf('month'), moment().endOf('month')]
+            }
+        }, updateInsertItemByActiveTime);
+
+        function updateInsertItemByActiveTime() {
+            if ($('#MainTypeSelect').val() == 6) {
+                updateSubTypeAudienceSelect($('#AudienceSelect'), $('#SubTypeSelect'), $('#ActiveTime'));
+            }
+        }
+
+        function updateModifyItemByActiveTime() {
+            if ($('#edit_MainTypeSelect').val() == 6) {
+                updateSubTypeAudienceSelect($('#edit_AudienceSelect'), $('#edit_SubTypeSelect'), $('#edit_ActiveTime'));
+            }
+        }
+
+        var ItemLocations = [];
+        var ItemAudience = {};
+        var allItemInfo = [];
+        var allImageInfo = {};
+
+        var LocationList = {};
+        var LocationOption = '';
+
+        var LangList = {};
+        var LangOption = '';
+
+        var AudienceList = {};
+        var AudienceOption = '';
+
+        var GamesInfoTypeList = {};
+        var GamesInfoTypeAOption = '';
+        var GamesInfoTypeBOption = '';
+        var GamesInfoTypeAList = {};
+        var GamesInfoTypeBList = {};
+
+        var MainTypeOption = '';
+        var MainTypeList = {};
+
+        var PageInfoOption = '';
+        var PageInfoList = {};
+
+        var URLInfoOption = '';
+        var URLInfoList = {};
+
+        var AdWindowItemOption = '';
+        var AdWindowItemList = {};
+        
+        var HallDataOption = '';
+        var HallDataList = {};
+
+        function ShowModalBox(Title, Content, footer) {
+            $('#bs-modal-box').remove();
+            var html =
+                '<div id="bs-modal-box" class="modal fade" tabindex="-1" role="dialog">' +
+                '<div class="modal-dialog modal-lg" role="document">' +
+                '<div class="modal-content">' +
+                '<div class="modal-header">' +
+                '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+                '<h4 class="modal-title"></h4>' +
+                '</div>' +
+                '<div class="modal-body" style="display:flow-root">' +
+                '<p></p>' +
+                '</div>' +
+                (footer == null ? '' : '<div class="modal-footer">' + footer + '</div>') +
+                '</div>' +
+                '</div>' +
+                '</div>';
+            $('body').append(html);
+            $('#bs-modal-box h4.modal-title').html(Title);
+            $('#bs-modal-box div.modal-body').html(Content);
+            $('#bs-modal-box').modal('show')
+        }
+
+        function SortByOrder(a, b){ 
+          var aOrder = a.Order;
+          var bOrder = b.Order;
+          return ((aOrder < bOrder) ? -1 : ((aOrder > bOrder) ? 1 : 0)); 
+        }
+
+        function updateSubTypeAudienceSelect(AudienceSelect, SubTypeSelect, ActiveTime) {
+            //console.log("updateSubTypeAudienceSelect");
+            //console.log("ActiveTime : " + ActiveTime);
+            var audienceVal = AudienceSelect.val();
+            var ExsitAudienceList = {};
+            var ExsitAudienceOption = '';
+            AdWindowItemOption = '';
+            $.each(AdWindowItemList, function(index, value) {
+                //console.log("value.StartTime : " + moment(value.StartTime).format("YYYY-MM-DD HH:mm:ss"));
+                //console.log("value.EndTime : " + moment(value.EndTime).format("YYYY-MM-DD HH:mm:ss"));
+                var CurrDate = new Date();
+                var StartDate = new Date(moment(value.StartTime).format("YYYY-MM-DD HH:mm:ss"));
+                var EndDate = new Date(moment(value.EndTime).format("YYYY-MM-DD HH:mm:ss"));
+                var StartDatePicker = new Date(ActiveTime.data('daterangepicker').startDate.format('YYYY-MM-DD HH:mm:ss'));
+                var EndDatePicker = new Date(ActiveTime.data('daterangepicker').endDate.format('YYYY-MM-DD HH:mm:ss'));
+                // console.log("StartDate : " + StartDate);
+                // console.log("EndDate : " + EndDate);
+                // console.log("StartDatePicker : " + StartDatePicker);
+                // console.log("EndDatePicker : " + EndDatePicker);
+                if (StartDate.getTime() <= StartDatePicker.getTime() && EndDate.getTime() >= EndDatePicker.getTime() && value.Open == 'Y') {
+                    console.log("Ok Item : " + value);
+
+                    //if (value.StartTime)
+                    if (ItemAudience[value.Id] == undefined) {
+                        if (AudienceSelect.val() == 0) {
+                            AdWindowItemOption += '<option value="' + value.Id + '">' + "Id:" + value.Id + " 敘述:" + value.ADBannerContent + '</option>';
+                        }
+                        ExsitAudienceList[0] = {"Id": 0, "AudienceName": "無特定"};
+                    } else {
+                        if (AudienceSelect.val() == ItemAudience[value.Id].AudienceId) {
+                            AdWindowItemOption += '<option value="' + value.Id + '">' + "Id:" + value.Id + " 敘述:" + value.ADBannerContent + '</option>';
+                        }
+                        ExsitAudienceList[ItemAudience[value.Id].AudienceId] = AudienceList[ItemAudience[value.Id].AudienceId];
+                    }
+                }
+            });
+
+            var isFoundAudience = false;
+            var size = Object.keys(ExsitAudienceList).length;
+            console.log("ExsitAudienceList size : " + size);
+            $.each(ExsitAudienceList, function(index, value) {
+                if (isFoundAudience == false && audienceVal == value.Id) {
+                    isFoundAudience = true;
+                }
+                if (value.Id == 0) {
+                    ExsitAudienceOption += '<option value="' + value.Id + '">無特定</option>';
+                } else {
+                    ExsitAudienceOption += '<option value="' + value.Id + '">' + value.AudienceName + '</option>';
+                }
+            });
+
+            AudienceSelect.empty();
+            AudienceSelect.append(ExsitAudienceOption);
+            SubTypeSelect.empty();
+            console.log("isFoundAudience : " + isFoundAudience);
+            if (isFoundAudience) {
+                console.log("1 AdWindowItemOption : " + AdWindowItemOption);
+                AudienceSelect.val(audienceVal);
+                SubTypeSelect.append(AdWindowItemOption);
+            } else if (size > 0) {
+                console.log("2 AdWindowItemOption : " + AdWindowItemOption);
+                updateSubTypeAudienceSelect(AudienceSelect, SubTypeSelect, ActiveTime);
+            }
+            console.log("3 AdWindowItemOption : " + AdWindowItemOption);
+        }
+
+        getADWindowItemData();
+        function getADWindowItemData() {
+            var data = new FormData();
+            data.append('Type', 'ADWindow');
+            $.ajax({
+                url: '/ADBannerGetAllItemData',
+                type: 'POST',
+                data: data,
+                cache: false,
+                async: true,
+                processData: false,
+                contentType: false,
+                success: function(data) {
+                    $.each(data.data, function(index, value) {
+                        AdWindowItemList[value.Id] = value;
+                    });
+                }
+            }).done(function() {
+                getTypeList();
+            });
+        }
+
+        function getTypeList() {
+            $.ajax({
+                url: '/ADWindowGetType',
+                type: 'POST',
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(data) {
+                    $.each(data.data, function(index, value) {
+                        if (value.ADType == 'ADLambox' ||  value.ADType == 'Both') {
+                            if (value.Type == 'Main')
+                                MainTypeList[value.Order] = value;
+                            if (value.Type == 'Page')
+                                PageInfoList[value.Order] = value;
+                            if (value.Type == 'URL')
+                                URLInfoList[value.Order] = value;
+                        }
+                    });
+
+                    $.each(MainTypeList, function(index, value) {
+                        MainTypeOption += '<option value="' + index + '">' + value.Name + '</option>';
+                    });
+                    $('#MainTypeSelect').append(MainTypeOption);
+
+                    $.each(PageInfoList, function(index, value) {
+                        PageInfoOption += '<option value="' + index + '">' + value.Name + '</option>';
+                    });
+
+                    $.each(URLInfoList, function(index, value) {
+                        URLInfoOption += '<option value="' + index + '">' + value.Name + '</option>';
+                    });
+                }
+            }).done(function() {
+                getLangList();
+            });            
+        }
+
+        function getLangList() {
+            $.ajax({
+                url: '/getLangList',
+                type: 'POST',
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(data) {
+                    $.each(data.data, function(index, value) {
+                        LangList[value.Code] = value.Lang.toString();
+                    });
+                    LangOption = '';
+                    LangOption += '<select class="form-control item-lang">';
+                    $.each(LangList, function(index, value) {
+                        LangOption += '<option value="' + index + '">' + value + '</option>';
+                    });
+                    LangOption += '</select>';
+                }
+            }).done(function() {
+                getGalleryData(Type);
+                getHallData();
+                //getLocationEnum();
+            });
+        }
+
+        function getLocationEnum() {
+            $('#loading-cover').fadeIn(100);
+            $.ajax({
+                type: 'POST',
+                url: "/ADBannerGetLocationEnum",
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(msg) {
+                    $.each(msg.data, function(index, value) {
+                        LocationList[value.Id] = value;
+                    });
+                    LocationOption = '';
+                    $.each(LocationList, function(index, value) {
+                        LocationOption += '<option value="' + value.Id + '">' + value.Id + "." + value.LocationName + '</option>';
+                    });
+                    $('#LocationSelect').empty();
+                    $('#LocationSelect').append(LocationOption);
+                    //$('#LocationSelect').selectpicker('refresh');
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+            }).done(function() {
+                getHallData();
+            });
+        }
+
+        function getHallData() {
+            $.ajax({
+                url: '/ADBannerGetHallData',
+                type: 'POST',
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(data) {
+                    $.each(data.data, function(index, value) {
+                        HallDataList[value.Id] = value;
+                    });
+                }
+            }).done(function() {
+                getGamesInfo();
+            });   
+        }
+
+        function getGamesInfo() {
+            $('#loading-cover').fadeIn(100);
+            $.ajax({
+                type: 'POST',
+                url: "/ADBannerGetGamesInfo",
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(msg) {
+                    var hallStr = 'LobbyService/switchscene/machine/{$GameId}/{$HallId}';
+                    var openGameStr = 'GameService/opengame/{$GameId}';
+                    $.each(msg.data, function(index, value) {
+                        GamesInfoTypeList[value.SCGGameId] = value;
+                    });
+                    GamesInfoTypeAOption = '';
+                    GamesInfoTypeBOption = '';
+                    $.each(GamesInfoTypeList, function(index, value) {
+                        if (value.GameTypeId == 1) {
+                            $.each(HallDataList, function(hallIndex, hallValue) {
+                                var res = hallStr.replace('{$GameId}', value.SCGGameId).replace('{$HallId}', hallValue.Id);
+                                GamesInfoTypeAOption += '<option value="' + res + '">' + value.GameName + '(' + hallValue.HallName + ')</option>';
+                                GamesInfoTypeAList[res] = value.GameName + '(' + hallValue.HallName + ')';
+                            });
+                            var openGameStrRes = openGameStr.replace('{$GameId}', value.SCGGameId);
+                            GamesInfoTypeBOption += '<option value="' + openGameStrRes + '">' + value.GameName + '</option>';
+                            GamesInfoTypeBList[openGameStrRes] = value.GameName;
+                        }
+                    });
+                    $('#SubTypeSelect').empty();
+                    $('#SubTypeSelect').append(GamesInfoTypeAOption);
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+            }).done(function() {
+                getAudienceEnum();
+            });
+        }
+
+        function getAudienceEnum() {
+            $('#loading-cover').fadeIn(100);
+            $.ajax({
+                type: 'POST',
+                url: "/ADBannerGetAudienceEnum",
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(msg) {
+                    AudienceList[0] = {"Id": "0", "AudienceName": "無特定"};
+                    $.each(msg.data, function(index, value) {
+                        AudienceList[value.Id] = value;
+                    });
+                    AudienceOption = '';
+                    $.each(AudienceList, function(index, value) {
+                        AudienceOption += '<option value="' + value.Id + '">' + value.AudienceName + '</option>';
+                    });
+                    $('#AudienceSelect').empty();
+                    $('#AudienceSelect').append(AudienceOption);
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+            }).done(function() {
+                getItemAudience();
+            });
+        }
+
+        // function getItemLocations() {
+        //     $('#loading-cover').fadeIn(100);
+        //     $.ajax({
+        //         type: 'POST',
+        //         url: "/ADBannerGetLocations",
+        //         cache: false,
+        //         async: true,
+        //         dataType: 'json',
+        //         success: function(msg) {
+        //             // ItemLocations = [];
+        //             // $.each(msg.data, function(index, value) {
+        //             //     ItemLocations[index] = value;
+        //             // });
+
+        //             ItemLocations = msg.data;
+        //         },
+        //         error: function(xhr, desc, err) {
+        //             alert("HTTP Status code:" + xhr.status);
+        //         }
+        //     }).done(function() {
+        //         getItemAudience();
+        //     });
+        // }
+
+        function getItemAudience() {
+            $('#loading-cover').fadeIn(100);
+            $.ajax({
+                type: 'POST',
+                url: "/ADBannerGetAudience",
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(msg) {
+                    ItemAudience = {};
+                    $.each(msg.data, function(index, value) {
+                        ItemAudience[value.ADBannerId] = value;
+                    });
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+            }).done(function() {
+                getAllItemData();
+                $('#loading-cover').fadeOut(100);
+            });
+        }
+
+        function getImageSize(input, callback=null){
+            var _URL = window.URL || window.webkitURL;
+            var file, img;
+            file = input.files[0];
+            img = new Image();
+            img.onload = function () {
+                callback(this.width, this.height);
+            };
+            img.src = _URL.createObjectURL(file);
+        }
+
+        function sizeLimit(input) {
+            if ($(input).attr('data-max-filesize') > 0) {
+                size = input.files[0].size;
+                limit = $(input).attr('data-max-filesize') * 1024;
+                if (size > limit) {
+                    return false;
+                } else {
+                    return true;
+                }
+            } else {
+                return false;
+            }
+        }
+
+        function fileTypeChecker(input) {
+            if ($(input).attr('accept').length > 0) {
+                type = input.files[0].type.toString();
+                attType = $(input).attr('accept').toString();
+                if (type == attType) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+
+        function imagePreview(input, target = null) {
+            if (input.files && input.files[0]) {
+                if (target == null) {
+                    if ($(input).next().hasClass('previewImage')) {
+                        $(input).next().show();
+                    } else {
+                        $(input).after('<img src="" class="previewImage img-responsive img-thumbnail" alt="" style="margin-top: 10px;">');
+                    }
+                } else {
+                    target.removeClass('hidden');
+                }
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    if (target == null) {
+                        $(input).next().attr('src', e.target.result);
+                    } else {
+                        target.attr('src', e.target.result);
+                    }
+                }
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                if (target == null) {
+                    $(input).next().attr('src', "#");
+                } else {
+                    target.addClass('hidden');
+                    target.attr('src', "#");
+                }
+            }
+        }
+
+        function itemEdit() {
+            var itemTitle = $(this).parents('.caption').find('h3').text();
+            var itemDetail = $(this).parents('.caption').find('.edit-news-content').text();
+            var itemYoutube = $(this).parents('.caption').find('.show-youtube-modal').attr('data-youtube');
+            var pid = $(this).parents('.ui-sortable-handle').attr('data-pid');
+            var selectPicture = $(this).attr('data-pid');
+            var _element = $(this).parents('.ui-sortable-handle');
+
+
+            var html = '<div class="form-group">' +
+                '<label for="edit_itemDescript" class="control-label">敘述</label>' +
+                '<input type="text" name="edit_itemDescript" id="edit_itemDescript" class="form-control" maxlength="50"/>' +
+                '</div>' +
+                '<div class="form-group">' +
+                '<label class="control-label" data-toggle="tooltip" data-placement="right" title="必選項目">受眾選擇*(下一階段實作)</label>' +
+                '<select name="edit_mGroup" id="edit_AudienceSelect" class="form-control">' +
+                '</select>' +
+                '<p class="help-block">*必選項目</p>' +
+                '</div>' +
+                '<div class="form-group">' +
+                '<label class="control-label">類型</label>' +
+                '<select name="edit_MainTypeSelect" id="edit_MainTypeSelect" class="form-control">' +
+                '</select>' +
+                '</div>' +
+                '<div class="form-group">' +
+                '<label class="control-label" id="edit_SubTypeLabel">子類型</label>' +
+                '<select name="edit_SubTypeSelect" id="edit_SubTypeSelect" class="form-control">' +
+                '</select>' +
+                '</div>' +
+                '<div class="form-group">' +
+                '<label for="URLInput" class="control-label" id="edit_URLInputLabel">自訂網址</label>' +
+                '<input type="text" name="edit_URLInput" id="edit_URLInput" class="form-control" />' +
+                '</div>' +
+                '<div class="form-group">' +
+                '<label for="edit_LinkedRewardInput" class="control-label" id="edit_LinkedRewardLabel">連結獎勵</label>' +
+                '<input type="text" name="edit_LinkedRewardInput" id="edit_LinkedRewardInput" class="form-control" />' +
+                '</div>' +
+                //'<div class="form-group">' +
+                //'<label class="control-label">出現時機</label>' +
+                //'<select class="selectpicker form-control" multiple="" id="edit_LocationSelect">' +
+                //'</select>' +
+                '</div>' +
+                '<div class="form-group">' +
+                '<label class="control-label">啟用時間 <i aria-hidden="true"></i></label>' +
+                '<input type="text" name="edit_ActiveTime" id="edit_ActiveTime" class="form-control" value="" />' +
+                '</div>';
+
+            html += '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">' +
+                '<hr/>' +
+                '<ul id="sub-gallery-sortable" class="list-unstyled row ui-sortable">' +
+                '</ul>' +
+                '</div>';
+
+            footer = '<button id="SendEditData" type="button" class="btn btn-success">確定</button>' +
+                '<button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>';
+
+
+            ShowModalBox('Item Edit', html, footer);
+
+            $('#edit_URLInputLabel').hide();
+            $('#edit_URLInput').hide();
+            $('#edit_itemTitle').val(itemTitle);
+            $('#SendEditData').attr('data-pid', pid);
+            $('[data-toggle="tooltip"]').tooltip();
+
+            $('#bs-modal-box').on('shown.bs.modal', function(e) {
+                getGalleryData(Type, 'DESC', selectPicture);
+            });
+
+            var item = getItem(pid);
+            if (item == null)
+                return;
+
+            // var locationIdArr = findLocationIdArrByADBannerId(item.Id);
+            // $('#edit_LocationSelect').selectpicker({
+            //     showTick: true,
+            //     hideDisable: true
+            // });
+
+            // $('#edit_LocationSelect').append(LocationOption);
+            // $('#edit_LocationSelect').selectpicker('val', locationIdArr);
+            // $('#edit_LocationSelect').selectpicker('refresh');
+
+            var type = "null";
+            var subType = "null";
+            var command = "null";
+            if (item.Settings) {
+                jsonData = JSON.parse(item.Settings);
+                type = jsonData['Type'] != null ? jsonData['Type'] : "null";
+                subType = jsonData['SubType'] != null ? jsonData['SubType'] : "null";
+                command = jsonData['Command'] != null ? jsonData['Command'] : "null";
+            }
+
+            switch (parseInt(type)) {
+                case 3:
+                    if (parseInt(subType) == 0) {
+                        $('#edit_URLInputLabel').text("自訂網址");
+                        $('#edit_URLInputLabel').show();
+                        $('#edit_URLInput').show();
+                        $('#edit_URLInput').val(command.replace("webService/openwebview/", ""));
+                    }
+                    break;
+
+                case 6:
+                    $('#edit_URLInputLabel').show();
+                    $('#edit_URLInput').show();
+                    $('#edit_URLInput').val(/[^/]*$/.exec(command)[0]);
+                    break;
+            }
+
+            $('#edit_itemDescript').val(item.ADBannerContent);
+            $('#edit_AudienceSelect').append(AudienceOption);
+            $('#edit_AudienceSelect').val(findAudienceIdByADBannerId(item.Id));
+            $('#edit_MainTypeSelect').append(MainTypeOption);
+            $('#edit_MainTypeSelect').val(type);
+            $('#edit_SubTypeSelect').empty();
+            $('#edit_ActiveTime').daterangepicker({
+                locale: {
+                    format: 'YYYY-MM-DD HH:mm:ss'
+                },
+                startDate: moment(item.StartTime).format('YYYY-MM-DD HH:mm:ss'),
+                endDate: moment(item.EndTime).format('YYYY-MM-DD HH:mm:ss'),
+                timePicker: true,
+                timePicker24Hour: true,
+                timePickerSeconds: true,
+                ranges: {
+                    'Today': [moment().startOf('day'), moment().endOf('day')],
+                    'Tomorrow': [moment().add(1, 'days').startOf('day'), moment().add(1, 'days').endOf('day')],
+                    '7 Days': [moment().startOf('day'), moment().add(6, 'days').endOf('day')],
+                    '30 Days': [moment().startOf('day'), moment().add(29, 'days').endOf('day')],
+                    'This Month': [moment().startOf('month'), moment().endOf('month')]
+                }
+            }, updateModifyItemByActiveTime);
+
+            mainTypeSelectChange($('#edit_URLInputLabel'), $('#edit_URLInput'), $('#edit_SubTypeLabel'), $('#edit_SubTypeSelect'), $('#edit_AudienceSelect'), $('#edit_ActiveTime'), parseInt(type));
+            $('#edit_AudienceSelect').val(ItemAudience[item.Id] == undefined ? 0 : ItemAudience[item.Id].AudienceId);
+            if (parseInt(type) == 6)
+                updateSubTypeAudienceSelect($('#edit_AudienceSelect'), $('#edit_SubTypeSelect'), $('#edit_ActiveTime'));
+            $('#edit_SubTypeSelect').val(subType);
+            
+            if ((parseInt(type) == 2 && parseInt(subType) == 10) || (parseInt(type) == 2 && parseInt(subType) == 11)) {
+                $('#edit_URLInputLabel').show();
+                $('#edit_URLInputLabel').text("活動Id");
+                $('#edit_URLInput').val(/[^/]*$/.exec(command)[0]);
+                $('#edit_URLInput').show();
+            }
+
+            // switch (parseInt(type)) {
+            //     case 0:
+            //         $('#edit_SubTypeSelect').append(GamesInfoTypeAOption);
+            //         break;
+
+            //     case 1:
+            //         $('#edit_SubTypeSelect').append(GamesInfoTypeBOption);
+            //         break;
+
+            //     case 2:
+            //         $('#edit_SubTypeSelect').append(PageInfoOption);
+            //         break;
+
+            //     case 3:
+            //         $('#edit_SubTypeSelect').append(URLInfoOption);
+            //         break;
+            // }
+
+
+            $(document).on('change', '#edit_MainTypeSelect', function(event) {
+                mainTypeSelectChange($('#edit_URLInputLabel'), $('#edit_URLInput'), $('#edit_SubTypeLabel'), $('#edit_SubTypeSelect'), $('#edit_AudienceSelect'), $('#edit_ActiveTime'), parseInt($(this).val()));
+            });
+
+            $(document).on('change', '#edit_SubTypeSelect', function(event) {
+                subTypeSelectChange($('#edit_URLInputLabel'), $('#edit_URLInput'), $('#edit_MainTypeSelect').val(), parseInt($(this).val()));
+            });
+
+            $(document).on('change', '#edit_AudienceSelect', function(event) {
+                if ($('#edit_MainTypeSelect').val() == 6) {
+                    updateSubTypeAudienceSelect($('#edit_AudienceSelect'), $('#edit_SubTypeSelect'), $('#edit_ActiveTime'));
+                }
+            });
+        }
+
+        function mainTypeSelectChange(URLInputLabel, URLInput, SubTypeLabel, SubTypeSelect, AudienceSelect, ActiveTime, val) {
+            console.log("URLInputLabel : " + URLInputLabel);
+            console.log("URLInput : " + URLInput);
+            console.log("SubTypeLabel : " + SubTypeLabel);
+            console.log("SubTypeSelect : " + SubTypeSelect);
+            console.log("AudienceSelect : " + AudienceSelect);
+            console.log("val : " + val);
+
+            URLInputLabel.hide();
+            URLInput.hide();
+            SubTypeLabel.hide();
+            SubTypeSelect.hide();
+            SubTypeSelect.empty();
+            AudienceSelect.empty();
+            AudienceSelect.append(AudienceOption);
+
+            switch (val) {
+                case 0:
+                    SubTypeSelect.append(GamesInfoTypeAOption);
+                    SubTypeLabel.show();
+                    SubTypeSelect.show();
+                    break;
+
+                case 1:
+                    SubTypeSelect.append(GamesInfoTypeBOption);
+                    SubTypeLabel.show();
+                    SubTypeSelect.show();
+                    break;
+
+                case 2:
+                    SubTypeSelect.append(PageInfoOption);
+                    SubTypeLabel.show();
+                    SubTypeSelect.show();
+                    break;
+
+                case 3:
+                    URLInputLabel.text("自訂網址");
+                    SubTypeSelect.append(URLInfoOption);
+                    SubTypeLabel.show();
+                    SubTypeSelect.show();
+                    URLInputLabel.show();
+                    URLInput.show();
+                    break;
+
+                case 4:
+                    SubTypeSelect.hide();
+                    break;
+
+                case 6:
+                    SubTypeLabel.show();
+                    SubTypeSelect.show();
+                    // URLInputLabel.text("廣告視窗Id");
+                    // URLInputLabel.show();
+                    // SubTypeSelect.hide();
+                    // URLInput.show();
+                    updateSubTypeAudienceSelect(AudienceSelect, SubTypeSelect, ActiveTime);
+                    break;
+            }
+        }
+
+        function subTypeSelectChange(URLInputLabel, URLInput, MainType, SubType) {
+            URLInputLabel.hide();
+            URLInput.hide();
+            console.log("MainType : " + MainType);
+            console.log("SubType : " + SubType);
+            if (MainType === 3 && SubType === 0) {//訂定URL
+                URLInputLabel.show();
+                URLInput.show();
+            }            
+            else if (MainType == 2 && SubType == 10) { //包月
+                URLInputLabel.text("活動Id");
+                URLInputLabel.show();
+                URLInput.show();
+            }
+            else if (MainType == 2 && SubType == 11) {//扭蛋
+                URLInputLabel.text("活動Id");
+                URLInputLabel.show();
+                URLInput.show();
+            }
+        }
+
+        function getItem(id) {
+            var item = null;
+            $.each(allItemInfo, function(index, value) {
+                if (value.Id == id) {
+                    item = value;
+                    return;
+                }
+            });
+            return item;
+        }
+
+        function getSettingCommand(MainType, SubType, URLInput) {
+            console.log("MainType : " + MainType);
+            switch (parseInt(MainType)) {
+                case 0:
+                    return SubType;
+
+                case 1:
+                    return SubType;
+
+                case 2:
+                    if (PageInfoList[SubType].Settings) {
+                        var selectSettings = JSON.parse(PageInfoList[SubType].Settings);
+                        var command = selectSettings['Command'];
+                        if (SubType == 10 || SubType == 11) {
+                            command += URLInput.val();
+                        }
+                        return command;
+                    }
+                    break;
+
+                case 3:
+                    console.log("URLInput : " + URLInput.val());
+                    if (URLInfoList[SubType].Settings) {
+                        var selectSettings = JSON.parse(URLInfoList[SubType].Settings);
+                        return 'webService/openwebview/' + selectSettings['Command'];
+                    } else if (URLInput.is(":visible")) {
+                        console.log("URLInput is visible");
+                        if (URLInput.val() == '') {
+                            console.log("URLInput is empty");
+                            alert("請輸入網址!!!");
+                            return "Error";
+                        }
+                        console.log("URLInput is : " + 'webService/openwebview/' + URLInput.val());
+                        return 'webService/openwebview/' + URLInput.val();
+                    }
+                    break;
+                
+                case 4:
+                    return "";
+                    break;
+
+                // case 5:
+                //     if (URLInput.is(":visible")) {
+                //         if (URLInput.val() == '') {
+                //             alert("請輸入活動Id!!!");
+                //             return "Error";
+                //         }
+                //         return 'LobbyService/openview/activity/' + URLInput.val();
+                //     }
+                //     break;
+
+                case 6:
+                    if (SubType == undefined || SubType == null) {
+                        alert("請選擇正確的廣告視窗!!");
+                        return "Error";
+                    }
+                    return 'LobbyService/openview/ad/' + SubType;
+                    // if (URLInput.is(":visible")) {
+                    //     if (URLInput.val() == '') {
+                    //         alert("請輸入廣告視窗Id!!!");
+                    //         return "Error";
+                    //     }
+                    //     return 'LobbyService/openview/ad/' + URLInput.val();
+                    // }
+                    break;
+            }
+            return "Error";
+        }
+
+        function sendItemEditData() {
+            var checkStatus = false;
+            var data = new FormData();
+            var checkStr = modifyItemCheck();
+            if (checkStr != "") {
+                alert(checkStr);
+                return;
+            }
+            data.append('Id', $(this).attr('data-pid'));
+            data.append('ADBannerPic', $('#sub-gallery-sortable input.pictureSelected:checked').val());
+            data.append('ADBannerContent', $('#edit_itemDescript').val());
+            data.append('StartTime', $('#edit_ActiveTime').data('daterangepicker').startDate.format('YYYY-MM-DD HH:mm:ss'));
+            data.append('EndTime', $('#edit_ActiveTime').data('daterangepicker').endDate.format('YYYY-MM-DD HH:mm:ss'));
+            //data.append('Locations', $('#edit_LocationSelect').val());
+            if ($('#edit_AudienceSelect').val() != 0)
+                data.append('Audience', $('#edit_AudienceSelect').val());
+            data.append('Type', $('#edit_AudienceSelect').val() == 0 ? 'ByAll' : 'ByAudience');
+
+            console.log
+
+            var MainType = $('#edit_MainTypeSelect').val();
+            var SubType = $('#edit_SubTypeSelect').val();
+            var LinkedReward = $('#edit_LinkedRewardInput').val();
+            var settings = {};
+            settings['Type'] = MainType;
+            settings['SubType'] = SubType;
+            settings['LinkedReward'] = LinkedReward;
+            settings['template'] = 3;
+            
+            var ret = getSettingCommand(parseInt(MainType), SubType, $('#edit_URLInput'));
+            console.log("ret : " + ret);
+            if (ret == "Error")
+                return;
+            settings['Command'] = ret;
+            console.log("Command : " + settings['Command']);
+            data.append('Settings', JSON.stringify(settings));
+
+            LoadingEff(true);
+            $.ajax({
+                url: '/ADBannerModify',
+                type: 'POST',
+                data: data,
+                cache: false,
+                async: true,
+                processData: false,
+                contentType: false,
+                success: function(data) {
+                    checkStatus = true;
+                }
+            }).always(function() {
+                if (!checkStatus) {
+                    alert('修改失敗');
+                } else {
+                    alert('修改成功');
+                    //getItemLocations();
+                    getItemAudience();
+                    getAllItemData();
+                    $('#bs-modal-box').modal('hide');
+                }
+                LoadingEff(false);
+            });
+        }
+
+        function itemEnabled() {
+            //var pid = $(this).parents('li').attr('data-pid');
+            var pid = $(this).parents('.ui-sortable-handle').attr('data-pid');
+            var isEnabled = $(this).parents('.ui-sortable-handle').attr('data-enabled');
+            var _element = $(this).parents('.ui-sortable-handle');
+            var checkStatus = false;
+
+            isEnabled = isEnabled == 'Y' ? 'N' : 'Y';
+            $.ajax({
+                url: '/ADBannerEnabled',
+                type: 'POST',
+                data: { Enabled: isEnabled, Id: pid },
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(data) {
+                    _element.attr('data-enabled', isEnabled);
+                    _element.find('.btn-group > a').eq(0).find('span').html(isEnabled == 'Y' ? '顯示' : '隱藏');
+                    _element.find('.btn-group > a').eq(0).find('i').removeAttr('class').addClass(isEnabled == 'Y' ? 'fa fa-eye' : 'fa fa-eye-slash');
+                    _element.find('img').css('opacity', isEnabled == 'Y' ? '1' : '.3');
+                    checkStatus = true;
+                }
+            }).always(function() {
+                if (!checkStatus)
+                    alert('發生錯誤');
+            });
+        }
+
+        function itemTop() {
+            var confirmData = confirm("確定要置頂？");
+            if (confirmData) {
+                var pid = $(this).parents('.ui-sortable-handle').attr('data-pid');
+                var checkStatus = false;
+                var item = $('#gallery-sortable > li');
+                var postData = [];
+                var isFound = false;
+                var order = 0;
+                postData.push({ 'Id': pid, 'Order': 0 });
+                console.log(item);
+                $(item).each(function(index, el) { //reverse -> 應應 SQL ORDER BY DESC
+                    if ($(this).attr('data-pid') != pid) {
+                        postData.push({ 'Id': $(this).attr('data-pid'), 'Order': isFound ? order : order + 1 });
+                    } else {
+                        isFound = true;
+                    }
+                    order ++;
+                });
+                OutputMsg(postData);
+
+                // LoadingEff(true);
+                $.ajax({
+                    url: '/ADBannerOrder',
+                    type: 'POST',
+                    data: JSON.stringify({ data: postData }),
+                    cache: false,
+                    async: true,
+                    contentType: 'application/json',
+                    processData: false,
+                    // dataType: 'json',
+                    success: function(data) {
+                        checkStatus = true;
+                    }
+                }).always(function() {
+                    if (!checkStatus) {
+                        alert('更新順序發生錯誤');
+                    } else {
+                        alert('更新順序成功');
+                        //getItemLocations();
+                        getAllItemData();
+                    }
+                });
+            }
+        }
+
+        function itemDel() {
+            var confirmData = confirm("確定要刪除？");
+            var checkStatus = false;
+
+            if (confirmData) {
+                var pid = $(this).parents('.ui-sortable-handle').attr('data-pid');
+                var _element = $(this).parents('.ui-sortable-handle');
+
+                $.ajax({
+                    url: '/ADBannerItemDel',
+                    type: 'POST',
+                    data: { Id: pid },
+                    cache: false,
+                    async: true,
+                    dataType: 'json',
+                    success: function(data) {
+                        _element.remove();
+                        checkStatus = true;
+                    }
+                }).always(function() {
+                    if (!checkStatus)
+                        alert('發生錯誤');
+                });
+            }
+        }
+
+        $(document).on('click', '#SendOrder', eachOrder);
+        $(document).on('click', '#InsertItem', InsertItem);
+        $(document).on('click', '.item-enabled', itemEnabled);
+        $(document).on('click', '.item-top', itemTop);
+        $(document).on('click', '.item-del', itemDel);
+        $(document).on('click', '.item-edit', itemEdit);
+        $(document).on('click', '#SendEditData', sendItemEditData);
+
+        $(document).on('change', '#MainTypeSelect', function(event) {
+            mainTypeSelectChange($('#URLInputLabel'), $('#URLInput'), $('#SubTypeLabel'), $('#SubTypeSelect'), $('#AudienceSelect'), $('#ActiveTime'), parseInt($(this).val()));
+        });
+
+        $(document).on('change', '#SubTypeSelect', function(event) {
+            subTypeSelectChange($('#URLInputLabel'), $('#URLInput'), $('#MainTypeSelect').val(), parseInt($(this).val()));
+        });
+
+        $(document).on('change', '#AudienceSelect', function(event) {
+            if ($('#MainTypeSelect').val() == 6) {
+                updateSubTypeAudienceSelect($('#AudienceSelect'), $('#SubTypeSelect'), $('#ActiveTime'));
+            }
+        });
+
+        $(document).on('change', '#pictureFile', function(event) {
+            var thisValue = this;
+            getImageSize(this, function(width, height){ 
+                console.log(width, height);
+                var overDimension = width > 200 || height > 400;
+                var overLimit = sizeLimit(thisValue);
+                var allowType = fileTypeChecker(thisValue);
+                if (!overLimit || !allowType || overDimension) {
+                    $(this).val('');
+                    var msg = (!overLimit ? "Size Over Limit \n" : "") + (!allowType ? "File Type Error" : "") + (overDimension ? "圖片尺寸過大" : "");
+                    alert(msg);
+                    $('#SendPicture').prop('disabled', true);
+                } else {
+                    $('#SendPicture').prop('disabled', false);
+                }
+                imagePreview(thisValue, $('#picturePreview'));
+            });
+        });
+
+        function eachOrder() {
+            var checkStatus = false;
+            var item = $('#gallery-sortable > li');
+            var postData = [];
+            $(item).each(function(index, el) { //reverse -> 應應 SQL ORDER BY DESC
+                postData.push({ 'Id': $(this).attr('data-pid'), 'Order': index });
+            });
+            OutputMsg(postData);
+            // LoadingEff(true);
+            $.ajax({
+                url: '/ADBannerOrder',
+                type: 'POST',
+                data: JSON.stringify({ data: postData }),
+                cache: false,
+                async: true,
+                contentType: 'application/json',
+                processData: false,
+                // dataType: 'json',
+                success: function(data) {
+                    checkStatus = true;
+                }
+            }).always(function() {
+                if (!checkStatus) {
+                    alert('更新順序發生錯誤');
+                } else {
+                    alert('更新順序成功');
+                    //getItemLocations();
+                    getAllItemData();
+                    $('#SendOrder').prop("disabled", true);
+                }
+            });
+        }
+
+        function insertItemCheck() {
+            if (checkIsNullOrEmpty($('#itemDescript').val()))
+                return "請輸入敘述!!";
+
+            // if (checkIsNullOrEmpty($('#LocationSelect').val()))
+            //     return "請選擇出現時機!!";
+
+            if (checkIsNullOrEmpty($('#pictureData').val()))
+                return "請選擇圖片!!";
+
+            return "";
+        }
+
+        function modifyItemCheck() {
+            if (checkIsNullOrEmpty($('#edit_itemDescript').val()))
+                return "請輸入敘述!!";
+
+            // if (checkIsNullOrEmpty($('#edit_LocationSelect').val()))
+            //     return "請選擇出現時機!!";
+
+            return "";
+        }
+
+        function checkIsNullOrEmpty(obj) {
+             if (obj == 'undefined' || obj == null || obj == 0 || obj == '')
+                return true;
+            return false;
+        }
+
+        function InsertItem() {
+            var checkStatus = false;
+            var data = new FormData();
+
+            var checkDataStr = insertItemCheck();
+            if (checkDataStr != "") {
+                alert(checkDataStr);
+                return;
+            }
+
+            data.append('ADBannerName', Type);
+            data.append('ADBannerPic', $('#pictureData').val());
+            data.append('ADBannerContent', $('#itemDescript').val());
+            data.append('StartTime', $('#ActiveTime').data('daterangepicker').startDate.format('YYYY-MM-DD HH:mm:ss'));
+            data.append('EndTime', $('#ActiveTime').data('daterangepicker').endDate.format('YYYY-MM-DD HH:mm:ss'));
+            //data.append('Locations', $('#LocationSelect').val());
+            if ($('#AudienceSelect').val() != 0)
+                data.append('Audience', $('#AudienceSelect').val());
+            data.append('Type', $('#AudienceSelect').val() == 0 ? 'ByAll' : 'ByAudience');
+
+            var MainType = $('#MainTypeSelect').val();
+            var SubType = $('#SubTypeSelect').val();
+            var LinkedReward = $('#LinkedRewardInput').val();
+            var settings = {};
+            settings['Type'] = MainType;
+            settings['SubType'] = SubType;
+            settings['LinkedReward'] = LinkedReward;
+            settings['template'] = 3;
+
+            var ret = getSettingCommand(parseInt(MainType), SubType, $('#URLInput'));
+            console.log("ret : " + ret);
+            if (ret == "Error")
+                return;
+            settings['Command'] = ret;
+            console.log("Command : " + settings['Command']);
+            data.append('Settings', JSON.stringify(settings));
+
+            LoadingEff(true);
+            $.ajax({
+                url: '/ADBannerInsert',
+                type: 'POST',
+                data: data,
+                cache: false,
+                async: true,
+                processData: false,
+                contentType: false,
+                success: function(data) {
+                    checkStatus = true;
+                }
+            }).always(function() {
+                if (!checkStatus) {
+                    alert('新增失敗');
+                } else {
+                    alert('新增成功');
+                    //getItemLocations();
+                    getItemAudience();
+                    getAllItemData();
+                }
+                LoadingEff(false);
+            });
+        }
+
+        var getTemplate = $('#gallery-sortable').html();
+        function getAllItemData() {
+            var data = new FormData();
+            data.append('Type', Type);
+            $.ajax({
+                url: '/ADBannerGetAllItemData',
+                type: 'POST',
+                data: data,
+                cache: false,
+                async: true,
+                processData: false,
+                contentType: false,
+                success: function(data) {
+                    allItemInfo = data.data;
+                    $('#gallery-sortable').html('');
+                    $.each(data.data, function(index, value) {
+                        $('#gallery-sortable').append(getTemplate);
+
+                        var type = "null";
+                        var subType = "null";
+
+                        if (value.Settings) {
+                            jsonData = JSON.parse(value.Settings);
+                            type = jsonData['Type'] != null ? jsonData['Type'] : "null";
+                            subType = jsonData['SubType'] != null ? jsonData['SubType'] : "null";
+                        }
+
+                        var audienceId = findAudienceIdByADBannerId(value.Id);
+                        console.log("audienceId : " + audienceId);
+                        //var locationId = findLocationIdArrByADBannerId(value.Id);
+                        var target = $('#gallery-sortable > li').last();
+                        target.attr('data-pid', value.Id);
+                        target.find('img').attr('src', CDN_Domain + value.ADBannerPic);
+                        //target.find('h3').text(value.Order == null ? "null" : value.Order);
+                        target.find('h3').text("廣告ID : " + value.Id);
+                        target.find('.edit-adwindow-content').text("敘述 : " + value.ADBannerContent);
+                        target.find('.edit-adwindow-audience').text("受眾 : " + (audienceId == 0 ? "無特定" : AudienceList[audienceId].AudienceName));
+                        target.find('.edit-adwindow-type').text("類型 : " + getMainTypeName(type));
+                        target.find('.edit-adwindow-subtype').text("子類型 : " + getSubTypeName(type, subType, value));
+                        //target.find('.edit-adwindow-location').text("出現時機 : " + (locationId ? locationId + "." + LocationList[locationId] : ""));
+                        target.find('.edit-adwindow-start-time > span').text('開始時間 ' + moment(value.StartTime).format("YYYY-MM-DD HH:mm:ss"), );
+                        target.find('.edit-adwindow-end-time > span').text('結束時間 ' + moment(value.EndTime).format("YYYY-MM-DD HH:mm:ss"), );
+                        target.find('.btn-group > a.item-enabled > span').html(value.Open == 'Y' ? '顯示' : '隱藏');
+                        target.find('.btn-group > a.item-edit').attr('data-pid', value.ADBannerPic);
+                        target.find('.btn-group > a.item-enabled > i').addClass(value.Open == 'Y' ? 'fa-eye' : 'fa-eye-slash');
+                        target.find('img').css('opacity', value.Open == 'Y' ? '1' : '.3');
+                        //target.attr('data-enabled', value.Open == 'Y' ? '1' : '0');
+                        target.attr('data-enabled', value.Open);
+                    });
+                    $('[data-toggle="tooltip"]').tooltip();
+                }
+            });
+        }
+
+        function getGalleryData(type, order = 'DESC', selectedPic = null) {
+            if(Object.keys(LangList) <=0 ){
+                alert('載入語言選單發生問題');
+                getLangList();
+            }
+            $.ajax({
+                url: '/GetPictures',
+                type: 'POST',
+                data: { type: type, order: order },
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(data) {
+                    $.each(data.data, function(index, value) {
+                        allImageInfo[value.pid] = value;
+                    });
+                    var html = '<li class="pull-left ui-disabled well" style="margin-top: 6px; height: 165px;">' +
+                        '<div class="form-group">' +
+                        '<div class="pinSize">' +
+                        '<img src="#" alt="圖片上傳預覽，檔案大小必須為800KB以內，且為png格式。" id="picturePreview" class="img-responsive">' +
+                        '</div>' +
+                        '<label for="pictureFile">於項目內新增相片</label>' +
+                        '<input type="file" id="pictureFile" name="pictureFile" style="width:60px; font-size:12px;" class="pull-left" accept="image/png" data-max-filesize="800" />' +
+                        // '<p class="help-block">檔案大小必須為800KB以內，且為png格式。</p>' +
+                        '<button type="button" id="SendPicture" class="btn btn-xs btn-primary pull-right" disabled><i class="fa fa-upload" aria-hidden="true"></i></button>' +
+                        '</div>' +
+                        '</li>';
+                    $('#sub-gallery-sortable').html(html);
+                    $.each(data.data, function(index, value) {
+                        var annotation = (checkIsNullOrEmpty(value.Annotation) ? "" : value.Annotation)
+                        var imageSrc = CDN_Domain + value.Picture;
+                        var html = 
+                            '<li class="pull-left" data-pid="' + value.pid + '">' +
+                                '<div class="thumbnail">' + 
+                                    '<div class="edit-over-item hide">' +
+                                        '<div class="form-group form-group-sm">' + 
+                                            '<input type="text" class="form-control item-annotation" value="' + annotation + '" maxlength="20"/>' + 
+                                        '</div>' +
+                                        '<div class="form-group form-group-sm">' + 
+                                            LangOption +
+                                        '</div>' +
+                                        '<div class="form-group form-group-sm">' + 
+                                            '<div class="btn-group btn-group-xs btn-group-justified">' +
+                                                '<a href="javascript:;" class="btn btn-primary edit-picture-send"><i class="fa fa-check-circle" aria-hidden="true"></i> 確定</a>' +
+                                                '<a href="javascript:;" class="btn btn-default edit-picture-cancel"><i class="fa fa-undo" aria-hidden="true"></i> 取消</a>' +
+                                            '</div>' +
+                                        '</div>' +
+                                    '</div>' +
+                                    '<div class="pinSize">' +
+                                        '<div class="over-img-block">' +
+                                            '<span class="label label-default">' + LangList[value.Lang] + '</span>' +
+                                            '<div class="pull-right">' +
+                                                '<input class="pictureSelected" type="radio" name="pictureSelected" id="pictureSelected_' + value.pid + '" value="' + value.Picture + '" data-pid="' + value.pid + '" ' + (value.Picture==selectedPic?'checked':'') + '>' +
+                                            '</div>' +
+                                        '</div>' + 
+                                        '<img src="' + imageSrc + '" alt="" class="img-responsive">' +
+                                    '</div>' +
+                                    '<div class="caption">' +
+                                        '<p>' + annotation + '</p>' +
+                                        '<div class="btn-group btn-group-xs btn-group-justified">' +
+                                            '<a href="javascript:;" class="edit-picture btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i> 編輯</a>' +
+                                            '<a href="javascript:;" data-pid="' + value.pid + '" class="picture-del btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> 刪除</a>' +
+                                        '</div>' +
+                                    '</div>' +
+                                '</div>' +
+                            '</li>';
+                        $('#sub-gallery-sortable').append(html);
+                        var optionSelect = $('#sub-gallery-sortable li[data-pid="' + value.pid + '"] .over-img-block > div.form-group > select > option');
+                        $.each(optionSelect, function(index, element) {
+                            $(element).prop('selected', $(element).attr('value') == value.Lang ? true : false);
+                        });
+                    });
+                    pictureSelected();
+                    $("#sub-gallery-sortable").sortable({
+                        cursor: "move",
+                        delay: 300,
+                        tolerance: "pointer",
+                        cancel: "input, select",
+                        items: "li:not(.ui-disabled)",
+                        placeholder: "pull-left",
+                        classes: {
+                            "ui-sortable-placeholder": "ui-state-highlight"
+                        }
+                    });
+                    $("#sub-gallery-sortable").disableSelection();
+                }
+            });
+        }
+
+        function getAudienceNameById(id) {
+            if (id == "null")
+                return "null";
+            var name = "";
+            $.each(AudienceList, function(key, value) {
+                if (value.Id == id) {
+                    name = value.AudienceName;
+                    return true;
+                }
+            });
+            return name;
+        }
+
+        function findAudienceIdByADBannerId(adBannerId) {
+            var audienceId = 0;
+            $.each(ItemAudience, function(key, value) {
+                if (value.ADBannerId == adBannerId) {
+                    audienceId = value.AudienceId;
+                    return true;
+                }
+            });
+            return audienceId;
+        }
+
+        // function findLocationIdArrByADBannerId(adBannerId) {
+        //     var locationIds = [];
+        //     $.each(ItemLocations, function(key, value) {
+        //         if (value.ADBannerId == adBannerId) {
+        //             locationIds.push(value.LocationId);
+        //         }
+        //     });
+        //     return locationIds;
+        // }
+
+        // function getLocationStr(locationIdArr) {
+        //     var locationStr = "";
+        //     var index = 0;
+        //     if (checkIsNullOrEmpty(locationIdArr))
+        //         return locationStr; 
+        //     $.each(locationIdArr, function(key, value) {
+        //         locationStr += LocationList[value].Id + "." + LocationList[value].LocationName;
+        //         if (locationIdArr.length < index)
+        //             locationStr += ", ";
+        //         index ++;
+        //     });
+        //     return locationStr;            
+        // }
+
+        function getMainTypeName(mainType) {
+            if (mainType == "null")
+                return "null";
+            return MainTypeList[mainType].Name;
+        }
+
+        function getSubTypeName(mainType, subType, value) {
+            if (parseInt(mainType) == 4) {
+                return "";
+            }
+
+            if (parseInt(mainType) == 6) {
+                jsonData = JSON.parse(value.Settings);
+                command = jsonData['Command'] != null ? jsonData['Command'] : "";
+                return /[^/]*$/.exec(command)[0];
+            }
+
+            if (mainType == "null" || subType == "null")
+                return "null";
+
+            switch (parseInt(mainType)) {
+                case 0:
+                    return GamesInfoTypeAList[subType];
+
+                case 1:
+                    return GamesInfoTypeBList[subType];
+                    
+                case 2:
+                    return PageInfoList[subType].Name;
+
+                case 3:
+                    return URLInfoList[subType].Name;
+            }
+        }
+
+        function LoadingEff(effon) {
+            if ($('#loading-cover').length < 1) {
+                var html = '<div id="loading-cover">' +
+                    '<div id="loading-icon">' +
+                    '<i class="fa fa-circle-o-notch fa-spin fa-5x fa-fw" style="color: #FFF;"></i>'
+                '</div>' +
+                '</div>';
+                $('body').append(html);
+                $('#loading-cover').css({
+                    'width': '100%',
+                    'height': '100%',
+                    'background': 'rgba(0,0,0,.5)',
+                    'position': 'fixed',
+                    'display': 'none',
+                    'z-index': '999999',
+                    'top': '0',
+                    'left': '0'
+                });
+                $('#loading-icon').css({
+                    'width': '85px',
+                    'height': '65px',
+                    'margin': '-42.5px 0 0 -32.5px',
+                    'top': '50%',
+                    'left': '50%',
+                    'position': 'fixed'
+                });
+            }
+            if (effon) {
+                $('#loading-cover').fadeIn(100);
+            } else {
+                $('#loading-cover').fadeOut(100);
+            }
+        }
+
+        function selectPictureWindow(){
+            html = '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">' +
+            '<ul id="sub-gallery-sortable" class="list-unstyled row ui-sortable">' +
+            '</ul>' +
+            '</div>';
+
+            footer = '<div class="btn-group btn-group-lg" style="margin-right: 10px;">' + 
+                '<button id="insertPicture" type="button" class="btn btn-primary" disabled><i class="fa fa-picture-o" aria-hidden="true"></i> 確定選取</button>' +
+                '<button id="sendPictureOrder" type="button" class="btn btn-info"><i class="fa fa-sort-amount-desc" aria-hidden="true"></i> 儲存順序</button>' +
+                '</div>' +
+                '<button type="button" class="btn btn-danger btn-lg" data-dismiss="modal"><i class="fa fa-undo" aria-hidden="true"></i> 取消</button>';
+
+            ShowModalBox('Image Selector', html, footer);
+            $('#bs-modal-box').on('shown.bs.modal', function(e) {
+                getGalleryData(Type, 'ASC');
+            });
+        }
+
+        function SendPicture() {
+            var data = new FormData();
+            var pid = $('#sub-gallery-sortable input.pictureSelected:checked').attr('data-pid');
+            var files = $("#pictureFile").get(0).files;
+            if (files.length > 0) {
+                data.append("uploadImage", files[0]);
+            };
+            data.append('type', Type);
+
+            LoadingEff(true);
+            $.ajax({
+                url: '/SendPicture',
+                type: 'POST',
+                data: data,
+                cache: false,
+                async: true,
+                processData: false,
+                contentType: false,
+                success: function(data) {
+                    getGalleryData(Type, 'ASC', pid);
+                }
+            }).always(function() {
+                LoadingEff(false);
+            });
+        }
+
+        function pictureDel() {
+            var confirmData = confirm("確定要刪除？");
+            var checkStatus = false;
+
+            if (confirmData) {
+                var pid = $(this).attr('data-pid');
+                var _element = $(this).parents('li.ui-sortable-handle');
+                $.ajax({
+                    url: '/DelPicture',
+                    type: 'POST',
+                    data: { pid: pid },
+                    cache: false,
+                    async: true,
+                    dataType: 'json',
+                    success: function(data) {
+                        _element.remove();
+                        checkStatus = true;
+                    }
+                }).always(function() {
+                    if (!checkStatus)
+                        alert('發生錯誤');
+                });
+            }
+        }
+        function pictureEdit(targetForm, targetOther){
+            if(targetForm.hasClass('hide')){
+                targetForm.removeClass('hide');
+                targetOther.addClass('blur');
+            } else {
+                targetForm.addClass('hide');
+                targetOther.removeClass('blur');
+            }
+        }
+        function pictureEditOpen(){
+            targetForm = $(this).parents('.thumbnail').find('.edit-over-item');
+            targetOther = $(this).parents('.thumbnail').find('.pinSize, .caption');
+            pictureEdit(targetForm, targetOther);
+        }
+
+        function itemEditHide(selectNum){
+            targetForm = $('#sub-gallery-sortable > li > .thumbnail').eq(selectNum).find('.edit-over-item');
+            targetOther = $('#sub-gallery-sortable > li > .thumbnail').eq(selectNum).find('.pinSize, .caption');
+            pictureEdit(targetForm, targetOther);
+        }
+
+        function editPictureSend(){
+            var pid = $(this).parents('li[data-pid]').attr('data-pid');
+            var annotation = $(this).parents('div.edit-over-item').find('.item-annotation').val();
+            var lang = $(this).parents('div.edit-over-item').find('.item-lang').val();
+            var thisEq = $(this).parents('li[data-pid]').prevAll().not('.ui-disabled').length;
+
+            if($(this).hasClass('edit-picture-send')){
+                var checkStatus = false;
+
+                $.ajax({
+                    url: '/EditPicture',
+                    type: 'POST',
+                    data: { pid: pid, annotation: annotation, lang: lang },
+                    cache: false,
+                    async: true,
+                    dataType: 'json',
+                    success: function(data) {
+                        checkStatus = true;
+                    }
+                }).always(function() {
+                    if (!checkStatus){
+                        alert('發生錯誤');
+                    }
+                    itemEditHide(thisEq);
+                    getGalleryData(Type, 'ASC');
+                });
+            } else {
+                itemEditHide(thisEq);
+            }
+        }
+
+        function sendPictureOrder() {
+            var checkStatus = false;
+            var item = $('#sub-gallery-sortable > li').not('.ui-disabled');
+            var postData = [];
+            $(item).each(function(index, el) { //.get().reverse() -> 應應 SQL ORDER BY DESC
+                postData.push({ 'pid': $(this).attr('data-pid'), 'no': index });
+            });
+            $.ajax({
+                url: '/OrderPicture',
+                type: 'POST',
+                data: JSON.stringify({ data: postData }),
+                cache: false,
+                async: true,
+                contentType: 'application/json',
+                processData: false,
+                success: function(data) {
+                    checkStatus = true;
+                }
+            }).always(function() {
+                if (!checkStatus) {
+                    alert('更新順序發生錯誤');
+                } else {
+                    alert('更新順序成功');
+                    getGalleryData(Type, 'ASC');
+                }
+            });
+        }
+
+
+        function pictureSelected(){
+            $.each($('#sub-gallery-sortable > li[data-pid]'), function(index, element) {
+                $(element).removeClass('selected');
+                if($(element).find('input.pictureSelected').prop('checked')){
+                    $(element).addClass('selected');
+                }
+            });
+            // $(this).parents('#sub-gallery-sortable > li[data-pid]').addClass('selected');
+            if($('#sub-gallery-sortable input.pictureSelected:checked').val() != null){
+                $('#insertPicture').prop('disabled', false);
+            }
+        }
+
+        function insertPicture(){
+            var insertPictureData = $('#sub-gallery-sortable input.pictureSelected:checked').val();
+            var pid = $('#sub-gallery-sortable input.pictureSelected:checked').attr('data-pid');
+            if(insertPictureData != null){
+                //$('#pictureData').val(Type + '/' + insertPictureData);
+                var imageSrc = CDN_Domain + insertPictureData;
+                $('#pictureData').val(insertPictureData);
+                $('#SelectedPicturePreview').attr('src', imageSrc);
+                $('#SelectedPicturePreview').removeClass('hidden');
+                $('#bs-modal-box').modal('hide');
+            } else {
+                alert('沒有任何選項被選擇，請選擇圖片！');
+                $('#SelectedPicturePreview').addClass('hidden');
+            }             
+        }
+
+        function cancelSelectedPicture(){
+            var confirmAlert = confirm("確定取消選取的圖片？");
+            if(confirmAlert){
+                $('#pictureData').val('');
+                $('#SelectedPicturePreview').attr('src', '#');
+                $('#SelectedPicturePreview').addClass('hidden');
+            } else {}
+        }
+
+        $(document).on('change', '.pictureSelected', pictureSelected);
+
+        $(document).on('click', '#selectPictureWindow', selectPictureWindow);
+
+        $(document).on('click', '#SendPicture', SendPicture);
+
+        $(document).on('click', '.picture-del', pictureDel);
+
+        $(document).on('click', '.edit-picture', pictureEditOpen);
+
+        $(document).on('click', '.edit-picture-send, .edit-picture-cancel', editPictureSend);
+
+        $(document).on('click', '#sendPictureOrder', sendPictureOrder);
+
+        $(document).on('click', '#insertPicture', insertPicture);
+
+        $(document).on('click', '#cancelSelectedPicture', cancelSelectedPicture);
+
+        function OutputMsg(msg) {
+            console.log(msg);
+        }
+    });
+    </script>
+</body>
+
+</html>

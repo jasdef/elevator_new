@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SCG</title>
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Datatables -->
+    <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- bootstrap-select -->
+    <link rel="stylesheet" href="../vendors/bootstrap-select/css/bootstrap-select.min.css">
+    <style type="text/css" media="screen">
+    .popover {
+        max-width: 700px;
+    }
+
+    .form-control[readonly] {
+        background-color: transparent;
+    }
+
+    .text-ellipsis {
+        /*width: 200px;*/
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        margin: 0;
+    }
+
+    #datatable tbody td {
+        vertical-align: middle;
+        overflow: hidden;
+    }
+
+    #datatable tbody td:nth-child(7) {
+        text-align: right;
+    }
+
+    #datatable {
+        table-layout: fixed;
+    }
+    </style>
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <!--Menu-->
+            <!--Top-->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="row">
+                    <div class="clearfix"></div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>送信後結果</h2>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <button class="btn btn-primary pull-right btn-sm refresh-table"><i class="fa fa-refresh" aria-hidden="true"></i> 刷新列表</button>
+
+                                    <table id="datatable" class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th title="異動時間">異動<br/>時間</th>
+                                                <th title="送出時間">送出<br/>時間</th>
+                                                <th title="失效時間">失效<br/>時間</th>
+                                                <th title="受眾選擇/會員ID"><span class="label label-default">受眾選擇</span> / 會員ID</th>
+                                                <!-- <th title="信件類別">信件類別</th> -->
+                                                <th title="信件主旨">信件主旨</th>
+                                                <th title="信件內容">信件內容</th>
+                                                <!-- <th title="夾帶類型">夾帶類型</th> -->
+                                                <!-- <th title="品項">品項</th> -->
+                                                <th title="金額">金額</th>
+                                                <th title="狀態">狀態</th>
+                                                <th title="信件種類">信件種類</th>
+                                                <th title="動作">動作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- /page content -->
+            <!--footer-->
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- iCheck -->
+    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <!-- Datatables -->
+    <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="../vendors/jszip/dist/jszip.min.js"></script>
+    <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap-select -->
+    <script src="../vendors/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="../vendors/bootstrap-select/js/i18n/defaults-zh_TW.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        var startDate = moment().subtract(29, 'days');
+        var endDate = moment();
+
+        function thousandComma(number){
+            var num = number == null ? '0' : number.toString();
+            var pattern = /(-?\d+)(\d{3})/;
+            while(pattern.test(num)){
+                num = num.replace(pattern, "$1,$2");
+            }
+            return num;
+        }
+
+        var mDataTable = $('#datatable').DataTable({
+            "autoWidth": false,
+            "order": [
+                [0, "desc"]
+            ],
+            "columnDefs": [{
+                "targets": [0, 1, 2],
+                "width": "45px"
+            }, {
+                "targets": 3,
+                "width": "120px"
+            }, {
+                "targets": [4, 5],
+                "width": "270px"
+            }, {
+                "targets": 6,
+                "width": "180px"
+            }, {
+                "targets": 7,
+                "width": "40px"
+            }, {
+                "targets": 8,
+                "width": "72px"
+            }, {
+                "targets": 9,
+                "width": "125px"
+            }]
+        });
+
+        function getStatusHTML(isSend){
+            var str = "";
+            var icon = "";
+            var color = "";
+
+            switch (isSend) {
+                case "Y": // 已送出
+                    str = "已送出";
+                    icon = "check-circle-o";
+                    color = "success";
+                    break;
+                case "N": // 預約中
+                    str = "預約中";
+                    icon = "clock-o";
+                    color = "info";
+                    break;
+                case "V": // 待審核
+                    str = "待審核";
+                    icon = "eye";
+                    color = "primary";
+                    break;
+                case "B": // 駁回
+                    str = "駁回";
+                    icon = "ban";
+                    color = "danger";
+                    break;
+                case "E": // 已失效
+                    str = "已失效";
+                    icon = "exclamation-triangle";
+                    color = "warning";
+                    break;
+                default:
+                    break;
+            }
+            return '<span class="label label-' + color + '"><i class="fa fa-' + icon + '"></i> ' + str + '</span>'
+        }
+
+        function getTableData() {
+            var passedBtn = function(datakey) { return '<button type="button" datakey="' + datakey + '" class="btn btn-success passed"><i class="fa fa-check"></i> 審核通過</button>' };
+            var rejectionBtn = function(datakey) { return '<button type="button" datakey="' + datakey + '" class="btn btn-danger rejection"'  + '><i class="fa fa-times"></i> 取消審核</button>' };
+            mDataTable.clear().draw();
+
+            var arrayTableData = [];
+            $.ajax({
+                type: 'POST',
+                url: '/bulletinMailVerify_History',
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(result) {
+                    $.each(result.result, function(index, value) {
+                        arrayTableData.push([
+                            moment(value.ModifyTime).format("YYYY-MM-DD HH:mm:ss"),
+                            moment(value.ReserveTime).format("YYYY-MM-DD HH:mm:ss"),
+                            ((value.EndTime === null) ? '' : moment(value.EndTime).format("YYYY-MM-DD HH:mm:ss")),
+                            GroupData[value.mGroup] == null ? value.ToMemberId : '<span class="label label-default">' + GroupData[value.mGroup] + '</span>',
+                            '<p class="text-ellipsis">' + value.MailTitle + '</p>',
+                            '<p class="text-ellipsis">' + value.MailContent + '</p>',
+                            thousandComma(value.mAttachment == 3 ? value.mQuantity / 100 : value.mQuantity),
+                            getStatusHTML(value.IsSend),
+                            value.MailType == 'L' ? '<span class="label label-primary">廣告信</span>' : '<span class="label label-default">文字信&amp;禮品信</span>',
+                            '<div class="btn-group btn-group-xs" style="display: flex;">'
+                            + '<button number="' + value.mQuantity + '" datakey="' + value.Id + '" class="btn btn-success passed"><i class="fa fa-check"></i> 審核通過</button>'
+                            + '<button number="' + value.mQuantity + '" datakey="' + value.Id + '" class="btn btn-danger rejection"'  + '><i class="fa fa-times"></i> 取消審核</button>'
+                            + '</div>'
+                        ]);
+                    });
+                    mDataTable.rows.add(arrayTableData).draw();
+                }
+            }).done(function() {
+                $('.text-ellipsis').popover({
+                    trigger: 'hover',
+                    placement: 'top',
+                    html: true,
+                    content: function() {
+                        return $(this).text().replace("\n", "<br />", "g");
+                    },
+                });
+            });
+        }
+
+        getTableData();
+        var GroupData = {};
+
+        $(document).on('click', '#datatable .passed, #datatable .rejection', function(event) {
+            var number = $(this).attr('number');
+            var datakey = $(this).attr('datakey');
+            var isPassed = $(this).hasClass('passed');
+            var confirmAlert = confirm('確定要' + (isPassed?'通過':'拒絕') + '金額：「' + thousandComma(number / 100) + '」？');
+            var data = { datakey: datakey, isPassed: isPassed };
+            var thisRow = $(this);
+
+            if(confirmAlert){
+                $.ajax({
+                    url: 'bulletinMailVerify_Checker',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: data,
+                }).done(function(result) {
+                    if(result.code == 1){
+                        mDataTable.row(thisRow.parents('tr')).remove().draw();
+                    } else {
+                        alert('連線失敗');
+                    }
+                }).fail(function() {
+                    alert('連線失敗');
+                });
+            }
+        });
+
+        $(document).on('click', '.refresh-table', getTableData);
+
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw">
+
+<head>
+	<meta http-equiv="x-ua-compatible" content="IE=Edge" />
+	<meta charset="UTF-8">
+	<title>At.js</title>
+	<link rel="stylesheet" href="css/jquery.atwho.min.css" />
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+	<script type="text/javascript" src="js/jquerycaret.min.js"></script>
+	<script type="text/javascript" src="js/jquery.atwho.min.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			var names = ["中文測試", "Isabella", "Ethan", "Emma", "Michael", "Olivia", "Alexander", "Sophia", "William", "Ava", "Joshua", "Emily", "Daniel", "Madison", "Jayden", "Abigail", "Noah", "Chloe", "你好", "你你你"];
+
+			var at_config = {
+				at: "#",
+				data: names,
+				headerTpl: '<div class="atwho-header">Member List<small>↑&nbsp;↓&nbsp;</small></div>',
+				insertTpl: '${name}',
+				displayTpl: "<li>${name}</li>",
+				limit: 100,
+				start_with_space: false,
+			}
+			$inputor = $('#inputor').atwho(at_config);
+			$inputor.caret('pos', 47);
+			$inputor.focus().atwho('run');
+		});
+	</script>
+
+</head>
+
+<body>
+	<div class="container wrapper">
+		<header>
+			<h1>At
+				<i>.js</i>
+			</h1>
+		</header>
+		<div id="main">
+			<div>
+				<textarea id="inputor" class="inputor"></textarea>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

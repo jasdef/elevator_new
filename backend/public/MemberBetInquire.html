@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SCG</title>
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- Datatables -->
+    <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap-select -->
+    <link rel="stylesheet" href="../vendors/bootstrap-select/css/bootstrap-select.min.css">
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <style type="text/css" media="screen">
+    #datatable tbody td {
+        vertical-align: middle;
+    }
+    </style>
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <!--Menu-->
+            <!--Top-->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="row">
+                    <div class="clearfix"></div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>個人投注查詢</h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                        </li>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <div class="form-group">
+                                        <label>查詢日期區間</label>
+                                        <div id="daterangepicker" class="input-group">
+                                            <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                                            <input type="text" name="daterange" id="daterange" class="form-control" value="" />
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-6">會員ID
+                                        </label>
+                                        <div>
+                                            <input id="MemberId" class="form-control" placeholder="" type="text" readonly="true">
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-6">遊戲暱稱
+                                        </label>
+                                        <div>
+                                            <input id="MemberNickName" class="form-control" placeholder="" type="text" readonly="true">
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-6">遊戲帳號
+                                        </label>
+                                        <div>
+                                            <input id="MemberAccount" class="form-control" placeholder="" type="text" readonly="true">
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-6">真實姓名
+                                        </label>
+                                        <div>
+                                            <input id="MemberName" class="form-control" placeholder="" type="text" readonly="true">
+                                        </div>
+                                    </div>
+
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-6">廳館
+                                        </label>
+                                        <div>
+                                            <select name="Hall" id="Hall" multiple="" class="selectpicker" multiple title="全部"></select>
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-6">BetLevel
+                                        </label>
+                                        <div>
+                                            <select name="BetLevel" id="BetLevel" multiple="" class="selectpicker" multiple title="全部"></select>
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-6">遊戲
+                                        </label>
+                                        <div>
+                                            <select name="Game" id="Game" multiple="" class="selectpicker" multiple title="全部"></select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <button type="button" id="ClearBtn" class="btn btn-lg btn-danger pull-right">清除</button>
+                                        <button type="button" id="SearchBtn" class="btn btn-lg btn-primary pull-right">搜尋</button>
+                                    </div>
+                                    
+                                    <!--
+                                    <div class="form-group col-md-3 col-sm-12 col-xs-12">
+                                        <label>FB帳號</label>
+                                        <div class="input-group">
+                                            <span class="form-control" id="MemberSocialId"></span>
+                                        </div>
+                                    </div>
+                                    -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel x_panel">
+                            <div class="x_title">
+                                <h2>List</h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <table id="datatable" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>時間</th>
+                                            <th>廳館</th>
+                                            <th>Bet Level</th>
+                                            <th>投注額</th>
+                                            <th>遊戲贏分</th>
+                                            <!-- <th>彩金贏分</th> -->
+                                            <th>玩家錶底Before</th>
+                                            <th>玩家錶底After</th>
+                                            <th>遊戲</th>
+                                            <th>機台編號</th>
+                                            <th>卡片使用</th>
+                                            <!-- <th>Free/Base</th> -->
+                                            <!-- <th>細節</th> -->
+                                            <!-- <th>Region</th>
+                                            <th>Mag</th>
+                                            <th>Reward</th>
+                                            <th>Tag</th> -->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /page content -->
+            <!--footer-->
+        </div>
+    </div>
+    <div id="loading-cover" style="width: 100%; height: 100%; background: rgba(0,0,0,.5); position: fixed; display: none; z-index: 999999; top: 0; left: 0;">
+        <div id="loading-icon" style="width: 85px; height: 65px; margin: -42.5px 0 0 -32.5px; top: 50%; left: 50%; position: fixed;">
+            <i class="fa fa-circle-o-notch fa-spin fa-5x fa-fw" style="color: #FFF;"></i>
+        </div>
+    </div>
+    <!-- 動態框架 -->
+    <!-- /.modal -->
+    <!-- 動態框架 -->
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- validator -->
+    <script src="../vendors/validator/validator.js"></script>
+    <!-- iCheck -->
+    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <!-- Datatables -->
+    <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="../vendors/jszip/dist/jszip.min.js"></script>
+    <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap-select -->
+    <script src="../vendors/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="../vendors/bootstrap-select/js/i18n/defaults-zh_TW.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        var GamesInfoTypeList = {};
+        var GamesInfoTypeOption = '';
+        var BetLevelInfoList = {};
+        var BetLevelInfoOption = '';
+        var HallDataList = {};
+        var HallDataOption = '';
+        var MachineDataList = {};
+        var HallDataToBetLevelList = {};
+        var BetLevelCoinInfoList = {};
+        var hallName = ["體驗廳", "一般廳", "高手廳", "賭神廳"];
+        var startDate = moment().subtract(1, 'days');
+        var endDate = moment();
+        var $_GET = {};
+        document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function() {
+            function decode(s) {
+                return decodeURIComponent(s.split("+").join(" "));
+            }
+            $_GET[decode(arguments[1])] = decode(arguments[2]);
+        });
+
+        $("#MemberId").val($_GET["MemberId"]);
+        $("#MemberNickName").val($_GET["NickName"]);
+        $("#MemberName").val($_GET["Name"]);
+        $("#MemberAccount").val($_GET["Account"]);
+        
+        function ShowModalBox(Title, Content) {
+            if ($('#bs-modal-box').length < 1) {
+                var html =
+                    '<div id="bs-modal-box" class="modal fade" tabindex="-1" role="dialog">' +
+                    '<div class="modal-dialog" role="document">' +
+                    '<div class="modal-content">' +
+                    '<div class="modal-header">' +
+                    '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+                    '<h4 class="modal-title"></h4>' +
+                    '</div>' +
+                    '<div class="modal-body">' +
+                    '<p></p>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>';
+                $('body').append(html);
+            }
+            $('#bs-modal-box h4.modal-title').html(Title);
+            $('#bs-modal-box div.modal-body').html(Content);
+            $('#bs-modal-box').modal('show');
+        }
+
+        function thousandComma(number) {
+            var num = number.toString();
+            var pattern = /(-?\d+)(\d{3})/;
+
+            while (pattern.test(num)) {
+                num = num.replace(pattern, "$1,$2");
+            }
+            return num;
+        }
+
+        function clear() {
+            $('#Hall').val(null);
+            $('#BetLevel').val(null);
+            $('#Game').val(null);
+
+            $('#Hall').selectpicker('refresh');
+            $('#BetLevel').selectpicker('refresh');
+            $('#Game').selectpicker('refresh');
+        }
+
+        function search() {
+            var hallData = $('#Hall').val();
+            var betRange = $('#BetLevel').val();
+            var gameRange = $('#Game').val();
+            var dateRange = [];
+
+            var dateBegin = new Date(2018, 0, 1);
+            var startDays = new Date(startDate).getTime() - dateBegin.getTime();
+            var endDays = new Date(endDate).getTime() - dateBegin.getTime();
+
+            startDays = Math.floor(startDays / 86400000);
+            endDays = Math.floor(endDays / 86400000);
+
+            for (var i = startDays; i <= endDays; ++i) {
+                dateRange.push(i);
+            }
+
+            var data = {
+                MemberID: $_GET["MemberId"],
+                DateRange: dateRange == null ? "" : dateRange.toString(),
+                BetLevel: betRange == null ? "" : betRange.toString(),
+                HallID: hallData == null ? "" : hallData.toString(),
+                Game: gameRange == null ? "" : gameRange
+            }
+
+            console.log(data);
+            if (typeof table !== "undefined") {
+                table.destroy();
+            }
+
+            table = $('#datatable').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "lengthMenu": [
+                    [30, 50, 100],
+                    [30, 50, 100]
+                ],
+                "columns": [
+                    { "defaultContent": "" },
+                    { "defaultContent": "" },
+                    { "defaultContent": "", "width": "10px" },
+                    { "defaultContent": "" },
+                    { "defaultContent": "" },
+                    { "defaultContent": "" },
+                    { "defaultContent": "" },
+                    { "defaultContent": "" },
+                    { "defaultContent": "" },
+                    { "defaultContent": "", "width": "400px" },
+                ],
+                'rowCallback': function(row, data, dataIndex) {
+                    console.log(data);
+                    $('td:eq(0)', row).html(moment(data.info.Time).format("YYYY-MM-DD HH:mm:ss"),);
+                    $('td:eq(1)', row).html(hallName[data.info.HallID - 1]);
+                    $('td:eq(2)', row).html(data.info.BetLevel);
+                    $('td:eq(3)', row).html(thousandComma(data.info.TotalBet * 0.01));
+                    $('td:eq(4)', row).html(thousandComma(data.info.Win));
+                    $('td:eq(5)', row).html(thousandComma(data.info.BalanceBefore / 100));
+                    $('td:eq(6)', row).html(thousandComma((data.info.BalanceBefore - data.info.TotalBet + data.info.Win) / 100));
+                    $('td:eq(7)', row).html(GamesInfoTypeList[data.scgGameId].GameName);
+                    $('td:eq(8)', row).html(data.info.MachineNum);
+                    $('td:eq(9)', row).html(data.info.Special ? getUsedItemString(data.info.UseItemID) : "");
+                },
+                "ajax": {
+                    "url": "/MemberBetInquire_History",
+                    "type": "POST",
+                    "data": data,
+                    "cache": "false",
+                    "async": "true",
+                    "dataType": 'json'
+                }
+            });
+        };
+
+        function getUsedItemString(value) {
+            return AttItemsData[value].DataContent;
+        }
+
+        function cb(start, end) {
+            $('#daterange span').html(start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD'));
+            startDate = start;
+            endDate = end;
+            //search();
+        }
+        
+        getHallDataToBetLevel();
+        function getHallDataToBetLevel() {
+            $.ajax({
+                url: '/ADBannerGetHallDataToBetLevel',
+                type: 'POST',
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(data) {
+                    $.each(data.data, function(index, value) {
+                        HallDataToBetLevelList[value.Id] = value;
+                    });
+                }
+            }).done(function() {
+                getHallData();
+            });
+        }
+        
+        function getHallData() {
+            $.ajax({
+                url: '/ADBannerGetHallData',
+                type: 'POST',
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(data) {
+                    $.each(data.data, function(index, value) {
+                        HallDataList[value.Id] = value;
+                    });
+                    HallDataOption = '';
+
+                    $.each(HallDataList, function(index, value) {
+                        var hallId = value.Id;
+                        var maxBet = 0;
+                        var minBet = 999;
+                        for (var key in HallDataToBetLevelList) {
+                            if (HallDataToBetLevelList[key].HallDataId == hallId) {
+                                maxBet = Math.max(maxBet, HallDataToBetLevelList[key].BetLevelId);
+                                minBet = Math.min(minBet, HallDataToBetLevelList[key].BetLevelId);
+                            }
+                        }
+                        HallDataOption += '<option value="' + value.Id + '">' + hallName[value.Id - 1] + ' BetLevel : ' + String(minBet) + '~' + String(maxBet) + '</option>';
+                    });
+                    $('#Hall').empty();
+                    $('#Hall').selectpicker({
+                        showTick: true,
+                        hideDisable: true
+                    });
+                    $('#Hall').append(HallDataOption);
+                    $('#Hall').selectpicker('refresh');
+                }
+            }).done(function() {
+                getBetLevel();
+            });   
+        }
+
+        function getBetLevel() {
+            $.ajax({
+                type: 'POST',
+                url: "/ADBannerGetBetLevel",
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(msg) {
+                    $.each(msg.data, function(index, value) {
+                        BetLevelInfoList[value.Id] = value;
+                    });
+                    BetLevelInfoOption = '';
+                    $.each(BetLevelInfoList, function(index, value) {
+                        BetLevelInfoOption += '<option value="' + value.Id + '">' + value.BetLevel + '</option>';
+                    });
+                    $('#BetLevel').empty();
+                    $('#BetLevel').selectpicker({
+                        showTick: true,
+                        hideDisable: true
+                    });
+                    $('#BetLevel').append(BetLevelInfoOption);
+                    $('#BetLevel').selectpicker('refresh');
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+            }).done(function() {
+                getGamesInfo();
+            });
+        }
+
+        function getGamesInfo() {
+            $.ajax({
+                type: 'POST',
+                url: "/ADBannerGetGamesInfo",
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(msg) {
+                    $.each(msg.data, function(index, value) {
+                        GamesInfoTypeList[value.SCGGameId] = value;
+                    });
+                    GamesInfoTypeOption = '';
+                    $.each(GamesInfoTypeList, function(index, value) {
+                        GamesInfoTypeOption += '<option value="' + value.SCGGameId + '">' + value.GameName + '</option>';
+                    });
+                    $('#Game').empty();
+                    $('#Game').selectpicker({
+                        showTick: true,
+                        hideDisable: true
+                    });
+                    $('#Game').append(GamesInfoTypeOption);
+                    $('#Game').selectpicker('refresh');                    
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+            }).done(function() {
+                getCategory();
+            });
+        }
+
+        function getCategory() { 
+            $.ajax({ 
+                type: 'GET', 
+                url: "/BulletinMail_getAttItems", 
+                cache: false, 
+                data: { mAttachment: '1' }, 
+                async: true, 
+                dataType: 'json', 
+                success: function(msg) {
+                    mAttachmentParse(msg.data);
+                    $('#loading-cover').fadeOut(100);
+                } 
+            }); 
+        };
+
+        // Other GET / POST
+        var AttItemsData = {};
+        // ParseData
+        function mAttachmentParse(ParseData) {
+            // console.log(value);
+            AttItemsData = {};
+            $.each(ParseData, function(index, value) {
+                AttItemsData[value.ItemId] = {
+                    id: value.ItemId,
+                    Name: value.ItemName,
+                    betLevel: value.betLevel,
+                    GameName: value.GameName,
+                    multiple: value.multiple,
+                    round: value.round,
+                    itemType: value.itemType,
+                    DataContent: '<span class=\'label label-default\'>' + value.ItemId + '號</span> <span class=\'label label-warning\'>' + value.GameName + '</span> <span class=\'label label-success\'>Lv-' + value.betLevel + '</span> <span class=\'label label-info\'>' + value.ItemName + '</span> <span class=\'label label-primary\'>' + value.multiple + '倍</span> <span class=\'label label-default\'>' + value.round + '場</span> <span class=\'label label-default\'>' + value.itemType + '</span>'
+                };
+            });
+        };
+
+        $('#daterange').daterangepicker({
+            locale: {
+                format: 'YYYY-MM-DD'
+            },
+            startDate: startDate,
+            endDate: endDate,
+            ranges: {
+                'Today': [moment().startOf('day'), moment().endOf('day')],
+                'Yesterday': [moment().subtract(1, 'days').startOf('day'), moment().subtract(1, 'days').endOf('day')],
+                'Last 7 Days': [moment().subtract(6, 'days').startOf('day'), moment().endOf('day')],
+                'Last 30 Days': [moment().subtract(29, 'days').startOf('day'), moment().endOf('day')],
+                'This Month': [moment().startOf('month'), moment().endOf('month')],
+                'This Year': [moment().startOf('year'), moment().endOf('year')],
+                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            }
+        }, cb);
+
+        // Click Event
+        $(document).on('click', '.game-detail', function(event) {
+            var detailJSON = $.parseJSON($(this).next('textarea').html());
+            var totalBet = $(this).parent().parent().find('td').eq(2).text();
+            var ModifyTime = $(this).parent().parent().find('td').eq(0).text();
+            var DetailContent = '<table class="table table-hover">' +
+                '<thead>' +
+                '<tr>' +
+                '<td>#</td>' +
+                '<td>playerWin</td>' +
+                // '<td>winMultiple</td>' +
+                '</tr>' +
+                '</thead>' +
+                '<tbody>';
+
+            $.each(detailJSON.freeGameResult.freeGameOneRoundResult, function(key, data) {
+                // console.log(key);
+
+                // DetailContent += data.playerWin + '\n';
+                DetailContent += '<tr>' +
+                    '<td>' + data.roundInfo.roundNumber + ' / ' + data.roundInfo.totalRound + '</td>' +
+                    '<td>' + data.playerWin + '</td>' +
+                    // '<td>' + (data.playerWin / totalBet) + '</td>' +
+                    '</tr>';
+                // $.each(data, function(index, data) {
+                //     console.log('index', data)
+                // })
+            });
+            DetailContent += '</tbody>' + '</table>';
+            var DetailTitle = $('#MemberName').text() + '<small> / ' + ModifyTime + '</small>';
+            ShowModalBox(DetailTitle, DetailContent);
+            // alert(text);
+
+            // alert(detailJSON.freeGameResult.freeGameOneRoundResult[0].playerWin);
+
+        });
+
+        $(document).on('click', '#SearchBtn', function(event) {
+            search();
+        });
+
+        $(document).on('click', '#ClearBtn', function(event) {
+            clear();
+        });
+    });
+    </script>
+</body>
+
+</html>

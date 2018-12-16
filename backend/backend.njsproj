@@ -1,0 +1,76 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <Name>backend</Name>
+    <RootNamespace>backend</RootNamespace>
+    <Environment>environment=ground1</Environment>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>b886d4b9-cfd9-48e0-a193-60ac27bf9dd6</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>server.js</StartupFile>
+    <StartWebBrowser>False</StartWebBrowser>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <StartWebBrowser>False</StartWebBrowser>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="package.json" />
+    <Content Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="js\authgroup.js" />
+    <Compile Include="js\authuser.js" />
+    <Compile Include="js\AutoBroadcast.js" />
+    <Compile Include="js\Banned.js" />
+    <Compile Include="js\BulletinKanban.js" />
+    <Compile Include="js\bulletinPushNotify.js" />
+    <Compile Include="js\bulletinSystem.js" />
+    <Compile Include="js\common.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="js\dragonrank.js" />
+    <Compile Include="js\feedback.js" />
+    <Compile Include="js\feedbackCan.js" />
+    <Compile Include="js\feedbackSearch.js" />
+    <Compile Include="js\officialWebsite.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="js\lvSetting.js" />
+    <Compile Include="js\manualtarget.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="js\marquee.js" />
+    <Compile Include="js\memberBetInquire.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="js\login.js" />
+    <Compile Include="js\membergroup.js" />
+    <Compile Include="js\memberGroupManual.js" />
+    <Compile Include="js\memberIAPList.js" />
+    <Compile Include="js\membersearch.js" />
+    <Compile Include="js\smartfox.js" />
+    <Compile Include="js\timer.js" />
+    <Compile Include="server.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="js\" />
+  </ItemGroup>
+  <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
+</Project>

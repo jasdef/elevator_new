@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SCG</title>
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- Datatables -->
+    <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- bootstrap-datetimepicker -->
+    <link href="../vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <!-- Ion.RangeSlider -->
+    <link href="../vendors/normalize-css/normalize.css" rel="stylesheet">
+    <link href="../vendors/ion.rangeSlider/css/ion.rangeSlider.css" rel="stylesheet">
+    <link href="../vendors/ion.rangeSlider/css/ion.rangeSlider.skinFlat.css" rel="stylesheet">
+    <style>
+    .dataTables_wrapper>.row {
+        overflow: visible!important;
+    }
+    #datatable {
+        table-layout: fixed;
+        word-break: break-all;
+    }
+    </style>
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <!--Menu-->
+            <!--Top-->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>意見回饋</h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <table id="datatable" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>處理人員</th>
+                                            <th>會員ID</th>
+                                            <th>會員名稱</th>
+                                            <th>發佈日期</th>
+                                            <th>會員層級</th>
+                                            <th>儲值金額</th>
+                                            <th>玩家意見</th>
+                                            <th>聯絡電話</th>
+                                            <th>電子郵件</th>
+                                            <th>意見類別</th>
+                                            <th>功能</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /page content -->
+            <!--footer-->
+        </div>
+    </div>
+    <div id="loading-cover" style="width: 100%; height: 100%; background: rgba(0,0,0,.5); position: fixed; display: none; z-index: 999999; top: 0; left: 0;">
+        <div id="loading-icon" style="width: 85px; height: 65px; margin: -42.5px 0 0 -32.5px; top: 50%; left: 50%; position: fixed;">
+            <i class="fa fa-circle-o-notch fa-spin fa-5x fa-fw" style="color: #FFF;"></i>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- iCheck -->
+    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <!-- Datatables -->
+    <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="../vendors/jszip/dist/jszip.min.js"></script>
+    <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+    <!-- Ion.RangeSlider -->
+    <script src="../vendors/ion.rangeSlider/js/ion.rangeSlider.min.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap-datetimepicker -->
+    <script src="../vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <!-- jquery.inputmask -->
+    <script src="../vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+    <!-- jQuery Knob -->
+    <script src="../vendors/jquery-knob/dist/jquery.knob.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        var feedbackTypenName = {};
+        feedbackTypenName["SETTING_COMMENT_TYPE_ACCOUNT"] = "帳號相關";
+        feedbackTypenName["SETTING_COMMENT_TYPE_PURCHASE"] = "儲值消費";
+        feedbackTypenName["SETTING_COMMENT_TYPE_INSTALLATION"] = "下載安裝";
+        feedbackTypenName["SETTING_COMMENT_TYPE_GAME"] = "遊戲內容";
+        feedbackTypenName["SETTING_COMMENT_TYPE_BILK"] = "檢舉詐騙";
+        feedbackTypenName["SETTING_COMMENT_TYPE_OTHER"] = "其他問題";
+        feedbackTypenName["SETTING_COMMENT_TYPE_REPORT"] = "檢舉";
+
+        var registerEditorTimerVar;
+        var pullEditorStatusTimerVar;
+        var currentData;
+        var currentRow;
+        var feedbackCan = [];
+        var feedbackType = [];
+        var startDate = moment().subtract(29, 'days');
+        var endDate = moment();
+        var $_GET = {};
+        document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function() {
+            function decode(s) {
+                return decodeURIComponent(s.split("+").join(" "));
+            }
+            $_GET[decode(arguments[1])] = decode(arguments[2]);
+        });
+
+        pullEditorStatusTimerVar = setInterval(pullTimer, 5000);
+
+        var table = $('#datatable').DataTable({
+            destroy: true,
+            "columnDefs": [
+                { "targets": 0 },
+                { "targets": 1 },
+                { "targets": 2 },
+                { "targets": 3 },
+                { "targets": 4 },
+                { "targets": 5 },
+                { "targets": 6 },
+                { "targets": 7 },
+                { "targets": 8 },
+                { "targets": 9 },
+                { "targets": 10 },
+                {
+                    "targets": 11,
+                    "defaultContent": "<div class='btn-group btn-group-sm' style='display: flex'>" +
+                        "<button class='btn btn-success' id='reply'><i aria-hidden='true'></i>回覆</button>" +
+                        "</div>"
+                }
+            ]
+        });
+
+        $('#datatable tbody').on('click', 'button', function(e) {
+            currentData = table.row($(this).parents('tr')).data();
+            var jsonData = {};
+            currentRow = $(this).closest("tr");
+            switch ($(this).attr('id')) {
+                case "reply":
+                    registerEditor(currentData);
+                    ShowEditModal(currentData);
+                    registerEditorTimerVar = setInterval(editorTimer, 5000);
+                    break;
+            }
+        });
+
+        //處理新增
+        function reply(data) {
+            ShowEditModal(data);
+        };
+
+        function editorTimer() {
+            registerEditor(currentData);
+        }
+
+        function pullTimer() {
+            pullEditorStatus();
+        }
+
+        function pullEditorStatus(data) {
+            $.ajax({
+                type: 'POST',
+                url: "/FeedbackEditorStatus",
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(msg) {
+                    console.dir(msg);
+                    updateEditorStaff(msg.data);
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+            }).done(function() {});
+        }
+
+        function registerEditor(data) {
+            var SendData = {
+                Id: data[0],
+                StaffName: $('.user-profile').text()
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: "/FeedbackOpenEditor",
+                cache: false,
+                async: true,
+                data: SendData,
+                dataType: 'json',
+                success: function(msg) {
+                    console.dir(msg);
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+            }).done(function() {});
+        }
+
+        function thousandComma(number){
+            var num = number == null ? '0' : number.toString();
+            var pattern = /(-?\d+)(\d{3})/;
+            while(pattern.test(num)){
+                num = num.replace(pattern, "$1,$2");
+            }
+            return num;
+        };
+
+        function unregisterEditor(data) {
+            clearInterval(registerEditorTimerVar);
+            currentData = null;
+            var SendData = {
+                Id: data[0],
+                StaffName: $('.user-profile').text()
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: "/FeedbackCloseEditor",
+                cache: false,
+                async: true,
+                data: SendData,
+                dataType: 'json',
+                success: function(msg) {
+                    console.dir(msg);
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+            }).done(function() {});
+        }
+
+        function updateEditorStaff(data) {
+            $('#datatable tbody tr').each(function(i, row) {
+                $(row).find("td:eq(1)").text("");
+                data.forEach(function(value) {
+                    if (value.Id == $(row).find("td:eq(0)").text()) {
+                        console.log("Got it!!!");
+                        if ($(row).find("td:eq(1)").text().length > 0)
+                            $(row).find("td:eq(1)").append(", ");
+                        $(row).find("td:eq(1)").append(value.StaffName);
+                    }
+                });
+            });
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: "/GetFeedbackCan",
+            cache: false,
+            async: true,
+            dataType: 'json',
+            success: function(msg) {
+                feedbackCan = msg.data;
+            },
+            error: function(xhr, desc, err) {
+                alert("HTTP Status code:" + xhr.status);
+            }
+        }).done(function() {
+            $('#loading-cover').fadeOut(100);
+            getFeedbackType();
+        });
+
+        function getFeedbackType() {
+            $('#loading-cover').fadeIn(100);
+            $.ajax({
+                type: 'POST',
+                url: "/GetFeedbackType",
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(msg) {
+                    feedbackType = msg.data;
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+            }).done(function() {
+                $('#loading-cover').fadeOut(100);
+                refresh();
+            });
+        }
+
+        function refresh() {
+            $('#loading-cover').fadeIn(100);
+            table.clear().draw();
+            var data = [];
+            //取得列表
+            $.ajax({
+                type: 'POST',
+                url: "/GetFeedback",
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(msg) {
+                    msg.data.forEach(function(value) {
+                        if (value.CommentStatus == 'N') {
+                            var TotalMoney = checkIsNullOrEmpty(value.TotalMoney) ? 0 : value.TotalMoney;
+                            var TotalRecharge = checkIsNullOrEmpty(value.TotalRecharge) ? 0 : value.TotalRecharge;
+                            data.push([
+                                value.Id,
+                                checkIsNullOrEmpty(value.StaffName) ? "" : value.StaffName,
+                                value.MemberId,
+                                checkIsNullOrEmpty(value.MemberName) ? "" : value.MemberName,
+                                moment(value.ModifyTime).format("YYYY-MM-DD HH:mm:ss"),
+                                value.MemberVIP,
+                                thousandComma((TotalMoney + TotalRecharge) / 100),
+                                checkIsNullOrEmpty(value.CommentContent) ? "" : value.CommentContent,
+                                checkIsNullOrEmpty(value.CommentReplyTel) ? "" : value.CommentReplyTel,
+                                checkIsNullOrEmpty(value.CommentReplyEmail) ? "" : value.CommentReplyEmail, 
+                                //value.CommentReply,
+                                //value.CommentStatus,
+                                value.CommentTypeChtName
+                            ]);
+                        }
+                    });
+                    table.rows.add(data).draw();
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+            }).done(function() {
+                $('#loading-cover').fadeOut(100);
+            });
+        }
+
+        function checkObjectValue() {
+            return true;
+        }
+
+        $(function() {
+
+            function cb(start, end) {
+                $('#daterange span').html(start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD'));
+                startDate = start;
+                endDate = end;
+                //search();
+            }
+
+            $('#daterange').daterangepicker({
+                locale: {
+                    format: 'YYYY-MM-DD'
+                },
+                startDate: startDate,
+                endDate: endDate,
+                ranges: {
+                    'Today': [moment().startOf('day'), moment().endOf('day')],
+                    'Yesterday': [moment().subtract(1, 'days').startOf('day'), moment().subtract(1, 'days').endOf('day')],
+                    'Last 7 Days': [moment().subtract(6, 'days').startOf('day'), moment().endOf('day')],
+                    'Last 30 Days': [moment().subtract(29, 'days').startOf('day'), moment().endOf('day')],
+                    'This Month': [moment().startOf('month'), moment().endOf('month')],
+                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                }
+            }, cb);
+
+            cb(startDate, endDate);
+        });
+
+        function ShowModalBox(Title, Content) {
+            if ($('#bs-modal-box').length < 1) {
+                var html =
+                    '<div id="bs-modal-box" class="modal fade" tabindex="-1" role="dialog">' +
+                    '<div class="modal-dialog" role="document">' +
+                    '<div class="modal-content">' +
+                    '<div class="modal-header">' +
+                    '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+                    '<h4 class="modal-title"></h4>' +
+                    '</div>' +
+                    '<div class="modal-body" style="display:flow-root">' +
+                    '<p></p>' +
+                    '</div>' +
+                    '<div class="modal-footer">' +
+                    '<button id="SendEditData" type="button" class="btn btn-success">確定</button>' +
+                    '<button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>';
+                $('body').append(html);
+            }
+            $('#bs-modal-box h4.modal-title').html('<span class="label label-default">回覆意見</span> ' + Title);
+            $('#bs-modal-box div.modal-body').html(Content);
+            $('#bs-modal-box').modal('show');
+
+        }
+
+        function ShowEditModal(data) {
+            var html =
+                '<div class="col-sm-6">' +
+                '<div class="panel panel-default">' +
+                '<div class="panel-heading"><i class="fa fa-eye" aria-hidden="true"></i> 回饋資料</div>' +
+                '<div class="panel-body">' +
+                '<div class="form-group">' +
+                '<label class="control-label">Id</label>' +
+                '<input id="commentId" class="form-control" readonly type="text" value="' + data[0] + '">' +
+                '</div>' +
+                '<div class="form-group">' +
+                '<label class="control-label">會員Id</label>' +
+                '<input class="form-control" type="text" readonly value="' + data[2] + '">' +
+                '</div>' +
+                '<div class="form-group">' +
+                '<label class="control-label">會員名稱</label>' +
+                '<input class="form-control" type="text" readonly value="' + data[3] + '">' +
+                '</div>' +
+                '<div class="form-group">' +
+                '<label class="control-label">回饋時間</label>' +
+                '<input class="form-control" type="text" readonly value="' + data[4] + '">' +
+                '</div>' +
+                '<div class="form-group">' +
+                '<label class="control-label">會員層級</label>' +
+                '<input class="form-control" type="text" readonly value="' + data[5] + '">' +
+                '</div>' +
+                '<div class="form-group">' +
+                '<label class="control-label">儲值金額</label>' +
+                '<input class="form-control" type="number" readonly value="' + data[6] + '">' +
+                '</div>' +
+                '<div class="form-group">' +
+                '<label class="control-label">意見類別</label>' +
+                '<input class="form-control" type="text" readonly value="' + currentRow.find("td:eq(10)").text() + '">' +
+                '</div>' +
+                '<div class="form-group">' +
+                '<label class="control-label">回饋意見</label>' +
+                '<textarea class="form-control" style="height:300px;resize:none" cols="40" rows="5" readonly>' + data[7] + '</textarea>' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '<div class="col-sm-6">' +
+                '<div class="panel panel-warning">' +
+                '<div class="panel-heading"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 回覆內容</div>' +
+                '<div class="panel-body">' +
+                '<div class="item form-group">' +
+                '<label class="col-md-6 col-sm-6 col-xs-12">公版訊息</label>' +
+                '<select name="CanReply" id="CanReply" class="form-control">' +
+                '</select>' +
+                '<button id="InsertCan" type="button" class="btn btn-success">插入</button>' +
+                '</div>' +
+                '<div class="form-group">' +
+                '<label class="control-label">回覆</label>' +
+                '<textarea id="editReply" style="height:500px;resize:none" class="form-control" cols="40" rows="5"></textarea>' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>';
+            ShowModalBox(data[0], html);
+
+            $('#bs-modal-box').on('hidden.bs.modal', function(e) {
+                unregisterEditor(data);
+            });
+
+            $('#CanReply').attr('disabled', 'disabled');
+            var mySelect = $('#CanReply');
+            feedbackCan.forEach(function(value) {
+                if (value.Type == getFeedbackTypeIdByName(currentRow.find("td:eq(8)").text())) {
+                    mySelect.append(
+                        $('<option></option>').val(value.Content).html(value.Title)
+                    );
+                    $('#CanReply').removeAttr('disabled');
+                }
+            });
+        }
+
+        function SendEditData() {
+            var staff = $('.user-profile').text();
+            var editReply = $('#editReply').val();
+            var commentId = $('#commentId').val();
+            console.log("staff : " + staff);
+            if (!editReply) {
+                alert("請輸入回覆內容!!");
+                return;
+            }
+
+            var SendData = {
+                Staff: staff,   
+                CommentReply: editReply,
+                Id: commentId,
+                CommentStatus: 'Y',
+            };
+
+            if (!confirm("確定回覆嗎?"))
+                return;
+
+            $('#loading-cover').fadeIn(100);
+            $.ajax({
+                type: 'POST',
+                url: "/FeedbackReply",
+                data: SendData,
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(msg) {
+                    $('#bs-modal-box').modal('hide');
+                    var code = msg.code;
+                    var message = msg.msg;
+                    if (code == 0) {
+                        refresh();
+                    }
+                    alert(message);
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+            }).done(function() {
+                $('#loading-cover').fadeOut(100);
+            });
+        }
+
+        function InsertCan() {
+            var selectedValue = $('#CanReply').val();
+            $('#editReply').insertAtCaret(selectedValue);
+        }
+
+        function getFeedbackTypeIdByName(typeName) {
+            var id = 0;
+            $.each(feedbackType, function(key, value) {
+                if (value.CommentTypeChtName == typeName) {
+                    id = value.Id;
+                    return true;
+                }
+            });
+            return id;
+        }
+
+        jQuery.fn.extend({
+            insertAtCaret: function(myValue) {
+                return this.each(function(i) {
+                    if (document.selection) {
+                        //For browsers like Internet Explorer
+                        this.focus();
+                        sel = document.selection.createRange();
+                        sel.text = myValue;
+                        this.focus();
+                    } else if (this.selectionStart || this.selectionStart == '0') {
+                        //For browsers like Firefox and Webkit based
+                        var startPos = this.selectionStart;
+                        var endPos = this.selectionEnd;
+                        var scrollTop = this.scrollTop;
+                        this.value = this.value.substring(0, startPos) + myValue + this.value.substring(endPos, this.value.length);
+                        this.focus();
+                        this.selectionStart = startPos + myValue.length;
+                        this.selectionEnd = startPos + myValue.length;
+                        this.scrollTop = scrollTop;
+                    } else {
+                        this.value += myValue;
+                        this.focus();
+                    }
+                })
+            }
+        });
+        
+        function checkIsNullOrEmpty(obj) {
+             if (obj == 'undefined' || obj == null || obj == 0 || obj == '')
+                return true;
+            return false;
+        }
+
+        $(document).on('click', '#SendEditData', SendEditData);
+        $(document).on('click', '#InsertCan', InsertCan);
+    });
+    </script>
+</body>
+
+</html>

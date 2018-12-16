@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SCG</title>
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Datatables -->
+    <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap-select -->
+    <link rel="stylesheet" href="../vendors/bootstrap-select/css/bootstrap-select.min.css">
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <style type="text/css" media="screen">
+        #datatable tbody td {
+            vertical-align: middle;
+        }
+    
+        .required {
+            background-color: #FFF0F5;
+        }
+    </style>
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <!--Menu-->
+            <!--Top-->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="row">
+                    <div class="clearfix"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>不雅字設定</h2>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label class="control-label">字數</label>
+                                            <input id="WordCount" class="form-control" type="text">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">不雅字</label>
+                                            <input id="ImpoliteWord" class="form-control" type="text">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">違規類型</label><br>
+                                            <div id="showTypeBlock"></div>
+                                        </div>
+                                        <button id="mSearch" class="btn btn-primary" style="margin-bottom: 10px;">搜尋</button>
+                                        <button id="AddImpoliteWord" class="btn btn-primary" style="margin-bottom: 10px;">新增不雅字</button>
+                                    </div>
+                                    <div class="x_content">
+                                        <table id="datatable" class="table table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>違規類型</th>
+                                                    <th>不雅字</th>
+                                                    <th>功能</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /page content -->
+        <!--footer-->
+    </div>
+    <div id="loading-cover" style="width: 100%; height: 100%; background: rgba(0,0,0,.5); position: fixed; display: none; z-index: 999999; top: 0; left: 0;">
+        <div id="loading-icon" style="width: 85px; height: 65px; margin: -42.5px 0 0 -32.5px; top: 50%; left: 50%; position: fixed;">
+            <i class="fa fa-circle-o-notch fa-spin fa-5x fa-fw" style="color: #FFF;"></i>
+        </div>
+    </div>
+    <div id="bs-modal-box" class="modal fade" tabindex="-1" role="dialog"></div>
+
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- validator -->
+    <script src="../vendors/validator/validator.js"></script>
+    <!-- Datatables -->
+    <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="../vendors/jszip/dist/jszip.min.js"></script>
+    <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+    <!-- bootstrap-select -->
+    <script src="../vendors/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="../vendors/bootstrap-select/js/i18n/defaults-zh_TW.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+    <script>
+    $(document).ready(function() {
+
+        var table = $('#datatable').DataTable();
+        var ImpoliteTypeGroup = [];
+        GetImpoliteTypeGroup();
+
+        function GetImpoliteTypeGroup() {
+            $('#loading-cover').fadeIn(100);
+            $.ajax({
+                type: 'POST',
+                url: "/GetTypeGroup",
+                data: {},
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(msg) {
+                    if (msg.code == -1) { msg.msg } else {
+                        ImpoliteTypeGroup = msg.data;
+                        var txtId = 1;
+                        msg.data.forEach(function(value) {
+                            if (txtId%3 === 0) {//TO DO
+                                $("#showTypeBlock").append('<div> <input type="checkbox" id=checkbox value='+value.id+' />'+value.name+' </div>');
+                            }
+                            else {
+                                $("#showTypeBlock").append('<div> <input type="checkbox" id=checkbox value='+value.id+' />'+value.name+' </div>');
+                            }
+                            
+                            txtId++;
+                        });
+                    }
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+            }).done(function() {
+                $('#loading-cover').fadeOut(100);;
+            });
+        }
+
+        function TransTypeName(typeArr) {
+            var result = "";
+            var i;
+            for (i = 0; i < typeArr.length; i++) {
+                ImpoliteTypeGroup.forEach(function(v){
+                    if (v.id === parseInt(typeArr[i])) {
+                        if (i === typeArr.length - 1) {
+                            result += v.name; 
+                        }
+                        else {
+                            result += v.name+","; 
+                        }                       
+                    }
+                });
+            }
+            return result;
+        }
+
+        function search() {
+
+            var requestData = {};
+            var wordCount = $('#WordCount').val();
+            var impoliteType = "";
+            var checkBoxLength =  $('input[id=checkbox]:checked').length;
+
+            $('input[id=checkbox]:checked').each(function (idx) {   
+                if (checkBoxLength-1 > idx) {
+                    impoliteType += this.value+",";
+                }
+                else {
+                    impoliteType += this.value;                    
+                }                                  
+            });
+                    
+            requestData.wordCount = wordCount === "" ? "0" : wordCount;
+            requestData.impoliteWord = $('#ImpoliteWord').val();
+            requestData.impoliteType = impoliteType;
+
+
+            if (typeof table !== "undefined") {
+                table.destroy();
+            }
+
+            table = $('#datatable').DataTable({
+                "serverSide": true,
+                "searching" : false,
+                "lengthMenu": [
+                    [30, 50, 100, -1],
+                    [30, 50, 100, "∞"]
+                ],
+                "columns": [
+                    { "data": "Id" },
+                    { "data": "typeName" },
+                    { "data": "Keyword" },
+                    { "defaultContent": 
+                        `<div class="btn-group btn-group-sm" style="display: flex;">
+                            <button class="btn btn-info"  id='modifyitem' title="修改"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 修改</button>                            
+                            <button class="btn btn-danger active" id='deleteitem' title="刪除"><i class="fa fa-ban" aria-hidden="true"></i> 刪除</button>
+                        </div>`
+                    }                    
+                ],
+                'rowCallback': function(row, data, dataIndex) {
+                    var tempArr = data.ViolationTypeId.split(",");
+                    $('td:eq(1)', row).html(data.typeName = TransTypeName(tempArr));
+                },
+                "ajax": {
+                    "url": "/ImpoliteWordSearch",
+                    "type": "POST",
+                    "data": { requestData: JSON.stringify(requestData) },
+                    "cache": "false",
+                    "async": "true",
+                    "dataType": 'json'
+                }
+            });
+        };
+        
+        $('#datatable').on( 'processing.dt', function ( e, settings, processing ) {
+            if(processing){
+                $('#loading-cover').fadeIn(100);
+            } else {
+                $('#loading-cover').fadeOut(100);
+            }
+        }).dataTable();
+
+        function SendAddData() {
+            $('#loading-cover').fadeIn(100);
+            var addWord = $('#impoliteWord').val();
+            var impoliteTypeArr = [];
+         
+            $('input[id=blockCheckbox]:checked').each(function (idx) {   
+                impoliteTypeArr[idx] = this.value;                                         
+            });
+
+            if (addWord === "") {
+                alert("不雅字不得為空");
+                $('#loading-cover').fadeOut(100);
+                return;
+            }
+       
+            if (impoliteTypeArr.length === 0) {
+
+                alert("至少選擇一個類型");
+                $('#loading-cover').fadeOut(100);
+                return;
+            }
+
+            var addWordArr = addWord.split(";");
+
+            var SendData = {
+                addWordArr: addWordArr,
+                typeArr: impoliteTypeArr
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: "/AddImpoliteWord",
+                data: { SendData: JSON.stringify(SendData) },
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(msg) {
+                    if (msg.code == -1) { 
+                        msg.msg 
+                    } 
+                    else {
+                        console.log("@msg.data.length"+msg.data.length);
+                        if (msg.data.length > 0)
+                        {
+                            var exsitWord = "";
+                            
+                            msg.data.forEach(function (element){
+                                exsitWord += element.keyword+" ";
+                            });
+
+                            alert(msg.msg+" 重複的字有: "+exsitWord);                            
+                        }
+                        else {
+                            alert(msg.msg);
+                        }
+                        
+                        search();
+                        $('#bs-modal-box').modal('hide');   
+                    }                                                       
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+            }).done(function() {                
+                $('#loading-cover').fadeOut(100);           
+            });
+
+        }
+
+        function DeleteImpolite(id) {
+            $.ajax({
+                type: 'POST',
+                url: "/DeleteImpoliteWord",
+                data: { Id: id },
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(msg) {
+                    if (msg.code == -1) { msg.msg } else {
+                        alert(msg.msg);
+                        search();
+                    }
+                }
+            });
+        }
+
+        function EditImpoliteType() {
+            $('#loading-cover').fadeIn(100);
+            var Id = $('#editWordId').val();         
+            var impoliteType = [];
+         
+            $('input[id=blockCheckbox]:checked').each(function (idx) {   
+                impoliteType[idx] = this.value;                                         
+            });
+       
+            if (impoliteType.length === 0) {
+
+                alert("至少選擇一個類型");
+                $('#loading-cover').fadeOut(100);
+                return;
+            }
+
+            var SendData = {
+                impoliteID: Id,
+                insertType: impoliteType
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: "/UpdateImpoliteWordType",
+                data: { SendData: JSON.stringify(SendData) },
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(msg) {
+                    $('#bs-modal-box').modal('hide');
+                    alert(msg.msg);
+                    search();
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+            }).done(function() {
+                $('#loading-cover').fadeOut(100);
+            });
+        }
+
+        function ShowAddPanel() {
+            var html =
+                `<div class="col-sm-12">
+                <div class="panel panel-warning">
+                <div class="panel-heading"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 新增不雅字</div>
+                <div class="panel-body">
+                <div class="form-group">
+                    <label class="control-label">不雅字</label>
+                    <input id="impoliteWord" class="form-control" maxlength="50" type="text">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">違規類型</label><br>
+                    <div id="showBoxTypeBlock"></div>
+                </div>
+                </div>
+                </div>
+                </div>`;
+            ShowAddBox("", html);
+        }
+
+        function ShowAddBox(Title, Content) {
+ 
+            var html =
+                ` 
+                <div class="modal-dialog" role="document"> 
+                <div class="modal-content"> 
+                <div class="modal-header"> 
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
+                <h4 class="modal-title"></h4> 
+                </div>
+                <div class="modal-body" style="display:flow-root"> 
+                <p></p>
+                </div> 
+                <div class="modal-footer"> 
+                <button id="SendAddData" type="button" class="btn btn-success">確定</button> 
+                <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button> 
+                </div> 
+                </div> 
+                </div>`;
+                $("#bs-modal-box").html(html);
+   
+            $('#bs-modal-box h4.modal-title').html('<span class="label label-default">新增不雅字</span> ' + Title);
+            $('#bs-modal-box div.modal-body').html(Content);
+            $('#bs-modal-box').modal('show')
+            ShowImpoliteType();
+        }
+
+        function ShowEditPanel(data) {       
+            var html =
+                `<div class="col-sm-12">
+                <div class="panel panel-warning">
+                <div class="panel-heading"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 編輯違規類型</div>
+                <div class="panel-body">
+
+                <div class="form-group">
+                <label class="control-label">Id</label>
+                <input id="editWordId" class="form-control" type="number" readonly value= ${data.Id}>
+                </div>
+                <div class="form-group">
+                <label class="control-label">不雅字</label>
+                <input id="editKeyword" class="form-control" type="text" readonly value= ${data.Keyword}>
+
+                </div>
+                <div class="form-group">
+                        <label class="control-label">違規類型</label><br>
+                        <div id="showBoxTypeBlock"></div>
+                </div>
+                </div>
+                </div>
+                </div>`;
+            ShowEditBox("", html, data);
+        }
+        
+        function ShowEditBox(Title, Content, data) {
+            var html =
+                `
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body" style="display:flow-root">
+                <p></p>
+                </div>
+                <div class="modal-footer">
+                <button id="SendEditData" type="button" class="btn btn-success">確定</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
+                </div>
+                </div>
+                </div>`;
+
+            $("#bs-modal-box").html(html);
+            $('#bs-modal-box h4.modal-title').html('<span class="label label-default">編輯不雅字</span> ' + Title);
+            $('#bs-modal-box div.modal-body').html(Content);
+            $('#bs-modal-box').modal('show')
+            ShowImpoliteType();
+            SetCheckBoxValue(data);
+        }
+        
+        function SetCheckBoxValue(data) {
+            $('input[id=blockCheckbox]').each(function(index) {
+                var tempArr = data.ViolationTypeId.split(",");
+                var i;
+                for (i = 0; i < tempArr.length; i++) {                                       
+                    if (this.value === tempArr[i]) {        
+                        this.checked = 'checked';
+                    }
+                }                
+            });            
+        }
+
+        function ShowImpoliteType() {
+            ImpoliteTypeGroup.forEach (function(value){                
+                $("#showBoxTypeBlock").append('<div> <input type="checkbox" id=blockCheckbox value='+value.id+' />'+value.name+' </div>');
+            });
+        }
+
+        $(document).on('click', '#mSearch', search);
+        $(document).on('click', '#AddImpoliteWord', ShowAddPanel);
+        $(document).on('click', '#SendAddData', SendAddData);
+        $(document).on('click', '#SendEditData', EditImpoliteType);
+
+        $('#datatable tbody').on('click', 'button', function(e) {
+            var data = table.row($(this).parents('tr')).data();
+            switch ($(this).attr('id')) {
+                case "modifyitem":
+                    ShowEditPanel(data);
+                    break;
+                case "deleteitem":
+                    if (confirm("確定刪除嗎?")) {                      
+                        DeleteImpolite(data.Id);
+                    }
+                    break;
+            }
+
+        });
+
+    });
+
+
+    </script>
+
+</body>

@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SCG</title>      
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Datatables -->
+    <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap-select -->
+    <link rel="stylesheet" href="../vendors/bootstrap-select/css/bootstrap-select.min.css">
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- bootstrap-notify -->
+    <link href="../vendors/bootstrap-notify/animate.min.css" rel="stylesheet">
+    <!-- At.js 套件(autocomplete))  -->
+    <link href="../vendors/At.js/css/jquery.atwho.min.css" rel="stylesheet">
+
+    <style type="text/css" media="screen">
+    #datatable tbody td {
+        vertical-align: middle;
+    }
+    .alert h5{
+        margin: 0 0 0 15px;
+        font-size: 1.3em;
+    }
+    .alert i{
+        margin-right: 5px;
+    }
+    .modal textarea{
+        resize: vertical;
+    }
+    </style>
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <!--Menu-->
+            <!--Top-->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="row">
+                    <div class="clearfix"></div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>會員資訊</h2>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <div class="form-horizontal form-label-left" novalidate>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">會員ID
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="MemberId" class="date-picker form-control col-md-7 col-xs-12" placeholder="" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">遊戲暱稱
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="MemberNickName" class="form-control col-md-7 col-xs-12" placeholder="" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Email 帳號
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="MemberEmail" class="form-control col-md-7 col-xs-12" placeholder="" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">遊戲帳號
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="MemberAccount" class="form-control col-md-7 col-xs-12" placeholder="" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">綁定門號
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="MemberPhone" class="form-control col-md-7 col-xs-12" placeholder="" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">真實姓名
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="MemberName" class="form-control col-md-7 col-xs-12" placeholder="" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="ln_solid"></div>
+                                        <div class="form-group">
+                                            <div class="col-md-9 col-md-offset-4">
+                                                <button id="mClear" class="btn btn-danger">清除</button>
+                                                <button id="mSearch" class="btn btn-success">搜尋</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_content">
+                                    <div class="form-horizontal form-label-left" novalidate>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">註冊國家
+                                            </label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <input id="MemberNation" class="form-control" placeholder="" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">註冊地區
+                                            </label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <input id="MemberAddress" class="form-control" placeholder="" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">註冊IP
+                                            </label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <input id="MemberIP" class="form-control" placeholder="" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">註冊時間開始 <i aria-hidden="true"></i></label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <input type="text" name="MemberCreateTimeStart" id="MemberCreateTimeStart" class="form-control" value="" />
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">註冊時間結束 <i aria-hidden="true"></i></label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <input type="text" name="MemberCreateTimeEnd" id="MemberCreateTimeEnd" class="form-control" value="" />
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">用戶狀態
+                                            </label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <select name="MemberStatus_filter" id="MemberStatus_filter" class="form-control" required="required">
+                                                    <option class="text-center" value="0" selected></option>
+                                                    <option class="text-center" value="1">正常</option>
+                                                    <option class="text-center" value="2">凍結</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">VIP 等級</label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <select name="MemberVIPLV_filter" id="MemberVIPLV_filter" class="form-control" required="required">
+                                                    <option class="text-center" value="0" selected></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">玩家等級
+                                            </label>
+                                            <div class="col-md-2 col-sm-2 col-xs-3">
+                                                <select name="MemberLV_filter" id="MemberLV_filter" class="form-control" required="required">
+                                                    <option class="text-center" value="0" selected>=</option>
+                                                    <option class="text-center" value="1">&gt;</option>
+                                                    <option class="text-center" value="2">&lt;</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-7 col-sm-7 col-xs-9">
+                                                <input id="MemberLV" class="form-control" type="number" min="1" max="99999999">
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">活躍度 (下限)</label>
+                                            <div class="col-md-4 col-sm-4 col-xs-9">
+                                                <input id="MemberActiveD" class="form-control" type="number" min="0" max="99">
+                                            </div>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12">(上限)</label>
+                                            <div class="col-md-4 col-sm-4 col-xs-9">
+                                                <input id="MemberActiveT" class="form-control" type="number" min="0" max="99">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="row">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>會員列表</h2>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <table id="datatable" class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>會員ID</th>
+                                                <th>遊戲暱稱</th>
+                                                <th>Email 帳號</th>
+                                                <th>遊戲帳號</th>
+                                                <th>綁定門號</th>
+                                                <th>真實姓名</th>
+                                                <th>註冊國家</th>
+                                                <th>註冊地區</th>
+                                                <th>註冊時間</th>
+                                                <th>用戶狀態</th>
+                                                <th>VIP 等級</th>
+                                                <th>玩家等級</th>
+                                                <th>活躍度</th>
+                                                <th>玩家金幣</th>
+                                                <th>最後登入時間</th>
+                                                <th>用戶狀態</th>
+                                                <th>資訊查詢</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /page content -->
+            <!--footer-->
+        </div>
+    </div>
+    <div id="loading-cover" style="width: 100%; height: 100%; background: rgba(0,0,0,.5); position: fixed; display: none; z-index: 999999; top: 0; left: 0;">
+        <div id="loading-icon" style="width: 85px; height: 65px; margin: -42.5px 0 0 -32.5px; top: 50%; left: 50%; position: fixed;">
+            <i class="fa fa-circle-o-notch fa-spin fa-5x fa-fw" style="color: #FFF;"></i>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- validator -->
+    <script src="../vendors/validator/validator.js"></script>
+    <!-- Datatables -->
+    <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="../vendors/jszip/dist/jszip.min.js"></script>
+    <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/moment/min/moment-duration-format.min.js"></script>
+    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap-select -->
+    <script src="../vendors/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="../vendors/bootstrap-select/js/i18n/defaults-zh_TW.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+    <!-- bootstrap-notify -->
+    <script src="../vendors/bootstrap-notify/bootstrap-notify.min.js"></script>
+    <!-- At.js 套件(autocomplete))  -->
+    <script type="text/javascript" src="../vendors/At.js/js/jquerycaret.min.js"></script>
+    <script type="text/javascript" src="../vendors/At.js/js/jqueryatwho.min.js"></script>
+
+    <script>
+    $(document).ready(function() {
+        $('#MemberLV_filter, #MemberVIPLV_filter, #MemberStatus_filter').selectpicker({
+            showTick: true
+        });
+
+        function QuickNotify(message, type) {
+            var icon = "";
+            switch(type) {
+                case 'success':
+                    icon = 'fa-check-circle';
+                    break;
+                case 'danger':
+                    icon = 'fa-times-circle';
+                    break;
+                default: 
+                    icon = 'fa-exclamation-triangle';
+            }
+            $.notify({
+                message: '<h5><i class="fa ' + icon + '"></i> ' + message + '</h5>'
+            },{
+                type: type,
+                z_index: 20000,
+                delay: 6000,
+            });
+        }
+
+        function clear(e) {
+            e.preventDefault();
+            $('#MemberId').val("");
+            $('#MemberNickName').val("");
+            $('#MemberAccount').val("");
+            $('#MemberEmail').val("");
+            $('#MemberPhone').val("");
+            $('#MemberName').val("");
+            $('#MemberNation').val("");
+            $('#MemberAddress').val("");
+            $('#MemberIP').val("");
+            $('#MemberCreateTimeStart').val("");
+            $('#MemberCreateTimeEnd').val("");
+            $('#MemberLV_filter').val(0);
+            $('#MemberLV_filter').selectpicker('refresh');
+            $('#MemberLV').val("");
+
+            $('#MemberVIPLV_filter').val(0);
+            $('#MemberVIPLV_filter').selectpicker('refresh');
+
+            $('#MemberStatus_filter').val(0);
+            $('#MemberStatus_filter').selectpicker('refresh');
+
+            $('#MemberActive_filter').val(0);
+            $('#MemberActive_filter').selectpicker('refresh');
+            $('#MemberActive').val("");
+            $('#MemberActiveD').val("");
+            $('#MemberActiveT').val("");
+        }
+
+        DateInit();
+
+        function DateInit() {
+            $('#MemberCreateTimeStart').daterangepicker({
+                autoUpdateInput: false,
+                locale: {
+                    cancelLabel: 'Clear'
+                },
+                timePicker: true,
+                timePicker24Hour: true,
+                singleDatePicker: true,
+                timePickerSeconds: true
+            });
+            $('#MemberCreateTimeEnd').daterangepicker({
+                autoUpdateInput: false,
+                locale: {
+                    cancelLabel: 'Clear'
+                },
+                timePicker: true,
+                timePicker24Hour: true,
+                singleDatePicker: true,
+                timePickerSeconds: true
+            });
+        }
+
+        function ShowModalBox(Title, Content, footer, zindex = '999') {
+            $('#bs-modal-box-' + zindex).remove();
+            var html =
+                '<div id="bs-modal-box-' + zindex + '" class="modal fade" tabindex="' + zindex + '" role="dialog">' +
+                '<div class="modal-dialog modal-lg" role="document">' +
+                '<div class="modal-content">' +
+                '<div class="modal-header">' +
+                '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+                '<h4 class="modal-title"></h4>' +
+                '</div>' +
+                '<div class="modal-body" style="display:flow-root">' +
+                '<p></p>' +
+                '</div>' +
+                (footer == null ? '' : '<div class="modal-footer">' + footer + '</div>') +
+                '</div>' +
+                '</div>' +
+                '</div>';
+            $('body').append(html);
+            $('#bs-modal-box-' + zindex + ' h4.modal-title').html(Title);
+            $('#bs-modal-box-' + zindex + ' div.modal-body').html(Content);
+            $('#bs-modal-box-' + zindex).modal('show');
+        }
+
+        $('#MemberCreateTimeStart').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('YYYY-MM-DD HH:mm:ss'));
+        });
+        $('#MemberCreateTimeStart').on('cancel.daterangepicker', function(ev, picker) {
+            $(this).val('');
+        });
+        $('#MemberCreateTimeEnd').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('YYYY-MM-DD HH:mm:ss'));
+        });
+        $('#MemberCreateTimeEnd').on('cancel.daterangepicker', function(ev, picker) {
+            $(this).val('');
+        });
+
+        $('#loading-cover').fadeIn(100);
+        GetVIPLvSetting(function(){
+            GetViolationType(function(){
+                GetFeedbackCan(function(){
+                    $('#loading-cover').fadeOut(100);
+                });
+            });
+        });
+        var VIPData = [];
+        function GetVIPLvSetting(callback) {
+            $.ajax({
+                type: 'POST',
+                url: "/GetVIPLvSetting",
+                dataType: 'json',
+                success: function(msg) {
+                    var target = $('#MemberVIPLV_filter');
+                    var html = '';
+                    msg.data.forEach(function(value) {
+                        html += `<option value="${value.VIPLvId}">${value.VIPLvName}</option>`;
+                        VIPData[value.VIPLvId] = value.VIPLvName;
+                    });
+                    target.append(html);
+                    target.selectpicker('refresh');
+                },
+                error: function(xhr, desc, err) {
+                    QuickNotify(`GetVIPLvSetting HTTP Status code:${xhr.status}`, 'danger');
+                }
+            }).done(function() {
+                callback();
+            });
+        }
+
+        var ViolationData = {};
+        function GetViolationType(callback) {
+            $.ajax({
+                type: 'POST',
+                url: "/GetTypeGroup",
+                dataType: 'json',
+                success: function(result) {
+                    ViolationData = result.data;
+                },
+                error: function(xhr, desc, err) {
+                    QuickNotify(`GetViolationType HTTP Status code:${xhr.status}`, 'danger');
+                }
+            }).done(function() {
+                callback();
+            });
+        };
+        
+        var automatedList = [];
+        function GetFeedbackCan(callback) {
+            $.ajax({
+                type: 'POST',
+                url: "/GetFeedbackCan",
+                dataType: 'json',
+                success: function (result) {
+                    $.each(result.data, function(index, val) {
+                        automatedList.push(val.Content);
+                    });
+                },
+                error: function (xhr, desc, err) {
+                    QuickNotify(`GetViolationType HTTP Status code:${xhr.status}`, 'danger');
+                }
+            }).done(function () {
+                callback();
+            });
+        };
+
+
+        function datacheck() {
+
+            var MemberId = $('#MemberId').val().replace(/\s+/g, "");
+            var MemberNickName = $('#MemberNickName').val().replace(/\s+/g, "");
+            var MemberEmail = $('#MemberEmail').val().replace(/\s+/g, "");
+            var MemberAccount = $('#MemberAccount').val().replace(/\s+/g, "");
+            var MemberPhone = $('#MemberPhone').val().replace(/\s+/g, "");
+            var MemberName = $('#MemberName').val().replace(/\s+/g, "");
+            var MemberNation = $('#MemberNation').val().replace(/\s+/g, "");
+            var MemberAddress = $('#MemberAddress').val().replace(/\s+/g, "");
+            var MemberIP = $('#MemberIP').val().replace(/\s+/g, "");
+            var MemberCreateTimeStart;
+            var MemberCreateTimeEnd;
+            var MemberStatus = $('#MemberStatus_filter').val();
+            var MemberVIPLV = $('#MemberVIPLV_filter').val();
+            var MemberLV_filter = $('#MemberLV_filter').val();
+            var MemberLV = $('#MemberLV').val();
+            var MemberActiveD = parseInt($('#MemberActiveD').val());
+            var MemberActiveT = parseInt($('#MemberActiveT').val());
+
+            var result = { r: false };
+
+            if (((MemberActiveD >= 0) && isNaN(MemberActiveT)) || ((MemberActiveT >= 0) && isNaN(MemberActiveD))) {
+                alert("活躍度資訊不足");
+                return result;
+            }
+
+            if (MemberActiveD > MemberActiveT) {
+                alert("活躍度下限超過上限");
+                return result;
+            }
+
+
+            if ($('#MemberCreateTimeStart').val() !== "" && $('#MemberCreateTimeEnd').val() !== "") {
+                result.r = true;
+                result.MemberCreateTimeStart = $('#MemberCreateTimeStart').val();
+                result.MemberCreateTimeEnd = $('#MemberCreateTimeEnd').val();
+            }
+
+            if (MemberId !== "") {
+                result.r = true;
+                result.MemberId = MemberId;
+            }
+            if (MemberNickName !== "") {
+                result.r = true;
+                result.MemberNickName = MemberNickName;
+            }
+            if (MemberEmail !== "") {
+                result.r = true;
+                result.MemberEmail = MemberEmail;
+            }
+            if (MemberAccount !== "") {
+                result.r = true;
+                result.MemberAccount = MemberAccount;
+            }
+            if (MemberPhone !== "") {
+                result.r = true;
+                result.MemberPhone = MemberPhone;
+            }
+            if (MemberName !== "") {
+                result.r = true;
+                result.MemberName = MemberName;
+            }
+            if (MemberNation !== "") {
+                result.r = true;
+                result.MemberNation = MemberNation;
+            }
+            if (MemberAddress !== "") {
+                result.r = true;
+                result.MemberAddress = MemberAddress;
+            }
+            if (MemberIP !== "") {
+                result.r = true;
+                result.MemberIP = MemberIP;
+            }
+            if (MemberStatus !== "0") {
+                result.r = true;
+                switch (MemberStatus) {
+                    case "1":
+                        result.MemberStatus = '1';
+                        break;
+                    case "2":
+                        result.MemberStatus = '2';
+                        break;
+                }
+            }
+            if (MemberVIPLV !== "0") {
+                result.r = true;
+                result.MemberVIPLV = MemberVIPLV;
+            }
+            if (MemberLV !== "") {
+                result.r = true;
+                result.MemberLV_filter = MemberLV_filter;
+                result.MemberLV = MemberLV;
+            }
+            if ((MemberActiveD >= 0) && (MemberActiveT >= 0)) {
+                result.r = true;
+                result.MemberActiveD = MemberActiveD;
+                result.MemberActiveT = MemberActiveT;
+            }
+
+            if (!result.r) { alert('Please Enter Data'); };
+            return result;
+        }
+
+        var table = $('#datatable').DataTable();
+
+        function search() {
+            var data = datacheck();
+            if (!data.r) {
+                return;
+            }
+            if (typeof table !== "undefined") {
+                table.destroy();
+            }
+            table = $('#datatable').DataTable({
+                "serverSide": true,
+                "columnDefs": [
+                    {
+                        "targets": [10, 11, 12],
+                        "className": "text-center",
+                    },
+                    {
+                        "targets": 13,
+                        "className": "text-right",
+                    }
+                ],
+                "lengthMenu": [
+                    [30, 50, 100, -1],
+                    [30, 50, 100, "∞"]
+                ],
+                "columns": [
+                    { "data": "MemberId" },
+                    { "data": "NickName" },
+                    { "data": "Email" },
+                    { "data": "Account" },
+                    { "data": "CellPhoneNum" },
+                    { "data": "Name" },
+                    { "data": "Nation" },
+                    { "data": "Address" },
+                    { "data": "CreateTime" },
+                    {
+                        "data": "NormalLoginAuth",
+                        "visible": false,
+                        "searchable": false
+                    },
+                    { "data": "MemberVIP" },
+                    { "data": "MemberLevel" },
+                    { "data": "ActiveValue" },
+                    { "data": "MemberBalance" },
+                    { "data": "LastLogInTime" },
+                    { "defaultContent": 
+                        `<div class="btn-group btn-group-sm" style="display: flex;">
+                            <button class="btn btn-info" title="修改資料"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 修改</button>
+                            <button class="btn btn-info" title="發送系統信"><i class="fa fa-envelope-o" aria-hidden="true"></i> 發信</button>
+                            <button class="btn btn-danger suspension" title="設為停權"><i class="fa fa-lock"></i> 設為停權</button>
+                            <button class="btn btn-danger" title="禁言"><i class="fa fa-lock"></i> 禁言</button>
+                        </div>`
+                    },
+                    { "defaultContent": 
+                        `<div class="btn-group btn-group-sm" style="display: flex;">
+                            <button class="btn btn-info" title="儲值查詢"><i class="fa fa-search" aria-hidden="true"></i> 存摺</button>
+                            <button class="btn btn-info" title="投注查詢"><i class="fa fa-search" aria-hidden="true"></i> 投注</button>
+                            <button class="btn btn-info" title="榜查詢"><i class="fa fa-search" aria-hidden="true"></i> 榜單</button>
+                            <button class="btn btn-info" title="交易代碼查詢"><i class="fa fa-search" aria-hidden="true"></i> 交易</button>
+                            <button class="btn btn-info" title="贈禮查詢"><i class="fa fa-search" aria-hidden="true"></i> 贈禮</button>
+                        </div>`
+                    }
+                ],
+                'rowCallback': function(row, data, dataIndex) {
+                    if (data.NormalLoginAuth == 0) {
+                        $(row).css('background', '#ff000038');
+                        $('td:eq(14)', row).find('.suspension').attr('title', '解除停權').removeClass('btn-danger').addClass('btn-success').html('<i class="fa fa-unlock"></i> 解除停權</button>');
+                    }
+                    $('td:eq(9)', row).html(VIPData[data.MemberVIP]);
+                    $('td:eq(8)', row).html((new Date(data.CreateTime)).toLocaleString());
+                    $('td:eq(12)', row).html(thousandComma(checkIsNullOrEmpty(data.MemberBalance) ? 0 : data.MemberBalance / 100));
+                    if(checkIsNullOrEmpty(data.LastLogInTime)){
+                        $('td:eq(13)', row).html("");
+                    }else{
+                        $('td:eq(13)', row).html((new Date(data.LastLogInTime)).toLocaleString());
+                    }
+                },
+                "ajax": {
+                    "url": "/MemberSearch",
+                    "type": "POST",
+                    "data": { search: JSON.stringify(data) },
+                    "cache": "false",
+                    "async": "true",
+                    "dataType": 'json'
+                }
+            });
+        };
+
+        $('#datatable').on( 'processing.dt', function ( e, settings, processing ) {
+            if(processing){
+                $('#loading-cover').fadeIn(100);
+            } else {
+                $('#loading-cover').fadeOut(100);
+            }
+        }).dataTable();
+
+        function thousandComma(number) {
+            var num = number.toString();
+            var pattern = /(-?\d+)(\d{3})/;
+
+            while (pattern.test(num)) {
+                num = num.replace(pattern, "$1,$2");
+            }
+            return num;
+        }
+
+        function checkIsNullOrEmpty(obj) {
+            if (obj == 'undefined' || obj == null || obj == 0 || obj == '')
+                return true;
+            return false;
+        }
+
+        function showSuspensionModal(MemberId, NickName, LoginAuth){
+            var optionData = "";
+            $.each(ViolationData, function(index, value) {
+                optionData += `<option value="${value.id}">${value.name}</option>`;
+            });
+            var suspensionText = LoginAuth == '0' ? '設為停權' : '解除停權';
+            var timePanel = `
+                <div class="panel panel-default">
+                    <div class="panel-heading">時間長度
+                        <span class="pull-right timePreview">
+                            <span class="label label-primary">時長</span>
+                            <span class="label label-success">解除</span>
+                        </span>
+                    </div>
+                    <div class="panel-body suspensionTime">
+                        <div class="form-group col-sm-2">
+                            <label for="suspension_yr" class="control-label">年</label>
+                            <input type="number" name="suspension_yr" id="suspension_yr" value="0" min="0" max="99" class="form-control text-center">
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <label for="suspension_mon" class="control-label">月</label>
+                            <input type="number" name="suspension_mon" id="suspension_mon" value="0" min="0" max="12" class="form-control text-center">
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <label for="suspension_wek" class="control-label">週</label>
+                            <input type="number" name="suspension_wek" id="suspension_wek" value="0" min="0" max="5" class="form-control text-center">
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <label for="suspension_day" class="control-label">天</label>
+                            <input type="number" name="suspension_day" id="suspension_day" value="0" min="0" max="31" class="form-control text-center">
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <label for="suspension_hr" class="control-label">時</label>
+                            <input type="number" name="suspension_hr" id="suspension_hr" value="0" min="0" max="24" class="form-control text-center">
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <label for="suspension_min" class="control-label">分</label>
+                            <input type="number" name="suspension_min" id="suspension_min" value="30" min="0" max="60" class="form-control text-center">
+                        </div>
+                        <div class="help-block">
+                            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>&nbsp;
+                            若全部數值為0即為永久停權，若有新增或修改時間將最後從送出時間點重新起算。
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="violationtype" class="control-label">違規類型</label>
+                    <select name="violationtype" id="violationtype" class="form-control">${optionData}</select>
+                </div>`;
+            var Content = `
+                <div class="col-sm-12">
+                    ${LoginAuth == '0' ? timePanel : ''}
+                    <div class="form-group">
+                        <label for="suspension_note" class="control-label">${suspensionText}原因</label>
+                        <textarea name="suspension_note" id="suspension_note" class="form-control" rows="1" minlength="10" maxlength="255" data-autoresize></textarea>
+                    </div>
+                    <div class="help-block">
+                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>&nbsp;
+                        至少要輸入10個字，最多輸入255個字。
+                    </div>
+                </div>`;
+            var footer = 
+                `<div class="btn-group btn-group-lg" style="margin-right: 10px;">
+                    <button type="button" class="btn btn-primary" id="sendSuspension" data-member="${MemberId}" data-nickname="${NickName}" data-loginauth="${LoginAuth}"><i class="fa fa-pencil"></i> 確定${suspensionText}</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-undo"></i> 取消</button>
+                </div>`;
+            ShowModalBox(`將 ${MemberId} / ${NickName} ${suspensionText}`, Content, footer, zindex = '999');
+        }
+
+        function showBannedModal(MemberId, NickName, LoginAuth){
+            var optionData = "";
+            $.each(ViolationData, function(index, value) {
+                optionData += `<option value="${value.id}">${value.name}</option>`;
+            });
+            var suspensionText = '設定禁言時間';
+            var timePanel = `
+                <div class="panel panel-default">
+                    <div class="panel-heading">時間長度
+                        <span class="pull-right timePreview">
+                            <span class="label label-primary">時長</span>
+                            <span class="label label-success">解除</span>
+                        </span>
+                    </div>
+                    <div class="panel-body suspensionTime">
+                        <div class="form-group col-sm-2">
+                            <label for="suspension_yr" class="control-label">年</label>
+                            <input type="number" name="suspension_yr" id="suspension_yr" value="0" min="0" max="99" class="form-control text-center">
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <label for="suspension_mon" class="control-label">月</label>
+                            <input type="number" name="suspension_mon" id="suspension_mon" value="0" min="0" max="12" class="form-control text-center">
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <label for="suspension_wek" class="control-label">週</label>
+                            <input type="number" name="suspension_wek" id="suspension_wek" value="0" min="0" max="5" class="form-control text-center">
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <label for="suspension_day" class="control-label">天</label>
+                            <input type="number" name="suspension_day" id="suspension_day" value="0" min="0" max="31" class="form-control text-center">
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <label for="suspension_hr" class="control-label">時</label>
+                            <input type="number" name="suspension_hr" id="suspension_hr" value="0" min="0" max="24" class="form-control text-center">
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <label for="suspension_min" class="control-label">分</label>
+                            <input type="number" name="suspension_min" id="suspension_min" value="30" min="0" max="60" class="form-control text-center">
+                        </div>
+                        <div class="help-block">
+                            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>&nbsp;
+                            若全部數值為0即為永久停權，若有新增或修改時間將最後從送出時間點重新起算。
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="violationtype" class="control-label">違規類型</label>
+                    <select name="violationtype" id="Bviolationtype" class="form-control">${optionData}</select>
+                </div>`;
+            var Content = `
+                <div class="col-sm-12">
+                    ${LoginAuth == '0' ? timePanel : ''}
+                    <div class="form-group">
+                        <label for="suspension_note" class="control-label">${suspensionText}原因</label>
+                        <textarea name="suspension_note" id="Bsuspension_note" class="form-control" rows="1" minlength="10" maxlength="255" data-autoresize></textarea>
+                    </div>
+                    <div class="help-block">
+                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>&nbsp;
+                        至少要輸入10個字，最多輸入255個字。
+                    </div>
+                </div>`;
+            var footer = 
+                `<div class="btn-group btn-group-lg" style="margin-right: 10px;">
+                    <button type="button" class="btn btn-primary" id="sendBanned" Bdata-member="${MemberId}" Bdata-nickname="${NickName}" data-loginauth="${LoginAuth}"><i class="fa fa-pencil"></i> 確定${suspensionText}</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-undo"></i> 取消</button>
+                </div>`;
+            ShowModalBox(`將 ${MemberId} / ${NickName} ${suspensionText}`, Content, footer, zindex = '999');
+        }
+
+        $(document).on('hidden.bs.modal', '#bs-modal-box-999', function (event) {
+            PreviewLength = 0;
+            clearInterval(setTimePreview);
+            $suspension_inputor.atwho('destroy');
+        });
+        $(document).on('shown.bs.modal', '#bs-modal-box-999', function (event) {
+            suspensionTimePreview();
+            if(PreviewLength == 0){
+                PreviewLength++;
+                setTimePreview = setInterval(suspensionTimePreview, 1000);
+            }
+
+            jQuery.each(jQuery('textarea[data-autoresize]'), function() {
+                var offset = this.offsetHeight - this.clientHeight;
+                var resizeTextarea = function(el) {
+                    jQuery(el).css('height', 'auto').css('height', el.scrollHeight + offset);
+                };
+                jQuery(this).on('keyup input', function() { resizeTextarea(this); }).removeAttr('data-autoresize');
+            });
+            var at_config = {
+                at: "#",
+                data: automatedList,
+                headerTpl: '<div class="atwho-header">公版訊息標題<small>↑&nbsp;↓&nbsp;</small></div>',
+                insertTpl: '${name}',
+                displayTpl: "<li>${name}</li>",
+                limit: 100,
+                startWithSpace: false,
+                suffix: ""
+            }
+            if($(this).find('#Bsuspension_note').length > 0 ){
+                $suspension_inputor = $('#Bsuspension_note').atwho(at_config);
+                $suspension_inputor.caret('pos', 47);
+                $suspension_inputor.focus().atwho('run'); 
+            } else {
+                $suspension_inputor = $('#suspension_note').atwho(at_config);
+                $suspension_inputor.caret('pos', 47);
+                $suspension_inputor.focus().atwho('run'); 
+            }
+           
+        });
+
+        function SendSuspension(LoginAuth) {
+            var sendData = {
+                MemberId: $(this).attr('data-member'),
+                nickName: $(this).attr('data-nickname'),
+                duration: suspensionTimeArr.duration,
+                LoginAuth: $(this).attr('data-loginauth'),
+                ViolationType: $('#violationtype').val(),
+                Note: $('#suspension_note').val()
+            }
+            var checkMsg;
+            if(sendData.LoginAuth == '0'){
+                if( sendData.duration <= 0 ){
+                    checkMsg = `將 ${sendData.MemberId} / ${sendData.nickName} 永久停權`;
+                } else {
+                    checkMsg = `將 ${sendData.MemberId} / ${sendData.nickName} 停權 ${suspensionTimeArr.durationFormat}`;
+                }
+            } else {
+                checkMsg = `將 ${sendData.MemberId} / ${sendData.nickName} 解除停權`;
+            }
+
+            if(sendData.Note.length >= 10 && sendData.Note.length <= 255){
+                if (confirm(`確定要${checkMsg}？`)) {
+                    $('#loading-cover').fadeIn(100);
+                    $.ajax({
+                        type: 'POST',
+                        url: "/MemberSuspension",
+                        data: sendData,
+                        dataType: 'json',
+                        success: function(msg) {
+                            if (msg.code === '0') {
+                                QuickNotify(`已經${checkMsg}。`, 'success');
+                                $('#bs-modal-box-999').modal('hide');
+                                if(sendData.LoginAuth == '0'){
+                                    suspensionRow.css('background', '#ff000038');
+                                    suspensionRow.find('.suspension').attr('title', '解除停權').removeClass('btn-danger').addClass('btn-success').html('<i class="fa fa-unlock"></i> 解除停權</button>');
+                                } else {
+                                    suspensionRow.css('background', '');
+                                    suspensionRow.find('.suspension').attr('title', '設為停權').removeClass('btn-success').addClass('btn-danger').html('<i class="fa fa-lock"></i> 設為停權</button>');
+                                }
+                            } else {
+                                QuickNotify(`資料庫連線異常或重複操作`, 'danger');
+                            }
+                        },
+                        error: function(xhr, desc, err) {
+                            QuickNotify(`連線異常：${xhr.status}`, 'danger');
+                        }
+                    }).done(function() {
+                        $('#loading-cover').fadeOut(100);
+                    });
+                }
+            } else {
+                var sendText = sendData.LoginAuth == '0' ? '停權' : '解除停權';
+                QuickNotify(`${sendText}失敗，${sendText}原因${sendData.Note.length >= 10 ? '不可高於255個字。' : '不可少於10字。'}`, 'warning');
+            }
+        }
+
+        function sendBanned(LoginAuth) {
+            var sendData = {
+                MemberId: $(this).attr('Bdata-member'),
+                nickName: $(this).attr('Bdata-nickname'),
+                duration: suspensionTimeArr.duration,
+                ViolationType: $('#Bviolationtype').val(),
+                Note: $('#Bsuspension_note').val()
+            }
+
+            var checkMsg;
+            if (sendData.duration <= 0) {
+                checkMsg = `將 ${sendData.MemberId} / ${sendData.nickName} 永久禁言`;
+            } else {
+                checkMsg = `將 ${sendData.MemberId} / ${sendData.nickName} 禁言 ${suspensionTimeArr.durationFormat}`;
+            }
+            if(sendData.Note.length >= 10 && sendData.Note.length <= 255){
+                if (confirm(`確定要${checkMsg}？`)) {
+                    $('#loading-cover').fadeIn(100);
+                    $.ajax({
+                        type: 'POST',
+                        url: "/MemberBanned",
+                        data: sendData,
+                        dataType: 'json',
+                        success: function(msg) {
+                            if (msg.code === '0') {
+                                $('#bs-modal-box-999').modal('hide');
+                                QuickNotify(`已經${checkMsg}。`, 'success');
+                            } else {
+                                QuickNotify(`資料庫連線異常或重複操作`, 'danger');
+                            }
+                        },
+                        error: function(xhr, desc, err) {
+                            QuickNotify(`連線異常：${xhr.status}`, 'danger');
+                        }
+                    }).done(function() {
+                        $('#loading-cover').fadeOut(100);
+                    });
+                }
+            } else {
+                QuickNotify(`失敗，禁言原因${sendData.Note.length >= 10 ? '不可高於255個字。' : '不可少於10字。'}`, 'warning');
+            }
+        }
+
+        var suspensionRow;
+        $('#datatable tbody').on('click', 'button', function(e) {
+            var data = table.row($(this).parents('tr')).data();
+            suspensionRow = $(this).parents('tr');
+            console.log(data);
+            switch ($(this).attr('title')) {
+                case "儲值查詢":
+                    window.open("/MemberChargeForm?MemberId=" + data.MemberId + "&MemberNickName=" + ((data.NickName !== null) ? data.NickName : "") + "&Name=" + ((data.Name !== null) ? data.Name : ""));
+                    break;
+                case "投注查詢":
+                    window.open("/memberBetInquireForm?MemberId=" + data.MemberId + "&Name=" + ((data.Name !== null) ? data.Name : "") + "&Account=" + ((data.Account !== null) ? data.Account : "") + "&NickName=" + ((data.NickName !== null) ? data.NickName : ""));
+                    break;
+                case "榜查詢":
+                    window.open("/DragonRankForm?MemberId=" + data.MemberId + "&Name=" + ((data.Name !== null) ? data.Name : "") + "&Account=" + ((data.Account !== null) ? data.Account : "") + "&NickName=" + ((data.NickName !== null) ? data.NickName : ""));
+                    break;
+                case "修改資料":
+                    window.open("/MemberEditForm?MemberId=" + data.MemberId);
+                    break;
+                case "發送系統信":
+                    window.open("/BulletinMailForm?MemberId=" + data.MemberId);
+                    break;
+                case "設為停權":
+                    showSuspensionModal(data.MemberId, data.NickName, "0", $(this).parents('tr'));
+                    break;
+                case "解除停權":
+                    showSuspensionModal(data.MemberId, data.NickName, "1", $(this).parents('tr'));
+                    break;
+                case "禁言":
+                    showBannedModal(data.MemberId, data.NickName, "0", $(this).parents('tr'));
+                    break;
+                case "交易代碼查詢":
+                    window.open("/BulletinTradeSearchForm?MemberId=" + data.MemberId + "&Name=" + ((data.Name !== null) ? data.Name : "") + "&Account=" + ((data.Account !== null) ? data.Account : "") + "&NickName=" + ((data.NickName !== null) ? data.NickName : ""))
+                    break;
+                case "贈禮查詢":
+                    window.open("/BulletinTransactionSearchForm?MemberId=" + data.MemberId + "&Name=" + ((data.Name !== null) ? data.Name : "") + "&Account=" + ((data.Account !== null) ? data.Account : "") + "&NickName=" + ((data.NickName !== null) ? data.NickName : ""))
+                    break;
+            }
+        });
+
+        var PreviewLength = 0;
+        var setTimePreview;
+        $(document).on('change keyup keydown focus click', '.suspensionTime input[type=number]', suspensionTimePreview);
+
+        var suspensionTimeArr = {};
+        function suspensionTimePreview(){
+            var _yr = Number($('#suspension_yr').val());
+            var _mon = Number($('#suspension_mon').val());
+            var _wek = Number($('#suspension_wek').val());
+            var _day = Number($('#suspension_day').val());
+            var _hr = Number($('#suspension_hr').val());
+            var _min = Number($('#suspension_min').val());
+            var _time = moment.duration({ minutes: _min, hours: _hr, days: _day, weeks: _wek, months: _mon, years: _yr });
+
+            suspensionTimeArr = {
+                duration: _time.format("m", { useToLocaleString: false, groupingSeparator: "" }),
+                durationFormat: _time.format("Y[年] M[個月] d[天] h[小時] m[分鐘]", { trim: "both mid" }),
+                endTime: moment().add(_time).format('YYYY-MM-DD HH:mm:ss')
+            };
+
+            $('.timePreview > .label-primary').html(suspensionTimeArr.durationFormat);
+            $('.timePreview > .label-success').html(suspensionTimeArr.duration == 0 ? "永久" : suspensionTimeArr.endTime);
+        }
+
+
+
+        $(document).on('click', '#sendSuspension', SendSuspension);
+        $(document).on('click', '#sendBanned', sendBanned);
+        $(document).on('click', '#mClear', clear);
+        $(document).on('click', '#mSearch', search);
+        $(document).on('keypress', '#MemberId, #MemberName', function(e) {
+            if (e.keyCode == 13) {
+                search(e);
+            }
+        });
+
+        $(document).on('change keyup keydown focus click', 'input[type=number][min][max]', function(event) {
+            var maxValue = Number($(this).attr('max'));
+            var minValue = Number($(this).attr('min'));
+            var getValue = Number($(this).val());
+
+            if(getValue !== null && getValue !== ""){
+                if (maxValue != null) {
+                    if (getValue > maxValue) {
+                        QuickNotify(`數值超出系統容許大小：${maxValue}。已自動將數值降至容許最大值。`, 'warning');
+                        $(this).val(maxValue);
+                    }
+                }
+                if (minValue != null) {
+                    if (getValue < minValue) {
+                        QuickNotify(`數值低於系統容許大小：${minValue}。已自動將數值降至容許最小值。`, 'warning');
+                        $(this).val(minValue);
+                    }
+                }
+            }
+        });
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SCG</title>
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- Datatables -->
+    <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- bootstrap-datetimepicker -->
+    <link href="../vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <!-- Ion.RangeSlider -->
+    <link href="../vendors/normalize-css/normalize.css" rel="stylesheet">
+    <link href="../vendors/ion.rangeSlider/css/ion.rangeSlider.css" rel="stylesheet">
+    <link href="../vendors/ion.rangeSlider/css/ion.rangeSlider.skinFlat.css" rel="stylesheet">
+    <style>
+    /* .dataTables_wrapper>.row {
+            overflow: visible!important;
+        } */
+    /* .marqueeButton {
+            margin-bottom: 4px;
+        } */
+
+    #datatable td:nth-last-child(1) {
+        white-space: nowrap;
+    }
+
+    .btn-secondary {
+        color: #FFFFFF;
+        background-color: #CCCCCC;
+        border-color: #9E9E9E;
+    }
+
+    .btn-secondary:hover,
+    .btn-secondary:focus,
+    .btn-secondary:active,
+    .btn-secondary.active,
+    .open .dropdown-toggle.btn-secondary {
+        color: #FFFFFF;
+        background-color: #9C9C9C;
+        border-color: #9E9E9E;
+    }
+
+    .btn-secondary:active,
+    .btn-secondary.active,
+    .open .dropdown-toggle.btn-secondary {
+        background-image: none;
+    }
+
+    .btn-secondary.disabled,
+    .btn-secondary[disabled],
+    fieldset[disabled] .btn-secondary,
+    .btn-secondary.disabled:hover,
+    .btn-secondary[disabled]:hover,
+    fieldset[disabled] .btn-secondary:hover,
+    .btn-secondary.disabled:focus,
+    .btn-secondary[disabled]:focus,
+    fieldset[disabled] .btn-secondary:focus,
+    .btn-secondary.disabled:active,
+    .btn-secondary[disabled]:active,
+    fieldset[disabled] .btn-secondary:active,
+    .btn-secondary.disabled.active,
+    .btn-secondary[disabled].active,
+    fieldset[disabled] .btn-secondary.active {
+        background-color: #CCCCCC;
+        border-color: #9E9E9E;
+    }
+
+    .btn-secondary .badge {
+        color: #CCCCCC;
+        background-color: #FFFFFF;
+    }
+    </style>
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <!--Menu-->
+            <!--Top-->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>定時廣播</h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-lg-6 col-md-12 col-xs-12">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading"><i class="fa fa-book" aria-hidden="true"></i> 新增項目</div>
+                                            <div class="panel-body">
+                                                <div class="form-group">
+                                                    <label class="control-label" data-placement="right">指定頻道</label>
+                                                    <select name="ChannelSelect" id="ChannelSelect" class="form-control">
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label" data-toggle="tooltip">廣播內容</label>
+                                                    <textarea type="text" name="BroadcastContent" id="BroadcastContent" class="form-control" maxlength="300" style="width:100%;height: 20vh;resize : none;"></textarea>
+                                                    <p class="help-block">*必填項目</p>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label">廣播起迄時間<i aria-hidden="true"></i></label>
+                                                    <input type="text" name="ActiveTime" id="ActiveTime" class="form-control" value="" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label">出現次數</label>
+                                                    <input type="number" id="FreqNumber" class="form-control text-center" name="FreqNumber" value="1" min="1" max="1440" style="font-size: 20px;">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label">出現間隔(分)</label>
+                                                    <input type="number" id="IntervalNumber" class="form-control text-center" name="IntervalNumber" value="1" min="1" max="1440" style="font-size: 20px;">
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <button type="button" id="InsertItem" class="btn btn-lg btn-primary pull-right">確定新增</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>廣播列表</h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <table id="datatable" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>指定頻道</th>
+                                            <th>廣播內容</th>
+                                            <th>開始時間</th>
+                                            <th>結束時間</th>
+                                            <th>出現次數</th>
+                                            <th>出現間隔(分)</th>
+                                            <th>狀態</th>
+                                            <th>功能</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /page content -->
+            <!--footer-->
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- iCheck -->
+    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <!-- Datatables -->
+    <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="../vendors/jszip/dist/jszip.min.js"></script>
+    <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+    <!-- Ion.RangeSlider -->
+    <script src="../vendors/ion.rangeSlider/js/ion.rangeSlider.min.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap-datetimepicker -->
+    <script src="../vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <!-- jquery.inputmask -->
+    <script src="../vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+    <!-- jQuery Knob -->
+    <script src="../vendors/jquery-knob/dist/jquery.knob.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+    <!-- bootstrap-notify -->
+    <script src="../vendors/bootstrap-notify/bootstrap-notify.min.js"></script>
+    <script>
+    $(document).ready(function() {
+
+        var startDate = moment();
+        var AllItemInfo = {};
+        var ChannelList = {};
+        var AudienceOption = '';
+        var $_GET = {};
+        document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function() {
+            function decode(s) {
+                return decodeURIComponent(s.split("+").join(" "));
+            }
+            $_GET[decode(arguments[1])] = decode(arguments[2]);
+        });
+
+        $('#ActiveTime').daterangepicker({
+            locale: {
+                format: 'YYYY-MM-DD HH:mm:ss'
+            },
+            startDate: moment().set({ hour: 0, minute: 0, second: 0, millisecond: 0 }),
+            endDate: moment().set({ hour: 23, minute: 59, second: 59, millisecond: 0 }),
+            timePicker: true,
+            //singleDatePicker: true,
+            timePicker24Hour: true,
+            timePickerSeconds: true,
+            ranges: {
+                'Today': [moment().startOf('day'), moment().endOf('day')],
+                'Tomorrow': [moment().add(1, 'days').startOf('day'), moment().add(1, 'days').endOf('day')],
+                '7 Days': [moment().startOf('day'), moment().add(6, 'days').endOf('day')],
+                '30 Days': [moment().startOf('day'), moment().add(29, 'days').endOf('day')],
+                'This Month': [moment().startOf('month'), moment().endOf('month')]
+            }
+        });
+
+        var table = $('#datatable').DataTable({
+            destroy: true,
+            "order": [
+                [0, 'desc']
+            ],
+            "lengthMenu": [
+                [30, 50, 100, -1],
+                [30, 50, 100, "∞"]
+            ],
+            "columnDefs": [
+                { "targets": 0 },
+                { "targets": 1 },
+                { "targets": 2 },
+                { "targets": 3 },
+                { "targets": 4 },
+                { "targets": 5 },
+                { "targets": 6 },
+                { "targets": 7 },
+                { "targets": 8 }
+            ]
+        });
+
+        refresh();
+
+        $(document).on('click', '#SendEditData', function() {
+            var checkStatus = false;
+            var data = new FormData();
+            var checkStr = modifyItemCheck();
+            if (checkStr != "") {
+                alert(checkStr);
+                return;
+            }
+
+            var freqNumberMax = Number($('#editFreqNumber').attr('max'));
+            if (Number($('#editFreqNumber').val()) > freqNumberMax) {
+                alert("出現次數 超過上限 (上限為 " + freqNumberMax + " )");
+                return;
+            }
+
+            var intervalNumberMax = Number($('#editIntervalNumber').attr('max'));
+            if (Number($('#editIntervalNumber').val()) > intervalNumberMax) {
+                alert("出現間隔 超過上限 (上限為 " + intervalNumberMax + " )");
+                return;
+            }
+
+            var data = new FormData();
+            data.append('idAutoBroadcast', currentData[0]);
+            data.append('Channel', $("#editChannelSelect").find("option:selected").text());
+            data.append('Content', $('#editContent').val());
+            data.append('Freq', $('#editFreqNumber').val());
+            data.append('IntervalTime', $('#editIntervalNumber').val());
+            data.append('StartTime', $('#editActiveTime').data('daterangepicker').startDate.format('YYYY-MM-DD HH:mm:ss'));
+            data.append('EndTime', $('#editActiveTime').data('daterangepicker').endDate.format('YYYY-MM-DD HH:mm:ss'));
+
+            modifyitem(data);
+        });
+
+        $(document).on('click', '#InsertItem', function(event) {
+            var checkDataStr = insertItemCheck();
+            if (checkDataStr != "") {
+                alert(checkDataStr);
+                return;
+            }
+
+            var freqNumberMax = Number($('#IntervalNumber').attr('max'));
+            if (Number($('#FreqNumber').val()) > freqNumberMax) {
+                alert("出現次數 超過上限 (上限為 " + freqNumberMax + " )");
+                return;
+            }
+
+            var intervalNumberMax = Number($('#IntervalNumber').attr('max'));
+            if (Number($('#IntervalNumber').val()) > intervalNumberMax) {
+                alert("出現間隔 超過上限 (上限為 " + intervalNumberMax + " )");
+                return;
+            }
+
+            var data = new FormData();
+            data.append('Channel', $("#ChannelSelect").find("option:selected").text());
+            data.append('Content', $('#BroadcastContent').val());
+            data.append('Freq', $('#FreqNumber').val());
+            data.append('IntervalTime', $('#IntervalNumber').val());
+            data.append('StartTime', $('#ActiveTime').data('daterangepicker').startDate.format('YYYY-MM-DD HH:mm:ss'));
+            data.append('EndTime', $('#ActiveTime').data('daterangepicker').endDate.format('YYYY-MM-DD HH:mm:ss'));
+            data.append('Open', 'Y');
+            var d = new Date($('#ActiveTime').data('daterangepicker').startDate.unix() * 1000 + parseInt($('#IntervalNumber').val() * 60000))
+            data.append('NextTime', moment(d).format('YYYY-MM-DD HH:mm:ss'));
+            additem(data);
+        });
+
+        function checkIsNullOrEmpty(obj) {
+            if (obj == 'undefined' || obj == null || obj == 0 || obj == '')
+                return true;
+            return false;
+        }
+        GetSmartChannelList();
+
+        function GetSmartChannelList() {
+            $('#loading-cover').fadeIn(100);
+            $.ajax({
+                type: 'POST',
+                url: "/GetSmartChannelList",
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(msg) {
+                    var s ="";
+                    msg.data.forEach(function(element) {
+                        s=s+('<option>' + element + '</option>\r\n');
+                    });
+                    $('#ChannelSelect').append(s);
+                    ChannelList = s;
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+            }).done(function() {
+
+            });
+        }
+
+        function insertItemCheck() {
+            if (checkIsNullOrEmpty($('#BroadcastContent').val()))
+                return "請輸入廣播內容!!";
+
+            if (checkIsNullOrEmpty($('#FreqNumber').val()))
+                return "請選擇出現次數!!";
+
+            if (checkIsNullOrEmpty($('#IntervalNumber').val()))
+                return "請選擇出現間隔!!";
+
+            return "";
+        }
+
+        function modifyItemCheck() {
+            if (checkIsNullOrEmpty($('#editContent').val()))
+                return "請輸入廣播內容!!";
+
+            if (checkIsNullOrEmpty($('#editFreqNumber').val()))
+                return "請選擇出現次數!!";
+
+            if (checkIsNullOrEmpty($('#editIntervalNumber').val()))
+                return "請選擇出現間隔!!";
+
+            return "";
+        }
+
+        $('#datatable tbody').on('click', 'button', function(e) {
+            currentData = table.row($(this).parents('tr')).data();
+            currentRow = $(this).closest("tr");
+            var id = currentData[0];
+            switch ($(this).attr('id')) {
+                case "activeitem":
+                    activeitem(id);
+                    break;
+
+                case "copyitem":
+                    copyitem(id);
+                    break;
+
+                case "modifyitem":
+                    itemEdit(getItem(id));
+                    break;
+
+                case "delitem":
+                    delitem(id);
+                    break;
+            }
+        });
+
+        function copyitem(id) {
+            var item = getItem(id);
+
+            $('#ChannelSelect').val(item.Channel);
+            $('#BroadcastContent').val(item.Content);
+            $('#ActiveTime').daterangepicker({
+                locale: {
+                    format: 'YYYY-MM-DD HH:mm:ss'
+                },
+                startDate: moment(item.StartTime).format('YYYY-MM-DD HH:mm:ss'),
+                endDate: moment(item.EndTime).format('YYYY-MM-DD HH:mm:ss'),
+                timePicker: true,
+                timePicker24Hour: true,
+                timePickerSeconds: true,
+                ranges: {
+                    'Today': [moment().startOf('day'), moment().endOf('day')],
+                    'Tomorrow': [moment().add(1, 'days').startOf('day'), moment().add(1, 'days').endOf('day')],
+                    '7 Days': [moment().startOf('day'), moment().add(6, 'days').endOf('day')],
+                    '30 Days': [moment().startOf('day'), moment().add(29, 'days').endOf('day')],
+                    'This Month': [moment().startOf('month'), moment().endOf('month')]
+                }
+            });
+            $('#FreqNumber').val(item.Freq);
+            $('#IntervalNumber').val(item.IntervalTime);
+        }
+
+        function activeitem(id) {
+            var item = getItem(id);
+
+            $.ajax({
+                type: 'POST',
+                url: "/BroadcastEnable",
+                data: { Open: item.Open == 'Y' ? 'N' : 'Y', idAutoBroadcast: id },
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(msg) {
+                    refresh();
+                }
+            });
+        }
+
+
+        //處理新增
+        function additem(data) {
+            if (!confirm("確定新增嗎?"))
+                return;
+
+            $.ajax({
+                type: 'POST',
+                url: "/SetAutoBroadcast",
+                data: data,
+                cache: false,
+                async: true,
+                processData: false,
+                contentType: false,
+                success: function(msg) {
+                    if (msg.code == 0) {
+                        refresh();
+                    }
+                    alert(msg.msg);
+                }
+            });
+        };
+
+        //處理修改
+        function modifyitem(data) {
+            if (!confirm("確定修改嗎?"))
+                return;
+            console.log(data);
+            $.ajax({
+                type: 'POST',
+                url: "/BroadcastModify",
+                data: data,
+                cache: false,
+                async: true,
+                processData: false,
+                contentType: false,
+                success: function(msg) {
+                    var code = msg.code;
+                    var message = msg.msg;
+                    if (code == 0) {
+                        refresh();
+                        $('#bs-modal-box').modal('hide')
+                    }
+                    alert(message);
+                }
+            });
+        }
+
+        function delitem(id) {
+            if (!confirm("確定刪除 Id : " + id + ":\n廣告內容 : " + AllItemInfo[id].Content + "?"))
+                return;
+
+            $.ajax({
+                type: 'POST',
+                url: "/BroadcastDel",
+                data: { "idAutoBroadcast": id },
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(msg) {
+                    var code = msg.code;
+                    var message = msg.msg;
+                    if (code == 0) {
+                        refresh();
+                    }
+                    alert(message);
+                }
+            });
+        }
+
+        function getItem(id) {
+            console.log(AllItemInfo);
+            return AllItemInfo[id];
+        }
+
+        function itemEdit(data) {
+            console.log(data);
+            //console.log($('#datatable tbody tr').find('td:eq(0)').text().trim());
+            var html =
+                '<div class="col-sm-12">' +
+                '<div class="panel panel-default">' +
+                '<div class="panel-heading"><i class="fa fa-eye" aria-hidden="true"></i> 修改定時廣播</div>' +
+                '<div class="panel-body">' +
+
+                '<div class="item form-group">' +
+                '<label class="col-md-6 col-sm-6 col-xs-12">指定頻道</label>' +
+                '<select name="editChannelSelect" id="editChannelSelect" class="form-control">' +ChannelList+
+                '</select>' +
+                '</div>' +
+
+                '<div class="item form-group">' +
+                '<label class="control-label">廣播內容</label>' +
+                '<textarea name="editContent" id="editContent" class="form-control" maxlength="300" style="width:100%;height: 20vh;resize : none;">' + data.Content + "</textarea>" +
+                '</div>' +
+
+                '<div class="item form-group">' +
+                '<label class="control-label">廣播起迄時間 <i aria-hidden="true"></i></label>' +
+                '<input type="text" name="editActiveTime" id="editActiveTime" class="form-control" value="" />' +
+                '</div>' +
+
+                '<div class="item form-group">' +
+                '<label class="control-label">出現次數</label>' +
+                '<input type="number" id="editFreqNumber" class="form-control text-center" name="FreqNumber" value="' + data.Freq + '" min="1" max="1440" style="font-size: 20px;">' +
+                '</div>' +
+
+                '<div class="item form-group">' +
+                '<label class="control-label">出現間隔</label>' +
+                '<input type="number" id="editIntervalNumber" class="form-control text-center" name="IntervalNumber" value="' + data.IntervalTime + '" min="1" max="1440" style="font-size: 20px;">' +
+                '</div>' +
+
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>';
+
+            html += '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">' +
+                '<hr/>' +
+                '<ul id="sub-gallery-sortable" class="list-unstyled row ui-sortable">' +
+                '</ul>' +
+                '</div>';
+
+            footer = '<button id="SendEditData" type="button" class="btn btn-success">確定</button>' +
+                '<button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>';
+
+            ShowModalBox('Item Edit', html, footer);
+
+            $('#editAudienceSelect').append(AudienceOption);
+            $('#editAudienceSelect').val(data.Audience);
+            $('#editActiveTime').daterangepicker({
+                locale: {
+                    format: 'YYYY-MM-DD HH:mm:ss'
+                },
+                startDate: moment(data.StartTime).format('YYYY-MM-DD HH:mm:ss'),
+                endDate: moment(data.EndTime).format('YYYY-MM-DD HH:mm:ss'),
+                timePicker: true,
+                timePicker24Hour: true,
+                timePickerSeconds: true,
+                ranges: {
+                    'Today': [moment().startOf('day'), moment().endOf('day')],
+                    'Tomorrow': [moment().add(1, 'days').startOf('day'), moment().add(1, 'days').endOf('day')],
+                    '7 Days': [moment().startOf('day'), moment().add(6, 'days').endOf('day')],
+                    '30 Days': [moment().startOf('day'), moment().add(29, 'days').endOf('day')],
+                    'This Month': [moment().startOf('month'), moment().endOf('month')]
+                }
+            });
+        }
+
+        function ShowModalBox(Title, Content, footer) {
+            $('#bs-modal-box').remove();
+            var html =
+                '<div id="bs-modal-box" class="modal fade" tabindex="-1" role="dialog">' +
+                '<div class="modal-dialog" role="document">' +
+                '<div class="modal-content">' +
+                '<div class="modal-header">' +
+                '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+                '<h4 class="modal-title"></h4>' +
+                '</div>' +
+                '<div class="modal-body" style="display:flow-root">' +
+                '<p></p>' +
+                '</div>' +
+                (footer == null ? '' : '<div class="modal-footer">' + footer + '</div>') +
+                '</div>' +
+                '</div>' +
+                '</div>';
+            $('body').append(html);
+            $('#bs-modal-box h4.modal-title').html(Title);
+            $('#bs-modal-box div.modal-body').html(Content);
+            $('#bs-modal-box').modal('show')
+        }
+
+        function refresh() {
+            table.clear().draw();
+            var data = [];
+            //取得列表
+            $.ajax({
+                type: 'POST',
+                url: "/GetAutoBroadcast",
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(msg) {
+
+                    $.each(msg.data, function(index, value) {
+                        AllItemInfo[value.idAutoBroadcast] = value;
+                    });
+
+                    msg.data.forEach(function(value) {
+                        var enableStyle = value.Open == 'Y' ? 'btn-secondary' : 'btn-primary';
+                        var enableStr = value.Open == 'Y' ? '停用' : '啟用';
+                        data.push([
+                            checkNull(value.idAutoBroadcast),
+                            checkNull(value.Channel),
+                            checkNull(value.Content),
+                            moment(value.StartTime).format("YYYY-MM-DD HH:mm:ss"),
+                            moment(value.EndTime).format("YYYY-MM-DD HH:mm:ss"),
+                            checkNull(value.Freq),
+                            checkNull(value.IntervalTime),
+                            value.Open == 'Y' ? getMarqueeStatus(moment(value.StartTime), moment(value.EndTime)) : "已暫停",
+                            //"<div class='btn-group btn-group-sm'>" +
+                            "<button class='btn btn-sm " + enableStyle + "' id='activeitem'><i class='fa fa-pencil-square-o' aria-hidden='true'></i>" + enableStr + "</button>" +
+                            "<button class='btn btn-sm btn-info' id='copyitem'><i class='fa fa-clone' aria-hidden='true'></i>拷貝</button>" +
+                            "<button class='btn btn-sm btn-success' id='modifyitem'><i class='fa fa-pencil' aria-hidden='true'></i>修改</button>" +
+                            "<button class='btn btn-sm btn-danger' id='delitem'><i class='fa fa-trash-o' aria-hidden='true'></i>刪除</button>"
+                            //"</div>"
+                        ]);
+
+                    });
+                    table.rows.add(data).draw();
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+            }).done(function() {
+                $('#loading-cover').fadeOut(100);
+            });
+        }
+
+        function checkNull(data) {
+            return data == undefined || data == null ? "" : data;
+        }
+
+        function getMarqueeStatus(startTime, endTime) {
+            var now = Date.now();
+            var s = "";
+            if (now < startTime)
+                s = "預約中";
+            else if (now > startTime && now < endTime)
+                s = "播放中";
+            else if (now > endTime)
+                s = "已播放";
+            return s;
+        }
+        /*
+                        function getAudienceName(audienceId) {
+                            if (AudienceList[audienceId] == null || AudienceList[audienceId] == undefined)
+                                return "找不到受眾";
+                            return audienceId == 0 ? "無特定" : AudienceList[audienceId].AudienceName;
+                        }
+
+                        function QuickNotify(message, type) {
+                            var icon = "";
+                            switch (type) {
+                                case 'success':
+                                    icon = 'fa-check-circle';
+                                    break;
+                                case 'danger':
+                                    icon = 'fa-times-circle';
+                                    break;
+                                default:
+                                    icon = 'fa-exclamation-triangle';
+                            }
+                            $.notify({
+                                message: '<h5><i class="fa ' + icon + '"></i> ' + message + '</h5>'
+                            }, {
+                                    type: type,
+                                    z_index: 20000,
+                                    delay: 6000,
+                                });
+                        }
+
+                        $(document).on('change keyup keydown focus click', 'input[type=number][min][max]', function (event) {
+                            var maxValue = Number($(this).attr('max'));
+                            var minValue = Number($(this).attr('min'));
+                            var getValue = Number($(this).val());
+                            
+                            if (maxValue != null) {
+                                if (getValue > maxValue) {
+                                    QuickNotify(`數值超出系統容許大小：${maxValue}。已自動將數值降至容許最大值。`, 'warning');
+                                    $(this).val(maxValue);
+                                }
+                            }
+                            if (minValue != null) {
+                                if (getValue < minValue) {
+                                    QuickNotify(`數值低於系統容許大小：${minValue}。已自動將數值降至容許最小值。`, 'warning');
+                                    $(this).val(minValue);
+                                }
+                            }
+                        });
+                        */
+    });
+    </script>
+</body>
+
+</html>

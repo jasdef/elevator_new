@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!-- Meta, title, CSS, favicons, etc. -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>SCG</title>
+	<!-- Bootstrap -->
+	<link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Font Awesome -->
+	<link href="../vendors/font-awesome/css/font-awesome.css" rel="stylesheet">
+	<!-- NProgress -->
+	<link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+	<!-- Datatables -->
+	<link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+	<link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+	<link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+	<link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+	<link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+	<!-- Custom Theme Style -->
+	<link href="../build/css/custom.min.css" rel="stylesheet">
+	<!-- bootstrap-daterangepicker -->
+	<link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+	<!-- bootstrap-select -->
+	<link rel="stylesheet" href="../vendors/bootstrap-select/css/bootstrap-select.min.css">
+	<!-- bootstrap-tagsinput -->
+	<link rel="stylesheet" href="../vendors/bootstrap-tagsinput/css/bootstrap-tagsinput.min.css">
+	<!-- bootstrap-switch -->
+	<link rel="stylesheet" href="../vendors/bootstrap-switch/css/bootstrap3/bootstrap-switch.min.css">
+	<!-- jquery-ui -->
+	<link rel="stylesheet" href="../vendors/jquery-ui/jquery-ui.min.css">
+	<style type="text/css" media="screen">
+	.popover {
+		max-width: 700px;
+	}
+
+	.form-control[readonly] {
+		background-color: transparent;
+	}
+
+	.text-ellipsis {
+		width: 200px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		margin: 0;
+	}
+
+	#datatable tbody td {
+		vertical-align: middle;
+	}
+
+	#datatable tbody td:nth-child(9) {
+		text-align: right;
+	}
+
+	#datatable {
+		table-layout: fixed;
+	}
+
+
+	#gallery-sortable li {
+		margin: .1%;
+		width: 19.8%;
+		padding: 5px;
+	}
+
+	.thumbnail {
+		height: auto;
+	}
+
+	.pinSize {
+		overflow: hidden;
+		height: 170px;
+	}
+	.edit-news-content{
+		width: 100%;
+		font-size: .9em;
+		line-height: 1em;
+		padding-bottom: 8px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	textarea{
+		resize: vertical;
+	}
+	</style>
+</head>
+
+<body class="nav-md">
+	<div class="container body">
+		<div class="main_container">
+			<!--Menu-->
+			<!--Top-->
+			<!-- page content -->
+			<div class="right_col" role="main">
+				<div class="row">
+					<div class="clearfix"></div>
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="x_panel">
+								<div class="x_title">
+									<h2>官方網站設定 - 粉絲團&amp;其他</h2>
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content">
+									<div class="col-md-12 col-sm-12 col-xs-12">
+										<div class="col-lg-6 col-md-12 col-xs-12">
+											<div class="panel panel-default">
+												<!-- <div class="panel-heading"><i class="fa fa-anchor" aria-hidden="true"></i> SEO相關設定</div> -->
+												<div class="panel-body">
+													<div class="form-group">
+														<label for="footer-service">服務項目</label>
+														<textarea name="footer-service" id="footer-service" class="form-control" rows="3"></textarea>
+													</div>
+													<div class="form-group">
+														<label for="footer-privacy">隱私權</label>
+														<textarea name="footer-privacy" id="footer-privacy" class="form-control" rows="3"></textarea>
+													</div>
+													<div class="col-md-12">
+														<button type="button" id="Send" class="btn btn-lg btn-primary pull-right">更新資料</button>
+													</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- /page content -->
+			<!--footer-->
+		</div>
+	</div>
+	<!-- jQuery -->
+	<script src="../vendors/jquery/dist/jquery.min.js"></script>
+	<!-- jquery-ui -->
+	<script src="../vendors/jquery-ui/jquery-ui.min.js"></script>
+	<script>
+	// $.widget.bridge('uibutton', $.ui.button);
+	$.widget.bridge('uitooltip', $.ui.tooltip);
+	</script>
+	<!-- Bootstrap -->
+	<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+	<!-- FastClick -->
+	<script src="../vendors/fastclick/lib/fastclick.js"></script>
+	<!-- NProgress -->
+	<script src="../vendors/nprogress/nprogress.js"></script>
+	<!-- iCheck -->
+	<script src="../vendors/iCheck/icheck.min.js"></script>
+	<!-- Datatables -->
+	<script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+	<script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+	<script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+	<script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+	<script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+	<script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+	<script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+	<script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+	<script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+	<script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+	<script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+	<script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+	<script src="../vendors/jszip/dist/jszip.min.js"></script>
+	<script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
+	<script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+	<script src="../vendors/moment/min/moment.min.js"></script>
+	<script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+	<!-- bootstrap-select -->
+	<script src="../vendors/bootstrap-select/js/bootstrap-select.min.js"></script>
+	<script src="../vendors/bootstrap-select/js/i18n/defaults-zh_TW.min.js"></script>
+	<!-- bootstrap-tagsinput -->
+	<script src="../vendors/bootstrap-tagsinput/js/bootstrap-tagsinput.min.js"></script>
+	<!-- bootstrap-switch -->
+	<script src="../vendors/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+	<!-- Custom Theme Scripts -->
+	<script src="../build/js/custom.min.js"></script>
+	<script>
+	$(document).ready(function() {
+		$('#seo-keywords').tagsinput();
+		$(".switch-box").bootstrapSwitch();
+		$('[data-toggle="tooltip"]').tooltip();
+		$('#newsDate').daterangepicker({
+			locale: {
+				format: 'YYYY-MM-DD'
+			},
+			// startDate: moment(),
+			timePicker: false,
+			singleDatePicker: true,
+			timePickerSeconds: false,
+			// minDate: moment(),
+		});
+		$("#gallery-sortable").sortable({
+			cursor: "move",
+			delay: 200,
+			tolerance: "pointer"
+		});
+		$("#gallery-sortable").disableSelection();
+
+		function ShowModalBox(Title, Content) {
+			if ($('#bs-modal-box').length < 1) {
+				var html =
+					'<div id="bs-modal-box" class="modal fade" tabindex="-1" role="dialog">' +
+					'<div class="modal-dialog" role="document">' +
+					'<div class="modal-content">' +
+					'<div class="modal-header">' +
+					'<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+					'<h4 class="modal-title"></h4>' +
+					'</div>' +
+					'<div class="modal-body" style="display:flow-root">' +
+					'<p></p>' +
+					'</div>' +
+					'<div class="modal-footer">' +
+					'<button id="SendEditData" type="button" class="btn btn-success">確定</button>' +
+					'<button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>' +
+					'</div>' +
+					'</div>' +
+					'</div>' +
+					'</div>';
+				$('body').append(html);
+			}
+			$('#bs-modal-box h4.modal-title').html(Title);
+			$('#bs-modal-box div.modal-body').html(Content);
+			$('#bs-modal-box').modal('show')
+		}
+
+		function LoadingEff(effon) {
+			if ($('#loading-cover').length < 1) {
+				var html = '<div id="loading-cover">' +
+					'<div id="loading-icon">' +
+					'<i class="fa fa-circle-o-notch fa-spin fa-5x fa-fw" style="color: #FFF;"></i>'
+				'</div>' +
+				'</div>';
+				$('body').append(html);
+				$('#loading-cover').css({
+					'width': '100%',
+					'height': '100%',
+					'background': 'rgba(0,0,0,.5)',
+					'position': 'fixed',
+					'display': 'none',
+					'z-index': '999999',
+					'top': '0',
+					'left': '0'
+				});
+				$('#loading-icon').css({
+					'width': '85px',
+					'height': '65px',
+					'margin': '-42.5px 0 0 -32.5px',
+					'top': '50%',
+					'left': '50%',
+					'position': 'fixed'
+				});
+			}
+			if (effon) {
+				$('#loading-cover').fadeIn(100);
+			} else {
+				$('#loading-cover').fadeOut(100);
+			}
+		}
+
+		function sizeLimit(input) {
+			if ($(input).attr('data-max-filesize') > 0) {
+				size = input.files[0].size;
+				limit = $(input).attr('data-max-filesize') * 1024;
+				if (size > limit) {
+					return false;
+				} else {
+					return true;
+				}
+			} else {
+				return false;
+			}
+		}
+
+		function fileTypeChecker(input) {
+			if ($(input).attr('accept').length > 0) {
+				type = input.files[0].type.toString();
+				attType = $(input).attr('accept').toString();
+				if (type == attType) {
+					return true;
+				} else {
+					return false;
+				}
+			} else {
+				return false;
+			}
+		}
+
+		function imagePreview(input, target = null) {
+			if (input.files && input.files[0]) {
+				if (target == null) {
+					if ($(input).next().hasClass('previewImage')) {
+						$(input).next().show();
+					} else {
+						$(input).after('<img src="" class="previewImage img-responsive img-thumbnail" alt="" style="margin-top: 10px;">');
+					}
+				}
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					if (target == null) {
+						$(input).next().attr('src', e.target.result);
+					} else {
+						target.attr('src', e.target.result);
+					}
+				}
+				reader.readAsDataURL(input.files[0]);
+			} else {
+				if (target == null) {
+					$(input).next().attr('src', "#");
+				} else {
+					target.attr('src', "#");
+				}
+			}
+		}
+		// GET DATA
+		function getFooterData() {
+			$.ajax({
+				url: '/OfficialWebsite_AnotherFooterData',
+				type: 'GET',
+				cache: false,
+				async: true,
+				dataType: 'json',
+				success: function(data) {
+					var viewData = data.data[0];
+					$('#footer-privacy').val(viewData.privacy);
+					$('#footer-service').val(viewData.service);
+				}
+			});
+		};
+		getFooterData();
+
+		
+		// GET DATA
+
+		// SEND DATA
+		function postSeoData() {
+			var confirmData = confirm("確定要更新？");
+			var checkStatus = false;
+
+			if (confirmData) {
+				var privacy = $('#footer-privacy').val();
+				var service = $('#footer-service').val();
+				$.ajax({
+					url: '/OfficialWebsite_postAnotherFooterData',
+					type: 'POST',
+					cache: false,
+					async: true,
+					dataType: 'json',
+					data: {
+						privacy: privacy,
+						service: service
+					},
+					success: function(data) {
+						checkStatus = true;
+					}
+				}).always(function(){
+					if (!checkStatus) {
+					alert('修改失敗');
+					} else {
+						alert('修改完成');
+						getFooterData();
+					}
+				});
+			} else {}
+		};
+
+		$(document).on('click', '#Send', postSeoData);
+
+	});
+	</script>
+</body>
+
+</html>

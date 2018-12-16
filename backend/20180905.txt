@@ -1,0 +1,385 @@
+{"Time ":"16:40:18","User":"system","Data":"arieswang: login OK"}
+{"Time ":"16:40:18","User":"arieswang","Data":"call MemberSearchForm"}
+{"Time ":"16:40:19","User":"arieswang","Data":"select `id`, `name` from ViolationType;"}
+{"Time ":"16:40:21","User":"arieswang","Data":"call MemberTradeTraceForm"}
+{"Time ":"16:40:21","User":"arieswang","Data":"SELECT a.Id, a.MemberId, a.CreateTime, a.StatusCode, a.FacTradeSeq, a.ProductId, a.Amount, a.TransactionId, b.ClientReceiptStatus, b.ClientPlatform, b.IAPType, b.Compensation, b.CommonStatusCode FROM Account.TopUp a JOIN Account.TopUpItemIAP b ON a.Id = b.TopUpId WHERE  a.StatusCode!=9999   ORDER BY a.CreateTime ASC"}
+{"Time ":"16:40:21","User":"arieswang","Data":"select `MemberId`, `NickName` from Member where MemberId = 'JCG2337144828';select `MemberId`, `NickName` from Member where MemberId = 'JCG8295747813';select `MemberId`, `NickName` from Member where MemberId = 'JCG4296593714';select `MemberId`, `NickName` from Member where MemberId = 'JCG3238613956';select `MemberId`, `NickName` from Member where MemberId = 'JCG6312959263';"}
+{"Time ":"16:42:06","Data":"call MemberTradeTraceForm"}
+{"Time ":"16:42:10","User":"system","Data":"arieswang: login OK"}
+{"Time ":"16:42:10","User":"arieswang","Data":"call MemberSearchForm"}
+{"Time ":"16:42:11","User":"arieswang","Data":"select `id`, `name` from ViolationType;"}
+{"Time ":"16:42:12","User":"arieswang","Data":"call MemberTradeTraceForm"}
+{"Time ":"16:42:13","User":"arieswang","Data":"SELECT a.Id, a.MemberId, a.CreateTime, a.StatusCode, a.FacTradeSeq, a.ProductId, a.Amount, a.TransactionId, b.ClientReceiptStatus, b.ClientPlatform, b.IAPType, b.Compensation, b.CommonStatusCode FROM Account.TopUp a JOIN Account.TopUpItemIAP b ON a.Id = b.TopUpId WHERE  a.StatusCode!=9999   ORDER BY a.CreateTime ASC"}
+{"Time ":"16:42:13","User":"arieswang","Data":"select `MemberId`, `NickName` from Member where MemberId = 'JCG2337144828';select `MemberId`, `NickName` from Member where MemberId = 'JCG8295747813';select `MemberId`, `NickName` from Member where MemberId = 'JCG4296593714';select `MemberId`, `NickName` from Member where MemberId = 'JCG3238613956';select `MemberId`, `NickName` from Member where MemberId = 'JCG6312959263';"}
+{"Time ":"17:09:47","Data":"call MemberTradeTraceForm"}
+{"Time ":"17:09:52","User":"system","Data":"arieswang: login OK"}
+{"Time ":"17:09:52","User":"arieswang","Data":"call MemberSearchForm"}
+{"Time ":"17:09:53","User":"arieswang","Data":"select `id`, `name` from ViolationType;"}
+{"Time ":"17:09:54","User":"arieswang","Data":"call MemberTradeTraceForm"}
+{"Time ":"17:09:55","User":"arieswang","Data":"SELECT a.Id, a.MemberId, a.CreateTime, a.StatusCode, a.FacTradeSeq, a.ProductId, a.Amount, a.TransactionId, b.ClientReceiptStatus, b.ClientPlatform, b.IAPType, b.Compensation, b.CommonStatusCode FROM Account.TopUp a JOIN Account.TopUpItemIAP b ON a.Id = b.TopUpId WHERE  a.StatusCode!=9999   ORDER BY a.CreateTime ASC"}
+{"Time ":"17:09:55","User":"arieswang","Data":"select `MemberId`, `NickName` from Member where MemberId = 'JCG2337144828';select `MemberId`, `NickName` from Member where MemberId = 'JCG8295747813';select `MemberId`, `NickName` from Member where MemberId = 'JCG4296593714';select `MemberId`, `NickName` from Member where MemberId = 'JCG3238613956';select `MemberId`, `NickName` from Member where MemberId = 'JCG6312959263';select `MemberId`, `NickName` from Member where MemberId = 'JCG7232743265';"}
+{"Time ":"17:09:55","User":"arieswang","Data":"select * from TradTraceCheck;"}
+{"Time ":"17:10:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:10:20","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:10:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:10:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:11:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:11:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:11:19","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:11:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:12:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:12:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:12:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:12:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:13:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:13:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:13:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:13:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:14:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:14:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:14:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:14:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:15:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:15:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:15:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:15:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:16:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:16:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:16:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:16:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:17:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:17:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:17:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:17:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:18:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:18:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:18:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:18:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:19:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:19:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:19:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:19:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:20:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:20:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:20:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:20:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:21:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:21:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:21:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:21:21","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:22:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:22:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:22:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:22:21","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:23:20","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:23:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:23:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:23:21","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:24:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:24:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:24:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:24:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:25:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:25:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:25:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:25:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:26:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:26:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:26:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:26:21","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:27:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:27:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:27:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:27:21","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:28:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:28:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:28:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:28:21","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:29:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:29:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:29:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:29:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:30:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:30:21","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:30:22","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:30:28","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:31:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:31:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:31:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:31:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:32:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:32:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:32:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:32:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:33:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:33:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:33:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:33:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:34:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:34:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:34:19","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:34:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:35:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:35:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:35:19","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:35:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:36:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:36:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:36:19","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:36:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:37:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:37:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:37:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:37:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:38:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:38:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:38:19","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:38:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:39:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:39:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:39:19","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:39:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:40:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:40:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:40:19","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:40:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:41:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:41:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:41:19","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:41:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:42:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:42:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:42:19","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:42:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:43:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:43:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:43:19","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:43:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:44:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:44:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:44:19","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:44:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:45:20","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:45:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:45:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:45:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:46:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:46:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:46:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:46:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:47:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:47:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:47:19","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:47:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:48:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:48:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:48:19","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:48:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:49:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:49:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:49:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:49:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:50:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:50:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:50:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:50:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:51:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:51:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:51:19","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:51:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:52:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:52:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:52:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:52:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:53:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:53:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:53:19","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:53:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:54:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:54:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:54:19","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:54:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:55:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:55:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:55:19","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:55:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:56:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:56:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:56:19","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:56:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:57:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:57:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:57:19","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:57:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:58:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:58:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:58:19","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:58:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"17:59:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"17:59:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"17:59:19","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"17:59:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:00:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:00:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:00:19","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:00:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:01:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:01:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:01:19","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:01:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:02:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:02:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:02:19","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:02:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:03:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:03:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:03:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:03:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:04:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:04:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:04:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:04:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:05:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:05:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:05:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:05:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:06:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:06:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:06:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:06:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:07:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:07:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:07:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:07:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:08:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:08:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:08:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:08:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:09:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:09:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:09:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:09:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:10:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:10:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:10:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:10:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:11:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:11:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:11:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:11:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:12:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:12:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:12:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:12:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:13:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:13:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:13:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:13:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:14:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:14:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:14:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:14:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:15:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:15:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:15:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:15:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:16:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:16:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:16:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:16:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:17:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:17:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:17:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:17:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:18:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:18:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:18:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:18:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:19:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:19:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:19:19","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:19:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:20:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:20:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:20:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:20:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:21:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:21:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:21:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:21:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:22:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:22:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:22:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:22:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:23:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:23:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:23:19","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:23:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:24:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:24:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:24:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:24:21","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:25:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:25:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:25:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:25:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:26:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:26:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:26:19","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:26:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:27:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:27:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:27:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:27:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:28:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:28:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:28:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:28:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:29:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:29:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:29:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:29:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:30:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:30:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:30:19","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:30:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:31:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:31:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:31:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:31:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:32:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:32:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:32:19","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:32:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:33:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:33:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:33:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:33:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:34:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:34:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:34:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:34:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:35:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:35:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:35:19","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:35:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:36:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:36:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:36:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:36:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:37:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:37:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:37:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:37:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:38:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:38:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:38:19","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:38:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:39:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:39:19","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:39:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:39:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}
+{"Time ":"18:40:19","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}
+{"Time ":"18:40:20","User":"system","Data":"SELECT `nickName`, DATE_FORMAT(`startTime`, '%Y-%m-%d %H:%i:%s') as startTime, DATE_FORMAT(`endTime`, '%Y-%m-%d %H:%i:%s') as endTime, `setNote` as Note FROM `SuspensionList` WHERE `Type` = 'S' AND `Del` = 'N' ORDER BY `Id` DESC"}
+{"Time ":"18:40:20","User":"system","Data":"autoSetSuspension - null"}
+{"Time ":"18:40:20","User":"system","Data":"SELECT idAutoBroadcast,Content,Channel,IntervalTime FROM backend.AutoBroadcast WHERE now() > StartTime AND now() < EndTime AND now() >= NextTime AND Loops < Freq  AND Open='Y'"}

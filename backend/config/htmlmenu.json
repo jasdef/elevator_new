@@ -1,0 +1,298 @@
+{
+    "會員系統":
+    {
+        "autho": "all",
+        "enable": true,
+        "child":
+        {
+            "會員查詢":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "MemberSearchForm"
+            },
+            "會員手動標記":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "ManualTarget"
+            },
+            "會員群組管理":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "MemberGroupForm"
+            },
+            "門號封鎖":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "blockadePhone"
+            },
+            "手動補儲(簡易版)":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "SimpleDeposit"
+            },
+            "門號修改紀錄":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "ModifyPhoneSearch"
+            }            
+        }
+    },
+    "遊戲調整":
+    {
+        "autho": "all",
+        "enable": true,
+        "child":
+        {
+            "等級表":
+            {
+                "enable": false,
+                "autho": "all",
+                "href": "lvSetting"
+            },
+            "用戶體驗設定":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "Umbrella"
+            },
+            "不雅字設定":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "ImpoliteWord"
+            }
+        }
+    },
+    "公告系統":
+    {
+        "autho": "all",
+        "enable": true,
+        "child":
+        {
+            "廣告視窗設定":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "BulletinADWindowForm"
+            },
+            "廣告燈箱廣告設定":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "BulletinADLamboxForm"
+            },
+            "跑馬燈設定":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "BulletinMarqueeForm"
+            },
+            "系統信發送":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "BulletinMailForm"
+            },
+            "系統信發送審核":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "bulletinMailVerify"
+            },
+            "推播設定":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "BulletinPushNotify"
+            },
+            "Lobby Board":
+            {
+                "enable": false,
+                "autho": "all",
+                "href": "BulletinLobbyBoardForm"
+            },
+            "Lobby Reel":
+            {
+                "enable": false,
+                "autho": "all",
+                "href": "BulletinLobbyReelForm"
+            },
+            "公告設定":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "BulletinKanbanForm"
+            }
+        }
+    },
+    "意見回饋系統":
+    {
+        "autho": "all",
+        "enable": true,
+        "child":
+        {
+            "意見回饋回覆":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "BulletinFeedbackForm"
+            },
+            "意見回饋查詢":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "BulletinFeedbackSearchForm"
+            },
+            "公版訊息設定":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "BulletinFeedbackCanForm"
+            }
+        }
+    },
+    "用戶管理":
+    {
+        "autho": "all",
+        "enable": true,
+        "child":
+        {
+            "帳號檢視":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "AuthUser"
+            },
+            "群組管理":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "AuthGroup"
+            },
+            "修改密碼":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "ChangePasswordForm"
+            }
+        }
+    },
+    "官網設定":
+    {
+        "autho": "all",
+        "enable": true,
+        "child":
+        {
+            "首頁":
+            {
+                "enable": false,
+                "autho": "all",
+                "href": "OfficialWebsite_index"
+            },
+            "最新消息":
+            {
+                "enable": false,
+                "autho": "all",
+                "href": "OfficialWebsite_news"
+            },
+            "特色介紹":
+            {
+                "enable": false,
+                "autho": "all",
+                "href": "OfficialWebsite_about"
+            },
+            "遊戲介紹":
+            {
+                "enable": false,
+                "autho": "all",
+                "href": "OfficialWebsite_game"
+            },
+            "下載遊戲":
+            {
+                "enable": false,
+                "autho": "all",
+                "href": "OfficialWebsite_download"
+            },
+            "線上商城":
+            {
+                "enable": false,
+                "autho": "all",
+                "href": "OfficialWebsite_shop"
+            },
+            "粉絲團&amp;其他":
+            {
+                "enable": false,
+                "autho": "all",
+                "href": "OfficialWebsite_another"
+            },
+            "廣告設定":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "OfficialWebsite_ad"
+            },
+            "文章管理":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "BulletinArticleManagerForm"
+            },
+            "圖片上傳":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "PictureUploaderTool"
+            }
+        }
+    },
+
+    "伺服器設定":
+    {
+        "autho": "all",
+        "enable": true,
+        "child":
+        {
+            "伺服器維修":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "ServerMaintenaceForm"
+            }
+        }
+    },
+
+    "報表系統": 
+    {
+        "autho": "all",
+        "enable": true,
+        "child":
+        {
+            "操作歷史查詢":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "HistoryRecordSearch"
+            }
+        }
+    },
+    "客服系統": 
+    {
+        "autho": "all",
+        "enable": true,
+        "child":
+        {
+            "定時廣播":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "AutoBroadcast"
+            }
+        }
+    }        
+}

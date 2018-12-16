@@ -1,0 +1,1073 @@
+{
+    "SCGBackendLogin":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "ChangePasswordForm":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/changepassword.html"
+    },
+    "PasswordUpdate":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "MemberSearchForm":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/MemberSearch.html"
+    },
+    "MemberEditForm":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/MemberEdit.html"
+    },
+    "MemberChargeForm":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/MemberCharge.html"
+    },
+    "MemberSpinHistoryForm":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/MemberSpinHistory.html"
+    },
+    "blockadePhone":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/blockadePhone.html"
+    },
+    "blockadePhone_Transfer": {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "HistoryRecordSearch":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/HistoryRecordSearch.html"
+    },
+    "ImpoliteWord":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+
+        "htmlpath": "./../public/ImpoliteWord.html"
+    },
+    "HistoryRecordSearch_Transfer":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "ImpoliteWordTransfer":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "MemberChargeHistory":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "MemberSpinHistory":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "MemberSearch":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "MemberEdit":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "MemberSuspension":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "GetPictures":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "SendPicture":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "getLangList":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "DelPicture":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "EditPicture":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OrderPicture":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "BulletinMailForm":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/bulletinMail.html"
+    },
+    "bulletinMailVerify":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/bulletinMailVerify.html"
+    },
+    "BulletinMail_getmGroup":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "BulletinMail_getGameList":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "BulletinMail_getAttItems":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "BulletinMail_Transfer":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "bulletinMailVerify_Transfer":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "bulletinMailPackage_Transfer":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "BulletinPushNotify":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/bulletinPushNotify.html"
+    },
+    "BulletinPushNotify_History":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "BulletinPushNotify_Add":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "BulletinPushNotify_Delete":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "BulletinPushNotify_Edit":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "memberBetInquireForm":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/MemberBetInquire.html"
+    },
+    "MemberBetInquire_History":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "DragonRankForm":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/dragonrank.html"
+    },
+    "BulletinTradeSearchForm":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/MemberTradeSearch.html"
+    },
+    "BulletinTransactionSearchForm":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/MemberTransactionSearch.html"
+    },
+    "DragonRank":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "DragonRank_History":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "memberIAPListform":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/MemberIAPList.html"
+    },
+    "memberIAPListAdv":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "BulletinADWindowForm":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/ADWindow.html"
+    },
+    "ADWindowGetGalleryData":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "BulletinFeedbackForm":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/Feedback.html"
+    },
+    "BulletinFeedbackSearchForm":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/FeedbackSearch.html"
+    },
+    "BulletinFeedbackCanForm":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/FeedbackCan.html"
+    },
+    "GetFeedbackType":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "GetFeedback":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "FeedbackReply":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "GetFeedbackCan":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "FeedbackCanAdd":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "FeedbackCanModify":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "SearchFeedback":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "GetVIPLvSetting":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "BulletinMarqueeForm":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/Marquee.html"
+    },
+    "GetMarquee":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "MarqueeModify":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "MarqueeDel":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "MarqueeAdd":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "ManualTarget":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/MemberManualTarget.html"
+    },
+    "ManualTargetGetImportMember":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "ManualTargetSearch":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "GetMemberGroupList":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "InsertMemberToGroup":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "MemberGroupForm":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/membergroup.html"
+    },
+    "MemberGroup":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "MemberGroupAdd":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "MemberGroupModify":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "MemberGroupManualForm":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/memberGroupManual.html"
+    },
+    "GroupManual_info":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "GroupManual_List":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "GroupManual_Delete":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_SeoView":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_postSeoData":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_SocialImage":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_index":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/OfficialWebsite_index.html"
+    },
+    "OfficialWebsite_IndexGalleryView":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_postIndexImageInsert":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_postIndexOrder":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_postIndexImageEnabled":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_postIndexImageDel":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_postIndexImageEditData":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_news":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/OfficialWebsite_news.html"
+    },
+    "OfficialWebsite_NewsListView":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_postNewsInsert":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_postNewsOrder":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_postNewsEnabled":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_postNewsDel":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_postNewsEditData":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_about":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/OfficialWebsite_about.html"
+    },
+    "OfficialWebsite_AboutListView":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_postAboutInsert":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_postAboutOrder":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_postAboutEnabled":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_postAboutImageDel":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_postAboutEditData":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_postAboutCoverEdit":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_AboutSubListView":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_postAboutSubInsert":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_postAboutSubOrder":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_postAboutSubImageDel":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_game":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/OfficialWebsite_game.html"
+    },
+    "OfficialWebsite_GameListView":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_postGameInsert":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_postGameOrder":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_postGameEnabled":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_postGameImageDel":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_postGameEditData":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_postGameCoverEdit":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_GameSubListView":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_postGameSubInsert":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_postGameSubOrder":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_postGameSubImageDel":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_download":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/OfficialWebsite_download.html"
+    },
+    "OfficialWebsite_postDownloadData":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_shop":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/OfficialWebsite_shop.html"
+    },
+    "OfficialWebsite_another":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/OfficialWebsite_another.html"
+    },
+    "OfficialWebsite_ad":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/OfficialWebsite_ad.html"
+    },
+    "OfficialWebsite_AnotherFooterData":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "OfficialWebsite_postAnotherFooterData":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "GetVIPSetting":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "MemberGroupDelete":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "BulletinKanbanForm":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/BulletinKanban.html"
+    },
+    "BulletinADLamboxForm":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/ADLambox.html"
+    },
+    "BulletinArticleManagerForm":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/ArticleManager.html"
+    },
+    "BulletinArticleManagerForm/ArticleGetById":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "ArticleDataTransfer":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "PictureUploaderTool":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/PictureUploaderTool.html"
+    },
+    "AuthGroup":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/AuthGroup.html"
+    },
+    "AuthGroup_add":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "AuthGroup_info":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "AuthGroup_delete":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "AuthGroup_Modify":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "AuthGroup_list":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "AuthUser":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/AuthUser.html"
+    },
+    "AuthUser_add":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "AuthUser_info":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "AuthUser_delete":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "AuthUser_Modify":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+
+    "GameBoard":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/GameBoard.html"
+    },
+    "GameBoardTransfer":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "Umbrella":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/Umbrella.html"
+    },
+    "GetUmbrellaList":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "MemberTradeSearch":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "ServerMaintenaceForm":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/ServerMaintenace.html"
+    },
+    "ServerMaintenaceSetServerStatus":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "ServerMaintenaceWhiteList":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "ServerMaintenaceWhiteListAdd":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "ServerMaintenaceWhiteListDel":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "ServerMaintenaceGetServerStatus":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "refreshStaticData": {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "MemberBanned":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "SimpleDeposit_Transfer":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "SimpleDeposit":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/SimpleDeposit.html"
+    },
+    "ModifyPhoneSearch":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/ModifyPhoneSearch.html"
+    },
+    "ModifyPhoneNum":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/ModifyPhoneNum.html"
+    },
+    "ModifyPhoneSearch_Transfer":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "ModifyPhoneNum_Transfer":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "BulletinKanban_Transfer":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "AutoBroadcast":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/AutoBroadcast.html"
+    },
+    "GetAutoBroadcast":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "SetAutoBroadcast":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "BroadcastModify":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "BroadcastDel":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "BroadcastEnable":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "GetSmartChannelList":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    }
+}

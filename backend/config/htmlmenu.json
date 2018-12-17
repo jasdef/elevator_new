@@ -1,4 +1,18 @@
 {
+    "提醒": 
+    {
+        "autho": "all",
+        "enable": true,
+        "child":
+        {
+            "主要提醒":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "Notification"
+            }
+        }
+    },
     "會員系統":
     {
         "autho": "all",

@@ -1069,5 +1069,18 @@
         "autho": "all",
         "enable": true,
         "type": "protocol"
+    },
+    "Notification":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/Notification.html"
+    },
+    "Notification_Transfer":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
     }
 }

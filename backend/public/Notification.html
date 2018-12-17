@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- Meta, title, CSS, favicons, etc. -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>SCG</title>
+
+        <!-- Bootstrap -->
+        <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Font Awesome -->
+        <link href="../vendors/font-awesome/css/font-awesome.css" rel="stylesheet">
+        <!-- NProgress -->
+        <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+        <!-- Datatables -->
+        <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+        <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+        <link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+        <link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+        <link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+        <!-- Custom Theme Style -->
+        <link href="../build/css/custom.min.css" rel="stylesheet">
+        <!-- bootstrap-daterangepicker -->
+        <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+        <!-- bootstrap-select -->
+        <link rel="stylesheet" href="../vendors/bootstrap-select/css/bootstrap-select.min.css">
+        <link href="../vendors/bootstrap-notify/animate.min.css" rel="stylesheet">
+</head>
+    <body class="nav-md">
+
+        <div class="container body">
+            <div class="main_container">
+                <!--Menu-->
+                <!--Top-->
+                <!-- page content -->
+                <div class="right_col" role="main">
+                    <div class="row">
+                        <div class="clearfix"></div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="x_panel">
+                                    <div class="x_title">
+                                        <h2>手動補儲</h2>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="x_content">
+                                        <div class="form-horizontal form-label-left" novalidate>
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">會員ID(JCG+10碼數字)
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input name="Account" id="Account" class="date-picker form-control col-md-7 col-xs-12" placeholder="" type="text" maxlength=13/>
+                                                    <span class="input-group-btn">
+                                                        <button target="_blank" id="Check" class="btn btn-success">檢查MemberId</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">會員ID檢查結果
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input type="text" id="CheckResult" class="form-control" readonly/>
+                                                </div>
+                                            </div>
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">新台幣
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input type="number" name="NT" id="NT" class="form-control" min=0 value=0 />
+                                                </div>
+                                            </div>
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">遊戲幣(credit cent)
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input type="number" name="Coin" id="Coin" class="form-control" min=0  value=0 />
+                                                </div>
+                                            </div>
+                                            <div class="item form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">VIP點數
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input type="number" name="VIPPoint" id="VIPPoint" class="form-control" min=0 value=0 />
+                                                    </div>
+                                            </div>
+                                            <div class="item form-group">
+                                                    <label class="col-md-6 col-sm-6 col-xs-12">來源</label>
+                                                    <select name="DepositSource" id="DepositSource" class="form-control">
+                                                            <option value="" selected>未選擇</option>
+                                                            <option value="1">系統贈金</option>
+                                                            <option value="2">活動贈金</option>
+                                                            <option value="3">玩家儲值</option>
+                                                    </select>
+                                            </div>
+
+                                            <div class="item form-group">
+                                                    <label class="col-md-6 col-sm-6 col-xs-12">項目</label>
+                                                    <select name="DepositType" id="DepositType" class="form-control">
+                                                            <option value="" selected>未選擇</option>
+                                                            <option value="GoogleIAP">Google Play儲值</option>
+                                                            <option value="AppleIAP">iOS儲值</option>
+                                                            <option value="MyCard">MyCard點數</option>
+                                                            <option value="FunPay">FunPay立即儲</option>
+                                                            <option value="JumboPay">JumboPay</option>
+                                                    </select>
+                                            </div>
+
+                                            <div class="ln_solid"></div>
+                                            <div class="form-group">
+                                                <div class="col-md-9 col-md-offset-4">
+                                                    <button id="mClear" class="btn btn-danger">清除</button>
+                                                    <button id="mSendDeposit" class="btn btn-success">送出</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /page content -->
+                <!--footer-->
+            </div>
+        </div>
+    </body>>
+    <div id="loading-cover" style="width: 100%; height: 100%; background: rgba(0,0,0,.5); position: fixed; display: none; z-index: 999999; top: 0; left: 0;">
+            <div id="loading-icon" style="width: 85px; height: 65px; margin: -42.5px 0 0 -32.5px; top: 50%; left: 50%; position: fixed;">
+                <i class="fa fa-circle-o-notch fa-spin fa-5x fa-fw" style="color: #FFF;"></i>
+            </div>
+        </div>
+        <!-- jQuery -->
+        <script src="../vendors/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- FastClick -->
+        <script src="../vendors/fastclick/lib/fastclick.js"></script>
+        <!-- NProgress -->
+        <script src="../vendors/nprogress/nprogress.js"></script>
+        <!-- validator -->
+        <script src="../vendors/validator/validator.js"></script>
+        <!-- Datatables -->
+        <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+        <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+        <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+        <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+        <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+        <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+        <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+        <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+        <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+        <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+        <script src="../vendors/jszip/dist/jszip.min.js"></script>
+        <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
+        <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+        <script src="../vendors/moment/min/moment.min.js"></script>
+        <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+        <!-- bootstrap-select -->
+        <script src="../vendors/bootstrap-select/js/bootstrap-select.min.js"></script>
+        <script src="../vendors/bootstrap-select/js/i18n/defaults-zh_TW.min.js"></script>
+        <!-- Custom Theme Scripts -->
+        <script src="../build/js/custom.min.js"></script>            
+        <script>
+            $(document).ready(function() {                
+                var isMemberIdCheckPass = false;
+
+                function clear() {                                
+                    $('#Coin').val(0);                    
+                    $('#VIPPoint').val(0);
+                    $('#Account').val("");
+                    $('#NT').val(0);
+                    $('#DepositType').val("");
+                    $('#DepositSource').val("");                    
+                }
+
+                function checkMemberId() {
+                    var account = $('#Account').val();
+                    $('#loading-cover').fadeIn(100);
+                    if (!account.match(/^JCG[0-9]{10}$/)) {
+                        $('#CheckResult').val("會員ID格式有誤!! 格式應為:(JCG+10碼數字)");
+                        $('#loading-cover').fadeOut(100);
+                    }
+                    else {
+                        $.ajax({
+                            type: 'POST',
+                            url: "/CheckMemberId",
+                            data: { memberId: account },
+                            cache: false,
+                            async: true,
+                            dataType: 'json',
+                            success: function(msg) {
+
+                                if (msg.code == 0) {
+                                    isMemberIdCheckPass = true;  
+                                }
+                                $('#CheckResult').val(msg.msg);
+                            }
+                            }).done(function() {
+                                $('#loading-cover').fadeOut(100);
+                        }); 
+                    }
+                }
+                                         
+                function checkData() 
+                {
+                    var result = {r : false};
+          
+                    if ($('#Account').val() === "") {
+                        alert("會員編號沒填!!");
+                        return result; 
+                    }
+                    else if ($('#DepositSource').val() === "") {
+                        alert("來源沒填!!!");
+                        return result;
+                    }
+                    else if ($('#DepositType').val() === "") {
+                        alert("項目沒填!!!");
+                        return result;
+                    }
+                   
+                    if ($('#Coin').val() < 0 ||  $('#NT').val() < 0) {
+                        alert("新台幣 或 遊戲幣不能是負數");
+                        return result;
+                    } 
+                    
+                    if ($('#NT').val() == 0) {
+                        if (!confirm("新台幣沒填!!!"))
+                            return result;
+                    }
+
+                    if ($('#Coin').val() == 0) {
+                        if (!confirm("遊戲幣沒填!!!"))
+                            return result;
+                    }                  
+
+                    result.Account = $('#Account').val();
+                    result.Coin = $('#Coin').val()
+                    result.VIPPoint = $('#VIPPoint').val();
+                    result.NT = $('#NT').val();
+                    result.DepositType = $('#DepositType').val();
+                    result.DepositSrouce = $('#DepositSource').val();
+                    result.CreateTime = $.now();
+                    result.r = true;
+
+                    return result;
+                }
+  
+                function snedDeposit() 
+                {
+                    var depositData = checkData();
+                    if (isMemberIdCheckPass) {
+                        if (depositData.r) {
+                            if (confirm("確定要送此單?")) {
+                                $.ajax({
+                                type: 'POST',
+                                url: "/DepositMoney",
+                                data: {requestData: JSON.stringify(depositData)},
+                                dataType: 'json',
+                                success: function(msg) {
+                                    alert(msg.msg);
+                                },
+                                error: function(xhr, desc, err) {
+                                    alert("HTTP Status code:" + xhr.status);
+                                }
+                                }).done(function() {
+                                    $('#loading-cover').fadeOut(100);
+                                });
+                            }
+                        }
+                    }
+                    else {
+                        alert("請確認會員ID否格式正確!!");
+                    }                                       
+                }
+
+                function checkInputNum(event) {
+                    if(event.keyCode == 45){
+                        event.preventDefault();
+                    }
+                }
+
+                $(document).on('click', '#mClear', clear);
+                $(document).on('click', '#mSendDeposit', snedDeposit);
+                $(document).on('click', '#Check', checkMemberId);
+                $('#Account').change(function() {
+                    isMemberIdCheckPass = false;
+                });
+
+                $(document).on('keypress', '#VIPPoint', checkInputNum);
+                $(document).on('keypress', '#NT', checkInputNum);
+                $(document).on('keypress', '#Coin', checkInputNum);
+                
+            });
+        </script>
+</html>>

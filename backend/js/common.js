@@ -162,7 +162,7 @@ common.prototype.log = function (account, operateContent) {
                 isThrowError =  true;                
             }
 
-            var sql = connection.format("Insert into backend.BehaviorLog (AccountId, Operator) select idAccount, ? from Account where account = ?", [JSON.stringify(operateContent), account]);
+            var sql = connection.format("Insert into behavior_log (account_id, operator) select id, ? from account where account = ?", [JSON.stringify(operateContent), account]);
             connection.query(sql, function(err, dbresults, fields){
                 if (err) {
                     throw err;                

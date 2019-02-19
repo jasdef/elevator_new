@@ -15,6 +15,7 @@ timer = require("./js/timer");
 // clearAllToken = require('./js/clearAllToken');
 
 var loginform = require('./js/login');
+var notification = require('./js/notification');
 
 
 var listenPort = 8888;
@@ -43,6 +44,7 @@ app.use(session({
 }));
 
 app.use(loginform);
+app.use(notification);
 
 app.get('/', function (req, res) {
     if (typeof (req.session['account']) === "undefined") {

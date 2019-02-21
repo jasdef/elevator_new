@@ -19,8 +19,8 @@ router.post('/GetOperateData', function (req, res) {
                 throw err;
             }
             
-            var dataSelect = "select account,operator,modifytime from Account t1, BehaviorLog t2 where t1.idAccount = t2.AccountId";
-            var countSelect = "select COUNT(`account`) as count from Account t1, BehaviorLog t2 where t1.idAccount = t2.AccountId";
+            var dataSelect = "select account,operator,modifytime from account t1, behavior_log t2 where t1.id = t2.account_id";
+            var countSelect = "select COUNT(`account`) as count from account t1, behavior_log t2 where t1.id = t2.account_id";
             var whereSQL = "";
             var searchData = JSON.parse(req.body.requestData);
          //   var quickSearchSQL = "";
@@ -98,7 +98,7 @@ router.post('/InsertOperateLog', function (req, res) {
     var operateContent = req.body.operateContent;
 
     common.BackendConnection(res, function (err, connection) {
-        var sql = "Insert into backend.BehaviorLog (AccountId, Operator) ?";
+        var sql = "Insert into behavior_log (account_id, operator) ?";
         var accountName;
         var subSql;
         if (account == NULL || account == "") {   
@@ -106,7 +106,7 @@ router.post('/InsertOperateLog', function (req, res) {
             throw "the account is null or empty!";
         }
 
-        subSql = "select idAccount "+operateContent +" from Account where account = "+account;                    
+        subSql = "select id "+operateContent +" from account where account = "+account;                    
 
         sql = connection.format(sql, [subSql]);
         connection.query(sql, function(err, dbresults, fields){

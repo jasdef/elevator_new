@@ -16,7 +16,7 @@ timer = require("./js/timer");
 
 var loginform = require('./js/login');
 var notification = require('./js/notification');
-
+var historyRecord = require('./js/historyRecordSearch');
 
 var listenPort = 8888;
 
@@ -45,7 +45,7 @@ app.use(session({
 
 app.use(loginform);
 app.use(notification);
-
+app.use(historyRecord);
 app.get('/', function (req, res) {
     if (typeof (req.session['account']) === "undefined") {
         res.redirect('/LoginForm');

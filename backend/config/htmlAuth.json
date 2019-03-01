@@ -1082,5 +1082,18 @@
         "autho": "all",
         "enable": true,
         "type": "protocol"
+    },
+    "Transaction":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/Transaction.html"
+    },
+    "Transaction_Transfer":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
     }
 }

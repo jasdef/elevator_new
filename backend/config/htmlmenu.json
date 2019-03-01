@@ -1,4 +1,5 @@
 {
+
     "提醒": 
     {
         "autho": "all",
@@ -13,48 +14,64 @@
             }
         }
     },
-    "會員系統":
+    "表單管理": 
     {
         "autho": "all",
         "enable": true,
         "child":
         {
-            "會員查詢":
+            "買賣單":
             {
                 "enable": true,
                 "autho": "all",
-                "href": "MemberSearchForm"
+                "href": "Transaction"
             },
-            "會員手動標記":
+            "保固單":
             {
                 "enable": true,
                 "autho": "all",
-                "href": "ManualTarget"
+                "href": "Warranty"
             },
-            "會員群組管理":
+            "保養名冊":
             {
                 "enable": true,
                 "autho": "all",
-                "href": "MemberGroupForm"
+                "href": "Service"
+            }
+        }
+    },
+    "派遣管理": 
+    {
+        "autho": "all",
+        "enable": true,
+        "child":
+        {
+            "派遣列表":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "DispatchList"
+            }
+        }
+    },
+    "人員管理":
+    {
+        "autho": "all",
+        "enable": true,
+        "child":
+        {
+            "客戶列表":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "CustomerList"
             },
-            "門號封鎖":
+            "人員列表":
             {
                 "enable": true,
                 "autho": "all",
-                "href": "blockadePhone"
-            },
-            "手動補儲(簡易版)":
-            {
-                "enable": true,
-                "autho": "all",
-                "href": "SimpleDeposit"
-            },
-            "門號修改紀錄":
-            {
-                "enable": true,
-                "autho": "all",
-                "href": "ModifyPhoneSearch"
-            }            
+                "href": "MemberList"
+            }      
         }
     },
     "遊戲調整":

@@ -16,6 +16,8 @@ timer = require("./js/timer");
 
 var loginform = require('./js/login');
 var notification = require('./js/notification');
+var transaction = require('./js/transaction');
+
 var historyRecord = require('./js/historyRecordSearch');
 
 var listenPort = 8888;
@@ -45,6 +47,7 @@ app.use(session({
 
 app.use(loginform);
 app.use(notification);
+app.use(transaction);
 app.use(historyRecord);
 app.get('/', function (req, res) {
     if (typeof (req.session['account']) === "undefined") {

@@ -10,6 +10,12 @@ router.get('/Transaction', function(req, res) {
     common.CreateHtml("Transaction", req, res);
 });
 
+router.get('/TransactionAdd', function(req, res) {
+    common.log(req.session['account'], 'call Transaction add');
+    common.CreateHtml("TransactionAdd", req, res);
+
+});
+
 router.post('/GetTransactionList', function (req, res) {
     common.CreateHtml("Transaction_Transfer", req, res, function (err) {
         common.BackendConnection(res, function (err, connection) {

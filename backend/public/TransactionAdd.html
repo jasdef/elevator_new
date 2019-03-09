@@ -60,6 +60,20 @@
              return Tbdata;     
         }
 
+        function onItemPercentChange(element) {
+            var total = $('#totalPrice').val();
+            var price = parseInt(total*(element.value*0.01));
+            $('#itemPrice'+element.name).val(price);
+
+            console.log(element.value);
+        }
+
+        function onItemPriceChange(element) {
+            var total = $('#totalPrice').val();
+            var percent = parseInt(element.value/total*100);
+            $('#itemPercent'+element.name).val(percent);
+        }
+
         function calculate() {
             var total = $('#totalPrice').val();
             var left = total;
@@ -67,7 +81,7 @@
             var data = getTableData();
 
             for (var i = 0; i < tr_length; i++) {
-                console.log(data[i][3]);
+
                 if (data[i][3] == 5) {
                     left -= data[i][2];
                 }
@@ -277,11 +291,11 @@
           
             var trcomp=`
             <tr>
-            <td width="100px"><input id="itemTitle${tr_length}" type="text"/></td>
-            <td width="100px"><input id="itemPercent${tr_length}" type="number"/></td>
-            <td width="100px"><input id="itemPrice${tr_length}" type="number"/></td>
+            <td width="100px"><input name="${tr_length}" id="itemTitle${tr_length}" type="text"/></td>
+            <td width="100px"><input name="${tr_length}" id="itemPercent${tr_length}" type="number" onchange="onItemPercentChange(this)"/></td>
+            <td width="100px"><input name="${tr_length}" id="itemPrice${tr_length}" type="number" onchange="onItemPriceChange(this)"/></td>
             <td width="100px">
-                <select id="itemStatus${tr_length}" name="status" onchange="calculate()">
+                <select name="${tr_length}" id="itemStatus${tr_length}" name="status" onchange="calculate()">
                 　<option value="0" selected="selected">請選擇表單狀態</option>
                 　<option value="1">已開發票</option>
                 　<option value="2">已送請款單</option>
@@ -363,7 +377,7 @@
 
 
         $('#startDate').on('apply.daterangepicker', function(ev, picker) {
-            $(this).val(picker.startDate.format('YYYY-MM-DD HH:mm:ss'));
+            $(this).val(picker.startDate.format('YYYY-MM-DD'));
         });
         $('#startDate').on('cancel.daterangepicker', function(ev, picker) {
             $(this).val('');
@@ -392,10 +406,6 @@
             }            
         }
  
-
-
-      //  $('#loading-cover').fadeIn(100);
-
         function datacheck() {
             var result = { r: false };
 

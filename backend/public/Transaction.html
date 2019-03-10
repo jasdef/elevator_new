@@ -154,7 +154,7 @@
                     } ,
                     { "defaultContent": 
                         `<div class="btn-group btn-group-sm" style="display: flex;">
-                            <button class="btn btn-info"  id='modifyitem' title="修改"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 修改</button>                            
+                            <button class="btn btn-info" id='modifyitem' title="修改"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 修改</button>                            
                             <button class="btn btn-danger active" id='deleteitem' title="刪除"><i class="fa fa-ban" aria-hidden="true"></i> 刪除</button>
                         </div>`
                     }               
@@ -182,9 +182,7 @@
             }).dataTable(); 
 
 
-
-
-        function DeleteImpolite(id) {
+        function DeleteTransaction(id) {
             $.ajax({
                 type: 'POST',
                 url: "/DeleteTransaction",
@@ -200,92 +198,27 @@
                 }
             });
         }
-
-        function EditImpoliteType() {
-            $('#loading-cover').fadeIn(100);
-            var Id = $('#editWordId').val();         
-            var impoliteType = [];
-         
-            $('input[id=blockCheckbox]:checked').each(function (idx) {   
-                impoliteType[idx] = this.value;                                         
-            });
-       
-            if (impoliteType.length === 0) {
-
-                alert("至少選擇一個類型");
-                $('#loading-cover').fadeOut(100);
-                return;
-            }
-
-            var SendData = {
-                impoliteID: Id,
-                insertType: impoliteType
-            };
-
-            $.ajax({
-                type: 'POST',
-                url: "/UpdateImpoliteWordType",
-                data: { SendData: JSON.stringify(SendData) },
-                cache: false,
-                async: true,
-                dataType: 'json',
-                success: function(msg) {
-                    $('#bs-modal-box').modal('hide');
-                    alert(msg.msg);
-                    search();
-                },
-                error: function(xhr, desc, err) {
-                    alert("HTTP Status code:" + xhr.status);
-                }
-            }).done(function() {
-                $('#loading-cover').fadeOut(100);
-            });
-        }
-
-
-
-
-        $('#addTransaction').attr('href', `/TransactionAdd`);
-     
-       // $(document).on('click', '#addTransaction', ShowAddPanel);
-     
+    
+        $('#addTransaction').attr('href', `/TransactionAdd`);           
 
         $('#datatable tbody').on('click', 'button', function(e) {
             var data = table.row($(this).parents('tr')).data();
             switch ($(this).attr('id')) {
                 case "modifyitem":
-                    ShowEditPanel(data);
+                    location.replace(`/TransactionEdit?Id=${data.id}`);
                     break;
                 case "deleteitem":
                     if (confirm("確定刪除嗎?")) {                      
-                        DeleteImpolite(data.id);
+                        DeleteTransaction(data.id);
                     }
+                    break;
+                case "viewitem":
+                    console.log("viewitem");
                     break;
             }
 
-        });
-        
-        function addCurrentRow()
-        {
-            var trcomp=`<tr><td><input type='file' name='imageFile'/></td><td><input name='imageName'></input></td><td><input name='note' /></td><td><a id="delBtn"><font color='red'>刪除</font></a></td></tr>`;
-            $("#allDatas tr:last-child").after(trcomp);
-        }
-
-        function deleteCurrentRow()
-        {
-             var isDelete=confirm("真的要刪除嗎？");
-            if(isDelete)
-            {
-                var tr=this.parentNode.parentNode;
-                var tbody=tr.parentNode;
-                tbody.removeChild(tr);
-            }
-        }
-
-
+        });        
     });
 
-
     </script>
-
 </body>

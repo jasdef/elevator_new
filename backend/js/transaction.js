@@ -16,6 +16,12 @@ router.get('/TransactionAdd', function(req, res) {
 
 });
 
+router.get('/TransactionEdit', function(req, res) {
+    common.log(req.session['account'], 'call Transaction edit');
+    common.CreateHtml("TransactionEdit", req, res);
+
+});
+
 router.post('/GetTransactionList', function (req, res) {
     common.CreateHtml("Transaction_Transfer", req, res, function (err) {
         common.BackendConnection(res, function (err, connection) {
@@ -48,6 +54,87 @@ router.post('/GetTransactionList', function (req, res) {
         });        
     });
 
+});
+
+router.post('/GetTransactionData', function (req, res) {
+    common.CreateHtml("Transaction_Transfer", req, res, function (err) {
+        common.BackendConnection(res, function (err, connection) {
+            if (err) {
+                common.log(res.session['account'], err);
+                throw err;
+            }
+            var transactionID = req.body.Id;
+            
+            var dataSelect = "select * from transaction_form where id="+transactionID+";";
+   
+            var sql = dataSelect;
+
+            common.log(req.session['account'], sql);
+
+            connection.query(sql, function (error, result, fields) {
+                if (error) {
+                    common.log(req.session['account'], err);
+                    res.send({error : err});
+                }
+                else {
+            
+                    res.send({ data: result[0] });
+                }
+                connection.release();
+                res.end();
+            });
+
+        });        
+    });
+
+});
+
+router.post('/EditTransaction', function(req, res) {
+    common.CreateHtml("Transaction_Transfer", req, res, function (err) {
+    common.BackendConnection(res, function(err, connection) {
+            var requestData = JSON.parse(req.body.requestData);
+            console.log(req.body);
+            console.log(requestData);
+            var addTransactionSQL = "update transaction_form set `title`=?, `left_price`=?, `total_price`=?, `start_date`=?, `is_return`=?, `is_duty`=?, `is_receipt`=?, `elevator_num`=?, `note`=?, `customer_id`=?, `items`=? where `id`=?;";
+
+            var historyData = [requestData.MemberId, requestData.OldPhoneNum, requestData.NewPhoneNum, req.session['account'], requestData.Note];
+            var itemsJson = JSON.stringify(requestData.items);
+            var transactionData = 
+            [
+                requestData.title, 
+                requestData.leftPrice,
+                requestData.totalPrice,
+                requestData.startDate,
+                requestData.isReturn,
+                requestData.isDuty,
+                requestData.isReceipt,
+                requestData.elevatorNum,
+                requestData.note,
+                requestData.customerId,
+                itemsJson,
+                requestData.id
+            ];
+  
+            addTransactionSQL = connection.format(addTransactionSQL, transactionData);
+
+            var sql = addTransactionSQL;
+
+            common.log(req.session['account'], sql);
+            connection.query(sql, function (error, result, fields) {
+                if (error) {
+                    common.log(req.session['account'], error);
+                    connection.release();                    
+                    res.send({ code: -1, msg: "更新失敗", err: error }).end();
+
+                }
+                else {
+                    connection.release();                    
+                    res.send({ code: 0, msg: "更新成功!" }).end();
+                }
+            });
+
+    });
+    });
 });
 
 router.post('/AddTransaction', function(req, res) {//4
@@ -101,7 +188,7 @@ router.post('/AddTransaction', function(req, res) {//4
 router.post('/DeleteTransaction', function (req, res){
     common.CreateHtml("Transaction_Transfer", req, res, function (err) {
         common.log(req.session['account'], "Call DeleteTransaction");
-        
+
         common.BackendConnection(res, function (err, connection) {
             var transactionID = req.body.Id;
             var deleteTransaction = "delete from `transaction_form` where `id` = "+transactionID+";";

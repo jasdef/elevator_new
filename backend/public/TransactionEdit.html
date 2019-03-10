@@ -30,6 +30,8 @@
     <link href="../vendors/bootstrap-notify/animate.min.css" rel="stylesheet">
     <!-- At.js 套件(autocomplete))  -->
     <link href="../vendors/At.js/css/jquery.atwho.min.css" rel="stylesheet">
+    <script src="../vendors/moment/min/moment.min.js"></script>
+
 
     <style type="text/css" media="screen">
     #datatable tbody td {
@@ -104,7 +106,7 @@
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>新增買賣單</h2>
+                                    <h2>編輯買賣單</h2>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
@@ -190,7 +192,7 @@
                                         <div class="form-group">
                                             <div class="col-md-9 col-md-offset-4">
                                                 <button id="mClear" class="btn btn-danger">清除</button>
-                                                <button id="sendAdd" class="btn btn-success">新增</button>
+                                                <button id="sendEdit" class="btn btn-success">儲存</button>
                                             </div>
                                         </div>
                                     </div>
@@ -283,8 +285,59 @@
 
         $(document).on('click', '#addBtn', addCurrentRow);
         $(document).on('click', '#delBtn', deleteCurrentRow);
+        var $_GET = {};
+
+        document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function() {
+                function decode(s) {
+                    return decodeURIComponent(s.split("+").join(" "));
+                }
+                $_GET[decode(arguments[1])] = decode(arguments[2]);
+        });
 
 
+        DateInit();
+        Init();
+        function Init() {
+            var id = $_GET["Id"];
+            $.ajax({
+                type: 'POST',
+                url: "/GetTransactionData",
+                data: { Id: id },
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(msg) {
+                    var data = msg.data;
+                    var startDate = moment(data.start_date).format("YYYY-MM-DD");
+                    $('#title').val(data.title);
+                    $('#elevatorNum').val(data.elevator_num);
+                    $('#totalPrice').val(data.total_price);
+                    $('#leftPrice').val(data.left_price);            
+                    $('#startDate').val(startDate);
+                    $('#isReturn').val(data.is_return);
+                    $('#isReturn').selectpicker('val', data.is_return);
+                    $('#isDuty').val(data.is_duty);
+                   // $('#isDuty').selectpicker('val', data.is_duty);
+                    $('#isReceipt').val(data.is_receipt);
+                   // $('#isReceipt').selectpicker('val', data.is_receipt);
+                    $('#customer').val(data.customer_id);
+                   // $('#customer').selectpicker('val', data.customer_id);
+                    $('#note').val(data.note);
+                    
+                    var items = JSON.parse(data.items);
+ 
+                    for (var i = 0; i < items.length; i++) {
+                        addCurrentRow();
+                        $('#itemTitle'+i).val(items[i][0]);
+                        $('#itemPercent'+i).val(items[i][1]);
+                        $('#itemPrice'+i).val(items[i][2]);
+                        $('#itemStatus'+i).val(items[i][3]);    
+                      //  $('#itemStatus'+i).selectpicker('val', items[i][3]); 
+                    }
+  
+                }
+            });
+        }
 
         function addCurrentRow()
         {
@@ -361,7 +414,6 @@
             $('#note').val("");
         }
 
-        DateInit();
 
         function DateInit() {
             $('#startDate').daterangepicker({
@@ -384,14 +436,15 @@
             $(this).val('');
         });
 
-        function sendAddData() {
+        function sendEditData() {
             $('#loading-cover').fadeIn(100);
             var checkData = datacheck();
-
+            var id = $_GET["Id"];
+            checkData.id = id;
             if (checkData.r) {
                 $.ajax({
                 type: 'POST',
-                url: "/AddTransaction",
+                url: "/EditTransaction",
                 data: {requestData: JSON.stringify(checkData)},
                 dataType: 'json',
                 success: function(msg) {
@@ -444,7 +497,7 @@
             return false;
         }
 
-        $(document).on('click', '#sendAdd', sendAddData);
+        $(document).on('click', '#sendEdit', sendEditData);
         $(document).on('click', '#mClear', clear);
 
     });

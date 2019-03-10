@@ -98,6 +98,33 @@ router.post('/AddTransaction', function(req, res) {//4
 });
 
 
+router.post('/DeleteTransaction', function (req, res){
+    common.CreateHtml("Transaction_Transfer", req, res, function (err) {
+        common.log(req.session['account'], "Call DeleteTransaction");
+        
+        common.BackendConnection(res, function (err, connection) {
+            var transactionID = req.body.Id;
+            var deleteTransaction = "delete from `transaction_form` where `id` = "+transactionID+";";
+        
+            var sql = deleteTransaction;
+
+            var query = connection.query(sql, function (error, result, fields) {
+                if (error) {
+                    common.log(req.session['account'], error);
+                    res.send({ code: error, msg: "刪除失敗", err: error });
+                } else {
+                                       
+                    res.send({ code: 0, msg: "刪除成功" });
+                }
+                connection.release();
+                res.end();
+            });
+
+        });
+    });
+});
+
+
 router.post('/CheckMemberId', function(req, res) {
     common.CreateHtml("SimpleDeposit_Transfer", req, res, function () {
         common.log(req.session['account'], "Call CheckMember");

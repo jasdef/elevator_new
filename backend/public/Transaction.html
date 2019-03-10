@@ -183,79 +183,11 @@
 
 
 
-        function SendAddData() {
-            $('#loading-cover').fadeIn(100);
-            var addWord = $('#impoliteWord').val();
-            var impoliteTypeArr = [];
-         
-            $('input[id=blockCheckbox]:checked').each(function (idx) {   
-                impoliteTypeArr[idx] = this.value;                                         
-            });
-
-            if (addWord === "") {
-                alert("不雅字不得為空");
-                $('#loading-cover').fadeOut(100);
-                return;
-            }
-       
-            if (impoliteTypeArr.length === 0) {
-
-                alert("至少選擇一個類型");
-                $('#loading-cover').fadeOut(100);
-                return;
-            }
-
-            var addWordArr = addWord.split(";");
-
-            var SendData = {
-                addWordArr: addWordArr,
-                typeArr: impoliteTypeArr
-            };
-
-            $.ajax({
-                type: 'POST',
-                url: "/AddImpoliteWord",
-                data: { SendData: JSON.stringify(SendData) },
-                cache: false,
-                async: true,
-                dataType: 'json',
-                success: function(msg) {
-                    if (msg.code == -1) { 
-                        msg.msg 
-                    } 
-                    else {
-                        console.log("@msg.data.length"+msg.data.length);
-                        if (msg.data.length > 0)
-                        {
-                            var exsitWord = "";
-                            
-                            msg.data.forEach(function (element){
-                                exsitWord += element.keyword+" ";
-                            });
-
-                            alert(msg.msg+" 重複的字有: "+exsitWord);                            
-                        }
-                        else {
-                            alert(msg.msg);
-                        }
-                        
-                        search();
-                        $('#bs-modal-box').modal('hide');   
-                    }                                                       
-                },
-                error: function(xhr, desc, err) {
-                    alert("HTTP Status code:" + xhr.status);
-                }
-            }).done(function() {                
-                $('#loading-cover').fadeOut(100);           
-            });
-
-        }
 
         function DeleteImpolite(id) {
             $.ajax({
                 type: 'POST',
-                url: "/DeleteImpoliteWord",
+                url: "/DeleteTransaction",
                 data: { Id: id },
                 cache: false,
                 async: true,
@@ -310,201 +242,13 @@
             });
         }
 
-        function ShowAddPanel() {
-            var html =
-                `<div class="col-sm-12">
-                <div class="panel panel-warning">
-                <div class="panel-heading"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>新增買買單</div>
-                <div class="panel-body">
-                <div class="form-group">
-                    <label class="control-label">表單名稱</label>
-                    <input id="title" class="form-control" maxlength="50" type="text">
-                </div>
-                <div class="form-group">
-                    <label class="control-label">電梯數量</label>
-                    <input id="elevatorNum" class="form-control" maxlength="50" type="text">
-                </div>
-                <div class="form-group">
-                    <label class="control-label">總價</label>
-                    <input id="totalPrice" class="form-control" maxlength="50" type="text">
-                </div>
-                <div class="form-group">
-                    <label class="control-label">簽約日(西元yyyy/mm/dd)</label>
-                    <input id="startDate" class="form-control" maxlength="50" type="text">
-                </div>
-                <div class="form-group">
-                    <label class="control-label">合約已回/未回</label>
-                    <input id="isReturn" class="form-control" maxlength="50" type="text">
-                </div>
-                <div class="form-group">
-                    <label class="control-label">含稅/未稅</label>
-                    <input id="isDuty" class="form-control" maxlength="50" type="text">
-                </div>
-                <div class="form-group">
-                    <label class="control-label">是否開發票</label>
-                    <input id="isReceipt" class="form-control" maxlength="50" type="text">
-                </div>
-                <div class="form-group">
-                    <label class="control-label">客戶</label>
-                    <input id="customer" class="form-control" maxlength="50" type="text">
-                </div>
-                <div class="form-group">
-                    <label class="control-label">備註事項</label>
-                    <input id="note" class="form-control" maxlength="50" type="text">
-                </div>
-                <div class="form-group">
-                    <label class="control-label">收款明細</label>
-                    <input id="items" class="form-control" maxlength="50" type="text">
-                </div>
-                <div class="form-group">
-                    <label class="control-label">收款明細</label><br>
-                    <table id="allDatas" class="table x_content">
-                        <tr>
-                        <th>項目名稱</th>
-                        <th>金額百分比</th>
-                        <th>金額</th>
-                        <th>狀態</th>
-                        <th>操作</th>
-                        </tr>
-                        <tr>
-                        <td width="100px"><input type="text"/></td>
-                        <td width="100px"><input type="text"/></td>
-                        <td width="100px"><input type="text"/></td>
-                        <td width="100px">
-                            <select name="status">
-                            　<option value="0" selected="selected">請選擇表單狀態</option>
-                            　<option value="1">已開發票</option>
-                            　<option value="2">已送請款單</option>
-                            　<option value="3">已送請款單/發票</option>
-                            　<option value="4">尚未收款</option>
-                            　<option value="5">已收款</option>
-                            </select>
-                        </td>
-                        <td><a id="delBtn"><font color='red'>刪除</font></a> </td>
-                        </tr>
-                    </table> 
-                    <button id="addBtn">新增</button>
-                </div>
-                <div class="form-group">
-                    <label class="control-label">剩餘款項</label>
-                    <input id="items" class="form-control" maxlength="50" type="text">
-                </div>
-                <div class="form-group">
-                    <label class="control-label">上傳圖片</label>
-                    <input type="file" name="imageFile1"/>
-                </div>
-                </div>
-                </div>
-                </div>`;
-            ShowAddBox("", html);
-        }
 
-        function ShowAddBox(Title, Content) {
- 
-            var html =
-                ` 
-                <div class="modal-dialog" role="document"> 
-                <div class="modal-content"> 
-                <div class="modal-header"> 
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
-                <h4 class="modal-title"></h4> 
-                </div>
-                <div class="modal-body" style="display:flow-root"> 
-                <p></p>
-                </div> 
-                <div class="modal-footer"> 
-                <button id="SendAddData" type="button" class="btn btn-success">確定</button> 
-                <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button> 
-                </div> 
-                </div> 
-                </div>`;
-                $("#bs-modal-box").html(html);
-   
-            $('#bs-modal-box h4.modal-title').html('<span class="label label-default">新增買賣單</span> ' + Title);
-            $('#bs-modal-box div.modal-body').html(Content);
-            $('#bs-modal-box').modal('show')
-            $(document).on('click', '#addBtn', addCurrentRow);
-            $(document).on('click', '#delBtn', deleteCurrentRow);
 
-            
-        }
-
-        function ShowEditPanel(data) {       
-            var html =
-                `<div class="col-sm-12">
-                <div class="panel panel-warning">
-                <div class="panel-heading"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 編輯違規類型</div>
-                <div class="panel-body">
-
-                <div class="form-group">
-                <label class="control-label">Id</label>
-                <input id="editWordId" class="form-control" type="number" readonly value= ${data.Id}>
-                </div>
-                <div class="form-group">
-                <label class="control-label">不雅字</label>
-                <input id="editKeyword" class="form-control" type="text" readonly value= ${data.Keyword}>
-
-                </div>
-                <div class="form-group">
-                        <label class="control-label">違規類型</label><br>
-                        <div id="showBoxTypeBlock"></div>
-                </div>
-                </div>
-                </div>
-                </div>`;
-            ShowEditBox("", html, data);
-        }
-        
-        function ShowEditBox(Title, Content, data) {
-            var html =
-                `
-                <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"></h4>
-                </div>
-                <div class="modal-body" style="display:flow-root">
-                <p></p>
-                </div>
-                <div class="modal-footer">
-                <button id="SendEditData" type="button" class="btn btn-success">確定</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
-                </div>
-                </div>
-                </div>`;
-
-            $("#bs-modal-box").html(html);
-            $('#bs-modal-box h4.modal-title').html('<span class="label label-default">編輯不雅字</span> ' + Title);
-            $('#bs-modal-box div.modal-body').html(Content);
-            $('#bs-modal-box').modal('show')
-            ShowImpoliteType();
-            SetCheckBoxValue(data);
-        }
-        
-        function SetCheckBoxValue(data) {
-            $('input[id=blockCheckbox]').each(function(index) {
-                var tempArr = data.ViolationTypeId.split(",");
-                var i;
-                for (i = 0; i < tempArr.length; i++) {                                       
-                    if (this.value === tempArr[i]) {        
-                        this.checked = 'checked';
-                    }
-                }                
-            });            
-        }
-
-        function ShowImpoliteType() {
-            ImpoliteTypeGroup.forEach (function(value){                
-                $("#showBoxTypeBlock").append('<div> <input type="checkbox" id=blockCheckbox value='+value.id+' />'+value.name+' </div>');
-            });
-        }
 
         $('#addTransaction').attr('href', `/TransactionAdd`);
      
        // $(document).on('click', '#addTransaction', ShowAddPanel);
-        $(document).on('click', '#SendAddData', SendAddData);
-        $(document).on('click', '#SendEditData', EditImpoliteType);
+     
 
         $('#datatable tbody').on('click', 'button', function(e) {
             var data = table.row($(this).parents('tr')).data();
@@ -514,7 +258,7 @@
                     break;
                 case "deleteitem":
                     if (confirm("確定刪除嗎?")) {                      
-                        DeleteImpolite(data.Id);
+                        DeleteImpolite(data.id);
                     }
                     break;
             }

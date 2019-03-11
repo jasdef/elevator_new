@@ -22,6 +22,12 @@ router.get('/TransactionEdit', function(req, res) {
 
 });
 
+router.get('/TransactionView', function(req, res) {
+    common.log(req.session['account'], 'call Transaction view');
+    common.CreateHtml("TransactionView", req, res);
+
+});
+
 router.post('/GetTransactionList', function (req, res) {
     common.CreateHtml("Transaction_Transfer", req, res, function (err) {
         common.BackendConnection(res, function (err, connection) {

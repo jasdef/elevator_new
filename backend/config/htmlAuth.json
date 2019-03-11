@@ -1083,6 +1083,13 @@
         "enable": true,
         "type": "protocol"
     },
+    "TransactionView":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/TransactionView.html"
+    },
     "TransactionEdit":
     {
         "autho": "all",

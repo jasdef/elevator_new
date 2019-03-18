@@ -312,7 +312,21 @@
                 dataType : 'json'
             }).done(function(data){
                 console.log(data);
-                alert(data.errMsg);
+               // alert(data.errMsg);
+                var Path = data.fielPath;
+
+                $.ajax({
+                    type: 'POST',
+                    url: "/InsertImgMapping",          
+                    cache: false,
+                    async: true,
+                    data : {TableType: 1, TableId: $_GET["Id"], Path: Path} ,
+                    dataType: 'json',
+                    success: function(msg) {
+                        
+
+                    }                 
+                });
             }).fail(function(err){
                 console.error(err);
             });

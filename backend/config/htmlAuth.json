@@ -1117,4 +1117,11 @@
         "enable": true,
         "type": "protocol"
     }
+    ,    
+    "UploadImg_Transfer":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    }
 }

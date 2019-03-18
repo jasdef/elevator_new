@@ -222,8 +222,9 @@
                                         </div>
                                         <div class="form-group">              
                                             <label>上傳圖片</label>                                      
-                                            <input type="file" name="imageFile1"/>
-                                        </div>                                       
+                                            <input type="file" id="imageFile"/></br>
+                                            <button id="upload">上傳</button>
+                                        </div>                                              
                                     </div>
                                 </div>
                             </div>
@@ -285,6 +286,8 @@
 
         $(document).on('click', '#addBtn', addCurrentRow);
         $(document).on('click', '#delBtn', deleteCurrentRow);
+        $(document).on('click', '#upload', upload);
+        
         var $_GET = {};
 
         document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function() {
@@ -294,6 +297,26 @@
                 $_GET[decode(arguments[1])] = decode(arguments[2]);
         });
 
+        function upload() {
+            var myPhoto = $('#imageFile')[0].files[0];
+            var oMyForm = new FormData();
+
+            oMyForm.append("userfile", myPhoto);
+            $.ajax({
+                type : 'POST',
+                url : '/UploadImg',
+                cache : false,  
+                processData : false,    
+                contentType : false, 
+                data : oMyForm,
+                dataType : 'json'
+            }).done(function(data){
+                console.log(data);
+                alert(data.errMsg);
+            }).fail(function(err){
+                console.error(err);
+            });
+        }
 
         DateInit();
         Init();

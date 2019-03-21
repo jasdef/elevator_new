@@ -15,6 +15,7 @@ timer = require("./js/timer");
 var loginform = require('./js/login');
 var notification = require('./js/notification');
 var transaction = require('./js/transaction');
+var customer = require('./js/customer');
 var imgUpload = require('./js/uploadImg');
 var historyRecord = require('./js/historyRecordSearch');
 var listenPort = 8888;
@@ -38,6 +39,7 @@ app.use(session({
     saveUninitialized: false,
     cookie: { maxAge: 60 * 1000 * 50 }
 }));
+app.use(customer);
 app.use(imgUpload);
 app.use(loginform);
 app.use(notification);

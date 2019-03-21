@@ -1,40 +1,43 @@
 var express = require('express');
+var path = require("path");
 var router = express.Router();
+var fileUpload = require('express-fileupload');
+var async = require('async');
+var request = require('request');
 
-
-router.get('/Transaction', function(req, res) {
-    common.log(req.session['account'], 'call Transaction');
-    common.CreateHtml("Transaction", req, res);
+router.get('/Customer', function(req, res) {
+    common.log(req.session['account'], 'call Customer');
+    common.CreateHtml("Customer", req, res);
 });
 
-router.get('/TransactionAdd', function(req, res) {
-    common.log(req.session['account'], 'call Transaction add');
-    common.CreateHtml("TransactionAdd", req, res);
-
-});
-
-router.get('/TransactionEdit', function(req, res) {
-    common.log(req.session['account'], 'call Transaction edit');
-    common.CreateHtml("TransactionEdit", req, res);
+router.get('/CustomerAdd', function(req, res) {
+    common.log(req.session['account'], 'call Customer add');
+    common.CreateHtml("CustomerAdd", req, res);
 
 });
 
-router.get('/TransactionView', function(req, res) {
-    common.log(req.session['account'], 'call Transaction view');
-    common.CreateHtml("TransactionView", req, res);
+router.get('/CustomerEdit', function(req, res) {
+    common.log(req.session['account'], 'call Customer edit');
+    common.CreateHtml("CustomerEdit", req, res);
 
 });
 
-router.post('/GetTransactionList', function (req, res) {
-    common.CreateHtml("Transaction_Transfer", req, res, function (err) {
+router.get('/CustomerView', function(req, res) {
+    common.log(req.session['account'], 'call Customer view');
+    common.CreateHtml("CustomerView", req, res);
+
+});
+
+router.post('/GetCustomerList', function (req, res) {
+    common.CreateHtml("Customer_Transfer", req, res, function (err) {
         common.BackendConnection(res, function (err, connection) {
             if (err) {
                 common.log(res.session['account'], err);
                 throw err;
             }
             
-            var dataSelect = "select * from transaction_form where is_delete=0;";
-            var countSelect = "select COUNT(*) as count from transaction_form where is_delete=0;";
+            var dataSelect = "select * from customer where is_delete=0;";
+            var countSelect = "select COUNT(*) as count from customer  where is_delete=0;";
 
    
             var sql = countSelect + dataSelect;
@@ -59,16 +62,16 @@ router.post('/GetTransactionList', function (req, res) {
 
 });
 
-router.post('/GetTransactionData', function (req, res) {
-    common.CreateHtml("Transaction_Transfer", req, res, function (err) {
+router.post('/GetCustomerData', function (req, res) {
+    common.CreateHtml("Customer_Transfer", req, res, function (err) {
         common.BackendConnection(res, function (err, connection) {
             if (err) {
                 common.log(res.session['account'], err);
                 throw err;
             }
-            var transactionID = req.body.Id;
+            var CustomerID = req.body.Id;
             
-            var dataSelect = "select * from transaction_form where id="+transactionID+";";
+            var dataSelect = "select * from customer where id="+CustomerID+";";
    
             var sql = dataSelect;
 
@@ -92,34 +95,36 @@ router.post('/GetTransactionData', function (req, res) {
 
 });
 
-router.post('/EditTransaction', function(req, res) {
-    common.CreateHtml("Transaction_Transfer", req, res, function (err) {
+router.post('/EditCustomer', function(req, res) {
+    common.CreateHtml("Customer_Transfer", req, res, function (err) {
     common.BackendConnection(res, function(err, connection) {
             var requestData = JSON.parse(req.body.requestData);
             console.log(req.body);
             console.log(requestData);
-            var editTransactionSQL = "update transaction_form set `title`=?, `left_price`=?, `total_price`=?, `start_date`=?, `is_return`=?, `is_duty`=?, `is_receipt`=?, `elevator_num`=?, `note`=?, `customer_id`=?, `items`=? where `id`=?;";
+            var editCustomerSQL = "update customer set `company`=?, `num`=?, `contactor1`=?, `contactor2`=?, `contactor3`=?, `tel1`=?, `tel2`=?, `tel3`=?, `address1`=?, `address2`=?, `address3`=?, `fax1`=?, `fax2`=?, `fax3`=? where `id`=?;";
 
-            var itemsJson = JSON.stringify(requestData.items);
-            var transactionData = 
+            var CustomerData = 
             [
-                requestData.title, 
-                requestData.leftPrice,
-                requestData.totalPrice,
-                requestData.startDate,
-                requestData.isReturn,
-                requestData.isDuty,
-                requestData.isReceipt,
-                requestData.elevatorNum,
-                requestData.note,
-                requestData.customerId,
-                itemsJson,
+                requestData.company,
+                requestData.num,
+                requestData.contactor1,
+                requestData.contactor2,
+                requestData.contactor3,
+                requestData.tel1,
+                requestData.tel2,
+                requestData.tel3,
+                requestData.address1,  
+                requestData.address2,     
+                requestData.address3,            
+                requestData.fax1,            
+                requestData.fax2,            
+                requestData.fax3,
                 requestData.id
             ];
   
-            editTransactionSQL = connection.format(editTransactionSQL, transactionData);
+            editCustomerSQL = connection.format(editCustomerSQL, CustomerData);
 
-            var sql = editTransactionSQL;
+            var sql = editCustomerSQL;
 
             common.log(req.session['account'], sql);
             connection.query(sql, function (error, result, fields) {
@@ -139,33 +144,35 @@ router.post('/EditTransaction', function(req, res) {
     });
 });
 
-router.post('/AddTransaction', function(req, res) {//4
-    common.CreateHtml("Transaction_Transfer", req, res, function (err) {
+router.post('/AddCustomer', function(req, res) {//4
+    common.CreateHtml("Customer_Transfer", req, res, function (err) {
     common.BackendConnection(res, function(err, connection) {
             var requestData = JSON.parse(req.body.requestData);
             console.log(req.body);
             console.log(requestData);
-            var addTransactionSQL = "insert into transaction_form (`title`, `left_price`, `total_price`, `start_date`, `is_return`, `is_duty`, `is_receipt`, `elevator_num`, `note`, `customer_id`, `items`) VALUES (?,?,?,?,?,?,?,?,?,?,?);";
+            var addCustomerSQL = "insert into customer (`company`, `num`, `contactor1`, `contactor2`, `contactor3`, `tel1`, `tel2`, `tel3`, `address1`, `address2`, `address3`,`fax1`,`fax2`,`fax3`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 
-            var itemsJson = JSON.stringify(requestData.items);
-            var transactionData = 
+            var CustomerData = 
             [
-                requestData.title, 
-                requestData.leftPrice,
-                requestData.totalPrice,
-                requestData.startDate,
-                requestData.isReturn,
-                requestData.isDuty,
-                requestData.isReceipt,
-                requestData.elevatorNum,
-                requestData.note,
-                requestData.customerId,
-                itemsJson
+                requestData.company,
+                requestData.num,
+                requestData.contactor1,
+                requestData.contactor2,
+                requestData.contactor3,
+                requestData.tel1,
+                requestData.tel2,
+                requestData.tel3,
+                requestData.address1,  
+                requestData.address2,     
+                requestData.address3,            
+                requestData.fax1,            
+                requestData.fax2,            
+                requestData.fax3
             ];
   
-            addTransactionSQL = connection.format(addTransactionSQL, transactionData);
+            addCustomerSQL = connection.format(addCustomerSQL, CustomerData);
 
-            var sql = addTransactionSQL;
+            var sql = addCustomerSQL;
 
             common.log(req.session['account'], sql);
             connection.query(sql, function (error, result, fields) {
@@ -186,15 +193,14 @@ router.post('/AddTransaction', function(req, res) {//4
 });
 
 
-router.post('/DeleteTransaction', function (req, res){
-    common.CreateHtml("Transaction_Transfer", req, res, function (err) {
-        common.log(req.session['account'], "Call DeleteTransaction");
+router.post('/DeleteCustomer', function (req, res){
+    common.CreateHtml("Customer_Transfer", req, res, function (err) {
+        common.log(req.session['account'], "Call DeleteCustomer");
 
         common.BackendConnection(res, function (err, connection) {
-            var transactionID = req.body.Id;
-            var deleteTransaction = "update transaction_form set `is_delete`=1 where `id` = "+transactionID+";";
-        
-            var sql = deleteTransaction;
+            var CustomerID = req.body.Id;
+            var deleteCustomer = "update customer set `is_delete`=1 where `id`="+CustomerID+";";            
+            var sql = deleteCustomer;
 
             var query = connection.query(sql, function (error, result, fields) {
                 if (error) {

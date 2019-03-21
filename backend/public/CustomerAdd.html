@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>利通電梯</title>      
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Datatables -->
+    <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap-select -->
+    <link rel="stylesheet" href="../vendors/bootstrap-select/css/bootstrap-select.min.css">
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- bootstrap-notify -->
+    <link href="../vendors/bootstrap-notify/animate.min.css" rel="stylesheet">
+    <!-- At.js 套件(autocomplete))  -->
+    <link href="../vendors/At.js/css/jquery.atwho.min.css" rel="stylesheet">
+
+    <style type="text/css" media="screen">
+    #datatable tbody td {
+        vertical-align: middle;
+    }
+    .alert h5{
+        margin: 0 0 0 15px;
+        font-size: 1.3em;
+    }
+    .alert i{
+        margin-right: 5px;
+    }
+    .modal textarea{
+        resize: vertical;
+    }
+    </style>
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <!--Menu-->
+            <!--Top-->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="row">
+                    <div class="clearfix"></div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>新增客戶</h2>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <div class="form-horizontal form-label-left" novalidate>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">公司名稱
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="company" class="date-picker form-control col-md-7 col-xs-12" placeholder="" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">統一編號
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="num" class="form-control col-md-7 col-xs-12" placeholder="" type="number">
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">聯絡人1
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="contactor1" class="form-control col-md-7 col-xs-12" value="" type="text" >
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">聯絡人2
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" name="contactor2" id="contactor2" class="form-control" value="" />                               
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">聯絡人3
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" name="contactor3" id="contactor3" class="form-control" value="" />                               
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">地址1
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="address1" class="form-control col-md-7 col-xs-12" value="" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">地址2
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" name="address2" id="address2" class="form-control" value="" />                               
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">地址3
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" name="address3" id="address3" class="form-control" value="" />                               
+                                            </div>
+                                        </div>
+  
+                                        <div class="ln_solid"></div>
+                                        <div class="form-group">
+                                            <div class="col-md-9 col-md-offset-4">
+                                                <button id="mClear" class="btn btn-danger">清除</button>
+                                                <button id="sendAdd" class="btn btn-success">新增</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_content">
+                                    <div class="form-horizontal form-label-left" novalidate>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">電話1
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="tel1" class="form-control col-md-7 col-xs-12" value="" type="text" >
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">電話2
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" name="tel2" id="tel2" class="form-control" value="" />                               
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">電話3
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" name="tel3" id="tel3" class="form-control" value="" />                               
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">傳真1
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="fax1" class="form-control col-md-7 col-xs-12" value="" type="text" >
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">傳真2
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" name="fax2" id="fax2" class="form-control" value="" />                               
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">傳真3
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" name="fax3" id="fax3" class="form-control" value="" />                               
+                                            </div>
+                                        </div>                                      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+            <!-- /page content -->
+            <!--footer-->
+        </div>
+    </div>
+    <div id="loading-cover" style="width: 100%; height: 100%; background: rgba(0,0,0,.5); position: fixed; display: none; z-index: 999999; top: 0; left: 0;">
+        <div id="loading-icon" style="width: 85px; height: 65px; margin: -42.5px 0 0 -32.5px; top: 50%; left: 50%; position: fixed;">
+            <i class="fa fa-circle-o-notch fa-spin fa-5x fa-fw" style="color: #FFF;"></i>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- validator -->
+    <script src="../vendors/validator/validator.js"></script>
+    <!-- Datatables -->
+    <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="../vendors/jszip/dist/jszip.min.js"></script>
+    <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/moment/min/moment-duration-format.min.js"></script>
+    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap-select -->
+    <script src="../vendors/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="../vendors/bootstrap-select/js/i18n/defaults-zh_TW.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+    <!-- bootstrap-notify -->
+    <script src="../vendors/bootstrap-notify/bootstrap-notify.min.js"></script>
+    <!-- At.js 套件(autocomplete))  -->
+    <script type="text/javascript" src="../vendors/At.js/js/jquerycaret.min.js"></script>
+    <script type="text/javascript" src="../vendors/At.js/js/jqueryatwho.min.js"></script>
+
+    <script>
+    $(document).ready(function() {
+
+
+
+        function QuickNotify(message, type) {
+            var icon = "";
+            switch(type) {
+                case 'success':
+                    icon = 'fa-check-circle';
+                    break;
+                case 'danger':
+                    icon = 'fa-times-circle';
+                    break;
+                default: 
+                    icon = 'fa-exclamation-triangle';
+            }
+            $.notify({
+                message: '<h5><i class="fa ' + icon + '"></i> ' + message + '</h5>'
+            },{
+                type: type,
+                z_index: 20000,
+                delay: 6000,
+            });
+        }
+
+        function clear(e) {
+            e.preventDefault();
+            $('#company').val("");
+            $('#num').val(0);        
+            $('#contactor1').val("");
+            $('#contactor2').val("");
+            $('#contactor3').val("");
+            $('#tel1').val("");
+            $('#tel2').val("");
+            $('#tel3').val("");
+            $('#address1').val("");
+            $('#address2').val("");
+            $('#address3').val("");
+            $('#fax1').val("");
+            $('#fax2').val("");
+            $('#fax3').val("");
+        }
+
+   
+
+
+        function sendAddData() {
+            $('#loading-cover').fadeIn(100);
+            var checkData = datacheck();
+
+            if (checkData.r) {
+                $.ajax({
+                type: 'POST',
+                url: "/AddCustomer",
+                data: {requestData: JSON.stringify(checkData)},
+                dataType: 'json',
+                success: function(msg) {
+                    alert(msg.msg);
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+                }).done(function() {
+                    $('#loading-cover').fadeOut(100);
+                });
+
+            }            
+        }
+ 
+        function datacheck() {
+            var result = { r: false };
+
+            var company = $('#company').val();
+            var num = $('#num').val();        
+            var contactor1 = $('#contactor1').val();
+            var contactor2 = $('#contactor2').val();
+            var contactor3 = $('#contactor3').val();
+
+            var tel1 = $('#tel1').val();
+            var tel2 = $('#tel2').val();
+            var tel3 = $('#tel3').val();
+            var address1 = $('#address1').val();
+            var address2 = $('#address2').val();
+            var address3 = $('#address3').val();
+            var fax1 = $('#fax1').val();
+            var fax2 = $('#fax2').val();
+            var fax3 = $('#fax3').val();
+
+            if (checkIsNullOrEmpty(company)) {
+                alert("公司名稱不能為空");
+                return result;
+            }
+
+            result.company = company;
+            result.num = num;
+            result.contactor1 = contactor1;
+            result.contactor2 = contactor2;
+            result.contactor3 = contactor3;
+            result.tel1 = tel1;
+            result.tel2 = tel2;
+            result.tel3 = tel3;
+            result.address1 = address1;  
+            result.address2 = address2;     
+            result.address3 = address3;            
+            result.fax1 = fax1;            
+            result.fax2 = fax2;            
+            result.fax3 = fax3;                    
+            result.r = true;
+
+            return result;
+        }
+
+
+        function checkIsNullOrEmpty(obj) {
+            if (obj == 'undefined' || obj == null || obj == 0 || obj == '')
+                return true;
+            return false;
+        }
+
+        $(document).on('click', '#sendAdd', sendAddData);
+        $(document).on('click', '#mClear', clear);
+
+    });
+    </script>
+</body>
+
+</html>

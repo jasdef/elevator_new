@@ -1116,9 +1116,42 @@
         "autho": "all",
         "enable": true,
         "type": "protocol"
-    }
-    ,    
+    },    
     "UploadImg_Transfer":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
+    },
+    "CustomerView":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/CustomerView.html"
+    },
+    "CustomerEdit":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/CustomerEdit.html"
+    },
+    "CustomerAdd":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/CustomerAdd.html"
+    },
+    "Customer":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/Customer.html"
+    },
+    "Customer_Transfer":
     {
         "autho": "all",
         "enable": true,

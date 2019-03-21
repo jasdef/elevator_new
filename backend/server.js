@@ -15,6 +15,7 @@ timer = require("./js/timer");
 var loginform = require('./js/login');
 var notification = require('./js/notification');
 var transaction = require('./js/transaction');
+var warranty = require('./js/warranty');
 var customer = require('./js/customer');
 var imgUpload = require('./js/uploadImg');
 var historyRecord = require('./js/historyRecordSearch');
@@ -44,6 +45,7 @@ app.use(imgUpload);
 app.use(loginform);
 app.use(notification);
 app.use(transaction);
+app.use(warranty);
 app.use(historyRecord);
 app.get('/', function (req, res) {
     if (typeof (req.session['account']) === "undefined") {

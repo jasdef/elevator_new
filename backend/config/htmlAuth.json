@@ -1116,6 +1116,40 @@
         "autho": "all",
         "enable": true,
         "type": "protocol"
+    },
+    "WarrantyView":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/WarrantyView.html"
+    },
+    "WarrantyEdit":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/WarrantyEdit.html"
+    },
+    "WarrantyAdd":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/WarrantyAdd.html"
+    },
+    "Warranty":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/Warranty.html"
+    },
+    "Warranty_Transfer":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
     },    
     "UploadImg_Transfer":
     {

@@ -106,88 +106,95 @@
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>編輯買賣單</h2>
+                                    <h2>編輯保固單</h2>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
                                     <div class="form-horizontal form-label-left" novalidate>
                                         <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">表單名稱
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">買賣單編號
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="title" class="date-picker form-control col-md-7 col-xs-12" placeholder="" type="text">
+                                                <input id="transactionID" class="date-picker form-control col-md-7 col-xs-12" placeholder="" type="text">
                                             </div>
                                         </div>
                                         <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">電梯數量
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">客戶名稱
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="elevatorNum" class="form-control col-md-7 col-xs-12" placeholder="" type="number">
+                                                <input id="title" class="form-control col-md-7 col-xs-12" placeholder="" type="text">
                                             </div>
                                         </div>
                                         <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">總價
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">機件保固(年)
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="totalPrice" class="form-control col-md-7 col-xs-12" placeholder="" type="number" onchange="calculate()">
+                                                <input id="mechanical" class="form-control col-md-7 col-xs-12" placeholder="" type="number">
                                             </div>
                                         </div>
                                         <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">簽約日期
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">免費保養(年)
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="free" class="form-control col-md-7 col-xs-12" placeholder="" type="number">
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">統一編號
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="num" class="form-control col-md-7 col-xs-12" placeholder="" type="number">
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">合約開始日期
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <input type="text" name="startDate" id="startDate" class="form-control" value="" />                               
                                             </div>
-                                        </div>
+                                        </div> 
                                         <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">合約已回/未回
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">聯絡人1
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <select name="isReturn" id="isReturn" class="form-control" required="required">
-                                                    <option class="text-center" value="0" selected>請選擇</option>
-                                                    <option class="text-center" value="1">已回</option>
-                                                    <option class="text-center" value="2">未回</option>
-                                                </select>
+                                                <input id="contactor1" class="form-control col-md-7 col-xs-12" value="" type="text" >
                                             </div>
                                         </div>
                                         <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">含稅/未稅
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">聯絡人2
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <select name="isDuty" id="isDuty" class="form-control" required="required">
-                                                    <option class="text-center" value="0" selected>請選擇</option>
-                                                    <option class="text-center" value="1">含稅</option>
-                                                    <option class="text-center" value="2">未稅</option>
-                                                </select>
+                                                <input type="text" name="contactor2" id="contactor2" class="form-control" value="" />                               
                                             </div>
                                         </div>
                                         <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">是否開發票
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">聯絡人3
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <select name="isReceipt" id="isReceipt" class="form-control" required="required">
-                                                    <option class="text-center" value="0" selected>請選擇</option>
-                                                    <option class="text-center" value="1">是</option>
-                                                    <option class="text-center" value="2">否</option>
-                                                </select>
+                                                <input type="text" name="contactor3" id="contactor3" class="form-control" value="" />                               
                                             </div>
                                         </div>
                                         <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">客戶
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">地址1
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <select name="customer" id="customer" class="form-control" required="required">
-                                                    <option class="text-center" value="0" selected>請選擇</option>
-                                                </select>
+                                                <input id="address1" class="form-control col-md-7 col-xs-12" value="" type="text">
                                             </div>
                                         </div>
                                         <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">備註事項
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">地址2
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <textarea id="note" style="width:300px;height:100px;"></textarea>
+                                                <input type="text" name="address2" id="address2" class="form-control" value="" />                               
                                             </div>
                                         </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">地址3
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" name="address3" id="address3" class="form-control" value="" />                               
+                                            </div>
+                                        </div> 
                                         <div class="ln_solid"></div>
                                         <div class="form-group">
                                             <div class="col-md-9 col-md-offset-4">
@@ -204,22 +211,47 @@
                                 <div class="x_content">
                                     <div class="form-horizontal form-label-left" novalidate>
                                         <div class="item form-group">
-                                                <table id="itemTable" class="table x_content">
-                                                        <tr>
-                                                        <th>項目名稱</th>
-                                                        <th>金額百分比</th>
-                                                        <th>金額</th>
-                                                        <th>狀態</th>
-                                                        <th>操作</th>
-                                                        </tr>
-  
-                                                    </table> 
-                                                <button id="addBtn">新增</button>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">電話1
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="tel1" class="form-control col-md-7 col-xs-12" value="" type="text" >
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label>剩餘款項 </label>
-                                            <input id="leftPrice"  type="number">                  
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">電話2
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" name="tel2" id="tel2" class="form-control" value="" />                               
+                                            </div>
                                         </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">電話3
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" name="tel3" id="tel3" class="form-control" value="" />                               
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">傳真1
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="fax1" class="form-control col-md-7 col-xs-12" value="" type="text" >
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">傳真2
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" name="fax2" id="fax2" class="form-control" value="" />                               
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">傳真3
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" name="fax3" id="fax3" class="form-control" value="" />                               
+                                            </div>
+                                        </div> 
                                         <div class="form-group">              
                                             <label>上傳圖片</label>                                      
                                             <input type="file" id="imageFile"/></br>
@@ -284,8 +316,7 @@
     <script>
     $(document).ready(function() {
 
-        $(document).on('click', '#addBtn', addCurrentRow);
-        $(document).on('click', '#delBtn', deleteCurrentRow);
+
         $(document).on('click', '#upload', upload);
         
         var $_GET = {};
@@ -320,9 +351,10 @@
                     url: "/InsertImgMapping",          
                     cache: false,
                     async: true,
-                    data : {TableType: 1, TableId: $_GET["Id"], Path: Path} ,
+                    data : {TableType: 2, TableId: $_GET["Id"], Path: Path} ,
                     dataType: 'json',
                     success: function(msg) {
+                        
                         alert("上傳成功");
 
                     }                 
@@ -332,29 +364,7 @@
             });
         }
 
-        $.ajax({
-                type: 'POST',
-                url: "/GetCustomerList",
-                dataType: 'json',
-                success: function(msg) {
-                  var data = msg.data;
-                  console.log(data);
-                  for(var i = 0; i < data.length; i++) {
-                    $('#customer').append(
-                        `
-                        <option class="text-center" value=${data[i].id}>${data[i].company}</option>
-                        `
-                    );
-                  }
-
-
-                },
-                error: function(xhr, desc, err) {
-                    alert("HTTP Status code:" + xhr.status);
-                }
-                }).done(function() {
-                    $('#loading-cover').fadeOut(100);
-        });
+ 
 
         DateInit();
         Init();
@@ -362,7 +372,7 @@
             var id = $_GET["Id"];
             $.ajax({
                 type: 'POST',
-                url: "/GetTransactionData",
+                url: "/GetWarrantyData",
                 data: { Id: id },
                 cache: false,
                 async: true,
@@ -370,70 +380,27 @@
                 success: function(msg) {
                     var data = msg.data;
                     var startDate = moment(data.start_date).format("YYYY-MM-DD");
+                    $('#transactionID').val(data.transaction_id);
                     $('#title').val(data.title);
-                    $('#elevatorNum').val(data.elevator_num);
-                    $('#totalPrice').val(data.total_price);
-                    $('#leftPrice').val(data.left_price);            
+                    $('#mechanical').val(data.mechanical_warranty);
+                    $('#free').val(data.free_maintenance);    
+                    $('#num').val(data.num);            
                     $('#startDate').val(startDate);
-                    $('#isReturn').val(data.is_return);
-                    $('#isReturn').selectpicker('val', data.is_return);
-                    $('#isDuty').val(data.is_duty);
-                   // $('#isDuty').selectpicker('val', data.is_duty);
-                    $('#isReceipt').val(data.is_receipt);
-                   // $('#isReceipt').selectpicker('val', data.is_receipt);
-                    $('#customer').val(data.customer_id);
-                   // $('#customer').selectpicker('val', data.customer_id);
-                    $('#note').val(data.note);
-                    
-                    var items = JSON.parse(data.items);
- 
-                    for (var i = 0; i < items.length; i++) {
-                        addCurrentRow();
-                        $('#itemTitle'+i).val(items[i][0]);
-                        $('#itemPercent'+i).val(items[i][1]);
-                        $('#itemPrice'+i).val(items[i][2]);
-                        $('#itemStatus'+i).val(items[i][3]);    
-                      //  $('#itemStatus'+i).selectpicker('val', items[i][3]); 
-                    }
+                    $('#contactor1').val(data.contactor1);
+                    $('#contactor2').val(data.contactor2);
+                    $('#contactor3').val(data.contactor3);
+                    $('#tel1').val(data.tel1);
+                    $('#tel2').val(data.tel2);
+                    $('#tel3').val(data.tel3);
+                    $('#address1').val(data.address1);
+                    $('#address2').val(data.address2);
+                    $('#address3').val(data.address3);
+                    $('#fax1').val(data.fax1);
+                    $('#fax2').val(data.fax2);
+                    $('#fax3').val(data.fax3);   
   
                 }
             });
-        }
-
-        function addCurrentRow()
-        {
-            var tr_length = $('.table tr').length - 1; //tr 長度  扣掉head
-          
-            var trcomp=`
-            <tr>
-            <td width="100px"><input name="${tr_length}" id="itemTitle${tr_length}" type="text"/></td>
-            <td width="100px"><input name="${tr_length}" id="itemPercent${tr_length}" type="number" onchange="onItemPercentChange(this)"/></td>
-            <td width="100px"><input name="${tr_length}" id="itemPrice${tr_length}" type="number" onchange="onItemPriceChange(this)"/></td>
-            <td width="100px">
-                <select name="${tr_length}" id="itemStatus${tr_length}" name="status" onchange="calculate()">
-                　<option value="0" selected="selected">請選擇表單狀態</option>
-                　<option value="1">已開發票</option>
-                　<option value="2">已送請款單</option>
-                　<option value="3">已送請款單/發票</option>
-                　<option value="4">尚未收款</option>
-                　<option value="5">已收款</option>
-                </select>
-            </td>
-            <td><a id="delBtn"><font color='red'>刪除</font></a> </td>
-            </tr>
-            `;
-            $("#itemTable tr:last-child").after(trcomp);
-        }
-
-        function deleteCurrentRow()
-        {
-             var isDelete=confirm("真的要刪除嗎？");
-            if(isDelete)
-            {
-                var tr=this.parentNode.parentNode;
-                var tbody=tr.parentNode;
-                tbody.removeChild(tr);
-            }
         }
 
         function QuickNotify(message, type) {
@@ -459,20 +426,24 @@
 
         function clear(e) {
             e.preventDefault();
-            $('#title').val("");
-            $('#elevatorNum').val(0);
-            $('#totalPrice').val(0);
-            $('#leftPrice').val(0);            
+            $('#transactionID').val("");
+            $('#title').val(0);
+            $('#mechanical').val(0);
+            $('#free').val(0);    
+            $('#num').val("");            
             $('#startDate').val("");
-            $('#isReturn').val(0);
-            $('#isReturn').selectpicker('refresh');
-            $('#isDuty').val(0);
-            $('#isDuty').selectpicker('refresh');
-            $('#isReceipt').val(0);
-            $('#isReceipt').selectpicker('refresh');
-            $('#customer').val(0);
-            $('#customer').selectpicker('refresh');
-            $('#note').val("");
+            $('#contactor1').val("");
+            $('#contactor2').val("");
+            $('#contactor3').val("");
+            $('#tel1').val("");
+            $('#tel2').val("");
+            $('#tel3').val("");
+            $('#address1').val("");
+            $('#address2').val("");
+            $('#address3').val("");
+            $('#fax1').val("");
+            $('#fax2').val("");
+            $('#fax3').val("");
         }
 
 
@@ -505,7 +476,7 @@
             if (checkData.r) {
                 $.ajax({
                 type: 'POST',
-                url: "/EditTransaction",
+                url: "/EditWarranty",
                 data: {requestData: JSON.stringify(checkData)},
                 dataType: 'json',
                 success: function(msg) {
@@ -526,26 +497,41 @@
 
             var startDate = $('#startDate').val();;
             var title = $('#title').val();
-            var elevatorNum = $('#elevatorNum').val();
-            var totalPrice = $('#totalPrice').val();
-            var note = $('#note').val();
-            var isDuty = parseInt($('#isDuty').val());
-            var isReturn = parseInt($('#isReturn').val());
-            var isReceipt = parseInt($('#isReceipt').val());
-            var customerId = parseInt($('#customer').val());
-            var leftPrice = $('#leftPrice').val();
+            var transactionID = $('#transactionID').val();            
+            var mechanical = $('#mechanical').val();
+            var free = $('#free').val();    
+            var num = $('#num').val();                        
+            var contactor1 = $('#contactor1').val();
+            var contactor2 = $('#contactor2').val();
+            var contactor3 = $('#contactor3').val();
+            var tel1 = $('#tel1').val();
+            var tel2 = $('#tel2').val();
+            var tel3 = $('#tel3').val();
+            var address1 = $('#address1').val();
+            var address2 = $('#address2').val();
+            var address3 = $('#address3').val();
+            var fax1 = $('#fax1').val();
+            var fax2 = $('#fax2').val();
+            var fax3 = $('#fax3').val();
 
             result.startDate = startDate;
             result.title = title;
-            result.elevatorNum = elevatorNum;
-            result.totalPrice = totalPrice;
-            result.note = note;
-            result.isDuty = isDuty;
-            result.isReturn = isReturn;
-            result.isReceipt = isReceipt;
-            result.customerId = customerId;  
-            result.leftPrice = leftPrice;            
-            result.items = getTableData();            
+            result.transactionID = transactionID;
+            result.mechanical = mechanical;
+            result.num = num;
+            result.free = free;
+            result.contactor1 = contactor1;
+            result.contactor2 = contactor2;
+            result.contactor3 = contactor3;
+            result.tel1 = tel1;
+            result.tel2 = tel2;
+            result.tel3 = tel3;
+            result.address1 = address1;  
+            result.address2 = address2;     
+            result.address3 = address3;            
+            result.fax1 = fax1;            
+            result.fax2 = fax2;            
+            result.fax3 = fax3;          
             result.r = true;
 
             return result;

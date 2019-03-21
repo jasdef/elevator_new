@@ -17,6 +17,7 @@ var notification = require('./js/notification');
 var transaction = require('./js/transaction');
 var warranty = require('./js/warranty');
 var customer = require('./js/customer');
+var service = require('./js/service');
 var imgUpload = require('./js/uploadImg');
 var historyRecord = require('./js/historyRecordSearch');
 var listenPort = 8888;
@@ -41,6 +42,7 @@ app.use(session({
     cookie: { maxAge: 60 * 1000 * 50 }
 }));
 app.use(customer);
+app.use(service);
 app.use(imgUpload);
 app.use(loginform);
 app.use(notification);

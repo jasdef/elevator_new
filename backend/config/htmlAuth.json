@@ -1150,6 +1150,40 @@
         "autho": "all",
         "enable": true,
         "type": "protocol"
+    },
+    "WarrantyView":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/WarrantyView.html"
+    },
+    "ServiceEdit":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/ServiceEdit.html"
+    },
+    "ServiceAdd":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/ServiceAdd.html"
+    },
+    "Service":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/Service.html"
+    },
+    "Service_Transfer":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
     },    
     "UploadImg_Transfer":
     {

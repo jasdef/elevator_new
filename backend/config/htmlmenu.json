@@ -73,5 +73,19 @@
                 "href": "MemberList"
             }      
         }
-    } 
+    },
+    "報表系統":
+    {
+        "autho": "all",
+        "enable": true,
+        "child":
+        {
+            "操作歷史紀錄":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "HistoryRecordSearch"
+            }
+        }
+    }  
 }

@@ -54,7 +54,7 @@
   
             for(var i=0; i < tr_length-1; i++){
                 var td_length = $('.table tr');                
-                Tbdata[i] = [$('#itemTitle'+i).val(), $('#itemPercent'+i).val(), $('#itemPrice'+i).val(), $('#itemStatus'+i).val()];               
+                Tbdata[i] = [$('#payDate'+i).val(), $('#itemPrice'+i).val(), $('#itemStatus'+i).val()];               
              }
              Tbdata["length"] = tr_length-1;
              console.log(Tbdata); 
@@ -72,7 +72,7 @@
         function onItemPriceChange(element) {
             var total = $('#totalPrice').val();
             var percent = parseInt(element.value/total*100);
-            $('#itemPercent'+element.name).val(percent);
+         //   $('#itemPercent'+element.name).val(percent);
         }
 
         function calculate() {
@@ -83,8 +83,8 @@
 
             for (var i = 0; i < tr_length; i++) {
 
-                if (data[i][3] == 5) {
-                    left -= data[i][2];
+                if (data[i][2] == 5) {
+                    left -= data[i][1];
                 }
             }
             $('#leftPrice').val(left);
@@ -104,7 +104,7 @@
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>新增買賣單</h2>
+                                    <h2>新增保養單</h2>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
@@ -274,8 +274,8 @@
           
             var trcomp=`
             <tr>
-            <td width="100px"><input type="text" name="${tr_length}" id="paytDate${tr_length}"  value="" /></td>                               
-            <td width="100px"><input name="${tr_length}" id="itemTitle${tr_length}" type="text"/></td>         
+            <td width="100px"><input type="text" name="${tr_length}" id="payDate${tr_length}"  value="" /></td>                               
+                
             <td width="100px"><input name="${tr_length}" id="itemPrice${tr_length}" type="number" onchange="onItemPriceChange(this)"/></td>
             <td width="100px">
                 <select name="${tr_length}" id="itemStatus${tr_length}" name="status" onchange="calculate()">
@@ -293,7 +293,7 @@
             $("#itemTable tr:last-child").after(trcomp);
 
 
-            $('#paytDate'+tr_length).daterangepicker({
+            $('#payDate'+tr_length).daterangepicker({
                 autoUpdateInput: false,
                 locale: {
                     cancelLabel: 'Clear'
@@ -304,10 +304,10 @@
                 timePickerSeconds: true
             });        
 
-            $('#paytDate'+tr_length).on('apply.daterangepicker', function(ev, picker) {
+            $('#payDate'+tr_length).on('apply.daterangepicker', function(ev, picker) {
                 $(this).val(picker.startDate.format('YYYY-MM-DD'));
             });
-            $('#paytDate'+tr_length).on('cancel.daterangepicker', function(ev, picker) {
+            $('#payDate'+tr_length).on('cancel.daterangepicker', function(ev, picker) {
                 $(this).val('');
             });
         }
@@ -346,19 +346,16 @@
 
         function clear(e) {
             e.preventDefault();
-            $('#title').val("");
-            $('#elevatorNum').val(0);
+            $('#warrantyID').val("");
             $('#totalPrice').val(0);
             $('#leftPrice').val(0);            
             $('#startDate').val("");
-            $('#isReturn').val(0);
-            $('#isReturn').selectpicker('refresh');
-            $('#isDuty').val(0);
-            $('#isDuty').selectpicker('refresh');
-            $('#isReceipt').val(0);
-            $('#isReceipt').selectpicker('refresh');
-            $('#customer').val(0);
-            $('#customer').selectpicker('refresh');
+            $('#mechanicalWarranty').val(0);        
+            $('#serviceMonth').val(0);
+            $('#serviceMonth').selectpicker('refresh');
+            $('#hasLicense').val(0);
+            $('#hasLicense').selectpicker('refresh');
+            $('#licenseDate').val("");        
             $('#note').val("");
         }        
 
@@ -453,26 +450,24 @@
             var result = { r: false };
 
             var startDate = $('#startDate').val();;
-            var title = $('#title').val();
-            var elevatorNum = $('#elevatorNum').val();
             var totalPrice = $('#totalPrice').val();
             var note = $('#note').val();
-            var isDuty = parseInt($('#isDuty').val());
-            var isReturn = parseInt($('#isReturn').val());
-            var isReceipt = parseInt($('#isReceipt').val());
-            var customerId = parseInt($('#customer').val());
             var leftPrice = $('#leftPrice').val();
+            var warrantyID = $('#warrantyID').val();
+            var mechanicalWarranty = $('#mechanicalWarranty').val();
+            var serviceMonth = $('#serviceMonth').val();
+            var hasLicense = $('#hasLicense').val();
+            var licenseDate = $('#licenseDate').val();
 
             result.startDate = startDate;
-            result.title = title;
-            result.elevatorNum = elevatorNum;
             result.totalPrice = totalPrice;
             result.note = note;
-            result.isDuty = isDuty;
-            result.isReturn = isReturn;
-            result.isReceipt = isReceipt;
-            result.customerId = customerId;  
-            result.leftPrice = leftPrice;            
+            result.leftPrice = leftPrice;   
+            result.warrantyID = warrantyID;
+            result.mechanicalWarranty = mechanicalWarranty;
+            result.serviceMonth = serviceMonth;
+            result.hasLicense = hasLicense;
+            result.licenseDate = licenseDate;         
             result.items = getTableData();            
             result.r = true;
 

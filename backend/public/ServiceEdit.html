@@ -30,6 +30,8 @@
     <link href="../vendors/bootstrap-notify/animate.min.css" rel="stylesheet">
     <!-- At.js 套件(autocomplete))  -->
     <link href="../vendors/At.js/css/jquery.atwho.min.css" rel="stylesheet">
+    <script src="../vendors/moment/min/moment.min.js"></script>
+
 
     <style type="text/css" media="screen">
     #datatable tbody td {
@@ -54,7 +56,7 @@
   
             for(var i=0; i < tr_length-1; i++){
                 var td_length = $('.table tr');                
-                Tbdata[i] = [$('#payDate'+i).val(), $('#itemPrice'+i).val(), $('#itemStatus'+i).val()];               
+                Tbdata[i] = [$('#payDate'+i).val(), $('#itemPrice'+i).val(), $('#itemStatus'+i).val()];                        
              }
              Tbdata["length"] = tr_length-1;
              console.log(Tbdata); 
@@ -72,7 +74,7 @@
         function onItemPriceChange(element) {
             var total = $('#totalPrice').val();
             var percent = parseInt(element.value/total*100);
-         //   $('#itemPercent'+element.name).val(percent);
+           // $('#itemPercent'+element.name).val(percent);
         }
 
         function calculate() {
@@ -104,7 +106,7 @@
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>新增保養單</h2>
+                                    <h2>編輯保養單</h2>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
@@ -178,7 +180,7 @@
                                         <div class="form-group">
                                             <div class="col-md-9 col-md-offset-4">
                                                 <button id="mClear" class="btn btn-danger">清除</button>
-                                                <button id="sendAdd" class="btn btn-success">新增</button>
+                                                <button id="sendEdit" class="btn btn-success">儲存</button>
                                             </div>
                                         </div>
                                     </div>
@@ -192,10 +194,10 @@
                                         <div class="item form-group">
                                                 <table id="itemTable" class="table x_content">
                                                         <tr>
-                                                        <th>繳款時間</th>
-                                                        <th>繳款金額</th>
-                                                        <th>狀態</th>
-                                                        <th>操作</th>
+                                                            <th>繳款時間</th>
+                                                            <th>繳款金額</th>
+                                                            <th>狀態</th>
+                                                            <th>操作</th>
                                                         </tr>
   
                                                     </table> 
@@ -205,7 +207,11 @@
                                             <label>剩餘款項 </label>
                                             <input id="leftPrice"  type="number">                  
                                         </div>
-                                     
+                                        <div class="form-group">              
+                                            <label>上傳圖片</label>                                      
+                                            <input type="file" id="imageFile"/></br>
+                                            <button id="upload">上傳</button>
+                                        </div>                                              
                                     </div>
                                 </div>
                             </div>
@@ -267,6 +273,91 @@
 
         $(document).on('click', '#addBtn', addCurrentRow);
         $(document).on('click', '#delBtn', deleteCurrentRow);
+        $(document).on('click', '#upload', upload);
+        
+        var $_GET = {};
+
+        document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function() {
+                function decode(s) {
+                    return decodeURIComponent(s.split("+").join(" "));
+                }
+                $_GET[decode(arguments[1])] = decode(arguments[2]);
+        });
+
+        function upload() {
+            var myPhoto = $('#imageFile')[0].files[0];
+            var oMyForm = new FormData();
+
+            oMyForm.append("userfile", myPhoto);
+            $.ajax({
+                type : 'POST',
+                url : '/UploadImg',
+                cache : false,  
+                processData : false,    
+                contentType : false, 
+                data : oMyForm,
+                dataType : 'json'
+            }).done(function(data){
+                console.log(data);
+               // alert(data.errMsg);
+                var Path = data.fielPath;
+
+                $.ajax({
+                    type: 'POST',
+                    url: "/InsertImgMapping",          
+                    cache: false,
+                    async: true,
+                    data : {TableType: 3, TableId: $_GET["Id"], Path: Path} ,
+                    dataType: 'json',
+                    success: function(msg) {
+                        alert("上傳成功");
+
+                    }                 
+                });
+            }).fail(function(err){
+                console.error(err);
+            });
+        }
+
+
+        DateInit();
+        Init();
+        function Init() {
+            var id = $_GET["Id"];
+            $.ajax({
+                type: 'POST',
+                url: "/GetServiceData",
+                data: { Id: id },
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(msg) {
+                    var data = msg.data;
+                    var startDate = moment(data.start_date).format("YYYY-MM-DD");
+                    var licenseDate = moment(data.license_date).format("YYYY-MM-DD");
+
+                    $('#warrantyID').val(data.warranty_id);
+                    $('#totalPrice').val(data.total_price);
+                    $('#leftPrice').val(data.left_price);            
+                    $('#startDate').val(startDate);
+                    $('#mechanicalWarranty').val(data.mechanical_warranty);        
+                    $('#serviceMonth').val(data.service_month);
+                    $('#hasLicense').val(data.has_license);
+                    $('#licenseDate').val(licenseDate);        
+                    $('#note').val(data.note);
+                    
+                    var items = JSON.parse(data.items);
+ 
+                    for (var i = 0; i < items.length; i++) {
+                        addCurrentRow();
+                        $('#payDate'+i).val(items[i][0]);  
+                        $('#itemPrice'+i).val(items[i][1]);
+                        $('#itemStatus'+i).val(items[i][2]);    
+                    }
+  
+                }
+            });
+        }
 
         function addCurrentRow()
         {
@@ -357,9 +448,8 @@
             $('#hasLicense').selectpicker('refresh');
             $('#licenseDate').val("");        
             $('#note').val("");
-        }        
+        }
 
-        DateInit();
 
         function DateInit() {
             $('#startDate').daterangepicker({
@@ -383,12 +473,14 @@
                 timePickerSeconds: true
             });
         }
+
         $('#licenseDate').on('apply.daterangepicker', function(ev, picker) {
             $(this).val(picker.startDate.format('YYYY-MM-DD'));
         });
         $('#licenseDate').on('cancel.daterangepicker', function(ev, picker) {
             $(this).val('');
         });
+
 
         $('#startDate').on('apply.daterangepicker', function(ev, picker) {
             $(this).val(picker.startDate.format('YYYY-MM-DD'));
@@ -397,14 +489,15 @@
             $(this).val('');
         });
 
-        function sendAddData() {
+        function sendEditData() {
             $('#loading-cover').fadeIn(100);
             var checkData = datacheck();
-
+            var id = $_GET["Id"];
+            checkData.id = id;
             if (checkData.r) {
                 $.ajax({
                 type: 'POST',
-                url: "/AddService",
+                url: "/EditService",
                 data: {requestData: JSON.stringify(checkData)},
                 dataType: 'json',
                 success: function(msg) {
@@ -455,7 +548,7 @@
             return false;
         }
 
-        $(document).on('click', '#sendAdd', sendAddData);
+        $(document).on('click', '#sendEdit', sendEditData);
         $(document).on('click', '#mClear', clear);
 
     });

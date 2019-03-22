@@ -1151,12 +1151,12 @@
         "enable": true,
         "type": "protocol"
     },
-    "WarrantyView":
+    "ServiceView":
     {
         "autho": "all",
         "enable": true,
         "type": "view",
-        "htmlpath": "./../public/WarrantyView.html"
+        "htmlpath": "./../public/ServiceView.html"
     },
     "ServiceEdit":
     {

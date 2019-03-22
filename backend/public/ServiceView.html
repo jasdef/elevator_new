@@ -30,6 +30,8 @@
     <link href="../vendors/bootstrap-notify/animate.min.css" rel="stylesheet">
     <!-- At.js 套件(autocomplete))  -->
     <link href="../vendors/At.js/css/jquery.atwho.min.css" rel="stylesheet">
+    <script src="../vendors/moment/min/moment.min.js"></script>
+
 
     <style type="text/css" media="screen">
     #datatable tbody td {
@@ -54,7 +56,7 @@
   
             for(var i=0; i < tr_length-1; i++){
                 var td_length = $('.table tr');                
-                Tbdata[i] = [$('#payDate'+i).val(), $('#itemPrice'+i).val(), $('#itemStatus'+i).val()];               
+                Tbdata[i] = [$('#payDate'+i).val(), $('#itemPrice'+i).val(), $('#itemStatus'+i).val()];                        
              }
              Tbdata["length"] = tr_length-1;
              console.log(Tbdata); 
@@ -72,7 +74,7 @@
         function onItemPriceChange(element) {
             var total = $('#totalPrice').val();
             var percent = parseInt(element.value/total*100);
-         //   $('#itemPercent'+element.name).val(percent);
+           // $('#itemPercent'+element.name).val(percent);
         }
 
         function calculate() {
@@ -104,7 +106,7 @@
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>新增保養單</h2>
+                                    <h2>檢視保養單</h2>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
@@ -113,35 +115,35 @@
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">保固單編號
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="warrantyID" class="date-picker form-control col-md-7 col-xs-12" placeholder="" type="text">
+                                                <input id="warrantyID" class="date-picker form-control col-md-7 col-xs-12" placeholder="" type="text" disabled>
                                             </div>
                                         </div>
                                         <div class="item form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">總價
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="totalPrice" class="form-control col-md-7 col-xs-12" placeholder="" type="number" onchange="calculate()">
+                                                <input id="totalPrice" class="form-control col-md-7 col-xs-12" placeholder="" type="number" onchange="calculate()" disabled>
                                             </div>
                                         </div>
                                         <div class="item form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">簽約日期
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="startDate" id="startDate" class="form-control" value="" />                               
+                                                <input type="text" name="startDate" id="startDate" class="form-control" value="" disabled/>                               
                                             </div>
                                         </div>
                                         <div class="item form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">簽約年限
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="mechanicalWarranty" class="form-control col-md-7 col-xs-12" placeholder="" type="number">
+                                                <input id="mechanicalWarranty" class="form-control col-md-7 col-xs-12" placeholder="" type="number" disabled>
                                             </div>
                                         </div>
                                         <div class="item form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">月保養
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <select name="serviceMonth" id="serviceMonth" class="form-control" required="required">
+                                                <select name="serviceMonth" id="serviceMonth" class="form-control" required="required" disabled>
                                                     <option class="text-center" value="0" selected>請選擇月保養</option>
                                                     <option class="text-center" value="1">每月保養</option>
                                                     <option class="text-center" value="2">雙月保養</option>
@@ -153,7 +155,7 @@
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">有無許可證
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <select name="hasLicense" id="hasLicense" class="form-control" required="required">
+                                                <select name="hasLicense" id="hasLicense" class="form-control" required="required" disabled>
                                                     <option class="text-center" value="0" selected>請選擇</option>
                                                     <option class="text-center" value="1">有</option>
                                                     <option class="text-center" value="2">無</option>
@@ -164,21 +166,21 @@
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">許可證到期日
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="licenseDate" id="licenseDate" class="form-control" value="" />                               
+                                                <input type="text" name="licenseDate" id="licenseDate" class="form-control" value="" disabled/>                               
                                             </div>
                                         </div>
                                         <div class="item form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">備註事項
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <textarea id="note" style="width:300px;height:100px;"></textarea>
+                                                <textarea id="note" style="width:300px;height:100px;" disabled></textarea>
                                             </div>
                                         </div>
                                         <div class="ln_solid"></div>
                                         <div class="form-group">
                                             <div class="col-md-9 col-md-offset-4">
-                                                <button id="mClear" class="btn btn-danger">清除</button>
-                                                <button id="sendAdd" class="btn btn-success">新增</button>
+                                                <button class="btn btn-danger" onclick="history.back()">返回</button>
+                                                <button id="mEdit" class="btn btn-success">編輯</button>
                                             </div>
                                         </div>
                                     </div>
@@ -192,20 +194,16 @@
                                         <div class="item form-group">
                                                 <table id="itemTable" class="table x_content">
                                                         <tr>
-                                                        <th>繳款時間</th>
-                                                        <th>繳款金額</th>
-                                                        <th>狀態</th>
-                                                        <th>操作</th>
+                                                            <th>繳款時間</th>
+                                                            <th>繳款金額</th>
+                                                            <th>狀態</th>
                                                         </tr>
-  
-                                                    </table> 
-                                                <button id="addBtn">新增</button>
+                                                </table> 
                                         </div>
                                         <div class="form-group">
                                             <label>剩餘款項 </label>
-                                            <input id="leftPrice"  type="number">                  
-                                        </div>
-                                     
+                                            <input id="leftPrice"  type="number" disabled>                  
+                                        </div>                                          
                                     </div>
                                 </div>
                             </div>
@@ -265,8 +263,57 @@
     <script>
     $(document).ready(function() {
 
-        $(document).on('click', '#addBtn', addCurrentRow);
-        $(document).on('click', '#delBtn', deleteCurrentRow);
+        
+        var $_GET = {};
+
+        document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function() {
+                function decode(s) {
+                    return decodeURIComponent(s.split("+").join(" "));
+                }
+                $_GET[decode(arguments[1])] = decode(arguments[2]);
+        });
+
+         
+
+
+        DateInit();
+        Init();
+        function Init() {
+            var id = $_GET["Id"];
+            $.ajax({
+                type: 'POST',
+                url: "/GetServiceData",
+                data: { Id: id },
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(msg) {
+                    var data = msg.data;
+                    var startDate = moment(data.start_date).format("YYYY-MM-DD");
+                    var licenseDate = moment(data.license_date).format("YYYY-MM-DD");
+
+                    $('#warrantyID').val(data.warranty_id);
+                    $('#totalPrice').val(data.total_price);
+                    $('#leftPrice').val(data.left_price);            
+                    $('#startDate').val(startDate);
+                    $('#mechanicalWarranty').val(data.mechanical_warranty);        
+                    $('#serviceMonth').val(data.service_month);
+                    $('#hasLicense').val(data.has_license);
+                    $('#licenseDate').val(licenseDate);        
+                    $('#note').val(data.note);
+                    
+                    var items = JSON.parse(data.items);
+ 
+                    for (var i = 0; i < items.length; i++) {
+                        addCurrentRow();
+                        $('#payDate'+i).val(items[i][0]);  
+                        $('#itemPrice'+i).val(items[i][1]);
+                        $('#itemStatus'+i).val(items[i][2]);    
+                    }
+  
+                }
+            });
+        }
 
         function addCurrentRow()
         {
@@ -274,11 +321,11 @@
           
             var trcomp=`
             <tr>
-            <td width="100px"><input type="text" name="${tr_length}" id="payDate${tr_length}"  value="" /></td>                               
+            <td width="100px"><input type="text" name="${tr_length}" id="payDate${tr_length}"  value="" disabled/></td>                               
                 
-            <td width="100px"><input name="${tr_length}" id="itemPrice${tr_length}" type="number" onchange="onItemPriceChange(this)"/></td>
+            <td width="100px"><input name="${tr_length}" id="itemPrice${tr_length}" type="number" onchange="onItemPriceChange(this)" disabled/></td>
             <td width="100px">
-                <select name="${tr_length}" id="itemStatus${tr_length}" name="status" onchange="calculate()">
+                <select name="${tr_length}" id="itemStatus${tr_length}" name="status" onchange="calculate()" disabled>
                 　<option value="0" selected="selected">請選擇表單狀態</option>
                 　<option value="1">已開發票</option>
                 　<option value="2">已送請款單</option>
@@ -287,7 +334,6 @@
                 　<option value="5">已收款</option>
                 </select>
             </td>
-            <td><a id="delBtn"><font color='red'>刪除</font></a> </td>
             </tr>
             `;
             $("#itemTable tr:last-child").after(trcomp);
@@ -312,16 +358,6 @@
             });
         }
 
-        function deleteCurrentRow()
-        {
-             var isDelete=confirm("真的要刪除嗎？");
-            if(isDelete)
-            {
-                var tr=this.parentNode.parentNode;
-                var tbody=tr.parentNode;
-                tbody.removeChild(tr);
-            }
-        }
 
         function QuickNotify(message, type) {
             var icon = "";
@@ -343,23 +379,6 @@
                 delay: 6000,
             });
         }
-
-        function clear(e) {
-            e.preventDefault();
-            $('#warrantyID').val("");
-            $('#totalPrice').val(0);
-            $('#leftPrice').val(0);            
-            $('#startDate').val("");
-            $('#mechanicalWarranty').val(0);        
-            $('#serviceMonth').val(0);
-            $('#serviceMonth').selectpicker('refresh');
-            $('#hasLicense').val(0);
-            $('#hasLicense').selectpicker('refresh');
-            $('#licenseDate').val("");        
-            $('#note').val("");
-        }        
-
-        DateInit();
 
         function DateInit() {
             $('#startDate').daterangepicker({
@@ -383,6 +402,7 @@
                 timePickerSeconds: true
             });
         }
+
         $('#licenseDate').on('apply.daterangepicker', function(ev, picker) {
             $(this).val(picker.startDate.format('YYYY-MM-DD'));
         });
@@ -390,64 +410,18 @@
             $(this).val('');
         });
 
+
         $('#startDate').on('apply.daterangepicker', function(ev, picker) {
             $(this).val(picker.startDate.format('YYYY-MM-DD'));
         });
         $('#startDate').on('cancel.daterangepicker', function(ev, picker) {
             $(this).val('');
         });
-
-        function sendAddData() {
-            $('#loading-cover').fadeIn(100);
-            var checkData = datacheck();
-
-            if (checkData.r) {
-                $.ajax({
-                type: 'POST',
-                url: "/AddService",
-                data: {requestData: JSON.stringify(checkData)},
-                dataType: 'json',
-                success: function(msg) {
-                    alert(msg.msg);
-                },
-                error: function(xhr, desc, err) {
-                    alert("HTTP Status code:" + xhr.status);
-                }
-                }).done(function() {
-                    $('#loading-cover').fadeOut(100);
-                });
-
-            }            
+         
+        function switchEditPage() {
+            var id = $_GET["Id"];
+            location.replace(`/ServiceEdit?Id=${id}`);            
         }
- 
-        function datacheck() {
-            var result = { r: false };
-
-            var startDate = $('#startDate').val();;
-            var totalPrice = $('#totalPrice').val();
-            var note = $('#note').val();
-            var leftPrice = $('#leftPrice').val();
-            var warrantyID = $('#warrantyID').val();
-            var mechanicalWarranty = $('#mechanicalWarranty').val();
-            var serviceMonth = $('#serviceMonth').val();
-            var hasLicense = $('#hasLicense').val();
-            var licenseDate = $('#licenseDate').val();
-
-            result.startDate = startDate;
-            result.totalPrice = totalPrice;
-            result.note = note;
-            result.leftPrice = leftPrice;   
-            result.warrantyID = warrantyID;
-            result.mechanicalWarranty = mechanicalWarranty;
-            result.serviceMonth = serviceMonth;
-            result.hasLicense = hasLicense;
-            result.licenseDate = licenseDate;         
-            result.items = getTableData();            
-            result.r = true;
-
-            return result;
-        }
-
 
         function checkIsNullOrEmpty(obj) {
             if (obj == 'undefined' || obj == null || obj == 0 || obj == '')
@@ -455,8 +429,8 @@
             return false;
         }
 
-        $(document).on('click', '#sendAdd', sendAddData);
-        $(document).on('click', '#mClear', clear);
+        $(document).on('click', '#mEdit', switchEditPage);
+
 
     });
     </script>

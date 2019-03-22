@@ -98,21 +98,20 @@ router.post('/EditService', function(req, res) {
             var requestData = JSON.parse(req.body.requestData);
             console.log(req.body);
             console.log(requestData);
-            var editServiceSQL = "update service_form set `title`=?, `left_price`=?, `total_price`=?, `start_date`=?, `is_return`=?, `is_duty`=?, `is_receipt`=?, `elevator_num`=?, `note`=?, `customer_id`=?, `items`=? where `id`=?;";
+            var editServiceSQL = "update service_form set `start_date`=?, `left_price`=?, `total_price`=?, `note`=?, `warranty_id`=?, `mechanical_warranty`=?, `service_month`=?, `has_license`=?, `license_date`=?, `items`=? where `id`=?;";
 
             var itemsJson = JSON.stringify(requestData.items);
             var serviceData = 
             [
-                requestData.title, 
-                requestData.leftPrice,
-                requestData.totalPrice,
                 requestData.startDate,
-                requestData.isReturn,
-                requestData.isDuty,
-                requestData.isReceipt,
-                requestData.elevatorNum,
+                requestData.leftPrice,   
+                requestData.totalPrice,
                 requestData.note,
-                requestData.customerId,
+                requestData.warrantyID,
+                requestData.mechanicalWarranty,
+                requestData.serviceMonth,
+                requestData.hasLicense,
+                requestData.licenseDate,
                 itemsJson,
                 requestData.id
             ];

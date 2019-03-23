@@ -44,6 +44,39 @@ router.post('/AddAuth', function (req, res) {
     });
 });
 
+router.post('/GetAuthData', function (req, res) {
+    common.CreateHtml("Customer_Transfer", req, res, function (err) {
+        common.BackendConnection(res, function (err, connection) {
+            if (err) {
+                common.log(res.session['account'], err);
+                throw err;
+            }
+            var AccountID = req.body.Id;
+            
+            var dataSelect = "select * from account where id="+AccountID+";";
+   
+            var sql = dataSelect;
+
+            common.log(req.session['account'], sql);
+
+            connection.query(sql, function (error, result, fields) {
+                if (error) {
+                    common.log(req.session['account'], err);
+                    res.send({error : err});
+                }
+                else {
+            
+                    res.send({ data: result[0] });
+                }
+                connection.release();
+                res.end();
+            });
+
+        });        
+    });
+
+});
+
 router.post('/GetAuthList', function (req, res) {
     common.CreateHtml("Customer_Transfer", req, res, function (err) {
         common.BackendConnection(res, function (err, connection) {
@@ -100,21 +133,23 @@ router.post('/DeleteAuth', function (req, res) {
 router.post('/EditAuth', function (req, res) {
     common.CreateHtml("Auth_Transfer", req, res, function (err) {
         common.BackendConnection(res, function (err, connection) {
-            var requestData = JSON.parse(req.body.requestData);
+            var hash = crypto.createHash('sha512');
+            var pass = hash.update(req.body.password + salt).digest('hex');
+            var tempForm = req.body;
 
             var hash = crypto.createHash('sha512');
-            var pass = hash.update(requestData.password + salt).digest('hex');
+            var pass = hash.update(tempForm.password + salt).digest('hex');
 
             var editAuthSQL = "update account set `account`=?, `password`=?, `name`=?, `autho`=?, `lock_status`=? where `id`=?;";
 
             var AuthData = 
             [
-                requestData.account,
+                tempForm.account,
                 pass,
-                requestData.name,
-                requestData.autho,
-                requestData.lock_status,
-                requestData.id
+                tempForm.name,
+                tempForm.autho,
+                tempForm.lock_status,
+                tempForm.id
             ];
   
             editAuthSQL = connection.format(editAuthSQL, AuthData);

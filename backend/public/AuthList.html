@@ -195,7 +195,7 @@
             var data = table.row($(this).parents('tr')).data();
             switch ($(this).attr('id')) {
                 case "modifyitem":
-                    location.replace(`/AuthoEdit?Id=${data.id}`);
+                    location.replace(`/AuthEdit?Id=${data.id}`);
                     break;
                 case "deleteitem":
                     if (confirm("確定刪除嗎?")) {                      

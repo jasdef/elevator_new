@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>利通電梯</title>
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Datatables -->
+    <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap-select -->
+    <link rel="stylesheet" href="../vendors/bootstrap-select/css/bootstrap-select.min.css">
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <style type="text/css" media="screen">
+        #datatable tbody td {
+            vertical-align: middle;
+        }
+    
+        .required {
+            background-color: #FFF0F5;
+        }
+    </style>
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <!--Menu-->
+            <!--Top-->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="row">
+                    <div class="clearfix"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>使用者管理</h2>
+                                    <div class="clearfix"></div>
+                                </div>                                
+                                <div class="x_content">
+                                    <div class="col-sm-12">    
+                                        <a href="" target="_blank" id="addAuth" class="btn btn-success">新增使用者</a>                                                         
+                                    </div>
+                                    <div class="x_content">
+                                        <table id="datatable" class="table table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>id</th>
+                                                    <th>使用者帳號</th>
+                                                    <th>使用者名稱</th>
+                                                    <th>群組</th>                                        
+                                                    <th>功能</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /page content -->
+        <!--footer-->
+    </div>
+    <div id="loading-cover" style="width: 100%; height: 100%; background: rgba(0,0,0,.5); position: fixed; display: none; z-index: 999999; top: 0; left: 0;">
+        <div id="loading-icon" style="width: 85px; height: 65px; margin: -42.5px 0 0 -32.5px; top: 50%; left: 50%; position: fixed;">
+            <i class="fa fa-circle-o-notch fa-spin fa-5x fa-fw" style="color: #FFF;"></i>
+        </div>
+    </div>
+    <div id="bs-modal-box" class="modal fade" tabindex="-1" role="dialog"></div>
+
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- validator -->
+    <script src="../vendors/validator/validator.js"></script>
+    <!-- Datatables -->
+    <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="../vendors/jszip/dist/jszip.min.js"></script>
+    <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="../vendors/moment/min/moment.min.js"></script>
+    <!-- bootstrap-select -->
+    <script src="../vendors/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="../vendors/bootstrap-select/js/i18n/defaults-zh_TW.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+    <script>
+    $(document).ready(function() {
+
+        var table = $('#datatable').DataTable();
+        search();
+
+        function search() {
+
+            if (typeof table !== "undefined") {
+                table.destroy();
+            }
+
+            table = $('#datatable').DataTable({
+                "serverSide": false,
+                "searching" : true,
+                "lengthMenu": [
+                    [30, 50, 100, 1000],
+                    [30, 50, 100, 1000]
+                ],
+                "columns": [
+                    { "data": "id"},
+                    { "data": "account"},
+                    { "data": "name" },
+                    { "data": "autho" },
+                    { "defaultContent": 
+                        `<div class="btn-group btn-group-sm" style="display: flex;">
+                            <button class="btn btn-info" id='modifyitem' title="修改"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 修改</button>                            
+                            <button class="btn btn-danger active" id='deleteitem' title="刪除"><i class="fa fa-ban" aria-hidden="true"></i> 刪除</button>
+                        </div>`
+                    }               
+                ],
+                'rowCallback': function(row, data, dataIndex) {
+                },
+                "ajax": {
+                    "url": "/GetAuthList",
+                    "type": "POST",
+                    //"data": { requestData: JSON.stringify(requestData) },
+                    "cache": "false",
+                    "async": "true",
+                    "dataType": 'json'
+                }
+            });
+            };
+
+            $('#datatable').on( 'processing.dt', function ( e, settings, processing ) {
+            if(processing){
+                $('#loading-cover').fadeIn(100);
+            } else {
+                $('#loading-cover').fadeOut(100);
+            }
+            }).dataTable(); 
+
+
+        function DeleteTransaction(id) {
+            $.ajax({
+                type: 'POST',
+                url: "/DeleteAuth",
+                data: { Id: id },
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(msg) {
+                    if (msg.code == -1) { msg.msg } else {
+                        alert(msg.msg);
+                        search();
+                    }
+                }
+            });
+        }
+    
+        $('#addAuth').attr('href', `/AuthAdd`);           
+
+        $('#datatable tbody').on('click', 'button', function(e) {
+            var data = table.row($(this).parents('tr')).data();
+            switch ($(this).attr('id')) {
+                case "modifyitem":
+                    location.replace(`/AuthoEdit?Id=${data.id}`);
+                    break;
+                case "deleteitem":
+                    if (confirm("確定刪除嗎?")) {                      
+                        DeleteTransaction(data.id);
+                    }
+                    break;
+            }
+
+        });        
+    });
+
+    </script>
+</body>

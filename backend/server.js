@@ -14,6 +14,7 @@ timer = require("./js/timer");
 
 var loginform = require('./js/login');
 var notification = require('./js/notification');
+var account = require('./js/account');
 var transaction = require('./js/transaction');
 var warranty = require('./js/warranty');
 var customer = require('./js/customer');
@@ -41,6 +42,7 @@ app.use(session({
     saveUninitialized: false,
     cookie: { maxAge: 60 * 1000 * 50 }
 }));
+app.use(account);
 app.use(customer);
 app.use(service);
 app.use(imgUpload);

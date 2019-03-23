@@ -70,7 +70,7 @@
             {
                 "enable": true,
                 "autho": "all",
-                "href": "MemberList"
+                "href": "AuthList"
             }      
         }
     },

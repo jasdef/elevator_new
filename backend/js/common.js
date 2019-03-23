@@ -5,8 +5,8 @@ var async = require("async");
 var nodemailer = require('nodemailer');
 
 var AuthLv = {
-    "all": 1,
-    "user": 9,
+    "staff": 1,
+    "accounting": 9,
     "admin": 10,
     "developer": 999
 }

@@ -1224,5 +1224,32 @@
         "autho": "all",
         "enable": true,
         "type": "protocol"
+    },
+    "AuthAdd":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/AuthAdd.html"
+    },
+    "AuthList":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/AuthList.html"
+    },
+    "AuthEdit":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/AuthEdit.html"
+    },
+    "Auth_Transfer":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
     }
 }

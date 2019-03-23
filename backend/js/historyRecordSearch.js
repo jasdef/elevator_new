@@ -2,8 +2,7 @@ var express = require('express');
 var path = require("path");
 var router = express.Router();
 var crypto = require('crypto');
-var salt = "jumbo.net";
-var async = require("async");
+
 
 
 router.get('/HistoryRecordSearch', function (req, res) {

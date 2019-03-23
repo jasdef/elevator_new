@@ -2,7 +2,7 @@ var express = require('express');
 var path = require("path");
 var router = express.Router();
 var crypto = require('crypto');
-var salt = "jumbo.net";
+var salt = "liton";
 var async = require("async");
 
 router.get('/LoginForm', function (req, res) {

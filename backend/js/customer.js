@@ -99,8 +99,6 @@ router.post('/EditCustomer', function(req, res) {
     common.CreateHtml("Customer_Transfer", req, res, function (err) {
     common.BackendConnection(res, function(err, connection) {
             var requestData = JSON.parse(req.body.requestData);
-            console.log(req.body);
-            console.log(requestData);
             var editCustomerSQL = "update customer set `company`=?, `num`=?, `contactor1`=?, `contactor2`=?, `contactor3`=?, `tel1`=?, `tel2`=?, `tel3`=?, `address1`=?, `address2`=?, `address3`=?, `fax1`=?, `fax2`=?, `fax3`=? where `id`=?;";
 
             var CustomerData = 

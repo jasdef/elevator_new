@@ -7,7 +7,12 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>SCG</title>
+        <title>利通電梯</title>
+
+        <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+     
+
+        <link href="../assets/styles.css" rel="stylesheet" media="screen">
 
         <!-- Bootstrap -->
         <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -37,88 +42,180 @@
                 <!--Top-->
                 <!-- page content -->
                 <div class="right_col" role="main">
-                    <div class="row">
-                        <div class="clearfix"></div>
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="x_panel">
-                                    <div class="x_title">
-                                        <h2>手動補儲</h2>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    <div class="x_content">
-                                        <div class="form-horizontal form-label-left" novalidate>
-                                            <div class="item form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">會員ID(JCG+10碼數字)
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input name="Account" id="Account" class="date-picker form-control col-md-7 col-xs-12" placeholder="" type="text" maxlength=13/>
-                                                    <span class="input-group-btn">
-                                                        <button target="_blank" id="Check" class="btn btn-success">檢查MemberId</button>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="item form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">會員ID檢查結果
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input type="text" id="CheckResult" class="form-control" readonly/>
-                                                </div>
-                                            </div>
-                                            <div class="item form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">新台幣
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input type="number" name="NT" id="NT" class="form-control" min=0 value=0 />
-                                                </div>
-                                            </div>
-                                            <div class="item form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">遊戲幣(credit cent)
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input type="number" name="Coin" id="Coin" class="form-control" min=0  value=0 />
-                                                </div>
-                                            </div>
-                                            <div class="item form-group">
-                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">VIP點數
-                                                    </label>
-                                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                                        <input type="number" name="VIPPoint" id="VIPPoint" class="form-control" min=0 value=0 />
-                                                    </div>
-                                            </div>
-                                            <div class="item form-group">
-                                                    <label class="col-md-6 col-sm-6 col-xs-12">來源</label>
-                                                    <select name="DepositSource" id="DepositSource" class="form-control">
-                                                            <option value="" selected>未選擇</option>
-                                                            <option value="1">系統贈金</option>
-                                                            <option value="2">活動贈金</option>
-                                                            <option value="3">玩家儲值</option>
-                                                    </select>
-                                            </div>
+ <div class="row-fluid">
+                        <div class="span6">
+                            <!-- block -->
+                            <div class="block">
+                                <div class="navbar navbar-inner block-header">
+                                    <div class="muted pull-left">Users</div>
+                                    <div class="pull-right"><span class="badge badge-info">1,234</span>
 
-                                            <div class="item form-group">
-                                                    <label class="col-md-6 col-sm-6 col-xs-12">項目</label>
-                                                    <select name="DepositType" id="DepositType" class="form-control">
-                                                            <option value="" selected>未選擇</option>
-                                                            <option value="GoogleIAP">Google Play儲值</option>
-                                                            <option value="AppleIAP">iOS儲值</option>
-                                                            <option value="MyCard">MyCard點數</option>
-                                                            <option value="FunPay">FunPay立即儲</option>
-                                                            <option value="JumboPay">JumboPay</option>
-                                                    </select>
-                                            </div>
-
-                                            <div class="ln_solid"></div>
-                                            <div class="form-group">
-                                                <div class="col-md-9 col-md-offset-4">
-                                                    <button id="mClear" class="btn btn-danger">清除</button>
-                                                    <button id="mSendDeposit" class="btn btn-success">送出</button>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
+                                <div class="block-content collapse in">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>First Name</th>
+                                                <th>Last Name</th>
+                                                <th>Username</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Jacob</td>
+                                                <td>Thornton</td>
+                                                <td>@fat</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>Vincent</td>
+                                                <td>Gabriel</td>
+                                                <td>@gabrielva</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
+                            <!-- /block -->
+                        </div>
+                        <div class="span6">
+                            <!-- block -->
+                            <div class="block">
+                                <div class="navbar navbar-inner block-header">
+                                    <div class="muted pull-left">Orders</div>
+                                    <div class="pull-right"><span class="badge badge-info">752</span>
+
+                                    </div>
+                                </div>
+                                <div class="block-content collapse in">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Product</th>
+                                                <th>Date</th>
+                                                <th>Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Coat</td>
+                                                <td>02/02/2013</td>
+                                                <td>$25.12</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Jacket</td>
+                                                <td>01/02/2013</td>
+                                                <td>$335.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>Shoes</td>
+                                                <td>01/02/2013</td>
+                                                <td>$29.99</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- /block -->
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span6">
+                            <!-- block -->
+                            <div class="block">
+                                <div class="navbar navbar-inner block-header">
+                                    <div class="muted pull-left">Clients</div>
+                                    <div class="pull-right"><span class="badge badge-info">17</span>
+
+                                    </div>
+                                </div>
+                                <div class="block-content collapse in">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>First Name</th>
+                                                <th>Last Name</th>
+                                                <th>Username</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Jacob</td>
+                                                <td>Thornton</td>
+                                                <td>@fat</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>Vincent</td>
+                                                <td>Gabriel</td>
+                                                <td>@gabrielva</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- /block -->
+                        </div>
+                        <div class="span6">
+                            <!-- block -->
+                            <div class="block">
+                                <div class="navbar navbar-inner block-header">
+                                    <div class="muted pull-left">Invoices</div>
+                                    <div class="pull-right"><span class="badge badge-info">812</span>
+
+                                    </div>
+                                </div>
+                                <div class="block-content collapse in">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Date</th>
+                                                <th>Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>02/02/2013</td>
+                                                <td>$25.12</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>01/02/2013</td>
+                                                <td>$335.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>01/02/2013</td>
+                                                <td>$29.99</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- /block -->
                         </div>
                     </div>
                 </div>

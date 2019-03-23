@@ -140,15 +140,14 @@ router.post('/EditAuth', function (req, res) {
             var hash = crypto.createHash('sha512');
             var pass = hash.update(tempForm.password + salt).digest('hex');
 
-            var editAuthSQL = "update account set `account`=?, `password`=?, `name`=?, `autho`=?, `lock_status`=? where `id`=?;";
+            var editAuthSQL = "update account set `account`=?,  `name`=?, `autho`=?, `lock_status`=? where `id`=?;";
 
             var AuthData = 
             [
                 tempForm.account,
-                pass,
                 tempForm.name,
                 tempForm.autho,
-                tempForm.lock_status,
+                tempForm.lock,
                 tempForm.id
             ];
   

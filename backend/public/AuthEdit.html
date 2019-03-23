@@ -62,19 +62,22 @@
                                             <label class="control-label">使用者名稱</label>
                                             <input id="name" class="form-control" type="text">
                                         </div>
-                                        <div class="form-group">
+                                       <!-- <div class="form-group">
                                             <label class="control-label">使用者密碼</label>
                                             <input id="pass1" class="form-control" type="password">
-                                        </div>
+                                        </div>-->
                                         <div class="form-group">
-                                            <label class="control-label">使用者密碼驗證</label>
-                                            <input id="pass2" class="form-control" type="password">
+                                            <label class="control-label">是否鎖定</label>
+                                            <select id="isLock" class="form-control" required="required" style="margin-bottom: 10px;">
+                                                <option class="text-center" value="N">否</option>
+                                                <option class="text-center" value="Y">是</option>                                                
+                                            </select>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="control-label">權限</label>
                                             <select id="AddAuthGroupList" class="form-control" required="required" style="margin-bottom: 10px;">
-                                                <option class="text-center" value="staff" selected>員工</option>
+                                                <option class="text-center" value="staff">員工</option>
                                                 <option class="text-center" value="accounting">會計</option>
                                                 <option class="text-center" value="admin">系統管理員</option>
 
@@ -160,8 +163,9 @@
                     var data = msg.data;
                     $('#account').val(data.account);
                     $('#name').val(data.name);
-                    $('#pass1').val(data.password);
-                    $('#pass2').val(""); 
+                    $('#pass1').val("");
+                    $('#isLock').val(data.lock_status); 
+                    $('#AddAuthGroupList').val(data.autho);
                 }
             });
         }
@@ -169,25 +173,22 @@
         function SendEditData() {
             var editUserAccount = $('#account').val().replace(/\s+/g, "");;
             var editUserName = $('#name').val().replace(/\s+/g, "");;
-            var editUserPassword1 = $('#pass1').val().replace(/\s+/g, "");;
-            var editUserPassword2 = $('#pass2').val().replace(/\s+/g, "");;
-  
+         //   var editUserPassword1 = $('#pass1').val().replace(/\s+/g, "");;
+            var lock = $('#isLock').val(); 
             var AuthGroup = $('#AddAuthGroupList').val();
-            if (editUserAccount === "" || editUserName === "" || editUserPassword1 === "") {
+            if (editUserAccount === "" || editUserName === "") {
                 alert("不能有未填寫資料");
                 return;
             }
-            if (editUserPassword1 !== editUserPassword2) {
-                alert("密碼不符合");
-                return;
-            }
+
             $('#loading-cover').fadeIn(100);
             
             var SendData = {
                 account: editUserAccount,
                 name:editUserName,
-                password: editUserPassword1,
+              //  password: editUserPassword1,
                 autho: AuthGroup,
+                lock:lock,
                 id: $_GET["Id"]
             };
            

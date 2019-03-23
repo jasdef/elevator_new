@@ -9,6 +9,16 @@ router.get('/LoginForm', function (req, res) {
     res.sendFile(path.join(__dirname + './../public/login.html'));
 });
 
+router.get('/LogOut', function (req, res) {
+    req.session.destroy(function(err) {
+        if(err){
+        res.json({ret_code: 2, ret_msg: '退出登入失敗'});
+        return;
+        }
+    });
+    res.sendFile(path.join(__dirname + './../public/login.html'));
+});
+
 router.get('/ChangePasswordForm', function (req, res) {
     res.sendFile(path.join(__dirname + './../public/changepassword.html'));
 });

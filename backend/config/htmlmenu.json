@@ -40,6 +40,32 @@
             }
         }
     },
+    "續約管理": 
+    {
+        "autho": "all",
+        "enable": true,
+        "child":
+        {
+            "買賣單續約":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "TransactionSigning"
+            },
+            "保固單續約":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "WarrantySigning"
+            },
+            "保養名冊續約":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "ServiceSigning"
+            }
+        }
+    },
     "派遣管理": 
     {
         "autho": "all",

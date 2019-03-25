@@ -1097,6 +1097,13 @@
         "type": "view",
         "htmlpath": "./../public/TransactionEdit.html"
     },
+    "TransactionSigning":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/TransactionSigning.html"
+    },
     "TransactionAdd":
     {
         "autho": "all",

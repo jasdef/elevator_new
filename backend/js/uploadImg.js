@@ -5,6 +5,11 @@ var fs = require('fs');
 var formidable = require('formidable');    
 var dateFormat = require('dateformat');     
 
+router.get('/PhotoView', function(req, res) {
+    common.log(req.session['account'], 'call PhotoView');
+    common.CreateHtml("PhotoView", req, res);
+});
+
 router.post('/UploadImg', function (req, res) {
     common.CreateHtml("UploadImg_Transfer", req, res, function (err) {
         common.log(req.session['account'], "call upload img");
@@ -107,7 +112,39 @@ router.post('/InsertImgMapping', function (req, res) {
 
 });
 
-
+router.post('/GetPhotoList', function (req, res) {
+    common.CreateHtml("UploadImg_Transfer", req, res, function (err) {
+        common.log(req.session['account'], "call GetPhotoList");
+        common.BackendConnection(res, function (err, connection) {
+            if (err) {
+                common.log(req.session['account'], err);
+                throw err;
+            }
+    
+            var type = req.body.Type;
+            var tableId = req.body.Id;
+                
+            var dataSelect = "select * from file_mapping where table_id="+tableId+" and table_type="+type+";";
+    
+            var sql = dataSelect;
+    
+            common.log(req.session['account'], sql);
+    
+            connection.query(sql, function (error, result, fields) {
+                if (error) {
+                    common.log(req.session['account'], err);
+                    res.send({error : err});
+                }
+                else {
+            
+                    res.send({ data: result });
+                }
+                connection.release();
+                res.end();
+            });
+        });                            
+    });
+});
 
 
 

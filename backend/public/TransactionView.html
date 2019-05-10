@@ -193,6 +193,7 @@
                                             <div class="col-md-9 col-md-offset-4">                     
                                                 <button class="btn btn-danger" onclick="history.back()">返回</button>
                                                 <button id="mEdit" class="btn btn-success">編輯</button>
+                                                <button id="mPhoto" class="btn btn-info">照片</button>
                                             </div>
                                         </div>
                                     </div>
@@ -221,21 +222,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="x_content">
-                        <table id="datatable" class="table table-striped table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>群組名稱</th>
-                                    <th>群組描述</th>
-                                    <th>成員</th>
-                                    <th>功能</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
                     </div>
                  </div>
             </div>
@@ -440,8 +426,12 @@
             var id = $_GET["Id"];
             location.replace(`/TransactionEdit?Id=${id}`);            
         }
- 
 
+        function showPhoto() {
+            var id = $_GET["Id"];
+            location.replace(`/PhotoView?tableType=1&tableId=${id}`);  
+        }
+ 
         function checkIsNullOrEmpty(obj) {
             if (obj == 'undefined' || obj == null || obj == 0 || obj == '')
                 return true;
@@ -449,6 +439,8 @@
         }
 
         $(document).on('click', '#mEdit', switchEditPage);
+        $(document).on('click', '#mPhoto', showPhoto);
+
   
 
     });

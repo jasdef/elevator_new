@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>利通電梯</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="/public/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/public/css/animate.css">
+    
+    <link rel="stylesheet" href="/public/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/public/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/public/css/magnific-popup.css">
+
+    <link rel="stylesheet" href="/public/css/aos.css">
+
+    <link rel="stylesheet" href="/public/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="/public/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/public/css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="/public/css/flaticon.css">
+    <link rel="stylesheet" href="/public/css/icomoon.css">
+    <link rel="stylesheet" href="/public/css/style.css">
+ 
+
+  </head>
+  <body>
+
+	<div id="colorlib-page">
+		
+            <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+		
+			<section class="ftco-section-2">
+				<div class="photograhy">
+					<div class="row no-gutters" >
+                        <div class="col-md-4 ftco-animate" id="photoContent1">
+    
+                        </div>
+                        <div class="col-md-4 ftco-animate" id="photoContent2">
+
+                        </div>
+                        <div class="col-md-4 ftco-animate" id="photoContent3">
+                        </div>
+					</div>
+				</div>
+			</section>
+
+
+	</div><!-- END COLORLIB-PAGE -->
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+  <script src="/public/js/jquery.min.js"></script>
+<script src="/public/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="/public/js/popper.min.js"></script>
+<script src="/public/js/bootstrap.min.js"></script>
+<script src="/public/js/jquery.easing.1.3.js"></script>
+<script src="/public/js/jquery.waypoints.min.js"></script>
+<script src="/public/js/jquery.stellar.min.js"></script>
+<script src="/public/js/owl.carousel.min.js"></script>
+<script src="/public/js/jquery.magnific-popup.min.js"></script>
+<script src="/public/js/aos.js"></script>
+<script src="/public/js/jquery.animateNumber.min.js"></script>
+<script src="/public/js/bootstrap-datepicker.js"></script>
+
+<script src="/public/js/scrollax.min.js"></script>
+
+
+<script src="/public/js/main.js"></script>
+
+ 
+  <script>
+        $(document).ready(function() { 
+            var $_GET = {};
+    
+            document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function() {
+                function decode(s) {
+                    return decodeURIComponent(s.split("+").join(" "));
+                }
+                $_GET[decode(arguments[1])] = decode(arguments[2]);
+            });
+    
+            var tableType = $_GET["tableType"];
+            var tableId = $_GET["tableId"];
+
+            $.ajax({
+                type: 'POST',
+                url: "/GetPhotoList",
+                data: {Type: tableType, Id:tableId},
+                dataType: 'json',
+                success: function(msg) {
+                    var data = msg.data;          
+                    var temp = ``;
+                    for(var i = 0; i < data.length; i++) {
+                        temp =
+                        `                           
+                        <a href="${"../upload"+data[i].path}" class="photography-entry img image-popup d-flex justify-content-center align-items-center" style="background-image: url(${'../upload'+data[i].path});">
+                            <div class="overlay"></div>
+                            <div class="text text-center">
+                                <h3>照片 ${i+1}</h3>                  
+                            </div>
+                        </a>
+                        </br>
+                        `;
+
+                        if ((i+1)%3 == 1) {
+                            $('#photoContent1').append(temp);
+                        }
+                        else if ((i+1)%3 == 2) {
+                            $('#photoContent2').append(temp);
+
+                        }
+                        else if ((i+1)%3 == 0) {
+                            $('#photoContent3').append(temp);
+                        }
+                    }
+                }
+            });
+    
+        });
+      
+      </script>
+
+
+
+  </body>
+
+</html>

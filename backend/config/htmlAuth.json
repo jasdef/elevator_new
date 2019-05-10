@@ -1253,6 +1253,13 @@
         "type": "view",
         "htmlpath": "./../public/AuthEdit.html"
     },
+    "PhotoView":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/PhotoView.html"
+    },
     "Auth_Transfer":
     {
         "autho": "all",

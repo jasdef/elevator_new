@@ -25,6 +25,12 @@ router.get('/TransactionView', function(req, res) {
 
 });
 
+router.get('/TransactionRemind', function(req, res) {
+    common.log(req.session['account'], 'call Transaction remind');
+    common.CreateHtml("TransactionRemind", req, res);
+
+});
+
 router.get('/TransactionSigning', function(req, res) {
     common.log(req.session['account'], 'call Transaction add');
     common.CreateHtml("TransactionSigning", req, res);
@@ -128,6 +134,41 @@ router.post('/GetCreateWarrantyList', function (req, res) {
     });
 
 });
+
+router.post('/GetTransactionRemindList', function (req, res) {
+    common.CreateHtml("Transaction_Transfer", req, res, function (err) {
+        common.BackendConnection(res, function (err, connection) {
+            if (err) {
+                common.log(res.session['account'], err);
+                throw err;
+            }
+            
+            var dataSelect = "select * from transaction_form where is_delete=0 and left_price>0 and is_signing=0;";
+            var countSelect = "select COUNT(*) as count from transaction_form where is_delete=0 and left_price>0 and is_signing=0;";
+
+   
+            var sql = countSelect + dataSelect;
+
+            common.log(req.session['account'], sql);
+
+            connection.query(sql, function (error, result, fields) {
+                if (error) {
+                    common.log(req.session['account'], err);
+                    res.send({error : err});
+                }
+                else {
+                    var totallength = result[0][0].count;
+                    res.send({ recordsTotal: totallength, recordsFiltered: totallength, data: result[1] });
+                }
+                connection.release();
+                res.end();
+            });
+
+        });        
+    });
+
+});
+
 
 
 router.post('/GetTransactionList', function (req, res) {

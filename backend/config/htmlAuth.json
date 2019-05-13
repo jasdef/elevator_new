@@ -1253,6 +1253,27 @@
         "type": "view",
         "htmlpath": "./../public/AuthEdit.html"
     },
+    "ServiceRemind":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/ServiceRemind.html"
+    },
+    "WarrantyRemind":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/WarrantyRemind.html"
+    },
+    "TransactionRemind":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/TransactionRemind.html"
+    },
     "PhotoView":
     {
         "autho": "all",

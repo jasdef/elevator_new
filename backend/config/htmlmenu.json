@@ -11,6 +11,24 @@
                 "enable": true,
                 "autho": "all",
                 "href": "Notification"
+            },
+            "買賣單繳款提醒":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "TransactionRemind"
+            },
+            "保固派遣提醒":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "WarrantynRemind"
+            },
+            "保養派遣提醒":
+            {
+                "enable": true,
+                "autho": "all",
+                "href": "ServiceRemind"
             }
         }
     },

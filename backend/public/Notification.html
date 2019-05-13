@@ -47,43 +47,12 @@
                             <!-- block -->
                             <div class="block">
                                 <div class="navbar navbar-inner block-header">
-                                    <div class="muted pull-left">買賣單提醒</div>
-                                    <div class="pull-right"><span class="badge badge-info">1,234</span>
+                                    <div class="muted pull-left"><b><h4>買賣單提醒</h4></b></div>
+                                    <div class="pull-right" id="TransactionRemind">
 
                                     </div>
                                 </div>
-                                <div class="block-content collapse in">
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>單號</th>
-                                                <th>表單名稱</th>
-                                                <th>剩餘金額</th>
-                                                <th>檢視</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Jacob</td>
-                                                <td>Thornton</td>
-                                                <td>@fat</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Vincent</td>
-                                                <td>Gabriel</td>
-                                                <td>@gabrielva</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+           
                             </div>
                             <!-- /block -->
                         </div>
@@ -273,133 +242,29 @@
         <script src="../build/js/custom.min.js"></script>            
         <script>
             $(document).ready(function() {                
-                var isMemberIdCheckPass = false;
-
-                function clear() {                                
-                    $('#Coin').val(0);                    
-                    $('#VIPPoint').val(0);
-                    $('#Account').val("");
-                    $('#NT').val(0);
-                    $('#DepositType').val("");
-                    $('#DepositSource').val("");                    
-                }
-
-                function checkMemberId() {
-                    var account = $('#Account').val();
-                    $('#loading-cover').fadeIn(100);
-                    if (!account.match(/^JCG[0-9]{10}$/)) {
-                        $('#CheckResult').val("會員ID格式有誤!! 格式應為:(JCG+10碼數字)");
-                        $('#loading-cover').fadeOut(100);
-                    }
-                    else {
-                        $.ajax({
-                            type: 'POST',
-                            url: "/CheckMemberId",
-                            data: { memberId: account },
-                            cache: false,
-                            async: true,
-                            dataType: 'json',
-                            success: function(msg) {
-
-                                if (msg.code == 0) {
-                                    isMemberIdCheckPass = true;  
-                                }
-                                $('#CheckResult').val(msg.msg);
-                            }
-                            }).done(function() {
-                                $('#loading-cover').fadeOut(100);
-                        }); 
-                    }
-                }
-                                         
-                function checkData() 
-                {
-                    var result = {r : false};
-          
-                    if ($('#Account').val() === "") {
-                        alert("會員編號沒填!!");
-                        return result; 
-                    }
-                    else if ($('#DepositSource').val() === "") {
-                        alert("來源沒填!!!");
-                        return result;
-                    }
-                    else if ($('#DepositType').val() === "") {
-                        alert("項目沒填!!!");
-                        return result;
-                    }
-                   
-                    if ($('#Coin').val() < 0 ||  $('#NT').val() < 0) {
-                        alert("新台幣 或 遊戲幣不能是負數");
-                        return result;
-                    } 
-                    
-                    if ($('#NT').val() == 0) {
-                        if (!confirm("新台幣沒填!!!"))
-                            return result;
-                    }
-
-                    if ($('#Coin').val() == 0) {
-                        if (!confirm("遊戲幣沒填!!!"))
-                            return result;
-                    }                  
-
-                    result.Account = $('#Account').val();
-                    result.Coin = $('#Coin').val()
-                    result.VIPPoint = $('#VIPPoint').val();
-                    result.NT = $('#NT').val();
-                    result.DepositType = $('#DepositType').val();
-                    result.DepositSrouce = $('#DepositSource').val();
-                    result.CreateTime = $.now();
-                    result.r = true;
-
-                    return result;
-                }
+ 
+                GetTransactionRemindList();
+                function GetTransactionRemindList() {
   
-                function snedDeposit() 
-                {
-                    var depositData = checkData();
-                    if (isMemberIdCheckPass) {
-                        if (depositData.r) {
-                            if (confirm("確定要送此單?")) {
-                                $.ajax({
-                                type: 'POST',
-                                url: "/DepositMoney",
-                                data: {requestData: JSON.stringify(depositData)},
-                                dataType: 'json',
-                                success: function(msg) {
-                                    alert(msg.msg);
-                                },
-                                error: function(xhr, desc, err) {
-                                    alert("HTTP Status code:" + xhr.status);
-                                }
-                                }).done(function() {
-                                    $('#loading-cover').fadeOut(100);
-                                });
-                            }
+                    $.ajax({
+                        type: 'POST',
+                        url: "/GetTransactionRemindList",                        
+                        cache: false,
+                        async: true,
+                        success: function(data) {
+                            var length = data.recordsFiltered;
+                            $('#TransactionRemind').append( `<a href="/TransactionRemind"><span class="badge badge-info">${length}</span></a>`);
+
+
+
+                            
                         }
-                    }
-                    else {
-                        alert("請確認會員ID否格式正確!!");
-                    }                                       
+                        }).done(function() {
+                            $('#loading-cover').fadeOut(100);
+                    }); 
+                  
                 }
-
-                function checkInputNum(event) {
-                    if(event.keyCode == 45){
-                        event.preventDefault();
-                    }
-                }
-
-                $(document).on('click', '#mClear', clear);
-                $(document).on('click', '#mSendDeposit', snedDeposit);
-                $(document).on('click', '#Check', checkMemberId);
-                $('#Account').change(function() {
-                    isMemberIdCheckPass = false;
-                });
-
-                $(document).on('keypress', '#VIPPoint', checkInputNum);
-                $(document).on('keypress', '#NT', checkInputNum);
-                $(document).on('keypress', '#Coin', checkInputNum);
+                 
                 
             });
         </script>

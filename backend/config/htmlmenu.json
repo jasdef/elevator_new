@@ -94,7 +94,7 @@
             {
                 "enable": true,
                 "autho": "all",
-                "href": "DispatchList"
+                "href": "Dispatch"
             }
         }
     },

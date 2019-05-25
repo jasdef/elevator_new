@@ -1286,5 +1286,18 @@
         "autho": "all",
         "enable": true,
         "type": "protocol"
+    },
+    "Dispatch":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/Dispatch.html"
+    },
+    "Dispatch_Transfer":
+    {
+        "autho": "all",
+        "enable": true,
+        "type": "protocol"
     }
 }

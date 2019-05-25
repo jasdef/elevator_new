@@ -18,6 +18,7 @@ var account = require('./js/account');
 var transaction = require('./js/transaction');
 var warranty = require('./js/warranty');
 var customer = require('./js/customer');
+var dispatch = require('./js/dispatch');
 var service = require('./js/service');
 var imgUpload = require('./js/uploadImg');
 var historyRecord = require('./js/historyRecordSearch');
@@ -43,6 +44,7 @@ app.use(session({
     cookie: { maxAge: 60 * 1000 * 50 }
 }));
 app.use(account);
+app.use(dispatch);
 app.use(customer);
 app.use(service);
 app.use(imgUpload);

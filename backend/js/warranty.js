@@ -25,6 +25,12 @@ router.get('/WarrantyView', function(req, res) {
 
 });
 
+router.get('/WarrantyRemind', function(req, res) {
+    common.log(req.session['account'], 'call Warranty remind');
+    common.CreateHtml("WarrantyRemind", req, res);
+
+});
+
 router.post('/GetWarrantyList', function (req, res) {
     common.CreateHtml("Warranty_Transfer", req, res, function (err) {
         common.BackendConnection(res, function (err, connection) {
@@ -118,6 +124,12 @@ router.post('/GetWarrantyRemindList', function (req, res) {
                 }
                 else {
                     var totallength = result[0][0].count;
+
+                    for (var i = 0; i < totallength; i++) {
+                        var needDoTimes = result[1][i].free_maintenance * 12;
+                        result[1][i].total_times = needDoTimes;
+                    }
+
                     res.send({ recordsTotal: totallength, recordsFiltered: totallength, data: result[1] });
                 }
                 connection.release();

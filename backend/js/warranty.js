@@ -92,6 +92,67 @@ router.post('/GetWarrantyData', function (req, res) {
 
 });
 
+
+router.post('/CheckWarrantyRemind', function (req, res) {//檢查那些還沒進入派遣流程的單子 哪些可以進入了
+    common.CreateHtml("Dispatch_Transfer", req, res, function (err) {
+        common.BackendConnection(res, function (err, connection) {
+            if (err) {
+                common.log(res.session['account'], err);
+                throw err;
+            }
+            
+            var dataSelect = "select * from warranty_form where is_remind=0;";
+            
+            common.log("System", dataSelect);
+
+            connection.query(dataSelect, function (error, result, fields) {
+                if (error) {
+                    common.log(req.session['account'], err);
+                    res.send({error : err});
+                }
+                else if (result.length > 0){
+                    var data = result;
+                    var updateRemindStatus = "";
+                    for (var i = 0; i < data.length; i++) {
+                        var tempTime = new Date(data[i].start_date);
+                        if (tempTime < new Date()) {
+                            updateRemindStatus += `update warranty_form set is_remind=1 where id=`+data[i].id+";";
+                        }
+                    }
+                    
+                    if (updateRemindStatus != "") {
+                        common.log("System", updateRemindStatus);
+                        connection.query(updateRemindStatus, function (error, result, fields) {
+                            if (error) {
+                                common.log(req.session['account'], err);
+                                res.send({error : err});
+                            }
+                            
+                            res.send({ msg: "done" });
+                            connection.release();
+                            res.end();
+    
+                        });
+                    }
+                    else {
+
+                        common.log("System", "no need to remind warranty");
+                        res.send({ msg: "done" });
+                        connection.release();
+                        res.end();
+                    }
+                }
+                else {
+                    res.send({ msg: "done" });
+                    connection.release();
+                    res.end();
+                }
+            });
+
+        });        
+    });
+});
+
 router.post('/EditWarranty', function(req, res) {
     common.CreateHtml("Warranty_Transfer", req, res, function (err) {
     common.BackendConnection(res, function(err, connection) {

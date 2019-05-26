@@ -244,6 +244,7 @@
             $(document).ready(function() {                
  
                 GetTransactionRemindList();
+                CheckWarrantyRemind();
                 function GetTransactionRemindList() {
   
                     $.ajax({
@@ -265,6 +266,21 @@
                   
                 }
                  
+                function CheckWarrantyRemind() {
+  
+                    $.ajax({
+                        type: 'POST',
+                        url: "/CheckWarrantyRemind",                        
+                        cache: false,
+                        async: true,
+                        success: function(data) {
+                             
+                        }
+                        }).done(function() {
+                            $('#loading-cover').fadeOut(100);
+                    }); 
+
+                }
                 
             });
         </script>

@@ -53,7 +53,12 @@ router.post('/SCGBackendLogin', function (req, res) {
                             req.session['account'] = req.body.Username;
                             req.session['autho'] = dbresults[0].autho;
                             req.session['authid'] = dbresults[0].id;
-                            res.send({ code: '0', html: 'Notification', account: req.body.Username });
+                            if (dbresults[0].autho == "staff") {
+                                res.send({ code: '0', html: 'DispatchOwn', account: req.body.Username });
+                            }
+                            else {
+                                res.send({ code: '0', html: 'Notification', account: req.body.Username });
+                            }
                             res.end();
                             common.BackendConnection(res, function (err, connection) {
                                 connection.query("update backend.Account SET Error = 0 where idAccount=?;", [dbresults[0].idAccount], function (error, dbresults, fields) {

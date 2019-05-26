@@ -2,132 +2,152 @@
 
     "提醒": 
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "child":
         {
             "主要提醒":
             {
                 "enable": true,
-                "autho": "all",
+                "autho": "admin",
                 "href": "Notification"
             },
             "買賣單繳款提醒":
             {
                 "enable": true,
-                "autho": "all",
+                "autho": "admin",
                 "href": "TransactionRemind"
             },
             "保固派遣提醒":
             {
                 "enable": true,
-                "autho": "all",
-                "href": "WarrantynRemind"
+                "autho": "admin",
+                "href": "WarrantyRemind"
             },
             "保養派遣提醒":
             {
                 "enable": true,
-                "autho": "all",
+                "autho": "admin",
                 "href": "ServiceRemind"
             }
         }
     },
     "表單管理": 
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "child":
         {
             "買賣單":
             {
                 "enable": true,
-                "autho": "all",
+                "autho": "admin",
                 "href": "Transaction"
             },
             "保固單":
             {
                 "enable": true,
-                "autho": "all",
+                "autho": "admin",
                 "href": "Warranty"
             },
             "保養名冊":
             {
                 "enable": true,
-                "autho": "all",
+                "autho": "admin",
                 "href": "Service"
             }
         }
     },
     "續約管理": 
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "child":
         {
             "買賣單續約":
             {
                 "enable": true,
-                "autho": "all",
+                "autho": "admin",
                 "href": "TransactionSigning"
             },
             "保固單續約":
             {
                 "enable": true,
-                "autho": "all",
+                "autho": "admin",
                 "href": "WarrantySigning"
             },
             "保養名冊續約":
             {
                 "enable": true,
-                "autho": "all",
+                "autho": "admin",
                 "href": "ServiceSigning"
             }
         }
     },
     "派遣管理": 
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "child":
         {
             "派遣列表":
             {
                 "enable": true,
-                "autho": "all",
+                "autho": "admin",
                 "href": "Dispatch"
+            },
+            "處理派遣任務":
+            {
+                "enable": true,
+                "autho": "admin",
+                "href": "Dispatch"
+            }
+        }
+    },
+    "處理派遣任務": 
+    {
+        "autho": "staff",
+        "enable": true,
+        "child":
+        {
+            "任務列表":
+            {
+                "enable": true,
+                "autho": "staff",
+                "href": "DispatchOwn"
             }
         }
     },
     "人員管理":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "child":
         {
             "客戶列表":
             {
                 "enable": true,
-                "autho": "all",
+                "autho": "admin",
                 "href": "Customer"
             },
             "人員列表":
             {
                 "enable": true,
-                "autho": "all",
+                "autho": "admin",
                 "href": "AuthList"
             }      
         }
     },
     "報表系統":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "child":
         {
             "操作歷史紀錄":
             {
                 "enable": true,
-                "autho": "all",
+                "autho": "admin",
                 "href": "HistoryRecordSearch"
             }
         }

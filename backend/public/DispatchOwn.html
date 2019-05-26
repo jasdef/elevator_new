@@ -48,22 +48,18 @@
                         <div class="col-md-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>派遣列表</h2>
+                                    <h2>任務列表</h2>
                                     <div class="clearfix"></div>
                                 </div>                                
                                 <div class="x_content">
- 
                                     <div class="x_content">
                                         <table id="datatable" class="table table-striped table-bordered">
                                             <thead>
                                                 <tr>
                                                     <th>單號</th>                       
-                                                    <th>表單類型</th>
-                                                    <th>表單名稱</th>
-                                                    <th>派遣者</th> 
-                                                    <th>派遣員工</th> 
-                                                    <th>派遣狀態</th> 
-                                                    <th>最後更新日期</th> 
+                                                    <th>表單名稱</th>   
+                                                    <th>檢視</th>                                         
+                                                    <th>回報完成</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -139,20 +135,24 @@
                     [30, 50, 100, 1000]
                 ],
                 "columns": [
-                    { "data": "table_id"},
-                    { "data": "table_type" },
-                    { "data": "title" },
-                    { "data": "dispatcher" },
-                    { "data": "principal" },
-                    { "data": "action_type" },
-                    { "data": "timestamp" },
-               
+                    { "data": "id"},
+                    { "data": "" },
+                    { "defaultContent": 
+                        `<div class="btn-group btn-group-sm" style="display: flex;">
+                            <button class="btn btn-info"  id='viewitem' title="檢視"><i class="fa fa-eye" aria-hidden="true"></i> 檢視</button> 
+                        </div>`
+                    } ,
+                    { "defaultContent": 
+                        `<div class="btn-group btn-group-sm" style="display: flex;">
+                            <button class="btn btn-info" id='confirm' title="確認"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>確認</button>                            
+                        </div>`
+                    }               
                 ],
                 'rowCallback': function(row, data, dataIndex) {
-                    $('td:eq(6)', row).html(moment(data.timestamp).format("YYYY-MM-DD HH:mm:ss"));      
+                         
                 },
                 "ajax": {
-                    "url": "/GetDispatchList",
+                    "url": "/GetOwnDispatchList",
                     "type": "POST",
                     //"data": { requestData: JSON.stringify(requestData) },
                     "cache": "false",
@@ -160,7 +160,7 @@
                     "dataType": 'json'
                 }
             });
-            };
+        }
 
             $('#datatable').on( 'processing.dt', function ( e, settings, processing ) {
             if(processing){
@@ -168,7 +168,26 @@
             } else {
                 $('#loading-cover').fadeOut(100);
             }
-            }).dataTable();        
+            }).dataTable(); 
+        
+
+        $('#datatable tbody').on('click', 'button', function(e) {
+            var data = table.row($(this).parents('tr')).data();
+            switch ($(this).attr('id')) {
+                case "modifyitem":
+                    location.replace(`/ServiceEdit?Id=${data.id}`);
+                    break;
+                case "deleteitem":
+                    if (confirm("確定刪除嗎?")) {                      
+                        DeleteService(data.id);
+                    }
+                    break;
+                case "viewitem":
+                    location.href =`/ServiceView?Id=${data.id}`;                    
+                    break;
+            }
+
+        });        
     });
 
     </script>

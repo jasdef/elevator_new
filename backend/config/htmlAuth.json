@@ -1,73 +1,73 @@
 {
     "SCGBackendLogin":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "ChangePasswordForm":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/changepassword.html"
     },
     "PasswordUpdate":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "MemberSearchForm":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/MemberSearch.html"
     },
     "MemberEditForm":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/MemberEdit.html"
     },
     "MemberChargeForm":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/MemberCharge.html"
     },
     "MemberSpinHistoryForm":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/MemberSpinHistory.html"
     },
     "blockadePhone":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/blockadePhone.html"
     },
     "blockadePhone_Transfer": {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "HistoryRecordSearch":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/HistoryRecordSearch.html"
     },
     "ImpoliteWord":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
 
@@ -75,1235 +75,1248 @@
     },
     "HistoryRecordSearch_Transfer":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "ImpoliteWordTransfer":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "MemberChargeHistory":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "MemberSpinHistory":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "MemberSearch":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "MemberEdit":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "MemberSuspension":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "GetPictures":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "SendPicture":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "getLangList":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "DelPicture":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "EditPicture":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OrderPicture":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "BulletinMailForm":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/bulletinMail.html"
     },
     "bulletinMailVerify":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/bulletinMailVerify.html"
     },
     "BulletinMail_getmGroup":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "BulletinMail_getGameList":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "BulletinMail_getAttItems":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "BulletinMail_Transfer":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "bulletinMailVerify_Transfer":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "bulletinMailPackage_Transfer":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "BulletinPushNotify":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/bulletinPushNotify.html"
     },
     "BulletinPushNotify_History":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "BulletinPushNotify_Add":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "BulletinPushNotify_Delete":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "BulletinPushNotify_Edit":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "memberBetInquireForm":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/MemberBetInquire.html"
     },
     "MemberBetInquire_History":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "DragonRankForm":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/dragonrank.html"
     },
     "BulletinTradeSearchForm":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/MemberTradeSearch.html"
     },
     "BulletinTransactionSearchForm":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/MemberTransactionSearch.html"
     },
     "DragonRank":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "DragonRank_History":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "memberIAPListform":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/MemberIAPList.html"
     },
     "memberIAPListAdv":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "BulletinADWindowForm":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/ADWindow.html"
     },
-    "ADWindowGetGalleryData":
+    "ADWindowGetGadmineryData":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "BulletinFeedbackForm":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/Feedback.html"
     },
     "BulletinFeedbackSearchForm":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/FeedbackSearch.html"
     },
     "BulletinFeedbackCanForm":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/FeedbackCan.html"
     },
     "GetFeedbackType":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "GetFeedback":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "FeedbackReply":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "GetFeedbackCan":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "FeedbackCanAdd":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "FeedbackCanModify":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "SearchFeedback":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "GetVIPLvSetting":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "BulletinMarqueeForm":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/Marquee.html"
     },
     "GetMarquee":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "MarqueeModify":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "MarqueeDel":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "MarqueeAdd":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "ManualTarget":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/MemberManualTarget.html"
     },
     "ManualTargetGetImportMember":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "ManualTargetSearch":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "GetMemberGroupList":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "InsertMemberToGroup":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "MemberGroupForm":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/membergroup.html"
     },
     "MemberGroup":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "MemberGroupAdd":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "MemberGroupModify":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "MemberGroupManualForm":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/memberGroupManual.html"
     },
     "GroupManual_info":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "GroupManual_List":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "GroupManual_Delete":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_SeoView":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_postSeoData":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_SocialImage":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_index":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/OfficialWebsite_index.html"
     },
-    "OfficialWebsite_IndexGalleryView":
+    "OfficialWebsite_IndexGadmineryView":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_postIndexImageInsert":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_postIndexOrder":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_postIndexImageEnabled":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_postIndexImageDel":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_postIndexImageEditData":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_news":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/OfficialWebsite_news.html"
     },
     "OfficialWebsite_NewsListView":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_postNewsInsert":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_postNewsOrder":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_postNewsEnabled":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_postNewsDel":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_postNewsEditData":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_about":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/OfficialWebsite_about.html"
     },
     "OfficialWebsite_AboutListView":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_postAboutInsert":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_postAboutOrder":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_postAboutEnabled":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_postAboutImageDel":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_postAboutEditData":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_postAboutCoverEdit":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_AboutSubListView":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_postAboutSubInsert":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_postAboutSubOrder":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_postAboutSubImageDel":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_game":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/OfficialWebsite_game.html"
     },
     "OfficialWebsite_GameListView":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_postGameInsert":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_postGameOrder":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_postGameEnabled":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_postGameImageDel":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_postGameEditData":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_postGameCoverEdit":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_GameSubListView":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_postGameSubInsert":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_postGameSubOrder":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_postGameSubImageDel":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_download":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/OfficialWebsite_download.html"
     },
     "OfficialWebsite_postDownloadData":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_shop":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/OfficialWebsite_shop.html"
     },
     "OfficialWebsite_another":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/OfficialWebsite_another.html"
     },
     "OfficialWebsite_ad":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/OfficialWebsite_ad.html"
     },
     "OfficialWebsite_AnotherFooterData":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "OfficialWebsite_postAnotherFooterData":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "GetVIPSetting":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "MemberGroupDelete":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "BulletinKanbanForm":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/BulletinKanban.html"
     },
     "BulletinADLamboxForm":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/ADLambox.html"
     },
     "BulletinArticleManagerForm":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/ArticleManager.html"
     },
     "BulletinArticleManagerForm/ArticleGetById":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "ArticleDataTransfer":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "PictureUploaderTool":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/PictureUploaderTool.html"
     },
     "AuthGroup":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/AuthGroup.html"
     },
     "AuthGroup_add":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "AuthGroup_info":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "AuthGroup_delete":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "AuthGroup_Modify":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "AuthGroup_list":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "AuthUser":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/AuthUser.html"
     },
     "AuthUser_add":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "AuthUser_info":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "AuthUser_delete":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "AuthUser_Modify":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
 
     "GameBoard":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/GameBoard.html"
     },
     "GameBoardTransfer":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "Umbrella":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/Umbrella.html"
     },
     "GetUmbrellaList":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "MemberTradeSearch":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "ServerMaintenaceForm":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/ServerMaintenace.html"
     },
     "ServerMaintenaceSetServerStatus":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "ServerMaintenaceWhiteList":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "ServerMaintenaceWhiteListAdd":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "ServerMaintenaceWhiteListDel":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "ServerMaintenaceGetServerStatus":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "refreshStaticData": {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "MemberBanned":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "SimpleDeposit_Transfer":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "SimpleDeposit":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/SimpleDeposit.html"
     },
     "ModifyPhoneSearch":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/ModifyPhoneSearch.html"
     },
     "ModifyPhoneNum":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/ModifyPhoneNum.html"
     },
     "ModifyPhoneSearch_Transfer":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "ModifyPhoneNum_Transfer":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "BulletinKanban_Transfer":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "AutoBroadcast":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/AutoBroadcast.html"
     },
     "GetAutoBroadcast":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "SetAutoBroadcast":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "BroadcastModify":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "BroadcastDel":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "BroadcastEnable":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "GetSmartChannelList":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "Notification":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/Notification.html"
     },
     "Notification_Transfer":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "TransactionView":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/TransactionView.html"
     },
     "TransactionEdit":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/TransactionEdit.html"
     },
     "TransactionSigning":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/TransactionSigning.html"
     },
     "TransactionAdd":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/TransactionAdd.html"
     },
     "Transaction":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/Transaction.html"
     },
     "Transaction_Transfer":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "WarrantyView":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/WarrantyView.html"
     },
     "WarrantyEdit":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/WarrantyEdit.html"
     },
     "WarrantyAdd":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/WarrantyAdd.html"
     },
     "Warranty":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/Warranty.html"
     },
     "Warranty_Transfer":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "ServiceView":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/ServiceView.html"
     },
     "ServiceEdit":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/ServiceEdit.html"
     },
     "ServiceAdd":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/ServiceAdd.html"
     },
     "Service":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/Service.html"
     },
     "Service_Transfer":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },    
     "UploadImg_Transfer":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "CustomerView":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/CustomerView.html"
     },
     "CustomerEdit":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/CustomerEdit.html"
     },
     "CustomerAdd":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/CustomerAdd.html"
     },
     "Customer":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/Customer.html"
     },
     "Customer_Transfer":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "AuthAdd":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/AuthAdd.html"
     },
     "AuthList":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/AuthList.html"
     },
     "AuthEdit":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/AuthEdit.html"
     },
     "ServiceRemind":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/ServiceRemind.html"
     },
     "WarrantyRemind":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/WarrantyRemind.html"
     },
     "TransactionRemind":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/TransactionRemind.html"
     },
     "PhotoView":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/PhotoView.html"
     },
+    "DispatchOwn":
+    {
+        "autho": "staff",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/DispatchOwn.html"
+    },
     "DispatchAdd":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/DispatchAdd.html"
     },
+    "DispatchOwn_Transfer":
+    {
+        "autho": "staff",
+        "enable": true,
+        "type": "protocol"
+    },
     "Auth_Transfer":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     },
     "Dispatch":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/Dispatch.html"
     },
     "Dispatch_Transfer":
     {
-        "autho": "all",
+        "autho": "admin",
         "enable": true,
         "type": "protocol"
     }

@@ -93,6 +93,42 @@ router.post('/GetWarrantyData', function (req, res) {
 });
 
 
+router.post('/GetWarrantyRemindList', function (req, res) {
+    common.CreateHtml("Warranty_Transfer", req, res, function (err) {
+        common.BackendConnection(res, function (err, connection) {
+            if (err) {
+                common.log(res.session['account'], err);
+                throw err;
+            }
+            
+            var nowMonth = new Date().toLocaleString().split("-")[1];
+
+            var dataSelect = "select * from warranty_form where is_delete=0 and is_remind=1 and modify_month !="+nowMonth+";";
+            var countSelect = "select COUNT(*) as count from warranty_form where is_delete=0 and is_remind=1 and modify_month !="+nowMonth+";";
+
+   
+            var sql = countSelect + dataSelect;
+
+            common.log(req.session['account'], sql);
+
+            connection.query(sql, function (error, result, fields) {
+                if (error) {
+                    common.log(req.session['account'], err);
+                    res.send({error : err});
+                }
+                else {
+                    var totallength = result[0][0].count;
+                    res.send({ recordsTotal: totallength, recordsFiltered: totallength, data: result[1] });
+                }
+                connection.release();
+                res.end();
+            });
+
+        });        
+    });
+
+});
+
 router.post('/CheckWarrantyRemind', function (req, res) {//檢查那些還沒進入派遣流程的單子 哪些可以進入了
     common.CreateHtml("Dispatch_Transfer", req, res, function (err) {
         common.BackendConnection(res, function (err, connection) {
@@ -101,8 +137,7 @@ router.post('/CheckWarrantyRemind', function (req, res) {//檢查那些還沒進
                 throw err;
             }
             
-            var dataSelect = "select * from warranty_form where is_remind=0;";
-            
+            var dataSelect = "select * from warranty_form where is_remind=0 and is_delete=0;";
             common.log("System", dataSelect);
 
             connection.query(dataSelect, function (error, result, fields) {
@@ -116,7 +151,7 @@ router.post('/CheckWarrantyRemind', function (req, res) {//檢查那些還沒進
                     for (var i = 0; i < data.length; i++) {
                         var tempTime = new Date(data[i].start_date);
                         if (tempTime < new Date()) {
-                            updateRemindStatus += `update warranty_form set is_remind=1 where id=`+data[i].id+";";
+                            updateRemindStatus += `update warranty_form set is_remind=1 where id=`+data[i].id+" and is_delete=0;";
                         }
                     }
                     

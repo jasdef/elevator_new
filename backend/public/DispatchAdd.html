@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>利通電梯</title>      
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Datatables -->
+    <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap-select -->
+    <link rel="stylesheet" href="../vendors/bootstrap-select/css/bootstrap-select.min.css">
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- bootstrap-notify -->
+    <link href="../vendors/bootstrap-notify/animate.min.css" rel="stylesheet">
+    <!-- At.js 套件(autocomplete))  -->
+    <link href="../vendors/At.js/css/jquery.atwho.min.css" rel="stylesheet">
+
+    <style type="text/css" media="screen">
+    #datatable tbody td {
+        vertical-align: middle;
+    }
+    .alert h5{
+        margin: 0 0 0 15px;
+        font-size: 1.3em;
+    }
+    .alert i{
+        margin-right: 5px;
+    }
+    .modal textarea{
+        resize: vertical;
+    }
+    </style>
+</head>
+<script>
+        function getTableData() {
+            var Tbdata = {}; 
+            var tr_length = $('.table tr').length; //tr 長度
+  
+            for(var i=0; i < tr_length-1; i++){
+                var td_length = $('.table tr');                
+                Tbdata[i] = [$('#itemTitle'+i).val(), $('#itemPercent'+i).val(), $('#itemPrice'+i).val(), $('#itemStatus'+i).val()];               
+             }
+             Tbdata["length"] = tr_length-1;
+             console.log(Tbdata); 
+             return Tbdata;     
+        }
+
+        function onItemPercentChange(element) {
+            var total = $('#totalPrice').val();
+            var price = parseInt(total*(element.value*0.01));
+            $('#itemPrice'+element.name).val(price);
+
+            console.log(element.value);
+        }
+
+        function onItemPriceChange(element) {
+            var total = $('#totalPrice').val();
+            var percent = parseInt(element.value/total*100);
+            $('#itemPercent'+element.name).val(percent);
+        }
+
+        function calculate() {
+            var total = $('#totalPrice').val();
+            var left = total;
+            var tr_length = $('.table tr').length - 1; //tr 長度  扣掉head    
+            var data = getTableData();
+
+            for (var i = 0; i < tr_length; i++) {
+
+                if (data[i][3] == 5) {
+                    left -= data[i][2];
+                }
+            }
+            $('#leftPrice').val(left);
+        }
+
+</script>
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <!--Menu-->
+            <!--Top-->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="row">
+                    <div class="clearfix"></div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>派遣編輯</h2>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <div class="form-horizontal form-label-left" novalidate>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">單號
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="formID" class="date-picker form-control col-md-7 col-xs-12" placeholder="" type="text" disabled>
+                                            </div>
+                                        </div>
+
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">員工選擇
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12" id="staff">
+                                               
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="ln_solid"></div>
+                                        <div class="form-group">
+                                            <div class="col-md-9 col-md-offset-4">
+                                                <button class="btn btn-danger" onclick="history.back()">返回</button>
+                                                <button id="sendDispatch" class="btn btn-success">確認</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                 </div>
+            </div>
+            <!-- /page content -->
+            <!--footer-->
+        </div>
+    </div>
+    <div id="loading-cover" style="width: 100%; height: 100%; background: rgba(0,0,0,.5); position: fixed; display: none; z-index: 999999; top: 0; left: 0;">
+        <div id="loading-icon" style="width: 85px; height: 65px; margin: -42.5px 0 0 -32.5px; top: 50%; left: 50%; position: fixed;">
+            <i class="fa fa-circle-o-notch fa-spin fa-5x fa-fw" style="color: #FFF;"></i>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- validator -->
+    <script src="../vendors/validator/validator.js"></script>
+    <!-- Datatables -->
+    <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="../vendors/jszip/dist/jszip.min.js"></script>
+    <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/moment/min/moment-duration-format.min.js"></script>
+    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap-select -->
+    <script src="../vendors/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="../vendors/bootstrap-select/js/i18n/defaults-zh_TW.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+    <!-- bootstrap-notify -->
+    <script src="../vendors/bootstrap-notify/bootstrap-notify.min.js"></script>
+    <!-- At.js 套件(autocomplete))  -->
+    <script type="text/javascript" src="../vendors/At.js/js/jquerycaret.min.js"></script>
+    <script type="text/javascript" src="../vendors/At.js/js/jqueryatwho.min.js"></script>
+
+    <script>
+    $(document).ready(function() {
+
+        var $_GET = {};
+
+        document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function() {
+                function decode(s) {
+                    return decodeURIComponent(s.split("+").join(" "));
+                }
+                $_GET[decode(arguments[1])] = decode(arguments[2]);
+        });
+
+        
+        $('#formID').val($_GET["Id"]);
+        
+        getStaff();
+        
+        function getStaff() {
+
+            $.ajax({
+            type: 'POST',
+            url: "/GetStaffData",
+
+            dataType: 'json',
+            success: function(msg) {
+                var data = msg.data;
+                var select = `
+                <select id="staffSelect"  class="form-control">
+                    <option value="0" selected="selected">請選擇員工</option>
+                `;
+ 
+                for (var i=0; i < data.length; i++) {
+                    select += `<option value=${data[i].id}>${data[i].name}</option>`;
+                }
+
+                select += `</select>`;
+
+                $('#staff').html(select);
+
+            },
+            error: function(xhr, desc, err) {
+                alert("HTTP Status code:" + xhr.status);
+            }
+            }).done(function() {
+                $('#loading-cover').fadeOut(100);
+            });
+        }
+
+        function sendDispatch() {
+            $('#loading-cover').fadeIn(100);
+            var checkData = datacheck();
+
+            if (checkData.r) {
+                $.ajax({
+                type: 'POST',
+                url: "/AddDispatch",
+                data: {requestData: JSON.stringify(checkData)},
+                dataType: 'json',
+                success: function(msg) {
+                    alert(msg.msg);
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+                }).done(function() {
+                    $('#loading-cover').fadeOut(100);
+                });
+
+            }            
+        }
+ 
+        function datacheck() {
+            var result = { r: false };
+
+            var staffID = $('#staffSelect').val();;
+        
+            if (staffID == 0) {
+
+                alert("請選擇員工!!!");
+                $('#loading-cover').fadeOut(100);
+
+                return result;
+            }
+
+            result.tableID = $_GET["Id"];
+            result.tableType = $_GET["Type"];
+            result.staffID = staffID;         
+            result.r = true;
+
+            return result;
+        }
+
+
+        function checkIsNullOrEmpty(obj) {
+            if (obj == 'undefined' || obj == null || obj == 0 || obj == '')
+                return true;
+            return false;
+        }
+
+
+        $(document).on('click', '#sendDispatch', sendDispatch);
+ 
+
+    });
+    </script>
+</body>
+
+</html>

@@ -52,6 +52,7 @@ router.post('/SCGBackendLogin', function (req, res) {
                             common.log("system", req.body.Username + ': login OK');
                             req.session['account'] = req.body.Username;
                             req.session['autho'] = dbresults[0].autho;
+                            req.session['authid'] = dbresults[0].id;
                             res.send({ code: '0', html: 'Notification', account: req.body.Username });
                             res.end();
                             common.BackendConnection(res, function (err, connection) {

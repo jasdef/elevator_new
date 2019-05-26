@@ -77,6 +77,39 @@ router.post('/GetAuthData', function (req, res) {
 
 });
 
+router.post('/GetStaffData', function (req, res) {
+    common.CreateHtml("Customer_Transfer", req, res, function (err) {
+        common.BackendConnection(res, function (err, connection) {
+            if (err) {
+                common.log(res.session['account'], err);
+                throw err;
+            }
+           
+            
+            var dataSelect = "select * from account where autho='staff' and lock_status='N';";
+   
+            var sql = dataSelect;
+
+            common.log(req.session['account'], sql);
+
+            connection.query(sql, function (error, result, fields) {
+                if (error) {
+                    common.log(req.session['account'], err);
+                    res.send({error : err});
+                }
+                else {
+            
+                    res.send({ data: result });
+                }
+                connection.release();
+                res.end();
+            });
+
+        });        
+    });
+
+});
+
 router.post('/GetAuthList', function (req, res) {
     common.CreateHtml("Customer_Transfer", req, res, function (err) {
         common.BackendConnection(res, function (err, connection) {

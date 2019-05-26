@@ -185,10 +185,8 @@
                 case "modifyitem":
                     location.replace(`/WarrantyEdit?Id=${data.id}`);
                     break;
-                case "deleteitem":
-                    if (confirm("確定刪除嗎?")) {                      
-                        DeleteTransaction(data.id);
-                    }
+                case "dispatchitem":
+                    location.href =`/DispatchAdd?Id=${data.id}&Type=2`;                    
                     break;
                 case "viewitem":
                     location.href =`/WarrantyView?Id=${data.id}`;                    

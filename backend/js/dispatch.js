@@ -52,6 +52,14 @@ router.post('/AddDispatch', function(req, res) {
             var requestData = JSON.parse(req.body.requestData);
 
             var addDispatchSQL = "insert into dispatch_log (`table_type`, `table_id`, `dispatcher`, `principal`) VALUES (?,?,?,?);";
+            var updateForm;
+            if (requestData.tableType == 2) {//保固單
+                updateForm = "update warranty_form set is_dispatch=1 where id="+requestData.tableID+";";
+            }
+            else {//保養單
+                updateForm = "update service_form set is_dispatch=1 where id="+requestData.tableID+";";
+            }
+
 
             var dispatchData = 
             [
@@ -63,7 +71,7 @@ router.post('/AddDispatch', function(req, res) {
   
             addDispatchSQL = connection.format(addDispatchSQL, dispatchData);
 
-            var sql = addDispatchSQL;
+            var sql = addDispatchSQL+updateForm;
 
             common.log(req.session['account'], sql);
             connection.query(sql, function (error, result, fields) {

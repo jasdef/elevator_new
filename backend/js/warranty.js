@@ -109,8 +109,8 @@ router.post('/GetWarrantyRemindList', function (req, res) {
             
             var nowMonth = new Date().toLocaleString().split("-")[1];
 
-            var dataSelect = "select * from warranty_form where is_delete=0 and is_remind=1 and modify_month !="+nowMonth+";";
-            var countSelect = "select COUNT(*) as count from warranty_form where is_delete=0 and is_remind=1 and modify_month !="+nowMonth+";";
+            var dataSelect = "select * from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !="+nowMonth+";";
+            var countSelect = "select COUNT(*) as count from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !="+nowMonth+";";
 
    
             var sql = countSelect + dataSelect;

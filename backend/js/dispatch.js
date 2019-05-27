@@ -124,6 +124,40 @@ router.post('/GetDispatchTW', function (req, res) {
 
 });
 
+router.post('/UpdateDispatchStatus', function (req, res) {
+    common.CreateHtml("DispatchOwn_Transfer", req, res, function (err) {
+        common.BackendConnection(res, function (err, connection) {
+            if (err) {
+                common.log(res.session['account'], err);
+                throw err;
+            }
+            
+            var actionType = req.body["actionType"];
+            var id = req.body["id"];
+            var statusUpdate = "update dispatch_log set action_type="+actionType+" where id="+id+";";               
+            var sql = statusUpdate;
+
+            common.log(req.session['account'], sql);
+
+            connection.query(sql, function (error, result, fields) {
+                if (error) {
+                    common.log(req.session['account'], err);
+                    res.send({error : err});
+                }
+                else {
+                    
+                    res.send({ msg: "done!!" });
+                }
+                connection.release();
+                res.end();
+            });
+
+        });        
+    });
+
+});
+
+
 router.post('/GetOwnDispatchList', function (req, res) {
     common.CreateHtml("DispatchOwn_Transfer", req, res, function (err) {
         common.BackendConnection(res, function (err, connection) {

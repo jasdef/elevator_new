@@ -185,6 +185,25 @@
             }
             }).dataTable(); 
         
+        
+
+        function updateDispatchStatus(id) {
+            $.ajax({
+                type: 'POST',
+                url: "/UpdateDispatchStatus",
+                data:  {actionType: 2, id:id},
+                dataType: 'json',
+                success: function(data) {
+                    location.href="/DispatchOwn";
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+                }).done(function() {
+                    $('#loading-cover').fadeOut(100);
+            });
+
+        }
 
         $('#datatable tbody').on('click', 'button', function(e) {
             var data = table.row($(this).parents('tr')).data();
@@ -192,9 +211,9 @@
                 case "modifyitem":
                     location.replace(`/ServiceEdit?Id=${data.id}`);
                     break;
-                case "deleteitem":
-                    if (confirm("確定刪除嗎?")) {                      
-                        DeleteService(data.id);
+                case "confirm":
+                    if (confirm("確定保養已完成?")) {                      
+                        updateDispatchStatus(data.id);
                     }
                     break;
                 case "viewitem":

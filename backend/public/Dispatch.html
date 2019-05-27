@@ -140,7 +140,7 @@
                 ],
                 "columns": [
                     { "data": "table_id"},
-                    { "data": "table_type" },
+                    { "data": "table_type_name" },
                     { "data": "title" },
                     { "data": "dispatcher" },
                     { "data": "principal" },
@@ -150,6 +150,30 @@
                 ],
                 'rowCallback': function(row, data, dataIndex) {
                     $('td:eq(6)', row).html(moment(data.timestamp).format("YYYY-MM-DD HH:mm:ss"));      
+
+                    $.ajax({
+                        type: 'POST',
+                        url: "/GetDispatchTW",
+                        data:  data,
+                        dataType: 'json',
+                        success: function(data) {
+  
+                          $('td:eq(2)', row).html(data.tableName);      
+                          $('td:eq(3)', row).html(data.dispatcher);      
+                          $('td:eq(4)', row).html(data.principal);      
+                          $('td:eq(5)', row).html(data.actionName);      
+
+
+                        },
+                        error: function(xhr, desc, err) {
+                            alert("HTTP Status code:" + xhr.status);
+                        }
+                        }).done(function() {
+                            $('#loading-cover').fadeOut(100);
+                    });
+
+
+
                 },
                 "ajax": {
                     "url": "/GetDispatchList",

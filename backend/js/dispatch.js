@@ -40,7 +40,80 @@ router.post('/GetDispatchList', function (req, res) {
                 }
                 else {
                     var totallength = result[0][0].count;
+
+                    for(var i = 0; i < totallength; i++) {
+                        if (result[1][i].table_type == 2) {
+                            result[1][i].table_type_name = "保固單";
+                        }
+                        else {
+                            result[1][i].table_type_name = "保養單";
+                        }
+                        result[1][i].title = "";
+
+                    }
+
+
                     res.send({ recordsTotal: totallength, recordsFiltered: totallength, data: result[1] });
+                }
+                connection.release();
+                res.end();
+            });
+
+        });        
+    });
+
+});
+
+router.post('/GetDispatchTW', function (req, res) {
+    common.CreateHtml("DispatchOwn_Transfer", req, res, function (err) {
+        common.BackendConnection(res, function (err, connection) {
+            if (err) {
+                common.log(res.session['account'], err);
+                throw err;
+            }
+            var data = req.body;
+            var ownerID = req.session['authid'];
+
+            var accountSelect = "select * from account where id="+data.dispatcher+";";
+            accountSelect += "select * from account where id="+data.principal+";";
+
+            var tableNameSelect = "";
+
+            if (data.table_type == 2) {
+                tableNameSelect = "select * from warranty_form where id="+data.table_id+";";
+            }
+            else {
+                 tableNameSelect = "select * from service_form as a inner join warranty_form as b on a.warranty_id=b.id where a.id="+data.table_id+";";
+            }
+           
+            var sql = accountSelect + tableNameSelect;
+
+            common.log(req.session['account'], sql);
+
+            connection.query(sql, function (error, result, fields) {
+                if (error) {
+                    common.log(req.session['account'], err);
+                    res.send({error : err});
+                }
+                else {
+                    var dispatcher = result[1][0].name;
+                    var principal = result[0][0].name;
+                    var actionName = "確認完成";
+
+                    if (data.dispatcher == result[0][0].id) {
+                        dispatcher = result[0][0].name;
+                        principal = result[1][0].name;
+                    }
+
+
+                    if (data.action_type == 1) {
+                        actionName = "已派遣人員";
+                    }
+                    else if (data.action_type == 2) {
+                        actionName = "尚未確認完成";
+                    }
+           
+                    res.send({ tableName:result[2][0].title, dispatcher:dispatcher, principal:principal, actionName: actionName});
                 }
                 connection.release();
                 res.end();

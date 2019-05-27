@@ -31,6 +31,12 @@ router.get('/WarrantyRemind', function(req, res) {
 
 });
 
+router.get('/WarrantyStaffView', function(req, res) {
+    common.log(req.session['account'], 'call Warranty staff view');
+    common.CreateHtml("WarrantyStaffView", req, res);
+
+});
+
 router.post('/GetWarrantyList', function (req, res) {
     common.CreateHtml("Warranty_Transfer", req, res, function (err) {
         common.BackendConnection(res, function (err, connection) {
@@ -66,7 +72,7 @@ router.post('/GetWarrantyList', function (req, res) {
 });
 
 router.post('/GetWarrantyData', function (req, res) {
-    common.CreateHtml("Warranty_Transfer", req, res, function (err) {
+    common.CreateHtml("staff_Transfer", req, res, function (err) {
         common.BackendConnection(res, function (err, connection) {
             if (err) {
                 common.log(res.session['account'], err);

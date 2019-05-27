@@ -1319,5 +1319,25 @@
         "autho": "admin",
         "enable": true,
         "type": "protocol"
+    },
+    "staff_Transfer":
+    {
+        "autho": "staff",
+        "enable": true,
+        "type": "protocol"
+    },
+    "WarrantyStaffView":
+    {
+        "autho": "staff",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/WarrantyStaffView.html"
+    },
+    "ServiceStaffView":
+    {
+        "autho": "staff",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/ServiceStaffView.html"
     }
 }

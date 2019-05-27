@@ -25,6 +25,12 @@ router.get('/ServiceView', function(req, res) {
 
 });
 
+router.get('/ServiceStaffView', function(req, res) {
+    common.log(req.session['account'], 'call Service staff view');
+    common.CreateHtml("ServiceStaffView", req, res);
+
+});
+
 router.post('/GetServiceList', function (req, res) {
     common.CreateHtml("Service_Transfer", req, res, function (err) {
         common.BackendConnection(res, function (err, connection) {
@@ -60,7 +66,7 @@ router.post('/GetServiceList', function (req, res) {
 });
 
 router.post('/GetServiceData', function (req, res) {
-    common.CreateHtml("Service_Transfer", req, res, function (err) {
+    common.CreateHtml("staff_Transfer", req, res, function (err) {
         common.BackendConnection(res, function (err, connection) {
             if (err) {
                 common.log(res.session['account'], err);

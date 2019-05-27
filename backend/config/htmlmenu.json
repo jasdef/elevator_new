@@ -95,12 +95,6 @@
                 "enable": true,
                 "autho": "admin",
                 "href": "Dispatch"
-            },
-            "處理派遣任務":
-            {
-                "enable": true,
-                "autho": "admin",
-                "href": "Dispatch"
             }
         }
     },

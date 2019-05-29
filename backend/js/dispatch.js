@@ -17,6 +17,11 @@ router.get('/DispatchOwn', function(req, res) {
     common.CreateHtml("DispatchOwn", req, res);
 });
 
+router.get('/DispatchMakeSure', function(req, res) {
+    common.log(req.session['account'], 'call Dispatch Make Sure');
+    common.CreateHtml("DispatchMakeSure", req, res);
+});
+
 router.post('/GetDispatchList', function (req, res) {
     common.CreateHtml("Dispatch_Transfer", req, res, function (err) {
         common.BackendConnection(res, function (err, connection) {
@@ -35,8 +40,8 @@ router.post('/GetDispatchList', function (req, res) {
 
             connection.query(sql, function (error, result, fields) {
                 if (error) {
-                    common.log(req.session['account'], err);
-                    res.send({error : err});
+                    common.log(req.session['account'], error);
+                    res.send({error : error});
                 }
                 else {
                     var totallength = result[0][0].count;
@@ -92,8 +97,8 @@ router.post('/GetDispatchTW', function (req, res) {
 
             connection.query(sql, function (error, result, fields) {
                 if (error) {
-                    common.log(req.session['account'], err);
-                    res.send({error : err});
+                    common.log(req.session['account'], error);
+                    res.send({error : error});
                 }
                 else {
                     var dispatcher = result[1][0].name;
@@ -141,8 +146,8 @@ router.post('/UpdateDispatchStatus', function (req, res) {
 
             connection.query(sql, function (error, result, fields) {
                 if (error) {
-                    common.log(req.session['account'], err);
-                    res.send({error : err});
+                    common.log(req.session['account'], error);
+                    res.send({error : error});
                 }
                 else {
                     
@@ -157,6 +162,100 @@ router.post('/UpdateDispatchStatus', function (req, res) {
 
 });
 
+router.post('/CompleteDispatch', function (req, res) {
+    common.CreateHtml("Dispatch_Transfer", req, res, function (err) {
+        common.BackendConnection(res, function (err, connection) {
+            if (err) {
+                common.log(res.session['account'], err);
+                throw err;
+            }
+            
+            var tableType = req.body["tableType"];
+            var id = req.body["id"];
+            var tableID = req.body["tableID"];
+            var sql;
+            if (tableType == 2) {//保固單完成流程
+                sql = "update dispatch_log set action_type=3 where id="+id+";";
+                sql += "select * from warranty_form where id="+tableID+";";
+
+                common.log(req.session['account'], sql);
+
+                connection.query(sql, function (error, result, fields) {
+                    if (error) {
+                        common.log(req.session['account'], error);
+                        res.send({error : error});
+                    }
+                    else {
+                       var data = result[1][0];
+                       var neeTimes = data.free_maintenance * 12;
+                       var doTimes = data.warranty_times+1;
+                       var nowMonth = new Date().toLocaleString().split("-")[1];
+                       sql = "";
+                       if (neeTimes == doTimes) {
+                           sql = "update warranty_form set is_remind=2, is_dispatch=0, is_siging=1, modify_month="+nowMonth+", warranty_times="+doTimes+" where id="+tableID+";";
+                       }
+                       else {
+                            sql = "update warranty_form set is_dispatch=0, modify_month="+nowMonth+",warranty_times="+doTimes+" where id="+tableID+";";
+                       }
+                    
+                       common.log(req.session['account'], sql);
+                       
+                       connection.query(sql, function(err, r, f) {
+                            if (err) {
+                                common.log(req.session['account'], err);
+                                res.send({error : err});
+                            }
+
+                            res.send({msg:"done"});
+                            connection.release();
+                            res.end();
+                       });
+                    }
+                });
+            }
+            else {//保養單完成流程
+
+            }
+           
+           
+        });        
+    });
+
+});
+
+router.post('/GetDispatchMakeSureList', function (req, res) {
+    common.CreateHtml("DispatchOwn_Transfer", req, res, function (err) {
+        common.BackendConnection(res, function (err, connection) {
+            if (err) {
+                common.log(res.session['account'], err);
+                throw err;
+            }
+                     
+            var dataSelect = "select * from dispatch_log where action_type=2;" ;
+            var countSelect = "select COUNT(*) as count from dispatch_log where action_type=2;";
+
+   
+            var sql = countSelect + dataSelect;
+
+            common.log(req.session['account'], sql);
+
+            connection.query(sql, function (error, result, fields) {
+                if (error) {
+                    common.log(req.session['account'], error);
+                    res.send({error : error});
+                }
+                else {
+                    var totallength = result[0][0].count;
+                    res.send({ recordsTotal: totallength, recordsFiltered: totallength, data: result[1] });
+                }
+                connection.release();
+                res.end();
+            });
+
+        });        
+    });
+
+});
 
 router.post('/GetOwnDispatchList', function (req, res) {
     common.CreateHtml("DispatchOwn_Transfer", req, res, function (err) {
@@ -178,8 +277,8 @@ router.post('/GetOwnDispatchList', function (req, res) {
 
             connection.query(sql, function (error, result, fields) {
                 if (error) {
-                    common.log(req.session['account'], err);
-                    res.send({error : err});
+                    common.log(req.session['account'], error);
+                    res.send({error : error});
                 }
                 else {
                     var totallength = result[0][0].count;

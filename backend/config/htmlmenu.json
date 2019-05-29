@@ -95,6 +95,12 @@
                 "enable": true,
                 "autho": "admin",
                 "href": "Dispatch"
+            },
+            "派遣任務完成確認":
+            {
+                "enable": true,
+                "autho": "admin",
+                "href": "DispatchMakeSure"
             }
         }
     },

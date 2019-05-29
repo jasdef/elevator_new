@@ -1339,5 +1339,12 @@
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/ServiceStaffView.html"
+    },
+    "DispatchMakeSure":
+    {
+        "autho": "admin",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/DispatchMakeSure.html"
     }
 }

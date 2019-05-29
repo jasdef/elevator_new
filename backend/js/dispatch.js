@@ -192,7 +192,7 @@ router.post('/CompleteDispatch', function (req, res) {
                        var nowMonth = new Date().toLocaleString().split("-")[1];
                        sql = "";
                        if (neeTimes == doTimes) {
-                           sql = "update warranty_form set is_remind=2, is_dispatch=0, is_siging=1, modify_month="+nowMonth+", warranty_times="+doTimes+" where id="+tableID+";";
+                           sql = "update warranty_form set is_remind=2, is_dispatch=0, is_signing=1, modify_month="+nowMonth+", warranty_times="+doTimes+" where id="+tableID+";";
                        }
                        else {
                             sql = "update warranty_form set is_dispatch=0, modify_month="+nowMonth+",warranty_times="+doTimes+" where id="+tableID+";";

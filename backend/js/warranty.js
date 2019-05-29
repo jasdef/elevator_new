@@ -10,31 +10,31 @@ router.get('/Warranty', function(req, res) {
 router.get('/WarrantyAdd', function(req, res) {
     common.log(req.session['account'], 'call Warranty add');
     common.CreateHtml("WarrantyAdd", req, res);
-
 });
 
 router.get('/WarrantyEdit', function(req, res) {
     common.log(req.session['account'], 'call Warranty edit');
     common.CreateHtml("WarrantyEdit", req, res);
-
 });
 
 router.get('/WarrantyView', function(req, res) {
     common.log(req.session['account'], 'call Warranty view');
     common.CreateHtml("WarrantyView", req, res);
-
 });
 
 router.get('/WarrantyRemind', function(req, res) {
     common.log(req.session['account'], 'call Warranty remind');
     common.CreateHtml("WarrantyRemind", req, res);
-
 });
 
 router.get('/WarrantyStaffView', function(req, res) {
     common.log(req.session['account'], 'call Warranty staff view');
     common.CreateHtml("WarrantyStaffView", req, res);
+});
 
+router.get('/WarrantySigning', function(req, res) {
+    common.log(req.session['account'], 'call Warranty Signing');
+    common.CreateHtml("WarrantySigning", req, res);
 });
 
 router.post('/GetWarrantyList', function (req, res) {
@@ -55,8 +55,8 @@ router.post('/GetWarrantyList', function (req, res) {
 
             connection.query(sql, function (error, result, fields) {
                 if (error) {
-                    common.log(req.session['account'], err);
-                    res.send({error : err});
+                    common.log(req.session['account'], error);
+                    res.send({error : error});
                 }
                 else {
                     var totallength = result[0][0].count;
@@ -88,8 +88,8 @@ router.post('/GetWarrantyData', function (req, res) {
 
             connection.query(sql, function (error, result, fields) {
                 if (error) {
-                    common.log(req.session['account'], err);
-                    res.send({error : err});
+                    common.log(req.session['account'], error);
+                    res.send({error : error});
                 }
                 else {
             
@@ -104,6 +104,42 @@ router.post('/GetWarrantyData', function (req, res) {
 
 });
 
+router.post('/GetWarrantySigningList', function (req, res) {
+    common.CreateHtml("Warranty_Transfer", req, res, function (err) {
+        common.BackendConnection(res, function (err, connection) {
+            if (err) {
+                common.log(res.session['account'], err);
+                throw err;
+            }
+            
+            var nowMonth = new Date().toLocaleString().split("-")[1];
+
+            var dataSelect = "select * from warranty_form where is_delete=0 and is_signing=1;";
+            var countSelect = "select COUNT(*) as count from warranty_form where is_delete=0 and is_signing=1;";
+
+   
+            var sql = countSelect + dataSelect;
+
+            common.log(req.session['account'], sql);
+
+            connection.query(sql, function (error, result, fields) {
+                if (error) {
+                    common.log(req.session['account'], error);
+                    res.send({error : error});
+                }
+                else {
+                    var totallength = result[0][0].count;
+
+                    res.send({ recordsTotal: totallength, recordsFiltered: totallength, data: result[1] });
+                }
+                connection.release();
+                res.end();
+            });
+
+        });        
+    });
+
+});
 
 router.post('/GetWarrantyRemindList', function (req, res) {
     common.CreateHtml("Warranty_Transfer", req, res, function (err) {
@@ -125,8 +161,8 @@ router.post('/GetWarrantyRemindList', function (req, res) {
 
             connection.query(sql, function (error, result, fields) {
                 if (error) {
-                    common.log(req.session['account'], err);
-                    res.send({error : err});
+                    common.log(req.session['account'], error);
+                    res.send({error : error});
                 }
                 else {
                     var totallength = result[0][0].count;
@@ -160,8 +196,8 @@ router.post('/CheckWarrantyRemind', function (req, res) {//檢查那些還沒進
 
             connection.query(dataSelect, function (error, result, fields) {
                 if (error) {
-                    common.log(req.session['account'], err);
-                    res.send({error : err});
+                    common.log(req.session['account'], error);
+                    res.send({error : error});
                 }
                 else if (result.length > 0){
                     var data = result;
@@ -177,8 +213,8 @@ router.post('/CheckWarrantyRemind', function (req, res) {//檢查那些還沒進
                         common.log("System", updateRemindStatus);
                         connection.query(updateRemindStatus, function (error, result, fields) {
                             if (error) {
-                                common.log(req.session['account'], err);
-                                res.send({error : err});
+                                common.log(req.session['account'], error);
+                                res.send({error : error});
                             }
                             
                             res.send({ msg: "done" });
@@ -203,6 +239,33 @@ router.post('/CheckWarrantyRemind', function (req, res) {//檢查那些還沒進
             });
 
         });        
+    });
+});
+
+router.post('/UpdateSigningWarrantyStatus', function(req, res) {
+    common.CreateHtml("Warranty_Transfer", req, res, function (err) {
+    common.BackendConnection(res, function(err, connection) {
+  
+            var tableID = req.body["tableID"];      
+            var status = req.body["status"];
+            var editWarrantySQL = "update warranty_form set `is_signing`= "+status+" where `id`="+tableID+";";
+            var sql = editWarrantySQL;
+
+            common.log(req.session['account'], sql);
+            connection.query(sql, function (error, result, fields) {
+                if (error) {
+                    common.log(req.session['account'], error);
+                    connection.release();                    
+                    res.send({ code: -1, msg: "更新失敗", err: error }).end();
+
+                }
+                else {
+                    connection.release();                    
+                    res.send({ code: 0, msg: "更新成功!" }).end();
+                }
+            });
+
+    });
     });
 });
 

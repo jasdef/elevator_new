@@ -1346,5 +1346,12 @@
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/DispatchMakeSure.html"
+    },
+    "WarrantySigning":
+    {
+        "autho": "admin",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/WarrantySigning.html"
     }
 }

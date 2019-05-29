@@ -144,6 +144,40 @@ router.post('/EditService', function(req, res) {
     });
 });
 
+router.post('/AddServiceByWarrantyID', function(req, res) {
+    common.CreateHtml("Service_Transfer", req, res, function (err) {
+    common.BackendConnection(res, function(err, connection) {
+            var warrantyID = req.body["warrantyID"];
+            var addServiceSQL = "insert into service_form (`warranty_id`) VALUES (?);";
+            var getId = "SELECT LAST_INSERT_ID() as service_id;";
+            var serviceData = 
+            [
+                warrantyID
+            ];
+  
+            addServiceSQL = connection.format(addServiceSQL, serviceData);
+
+            var sql = addServiceSQL+getId;
+
+            common.log(req.session['account'], sql);
+            connection.query(sql, function (error, result, fields) {
+                if (error) {
+                    common.log(req.session['account'], error);
+                    connection.release();                    
+                    res.send({ code: -1, msg: "新增失敗", err: error }).end();
+
+                }
+                else {
+                    connection.release();                    
+                    res.send({ code: 0, msg: "新增成功!", id:result[1][0].service_id }).end();
+                }
+            });
+
+        });
+    });
+});
+
+
 router.post('/AddService', function(req, res) {//4
     common.CreateHtml("Service_Transfer", req, res, function (err) {
     common.BackendConnection(res, function(err, connection) {
@@ -185,7 +219,7 @@ router.post('/AddService', function(req, res) {//4
                 }
             });
 
-    });
+        });
     });
 });
 

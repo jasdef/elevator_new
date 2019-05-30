@@ -89,7 +89,7 @@
                             <div class="block">
                                 <div class="navbar navbar-inner block-header">
                                         <div class="muted pull-left"><b><h4>本月保養合約保養名單</h4></b></div>                
-                                    <div class="pull-right"><span class="badge badge-info">812</span>
+                                    <div class="pull-right" id="ServiceRemind">
 
                                     </div>
                                 </div>
@@ -147,7 +147,10 @@
  
                 GetTransactionRemindList();
                 CheckWarrantyRemind();
-                GetWarrantyRemindList();
+                GetWarrantyRemindList();                
+                CheckServiceRemind();
+                GetServiceRemindList();
+
                 function GetTransactionRemindList() {
   
                     $.ajax({
@@ -182,12 +185,24 @@
                         }).done(function() {
                             $('#loading-cover').fadeOut(100);
                     }); 
+                }
 
+                function CheckServiceRemind() {
+                    $.ajax({
+                        type: 'POST',
+                        url: "/CheckServiceRemind",                        
+                        cache: false,
+                        async: true,
+                        success: function(data) {
+                            
+                        }
+                        }).done(function() {
+                            $('#loading-cover').fadeOut(100);
+                    }); 
                 }
 
 
                 function GetWarrantyRemindList() {
-  
                     $.ajax({
                         type: 'POST',
                         url: "/GetWarrantyRemindList",                        
@@ -195,16 +210,26 @@
                         async: true,
                         success: function(data) {
                             var length = data.recordsFiltered;
-                            $('#WarrantyRemind').append( `<a href="/WarrantyRemind"><span class="badge badge-info">${length}</span></a>`);
-
-
-
-                            
+                            $('#WarrantyRemind').append( `<a href="/WarrantyRemind"><span class="badge badge-info">${length}</span></a>`);                            
                         }
                         }).done(function() {
                             $('#loading-cover').fadeOut(100);
                     }); 
+                }
 
+                function GetServiceRemindList() {
+                    $.ajax({
+                        type: 'POST',
+                        url: "/GetServiceRemindList",                        
+                        cache: false,
+                        async: true,
+                        success: function(data) {
+                            var length = data.recordsFiltered;
+                            $('#ServiceRemind').append( `<a href="/ServiceRemind"><span class="badge badge-info">${length}</span></a>`);                            
+                        }
+                        }).done(function() {
+                            $('#loading-cover').fadeOut(100);
+                    }); 
                 }
                 
             });

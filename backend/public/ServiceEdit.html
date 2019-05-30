@@ -147,9 +147,20 @@
                                                     <option class="text-center" value="0" selected>請選擇月保養</option>
                                                     <option class="text-center" value="1">每月保養</option>
                                                     <option class="text-center" value="2">雙月保養</option>
-                                                    <option class="text-center" value="2">季保養</option>
+                                                    <option class="text-center" value="3">季保養</option>
                                                 </select>
                                             </div>
+                                        </div>
+                                        <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">當月保養次數
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <select name="doTimes" id="doTimes" class="form-control" required="required">
+                                                        <option class="text-center" value="0" selected>請選擇保養次數</option>
+                                                        <option class="text-center" value="1">1次</option>
+                                                        <option class="text-center" value="2">2次</option>                                     
+                                                    </select>
+                                                </div>
                                         </div>
                                         <div class="item form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">有無許可證
@@ -342,6 +353,7 @@
                     $('#startDate').val(startDate);
                     $('#mechanicalWarranty').val(data.mechanical_warranty);        
                     $('#serviceMonth').val(data.service_month);
+                    $('#doTimes').val(data.do_times);
                     $('#hasLicense').val(data.has_license);
                     $('#licenseDate').val(licenseDate);        
                     $('#note').val(data.note);
@@ -444,6 +456,8 @@
             $('#mechanicalWarranty').val(0);        
             $('#serviceMonth').val(0);
             $('#serviceMonth').selectpicker('refresh');
+            $('#doTimes').val(0);
+            $('#doTimes').selectpicker('refresh');
             $('#hasLicense').val(0);
             $('#hasLicense').selectpicker('refresh');
             $('#licenseDate').val("");        
@@ -525,6 +539,8 @@
             var serviceMonth = $('#serviceMonth').val();
             var hasLicense = $('#hasLicense').val();
             var licenseDate = $('#licenseDate').val();
+            var doTimes = $('#doTimes').val();
+
 
             result.startDate = startDate;
             result.totalPrice = totalPrice;
@@ -534,6 +550,7 @@
             result.mechanicalWarranty = mechanicalWarranty;
             result.serviceMonth = serviceMonth;
             result.hasLicense = hasLicense;
+            result.doTimes = doTimes;
             result.licenseDate = licenseDate;         
             result.items = getTableData();            
             result.r = true;

@@ -265,7 +265,7 @@ router.post('/UpdateSigningWarrantyStatus', function(req, res) {
                 }
             });
 
-    });
+        });
     });
 });
 
@@ -319,7 +319,7 @@ router.post('/EditWarranty', function(req, res) {
                 }
             });
 
-    });
+        });
     });
 });
 
@@ -372,7 +372,7 @@ router.post('/AddWarranty', function(req, res) {//4
                 }
             });
 
-    });
+        });
     });
 });
 

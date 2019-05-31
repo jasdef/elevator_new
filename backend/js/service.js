@@ -32,6 +32,11 @@ router.get('/ServiceRemind', function(req, res) {
     common.CreateHtml("ServiceRemind", req, res);
 });
 
+router.get('/ServiceSigning', function(req, res) {
+    common.log(req.session['account'], 'call Service signing');
+    common.CreateHtml("ServiceSigning", req, res);
+});
+
 router.post('/GetServiceList', function (req, res) {
     common.CreateHtml("Service_Transfer", req, res, function (err) {
         common.BackendConnection(res, function (err, connection) {

@@ -214,10 +214,46 @@ router.post('/CompleteDispatch', function (req, res) {
                 });
             }
             else {//保養單完成流程
+                sql = "update dispatch_log set action_type=3 where id="+id+";";
+                sql += "select * from service_form where id="+tableID+";";
+                common.log(req.session['account'], sql);
 
-            }
-           
-           
+                connection.query(sql, function (error, result, fields) {
+                    if (error) {
+                        common.log(req.session['account'], error);
+                        res.send({error : error});
+                    }
+                    else {
+                       var data = result[1][0];
+                       var neeTimes =  data.mechanical_warranty * 12 / data.service_month * data.do_times; 
+                       var serviceTimes = data.service_times+1;                                     
+                       sql = "";
+                       if (neeTimes == serviceTimes) {
+                            sql = "update service_form set is_remind=2, is_dispatch=0, is_signing=1, service_times="+serviceTimes+" where id="+tableID+";";
+                       }
+                       else if (serviceTimes%data.do_times != 0) {
+                            sql = "update service_form set is_dispatch=0, service_times="+serviceTimes+" where id="+tableID+";";                            
+                       }
+                       else {
+                            var dispatchMonth = (data.dispatch_month + data.service_month)%12;//下一次 要保養的月份
+                            sql = "update service_form set is_dispatch=0, dispatch_month="+dispatchMonth+",service_times="+serviceTimes+" where id="+tableID+";";
+                       }
+                    
+                       common.log(req.session['account'], sql);
+                       
+                       connection.query(sql, function(err, r, f) {
+                            if (err) {
+                                common.log(req.session['account'], err);
+                                res.send({error : err});
+                            }
+
+                            res.send({msg:"done"});
+                            connection.release();
+                            res.end();
+                       });
+                    }
+                });
+            }                      
         });        
     });
 

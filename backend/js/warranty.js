@@ -112,7 +112,6 @@ router.post('/GetWarrantySigningList', function (req, res) {
                 throw err;
             }
             
-            var nowMonth = new Date().toLocaleString().split("-")[1];
 
             var dataSelect = "select * from warranty_form where is_delete=0 and is_signing=1;";
             var countSelect = "select COUNT(*) as count from warranty_form where is_delete=0 and is_signing=1;";

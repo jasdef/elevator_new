@@ -332,7 +332,6 @@ router.post('/AddService', function(req, res) {//4
     });
 });
 
-
 router.post('/DeleteService', function (req, res){
     common.CreateHtml("Service_Transfer", req, res, function (err) {
         common.log(req.session['account'], "Call DeleteService");
@@ -356,6 +355,67 @@ router.post('/DeleteService', function (req, res){
             });
 
         });
+    });
+});
+
+router.post('/UpdateSigningServiceStatus', function(req, res) {
+    common.CreateHtml("Service_Transfer", req, res, function (err) {
+    common.BackendConnection(res, function(err, connection) {
+  
+            var tableID = req.body["tableID"];      
+            var status = req.body["status"];
+            var editWarrantySQL = "update service_form set `is_signing`= "+status+" where `id`="+tableID+";";
+            var sql = editWarrantySQL;
+
+            common.log(req.session['account'], sql);
+            connection.query(sql, function (error, result, fields) {
+                if (error) {
+                    common.log(req.session['account'], error);
+                    connection.release();                    
+                    res.send({ code: -1, msg: "更新失敗", err: error }).end();
+
+                }
+                else {
+                    connection.release();                    
+                    res.send({ code: 0, msg: "更新成功!" }).end();
+                }
+            });
+
+        });
+    });
+});
+
+router.post('/GetServiceSigningList', function (req, res) {
+    common.CreateHtml("Warranty_Transfer", req, res, function (err) {
+        common.BackendConnection(res, function (err, connection) {
+            if (err) {
+                common.log(res.session['account'], err);
+                throw err;
+            }
+
+            var dataSelect = "select * from service_form where is_delete=0 and is_signing=1;";
+            var countSelect = "select COUNT(*) as count from service_form where is_delete=0 and is_signing=1;";
+
+   
+            var sql = countSelect + dataSelect;
+
+            common.log(req.session['account'], sql);
+
+            connection.query(sql, function (error, result, fields) {
+                if (error) {
+                    common.log(req.session['account'], error);
+                    res.send({error : error});
+                }
+                else {
+                    var totallength = result[0][0].count;
+
+                    res.send({ recordsTotal: totallength, recordsFiltered: totallength, data: result[1] });
+                }
+                connection.release();
+                res.end();
+            });
+
+        });        
     });
 });
 

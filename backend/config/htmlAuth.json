@@ -1353,5 +1353,12 @@
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/WarrantySigning.html"
+    },
+    "ServiceSigning":
+    {
+        "autho": "admin",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/ServiceSigning.html"
     }
 }

@@ -117,28 +117,28 @@
                                             </div>
                                         </div>
                                         <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">總價
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">*總價
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <input id="totalPrice" class="form-control col-md-7 col-xs-12" placeholder="" type="number" onchange="calculate()">
                                             </div>
                                         </div>
                                         <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">簽約日期
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">*簽約日期
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <input type="text" name="startDate" id="startDate" class="form-control" value="" />                               
                                             </div>
                                         </div>
                                         <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">簽約年限
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">*簽約年限
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <input id="mechanicalWarranty" class="form-control col-md-7 col-xs-12" placeholder="" type="number">
                                             </div>
                                         </div>
                                         <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">月保養
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">*月保養
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <select name="serviceMonth" id="serviceMonth" class="form-control" required="required">
@@ -150,7 +150,7 @@
                                             </div>
                                         </div>
                                         <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">當月保養次數
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">*當月保養次數
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <select name="doTimes" id="doTimes" class="form-control" required="required">
@@ -161,7 +161,7 @@
                                             </div>
                                         </div>
                                         <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">有無許可證
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">*有無許可證
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <select name="hasLicense" id="hasLicense" class="form-control" required="required">
@@ -176,6 +176,13 @@
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <input type="text" name="licenseDate" id="licenseDate" class="form-control" value="" />                               
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">*負責保養人
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12" id="staff">
+                                               
                                             </div>
                                         </div>
                                         <div class="item form-group">
@@ -370,9 +377,11 @@
             $('#hasLicense').selectpicker('refresh');
             $('#licenseDate').val("");        
             $('#note').val("");
+            $('#staffSelect').val(0);
         }        
 
         DateInit();
+        getStaff();
 
         function DateInit() {
             $('#startDate').daterangepicker({
@@ -410,6 +419,37 @@
             $(this).val('');
         });
 
+        function getStaff() {
+
+            $.ajax({
+            type: 'POST',
+            url: "/GetStaffData",
+
+            dataType: 'json',
+            success: function(msg) {
+            var data = msg.data;
+            var select = `
+            <select id="staffSelect"  class="form-control">
+                <option value="0" selected="selected">請選擇員工</option>
+            `;
+
+            for (var i=0; i < data.length; i++) {
+                select += `<option value=${data[i].id}>${data[i].name}</option>`;
+            }
+
+            select += `</select>`;
+
+            $('#staff').html(select);
+
+            },
+            error: function(xhr, desc, err) {
+                alert("HTTP Status code:" + xhr.status);
+            }
+            }).done(function() {
+                 $('#loading-cover').fadeOut(100);
+            });
+        }
+
         function sendAddData() {
             $('#loading-cover').fadeIn(100);
             var checkData = datacheck();
@@ -430,9 +470,12 @@
                     $('#loading-cover').fadeOut(100);
                 });
 
+            }
+            else {
+                $('#loading-cover').fadeOut(100);
             }            
         }
- 
+                
         function datacheck() {
             var result = { r: false };
 
@@ -446,7 +489,42 @@
             var hasLicense = $('#hasLicense').val();
             var licenseDate = $('#licenseDate').val();
             var doTimes = $('#doTimes').val();
+            var staff = $('#staffSelect').val();
 
+            if (checkIsNullOrEmpty(startDate)) {
+                alert("簽約日期沒填!!");
+                return result;
+            }
+
+            if (checkIsNullOrEmpty(totalPrice)) {
+                alert("總價沒填!!");
+                return result;
+            }
+
+            if (checkIsNullOrEmpty(staff)) {
+                alert("負責保養人沒選!!");
+                return result;
+            }
+
+            if (checkIsNullOrEmpty(mechanicalWarranty)) {
+                alert("簽約年限沒填!!");
+                return result;
+            }
+
+            if (checkIsNullOrEmpty(serviceMonth)) {
+                alert("月保養沒填!!");
+                return result;
+            }
+
+            if (checkIsNullOrEmpty(doTimes)) {
+                alert("當月保養次數!!");
+                return result;
+            }
+
+            if (checkIsNullOrEmpty(hasLicense)) {
+                alert("有無許可證沒填!!");
+                return result;
+            }
 
             result.startDate = startDate;
             result.totalPrice = totalPrice;
@@ -458,6 +536,7 @@
             result.hasLicense = hasLicense;
             result.licenseDate = licenseDate;   
             result.doTimes = doTimes;         
+            result.staff = staff;
             result.items = getTableData();            
             result.r = true;
 

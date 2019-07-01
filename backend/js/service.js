@@ -110,7 +110,7 @@ router.post('/EditService', function(req, res) {
             var requestData = JSON.parse(req.body.requestData);
             console.log(req.body);
             console.log(requestData);
-            var editServiceSQL = "update service_form set `start_date`=?, `left_price`=?, `total_price`=?, `note`=?, `warranty_id`=?, `mechanical_warranty`=?, `service_month`=?, `has_license`=?, `license_date`=?, `items`=?, `do_times`=? where `id`=?;";
+            var editServiceSQL = "update service_form set `start_date`=?, `left_price`=?, `total_price`=?, `note`=?, `warranty_id`=?, `mechanical_warranty`=?, `service_month`=?, `has_license`=?, `license_date`=?, `items`=?, `do_times`=?, `staff_id`=? where `id`=?;";
 
             var itemsJson = JSON.stringify(requestData.items);
             var serviceData = 
@@ -126,6 +126,7 @@ router.post('/EditService', function(req, res) {
                 requestData.licenseDate,
                 itemsJson,
                 requestData.doTimes,
+                requestData.staff,
                 requestData.id
             ];
   
@@ -297,7 +298,7 @@ router.post('/AddService', function(req, res) {//4
             var requestData = JSON.parse(req.body.requestData);
             console.log(req.body);
             console.log(requestData);
-            var addServiceSQL = "insert into service_form (`start_date`, `left_price`, `total_price`, `note`, `warranty_id`, `mechanical_warranty`, `service_month`, `has_license`, `license_date`, `items`, `do_times`) VALUES (?,?,?,?,?,?,?,?,?,?,?);";
+            var addServiceSQL = "insert into service_form (`start_date`, `left_price`, `total_price`, `note`, `warranty_id`, `mechanical_warranty`, `service_month`, `has_license`, `license_date`, `items`, `do_times`, `staff_id`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);";
 
             var itemsJson = JSON.stringify(requestData.items);
             var serviceData = 
@@ -312,7 +313,8 @@ router.post('/AddService', function(req, res) {//4
                 requestData.hasLicense,
                 requestData.licenseDate,
                 itemsJson,
-                requestData.doTimes
+                requestData.doTimes,
+                requestData.staff
             ];
   
             addServiceSQL = connection.format(addServiceSQL, serviceData);

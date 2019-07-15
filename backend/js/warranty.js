@@ -140,7 +140,7 @@ router.post('/GetWarrantySigningList', function (req, res) {
 
 });
 
-router.post('/GetWarrantyRemindList', function (req, res) {
+router.post('/GetWarrantyRemindList', function (req, res) { //取得這個月需要派遣名單
     common.CreateHtml("Warranty_Transfer", req, res, function (err) {
         common.BackendConnection(res, function (err, connection) {
             if (err) {
@@ -274,7 +274,7 @@ router.post('/EditWarranty', function(req, res) {
             var requestData = JSON.parse(req.body.requestData);
             console.log(req.body);
             console.log(requestData);
-            var editWarrantySQL = "update warranty_form set `title`=?, `start_date`=?, `mechanical_warranty`=?, `transaction_id`=?, `free_maintenance`=?, `num`=?, `contactor1`=?, `contactor2`=?, `contactor3`=?, `tel1`=?, `tel2`=?, `tel3`=?, `address1`=?, `address2`=?, `address3`=?, `fax1`=?, `fax2`=?, `fax3`=? where `id`=?;";
+            var editWarrantySQL = "update warranty_form set `title`=?, `start_date`=?, `mechanical_warranty`=?, `transaction_id`=?, `free_maintenance`=?, `num`=?, `contactor1`=?, `contactor2`=?, `contactor3`=?, `tel1`=?, `tel2`=?, `tel3`=?, `address1`=?, `address2`=?, `address3`=?, `fax1`=?, `fax2`=?, `fax3`=?, `staff_id`=? where `id`=?;";
 
           
             var warrantyData = 
@@ -297,6 +297,7 @@ router.post('/EditWarranty', function(req, res) {
                 requestData.fax1,            
                 requestData.fax2,            
                 requestData.fax3,
+                requestData.staff,
                 requestData.id
             ];
   
@@ -328,7 +329,7 @@ router.post('/AddWarranty', function(req, res) {//4
             var requestData = JSON.parse(req.body.requestData);
             console.log(req.body);
             console.log(requestData);
-            var addWarrantySQL = "insert into warranty_form (`title`, `start_date`, `mechanical_warranty`, `transaction_id`, `free_maintenance`, `num`, `contactor1`, `contactor2`, `contactor3`, `tel1`, `tel2`, `tel3`, `address1`, `address2`, `address3`,`fax1`,`fax2`,`fax3`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+            var addWarrantySQL = "insert into warranty_form (`title`, `start_date`, `mechanical_warranty`, `transaction_id`, `free_maintenance`, `num`, `contactor1`, `contactor2`, `contactor3`, `tel1`, `tel2`, `tel3`, `address1`, `address2`, `address3`,`fax1`,`fax2`,`fax3`,`staff_id`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 
             
             var warrantyData = 
@@ -350,7 +351,8 @@ router.post('/AddWarranty', function(req, res) {//4
                 requestData.address3,            
                 requestData.fax1,            
                 requestData.fax2,            
-                requestData.fax3
+                requestData.fax3,
+                requestData.staff
             ];
   
             addWarrantySQL = connection.format(addWarrantySQL, warrantyData);

@@ -154,6 +154,13 @@
                                             </div>
                                         </div> 
                                         <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">負責保養人
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12" id="staff">
+                                               
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">聯絡人1
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -321,6 +328,7 @@
                 $_GET[decode(arguments[1])] = decode(arguments[2]);
         });
 
+        getStaff();
         DateInit();
         Init();
         function Init() {
@@ -353,11 +361,43 @@
                     $('#fax1').val(data.fax1);
                     $('#fax2').val(data.fax2);
                     $('#fax3').val(data.fax3);   
+                    $('#staffSelect').val(data.staff_id);
   
                 }
             });
         }
 
+        function getStaff() {
+
+            $.ajax({
+            type: 'POST',
+            url: "/GetStaffData",
+
+            dataType: 'json',
+            success: function(msg) {
+            var data = msg.data;
+            var select = `
+            <select id="staffSelect"  class="form-control" disabled>
+                <option value="0" selected="selected">請選擇員工</option>
+            `;
+
+            for (var i=0; i < data.length; i++) {
+                select += `<option value=${data[i].id}>${data[i].name}</option>`;
+            }
+
+            select += `</select>`;
+
+            $('#staff').html(select);
+
+            },
+            error: function(xhr, desc, err) {
+                alert("HTTP Status code:" + xhr.status);
+            }
+            }).done(function() {
+                $('#loading-cover').fadeOut(100);
+            });
+        }
+        
         function QuickNotify(message, type) {
             var icon = "";
             switch(type) {

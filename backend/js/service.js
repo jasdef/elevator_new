@@ -45,8 +45,8 @@ router.post('/GetServiceList', function (req, res) {
                 throw err;
             }
             
-            var dataSelect = "select * from service_form where is_delete=0;";
-            var countSelect = "select COUNT(*) as count from service_form where is_delete=0;";
+            var dataSelect = "select a.id, b.title, a.start_date, a.total_price, a.left_price from service_form as a, warranty_form as b where a.warranty_id = b.id and a.is_delete=0;";
+            var countSelect = "select COUNT(*) as count from service_form as a, warranty_form as b where a.warranty_id = b.id and a.is_delete=0;";
 
    
             var sql = countSelect + dataSelect;

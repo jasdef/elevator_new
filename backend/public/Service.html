@@ -60,7 +60,8 @@
                                         <table id="datatable" class="table table-striped table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th>單號</th>                       
+                                                    <th>單號</th> 
+                                                    <th>客戶名稱</th>                      
                                                     <th>簽約日期</th>
                                                     <th>總價</th>
                                                     <th>剩餘款項</th>   
@@ -142,6 +143,7 @@
                 ],
                 "columns": [
                     { "data": "id"},
+                    { "data": "title"},
                     { "data": "start_date" },
                     { "data": "total_price" },
                     { "data": "left_price" },
@@ -158,7 +160,7 @@
                     }               
                 ],
                 'rowCallback': function(row, data, dataIndex) {
-                            $('td:eq(1)', row).html(moment(data.start_date).format("YYYY-MM-DD HH:mm:ss"));      
+                            $('td:eq(2)', row).html(moment(data.start_date).format("YYYY-MM-DD HH:mm:ss"));      
                 },
                 "ajax": {
                     "url": "/GetServiceList",

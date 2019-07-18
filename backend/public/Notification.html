@@ -124,6 +124,23 @@
                                 <!-- /block -->
                         </div>
                     </div>
+                    <div class="row-fluid">
+    
+                        <div class="span6">
+                            <!-- block -->
+                            <div class="block">
+                                <div class="navbar navbar-inner block-header">
+                                    <div class="muted pull-left"><b><h4>許可證到期提醒</h4></b></div>                
+                                    <div class="pull-right" id="LicenseRemind">
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- /block -->
+                        </div>
+   
+                    </div>
                 </div>
                 <!-- /page content -->
                 <!--footer-->
@@ -179,6 +196,7 @@
                 GetServiceSigningList();
                 GetWarrantySigningList();
                 GetTransactionSigningList();
+                GetLicenseList();
                 function GetTransactionRemindList() {
   
                     $.ajax({
@@ -299,6 +317,21 @@
                         success: function(data) {
                             var length = data.recordsFiltered;
                             $('#TransactionSigning').append( `<a href="/TransactionSigning"><span class="badge badge-info">${length}</span></a>`);                            
+                        }
+                        }).done(function() {
+                            $('#loading-cover').fadeOut(100);
+                    }); 
+                }
+
+                function GetLicenseList() {
+                    $.ajax({
+                        type: 'POST',
+                        url: "/GetLicenseRemindList",                        
+                        cache: false,
+                        async: true,
+                        success: function(data) {
+                            var length = data.recordsFiltered;
+                            $('#LicenseRemind').append( `<a href="/LicenseRemind"><span class="badge badge-info">${length}</span></a>`);                            
                         }
                         }).done(function() {
                             $('#loading-cover').fadeOut(100);

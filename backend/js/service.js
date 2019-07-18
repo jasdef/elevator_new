@@ -37,6 +37,11 @@ router.get('/ServiceSigning', function(req, res) {
     common.CreateHtml("ServiceSigning", req, res);
 });
 
+router.get('/LicenseRemind', function(req, res) {
+    common.log(req.session['account'], 'call License remind');
+    common.CreateHtml("LicenseRemind", req, res);
+});
+
 router.post('/GetServiceList', function (req, res) {
     common.CreateHtml("Service_Transfer", req, res, function (err) {
         common.BackendConnection(res, function (err, connection) {
@@ -218,6 +223,43 @@ router.post('/CheckServiceRemind', function(req, res) {
     });
 });
 
+
+router.post('/GetLicenseRemindList', function (req, res) {
+    common.CreateHtml("Service_Transfer", req, res, function (err) {
+        common.BackendConnection(res, function (err, connection) {
+            if (err) {
+                common.log(res.session['account'], err);
+                throw err;
+            }
+            
+            var nowMonth = new Date().toLocaleString().split("-")[1];
+
+            var dataSelect = "select a.id, a.license_date, b.title, a.start_date, a.total_price, a.left_price from service_form as a, warranty_form as b where a.warranty_id = b.id and a.is_delete=0 and now() > a.license_date;";
+            var countSelect = "select COUNT(*) as count from service_form as a, warranty_form as b where a.warranty_id = b.id and a.is_delete=0 and now() > a.license_date;";
+            
+            var sql = countSelect + dataSelect;
+
+            common.log(req.session['account'], sql);
+
+            connection.query(sql, function (error, result, fields) {
+                if (error) {
+                    common.log(req.session['account'], error);
+                    res.send({error : error});
+                }
+                else {
+                    var totallength = result[0][0].count;
+
+                    res.send({ recordsTotal: totallength, recordsFiltered: totallength, data: result[1] });
+                }
+                connection.release();
+                res.end();
+            });
+
+        });        
+    });
+});
+
+
 router.post('/GetServiceRemindList', function (req, res) {
     common.CreateHtml("Service_Transfer", req, res, function (err) {
         common.BackendConnection(res, function (err, connection) {
@@ -255,7 +297,6 @@ router.post('/GetServiceRemindList', function (req, res) {
 
         });        
     });
-
 });
 
 router.post('/AddServiceByWarrantyID', function(req, res) {

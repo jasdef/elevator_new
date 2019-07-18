@@ -1360,5 +1360,12 @@
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/ServiceSigning.html"
+    },
+    "LicenseRemind":
+    {
+        "autho": "admin",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/LicenseRemind.html"
     }
 }

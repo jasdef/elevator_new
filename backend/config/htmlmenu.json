@@ -81,6 +81,12 @@
                 "enable": true,
                 "autho": "admin",
                 "href": "ServiceSigning"
+            },
+            "許可證到期保養單":
+            {
+                "enable": true,
+                "autho": "admin",
+                "href": "LicenseRemind"
             }
         }
     },

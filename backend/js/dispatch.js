@@ -12,6 +12,12 @@ router.get('/DispatchAdd', function(req, res) {
     common.CreateHtml("DispatchAdd", req, res);
 });
 
+router.get('/DispatchEdit', function(req, res) {
+    common.log(req.session['account'], 'call Dispatch Edit');
+    common.CreateHtml("DispatchEdit", req, res);
+});
+
+
 router.get('/DispatchOwn', function(req, res) {
     common.log(req.session['account'], 'call Dispatch Own');
     common.CreateHtml("DispatchOwn", req, res);
@@ -20,6 +26,57 @@ router.get('/DispatchOwn', function(req, res) {
 router.get('/DispatchMakeSure', function(req, res) {
     common.log(req.session['account'], 'call Dispatch Make Sure');
     common.CreateHtml("DispatchMakeSure", req, res);
+});
+
+router.get('/ChangePrincipalRequest', function(req, res) {
+    common.log(req.session['account'], 'call ChangePrincipalRequest');
+    common.CreateHtml("ChangePrincipalRequest", req, res);
+});
+
+router.post('/GetChangePrincipalList', function (req, res) {
+    common.CreateHtml("Dispatch_Transfer", req, res, function (err) {
+        common.BackendConnection(res, function (err, connection) {
+            if (err) {
+                common.log(res.session['account'], err);
+                throw err;
+            }
+            
+            var dataSelect = "select * from dispatch_log where action_type = 4;";
+            var countSelect = "select COUNT(*) as count from dispatch_log where action_type = 4;";
+
+   
+            var sql = countSelect + dataSelect;
+
+            common.log(req.session['account'], sql);
+
+            connection.query(sql, function (error, result, fields) {
+                if (error) {
+                    common.log(req.session['account'], error);
+                    res.send({error : error});
+                }
+                else {
+                    var totallength = result[0][0].count;
+
+                    for(var i = 0; i < totallength; i++) {
+                        if (result[1][i].table_type == 2) {
+                            result[1][i].table_type_name = "保固單";
+                        }
+                        else {
+                            result[1][i].table_type_name = "保養單";
+                        }
+                        result[1][i].title = "";
+
+                    }
+
+
+                    res.send({ recordsTotal: totallength, recordsFiltered: totallength, data: result[1] });
+                }
+                connection.release();
+                res.end();
+            });
+
+        });        
+    });
 });
 
 router.post('/GetDispatchList', function (req, res) {
@@ -66,7 +123,6 @@ router.post('/GetDispatchList', function (req, res) {
 
         });        
     });
-
 });
 
 router.post('/GetDispatchTW', function (req, res) {
@@ -327,6 +383,32 @@ router.post('/GetOwnDispatchList', function (req, res) {
         });        
     });
 
+});
+
+router.post('/EditDispatch', function(req, res) {
+    common.CreateHtml("Dispatch_Transfer", req, res, function (err) {
+    common.BackendConnection(res, function(err, connection) {
+            var requestData = JSON.parse(req.body.requestData);
+            var staffID = requestData.staffID;
+            var editDispathcSQL = "update dispatch_log set principal="+staffID+", action_type=1 where id="+requestData.id;    
+            var sql = editDispathcSQL;
+
+            common.log(req.session['account'], sql);
+            connection.query(sql, function (error, result, fields) {
+                if (error) {
+                    common.log(req.session['account'], error);
+                    connection.release();                    
+                    res.send({ code: -1, msg: "派遣失敗", err: error }).end();
+
+                }
+                else {
+                    connection.release();                    
+                    res.send({ code: 0, msg: "派遣成功!" }).end();
+                }
+            });
+
+        });
+    });
 });
 
 router.post('/AddDispatch', function(req, res) {

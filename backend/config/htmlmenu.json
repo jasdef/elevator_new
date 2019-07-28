@@ -107,6 +107,12 @@
                 "enable": true,
                 "autho": "admin",
                 "href": "DispatchMakeSure"
+            },
+            "當月請求換保養人員":
+            {
+                "enable": true,
+                "autho": "staff",
+                "href": "ChangePrincipalRequest"
             }
         }
     },

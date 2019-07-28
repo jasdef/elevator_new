@@ -1367,5 +1367,19 @@
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/LicenseRemind.html"
+    },
+    "ChangePrincipalRequest":
+    {
+        "autho": "admin",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/ChangePrincipalRequest.html"
+    },
+    "DispatchEdit":
+    {
+        "autho": "admin",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/DispatchEdit.html"
     }
 }

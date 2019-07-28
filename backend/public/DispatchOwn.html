@@ -60,6 +60,7 @@
                                                     <th>表單名稱</th>   
                                                     <th>檢視</th>                                         
                                                     <th>回報完成</th>
+                                                    <th>更換人員</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -144,9 +145,14 @@
                     } ,
                     { "defaultContent": 
                         `<div class="btn-group btn-group-sm" style="display: flex;">
-                            <button class="btn btn-info" id='confirm' title="確認"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>回報已完成</button>                            
+                            <button class="btn btn-info" id='confirm' title="回報"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>回報已完成</button>                            
                         </div>`
-                    }               
+                    } ,
+                    { "defaultContent": 
+                        `<div class="btn-group btn-group-sm" style="display: flex;">
+                            <button class="btn btn-info" id='changeMember' title="更改人員"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>請求更換人員</button>                            
+                        </div>`
+                    }                
                 ],
                 'rowCallback': function(row, data, dataIndex) {
                     $.ajax({
@@ -205,10 +211,27 @@
 
         }
 
+        function changeMember(id) {
+            $.ajax({
+                type: 'POST',
+                url: "/changeMember",
+                data:  {actionType: 4, id:id},
+                dataType: 'json',
+                success: function(data) {
+                    location.href="/DispatchOwn";
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+                }).done(function() {
+                    $('#loading-cover').fadeOut(100);
+            });
+        }
+
         $('#datatable tbody').on('click', 'button', function(e) {
             var data = table.row($(this).parents('tr')).data();
             switch ($(this).attr('id')) {
-                case "modifyitem":
+                case "changeMember":
                     location.replace(`/ServiceEdit?Id=${data.id}`);
                     break;
                 case "confirm":

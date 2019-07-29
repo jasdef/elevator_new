@@ -153,7 +153,7 @@ router.post('/EditService', function(req, res) {
                 }
             });
 
-    });
+        });
     });
 });
 
@@ -231,9 +231,7 @@ router.post('/GetLicenseRemindList', function (req, res) {
                 common.log(res.session['account'], err);
                 throw err;
             }
-            
-            var nowMonth = new Date().toLocaleString().split("-")[1];
-
+     
             var dataSelect = "select a.id, a.license_date, b.title, a.start_date, a.total_price, a.left_price from service_form as a, warranty_form as b where a.warranty_id = b.id and a.is_delete=0 and now() > a.license_date;";
             var countSelect = "select COUNT(*) as count from service_form as a, warranty_form as b where a.warranty_id = b.id and a.is_delete=0 and now() > a.license_date;";
             
@@ -248,7 +246,6 @@ router.post('/GetLicenseRemindList', function (req, res) {
                 }
                 else {
                     var totallength = result[0][0].count;
-
                     res.send({ recordsTotal: totallength, recordsFiltered: totallength, data: result[1] });
                 }
                 connection.release();
@@ -259,8 +256,7 @@ router.post('/GetLicenseRemindList', function (req, res) {
     });
 });
 
-
-router.post('/GetServiceRemindList', function (req, res) {
+router.post('/DispatchAllService', function (req, res) {
     common.CreateHtml("Service_Transfer", req, res, function (err) {
         common.BackendConnection(res, function (err, connection) {
             if (err) {
@@ -280,8 +276,82 @@ router.post('/GetServiceRemindList', function (req, res) {
                 if (error) {
                     common.log(req.session['account'], error);
                     res.send({error : error});
+                    connection.release();
+                    res.end();
                 }
                 else {
+                    var totallength = result[0][0].count;
+                    var remindData = result[1];
+
+                    if (totallength > 1) {
+                        var updateForm = "";
+                        var addDispatchSQL = "";
+                        var temp = "";
+                        for (var i = 0; i < totallength; i++) {               
+                            temp = "insert into dispatch_log (`table_type`, `table_id`, `dispatcher`, `principal`) VALUES (?,?,?,?);";
+                            updateForm += "update service_form set is_dispatch=1 where id="+remindData[i].id+";";                                                        
+                            
+                            var dispatchData = 
+                            [
+                                3, 
+                                remindData[i].id,
+                                req.session['authid'],
+                                remindData[i].staff_id,
+                            ];
+                  
+                            addDispatchSQL += connection.format(temp, dispatchData);                
+                        }
+                        var sql = addDispatchSQL+updateForm;
+                        common.log(req.session['account'], sql);
+                        connection.query(sql, function (error, result, fields) {
+                            if (error) {
+                                common.log(req.session['account'], error);
+                                connection.release();                    
+                                res.send({ code: -1, msg: "派遣失敗", err: error }).end();
+            
+                            }
+                            else {
+                                connection.release();                    
+                                res.send({ code: 0, msg: "派遣成功!" }).end();
+                            }
+                        });
+                    }
+                    else {
+                        connection.release();
+                        res.end();
+                    }
+                }
+            });
+
+        });        
+    });
+});
+
+
+router.post('/GetServiceRemindList', function (req, res) {
+    common.CreateHtml("Service_Transfer", req, res, function (err) {
+        common.BackendConnection(res, function (err, connection) {
+            if (err) {
+                common.log(res.session['account'], err);
+                throw err;
+            }
+            
+            var nowMonth = new Date().toLocaleString().split("-")[1];
+
+            var dataSelect = "select a.id, a.mechanical_warranty, a.do_times, a.service_month, a.start_date, b.title, a.service_times from service_form as a inner join warranty_form as b on a.warranty_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month="+nowMonth+" or a.dispatch_month !="+nowMonth+";";
+            var countSelect = "select COUNT(*) as count from service_form as a inner join warranty_form as b on a.warranty_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month="+nowMonth+" or a.dispatch_month !="+nowMonth+";";   
+            var sql = countSelect + dataSelect;
+
+            common.log(req.session['account'], sql);
+            connection.query(sql, function (error, result, fields) {
+
+
+                if (error) {
+                    common.log(req.session['account'], error);
+                    res.send({error : error});
+                }
+                else {
+
                     var totallength = result[0][0].count;
 
                     for (var i = 0; i < totallength; i++) {               
@@ -291,6 +361,7 @@ router.post('/GetServiceRemindList', function (req, res) {
 
                     res.send({ recordsTotal: totallength, recordsFiltered: totallength, data: result[1] });
                 }
+                
                 connection.release();
                 res.end();
             });

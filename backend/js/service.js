@@ -264,10 +264,9 @@ router.post('/DispatchAllService', function (req, res) {
                 throw err;
             }
             
-            var nowMonth = new Date().toLocaleString().split("-")[1];
-
-            var dataSelect = "select a.id, a.mechanical_warranty, a.do_times, a.service_month, a.start_date, b.title, a.service_times from service_form as a inner join warranty_form as b on a.warranty_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month="+nowMonth+";";
-            var countSelect = "select COUNT(*) as count from service_form as a inner join warranty_form as b on a.warranty_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month="+nowMonth+";";   
+            var nowMonth = new Date().toLocaleString().split("-")[1];           
+            var dataSelect = "select a.id, a.mechanical_warranty, a.do_times, a.service_month, a.start_date, b.title, a.service_times, a.staff_id from service_form as a inner join warranty_form as b on a.warranty_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month="+nowMonth+" or a.dispatch_month !="+nowMonth+";";
+            var countSelect = "select COUNT(*) as count from service_form as a inner join warranty_form as b on a.warranty_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month="+nowMonth+" or a.dispatch_month !="+nowMonth+";";   
             var sql = countSelect + dataSelect;
 
             common.log(req.session['account'], sql);
@@ -282,14 +281,14 @@ router.post('/DispatchAllService', function (req, res) {
                 else {
                     var totallength = result[0][0].count;
                     var remindData = result[1];
-
+                    console
                     if (totallength > 1) {
                         var updateForm = "";
                         var addDispatchSQL = "";
                         var temp = "";
                         for (var i = 0; i < totallength; i++) {               
                             temp = "insert into dispatch_log (`table_type`, `table_id`, `dispatcher`, `principal`) VALUES (?,?,?,?);";
-                            updateForm += "update service_form set is_dispatch=1 where id="+remindData[i].id+";";                                                        
+                            updateForm += "update service_form set is_dispatch=1, dispatch_month="+nowMonth+" where id="+remindData[i].id+";";                                                        
                             
                             var dispatchData = 
                             [
@@ -317,6 +316,7 @@ router.post('/DispatchAllService', function (req, res) {
                         });
                     }
                     else {
+                        res.send({ code: 0, msg: "沒有可派遣單號!" }).end();
                         connection.release();
                         res.end();
                     }

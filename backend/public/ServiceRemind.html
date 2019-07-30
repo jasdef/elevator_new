@@ -52,6 +52,9 @@
                                     <div class="clearfix"></div>
                                 </div>                                
                                 <div class="x_content">
+                                    <div class="col-sm-12">    
+                                         <button class="btn btn-success" id='dispatchAll' title="一鑑派遣"> 一鑑派遣</button>                                                            
+                                    </div>
                                     <div class="x_content">
                                         <table id="datatable" class="table table-striped table-bordered">
                                             <thead>
@@ -176,8 +179,24 @@
                 $('#loading-cover').fadeOut(100);
             }
             }).dataTable(); 
-
-
+        
+        function dispatchAll() {
+            $.ajax({
+                type: 'POST',
+                url: "/DispatchAllService",
+    
+                dataType: 'json',
+                success: function(msg) {
+                    alert(msg.msg);
+                    window.location.reload();
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+                }).done(function() {
+                    $('#loading-cover').fadeOut(100);
+            });
+        }
     
         $('#datatable tbody').on('click', 'button', function(e) {
             var data = table.row($(this).parents('tr')).data();
@@ -194,6 +213,9 @@
             }
 
         });        
+
+        $(document).on('click', '#dispatchAll', dispatchAll);
+
     });
 
     </script>

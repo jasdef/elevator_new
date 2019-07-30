@@ -415,14 +415,15 @@ router.post('/AddDispatch', function(req, res) {
     common.CreateHtml("Dispatch_Transfer", req, res, function (err) {
     common.BackendConnection(res, function(err, connection) {
             var requestData = JSON.parse(req.body.requestData);
+            var nowMonth = new Date().toLocaleString().split("-")[1];
 
             var addDispatchSQL = "insert into dispatch_log (`table_type`, `table_id`, `dispatcher`, `principal`) VALUES (?,?,?,?);";
             var updateForm;
             if (requestData.tableType == 2) {//保固單
-                updateForm = "update warranty_form set is_dispatch=1 where id="+requestData.tableID+";";
+                updateForm = "update warranty_form set is_dispatch=1, dispatch_month="+nowMonth+" where id="+requestData.tableID+";";
             }
             else {//保養單
-                updateForm = "update service_form set is_dispatch=1 where id="+requestData.tableID+";";
+                updateForm = "update service_form set is_dispatch=1, dispatch_month="+nowMonth+" where id="+requestData.tableID+";";
             }
 
 

@@ -149,11 +149,8 @@ router.post('/GetWarrantyRemindList', function (req, res) { //取得這個月需
             }
             
             var nowMonth = new Date().toLocaleString().split("-")[1];
-
             var dataSelect = "select * from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !="+nowMonth+";";
             var countSelect = "select COUNT(*) as count from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !="+nowMonth+";";
-
-   
             var sql = countSelect + dataSelect;
 
             common.log(req.session['account'], sql);
@@ -180,6 +177,76 @@ router.post('/GetWarrantyRemindList', function (req, res) { //取得這個月需
         });        
     });
 
+});
+
+router.post('/DispatchAllWarranty', function (req, res) {
+    common.CreateHtml("Service_Transfer", req, res, function (err) {
+        common.BackendConnection(res, function (err, connection) {
+            if (err) {
+                common.log(res.session['account'], err);
+                throw err;
+            }
+            
+            var nowMonth = new Date().toLocaleString().split("-")[1];           
+            var dataSelect = "select * from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !="+nowMonth+";";
+            var countSelect = "select COUNT(*) as count from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !="+nowMonth+";";
+            var sql = countSelect + dataSelect;
+
+            common.log(req.session['account'], sql);
+
+            connection.query(sql, function (error, result, fields) {
+                if (error) {
+                    common.log(req.session['account'], error);
+                    res.send({error : error});
+                    connection.release();
+                    res.end();
+                }
+                else {
+                    var totallength = result[0][0].count;
+                    var remindData = result[1];                  
+                    if (totallength > 0) {
+                        var updateForm = "";
+                        var addDispatchSQL = "";
+                        var temp = "";
+                        for (var i = 0; i < totallength; i++) {               
+                            temp = "insert into dispatch_log (`table_type`, `table_id`, `dispatcher`, `principal`) VALUES (?,?,?,?);";
+                            updateForm += "update warranty_form set is_dispatch=1, modify_month="+nowMonth+" where id="+remindData[i].id+";";                                                        
+                            
+                            var dispatchData = 
+                            [
+                                3, 
+                                remindData[i].id,
+                                req.session['authid'],
+                                remindData[i].staff_id,
+                            ];
+                  
+                            addDispatchSQL += connection.format(temp, dispatchData);                
+                        }
+                        var sql = addDispatchSQL+updateForm;
+                        common.log(req.session['account'], sql);
+                        connection.query(sql, function (error, result, fields) {
+                            if (error) {
+                                common.log(req.session['account'], error);
+                                connection.release();                    
+                                res.send({ code: -1, msg: "派遣失敗", err: error }).end();
+            
+                            }
+                            else {
+                                connection.release();                    
+                                res.send({ code: 0, msg: "派遣成功!" }).end();
+                            }
+                        });
+                    }
+                    else {
+                        res.send({ code: 0, msg: "沒有可派遣單號!" }).end();
+                        connection.release();
+                        res.end();
+                    }
+                }
+            });
+
+        });        
+    });
 });
 
 router.post('/CheckWarrantyRemind', function (req, res) {//檢查那些還沒進入派遣流程的單子 哪些可以進入了

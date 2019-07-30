@@ -265,8 +265,8 @@ router.post('/DispatchAllService', function (req, res) {
             }
             
             var nowMonth = new Date().toLocaleString().split("-")[1];           
-            var dataSelect = "select a.id, a.mechanical_warranty, a.do_times, a.service_month, a.start_date, b.title, a.service_times, a.staff_id from service_form as a inner join warranty_form as b on a.warranty_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month="+nowMonth+" or a.dispatch_month !="+nowMonth+";";
-            var countSelect = "select COUNT(*) as count from service_form as a inner join warranty_form as b on a.warranty_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month="+nowMonth+" or a.dispatch_month !="+nowMonth+";";   
+            var dataSelect = "select a.id, a.mechanical_warranty, a.do_times, a.service_month, a.start_date, b.title, a.service_times, a.staff_id from service_form as a inner join warranty_form as b on a.warranty_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month !="+nowMonth+";";
+            var countSelect = "select COUNT(*) as count from service_form as a inner join warranty_form as b on a.warranty_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month !="+nowMonth+";";   
             var sql = countSelect + dataSelect;
 
             common.log(req.session['account'], sql);
@@ -281,8 +281,7 @@ router.post('/DispatchAllService', function (req, res) {
                 else {
                     var totallength = result[0][0].count;
                     var remindData = result[1];
-                    console
-                    if (totallength > 1) {
+                    if (totallength > 0) {
                         var updateForm = "";
                         var addDispatchSQL = "";
                         var temp = "";
@@ -326,7 +325,6 @@ router.post('/DispatchAllService', function (req, res) {
         });        
     });
 });
-
 
 router.post('/GetServiceRemindList', function (req, res) {
     common.CreateHtml("Service_Transfer", req, res, function (err) {

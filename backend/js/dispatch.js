@@ -420,7 +420,7 @@ router.post('/AddDispatch', function(req, res) {
             var addDispatchSQL = "insert into dispatch_log (`table_type`, `table_id`, `dispatcher`, `principal`) VALUES (?,?,?,?);";
             var updateForm;
             if (requestData.tableType == 2) {//保固單
-                updateForm = "update warranty_form set is_dispatch=1, dispatch_month="+nowMonth+" where id="+requestData.tableID+";";
+                updateForm = "update warranty_form set is_dispatch=1, modify_month="+nowMonth+" where id="+requestData.tableID+";";
             }
             else {//保養單
                 updateForm = "update service_form set is_dispatch=1, dispatch_month="+nowMonth+" where id="+requestData.tableID+";";

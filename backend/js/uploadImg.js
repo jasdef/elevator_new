@@ -112,6 +112,38 @@ router.post('/InsertImgMapping', function (req, res) {
 
 });
 
+router.post('/DeletePhoto', function (req, res) {
+    common.CreateHtml("UploadImg_Transfer", req, res, function (err) {
+        common.log(req.session['account'], "call DeletePhoto");
+        common.BackendConnection(res, function (err, connection) {
+            if (err) {
+                common.log(req.session['account'], err);
+                throw err;
+            }
+              
+            var id = req.body.Id;
+                
+            var dataSelect = "update file_mapping set `is_delete`=1 where `id` = "+id+";";
+    
+            var sql = dataSelect;
+    
+            common.log(req.session['account'], sql);
+    
+            connection.query(sql, function (error, result, fields) {
+                if (error) {
+                    common.log(req.session['account'], error);
+                    res.send({ code: error, msg: "刪除失敗", err: error });
+                } else {
+                                       
+                    res.send({ code: 0, msg: "刪除成功" });
+                }
+                connection.release();
+                res.end();
+            });
+        });                            
+    });
+});
+
 router.post('/GetPhotoList', function (req, res) {
     common.CreateHtml("UploadImg_Transfer", req, res, function (err) {
         common.log(req.session['account'], "call GetPhotoList");
@@ -124,7 +156,7 @@ router.post('/GetPhotoList', function (req, res) {
             var type = req.body.Type;
             var tableId = req.body.Id;
                 
-            var dataSelect = "select * from file_mapping where table_id="+tableId+" and table_type="+type+";";
+            var dataSelect = "select * from file_mapping where table_id="+tableId+" and table_type="+type+" and is_delete=0;";
     
             var sql = dataSelect;
     

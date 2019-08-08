@@ -106,6 +106,11 @@
                                 <h3>照片 ${i+1}</h3>                  
                             </div>
                         </a>
+                        <div class="form-group">
+                            <div class="col-md-9 col-md-offset-4">               
+                                <button id="deletePhoto" name=${data[i].id} class="btn btn-danger">刪除</button>
+                            </div>
+                        </div>
                         </br>
                         `;
 
@@ -121,8 +126,28 @@
                         }
                     }
                 }
-            });
-    
+            });    
+
+            function deletePhoto() {
+                var id = this.name;
+
+                $.ajax({
+                    type: 'POST',
+                    url: "/DeletePhoto",
+                    data: { Id: id },
+                    cache: false,
+                    async: true,
+                    dataType: 'json',
+                    success: function(msg) {
+                        if (msg.code == -1) { msg.msg } else {
+                            alert(msg.msg);
+                            window.location.reload();
+                        }
+                    }
+                });
+            }
+
+            $(document).on('click', '#deletePhoto', deletePhoto);
         });
       
       </script>

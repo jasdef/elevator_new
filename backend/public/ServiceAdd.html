@@ -186,6 +186,15 @@
                                             </div>
                                         </div>
                                         <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">*客戶
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <select name="customer" id="customer" class="form-control" required="required">
+                                                    <option class="text-center" value="0" selected>請選擇</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">備註事項
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -378,10 +387,39 @@
             $('#licenseDate').val("");        
             $('#note').val("");
             $('#staffSelect').val(0);
+            $('#customer').val(0);
+
         }        
 
         DateInit();
         getStaff();
+        getCustomer();
+
+        function getCustomer() {
+            $.ajax({
+                type: 'POST',
+                url: "/GetCustomerList",
+                dataType: 'json',
+                success: function(msg) {
+                  var data = msg.data;
+                  console.log(data);
+                  for(var i = 0; i < data.length; i++) {
+                    $('#customer').append(
+                        `
+                        <option class="text-center" value=${data[i].id}>${data[i].company}</option>
+                        `
+                    );
+                  }
+
+
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+                }).done(function() {
+                    $('#loading-cover').fadeOut(100);
+            });
+        }
 
         function DateInit() {
             $('#startDate').daterangepicker({
@@ -490,6 +528,7 @@
             var licenseDate = $('#licenseDate').val();
             var doTimes = $('#doTimes').val();
             var staff = $('#staffSelect').val();
+            var customerId = parseInt($('#customer').val());
 
             if (checkIsNullOrEmpty(startDate)) {
                 alert("簽約日期沒填!!");
@@ -526,6 +565,11 @@
                 return result;
             }
 
+            if (checkIsNullOrEmpty(customerId)) {
+                alert("客戶沒選!!");
+                return result;
+            }
+
             result.startDate = startDate;
             result.totalPrice = totalPrice;
             result.note = note;
@@ -537,6 +581,7 @@
             result.licenseDate = licenseDate;   
             result.doTimes = doTimes;         
             result.staff = staff;
+            result.customerId = customerId;  
             result.items = getTableData();            
             result.r = true;
 

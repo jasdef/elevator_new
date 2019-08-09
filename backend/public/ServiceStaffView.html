@@ -56,7 +56,7 @@
   
             for(var i=0; i < tr_length-1; i++){
                 var td_length = $('.table tr');                
-                Tbdata[i] = [$('#itemTitle'+i).val(), $('#itemPercent'+i).val(), $('#itemPrice'+i).val(), $('#itemStatus'+i).val()];               
+                Tbdata[i] = [$('#payDate'+i).val(), $('#itemPrice'+i).val(), $('#itemStatus'+i).val()];                        
              }
              Tbdata["length"] = tr_length-1;
              console.log(Tbdata); 
@@ -74,24 +74,8 @@
         function onItemPriceChange(element) {
             var total = $('#totalPrice').val();
             var percent = parseInt(element.value/total*100);
-            $('#itemPercent'+element.name).val(percent);
+           // $('#itemPercent'+element.name).val(percent);
         }
-
-        function calculate() {
-            var total = $('#totalPrice').val();
-            var left = total;
-            var tr_length = $('.table tr').length - 1; //tr 長度  扣掉head    
-            var data = getTableData();
-
-            for (var i = 0; i < tr_length; i++) {
-
-                if (data[i][3] == 5) {
-                    left -= data[i][2];
-                }
-            }
-            $('#leftPrice').val(left);
-        }
-
 </script>
 <body class="nav-md">
     <div class="container body">
@@ -106,151 +90,74 @@
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>保養單資訊顯示</h2>
+                                    <h2>保養單資訊</h2>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
                                     <div class="form-horizontal form-label-left" novalidate>
                                         <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">買賣單編號
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">保固單編號
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="transactionID" class="date-picker form-control col-md-7 col-xs-12" placeholder="" type="text" disabled>
+                                                <input id="warrantyID" class="date-picker form-control col-md-7 col-xs-12" placeholder="" type="text" disabled>
                                             </div>
-                                        </div>
+                                        </div>    
                                         <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">客戶名稱
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="title" class="form-control col-md-7 col-xs-12" placeholder="" type="text" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">機件保固(年)
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="mechanical" class="form-control col-md-7 col-xs-12" placeholder="" type="number" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">免費保養(年)
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="free" class="form-control col-md-7 col-xs-12" placeholder="" type="number" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">統一編號
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="num" class="form-control col-md-7 col-xs-12" placeholder="" type="number" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">合約開始日期
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">簽約日期
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <input type="text" name="startDate" id="startDate" class="form-control" value="" disabled/>                               
                                             </div>
-                                        </div> 
+                                        </div>
                                         <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">聯絡人1
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">簽約年限
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="contactor1" class="form-control col-md-7 col-xs-12" value="" type="text" disabled>
+                                                <input id="mechanicalWarranty" class="form-control col-md-7 col-xs-12" placeholder="" type="number" disabled>
                                             </div>
                                         </div>
                                         <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">聯絡人2
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">有無許可證
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="contactor2" id="contactor2" class="form-control" value="" disabled/>                               
+                                                <select name="hasLicense" id="hasLicense" class="form-control" required="required" disabled>
+                                                    <option class="text-center" value="0" selected>請選擇</option>
+                                                    <option class="text-center" value="1">有</option>
+                                                    <option class="text-center" value="2">無</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">聯絡人3
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">許可證到期日
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="contactor3" id="contactor3" class="form-control" value="" disabled/>                               
+                                                <input type="text" name="licenseDate" id="licenseDate" class="form-control" value="" disabled/>                               
                                             </div>
                                         </div>
                                         <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">地址1
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">客戶
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="address1" class="form-control col-md-7 col-xs-12" value="" type="text" disabled>
+                                                <select name="customer" id="customer" class="form-control" required="required" disabled>
+                                                    <option class="text-center" value="0" selected>請選擇</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">地址2
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">備註事項
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="address2" id="address2" class="form-control" value="" disabled/>                               
+                                                <textarea id="note" style="width:300px;height:100px;" disabled></textarea>
                                             </div>
                                         </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">地址3
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="address3" id="address3" class="form-control" value="" disabled/>                               
-                                            </div>
-                                        </div> 
                                         <div class="ln_solid"></div>
                                         <div class="form-group">
                                             <div class="col-md-9 col-md-offset-4">
-                                                <button class="btn btn-danger" onclick="history.back()">返回</button>    
+                                                <button class="btn btn-danger" onclick="history.back()">返回</button>                                   
+                                                <button id="mPhoto" class="btn btn-info">照片</button>
+                                                <button id="showCustomer" class="btn btn-info">客戶資訊</button>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="x_panel">
-                                <div class="x_content">
-                                    <div class="form-horizontal form-label-left" novalidate>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">電話1
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="tel1" class="form-control col-md-7 col-xs-12" value="" type="text" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">電話2
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="tel2" id="tel2" class="form-control" value="" disabled/>                               
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">電話3
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="tel3" id="tel3" class="form-control" value="" disabled/>                               
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">傳真1
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="fax1" class="form-control col-md-7 col-xs-12" value="" type="text" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">傳真2
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="fax2" id="fax2" class="form-control" value="" disabled/>                               
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">傳真3
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="fax3" id="fax3" class="form-control" value="" disabled/>                               
-                                            </div>
-                                        </div>                                            
                                     </div>
                                 </div>
                             </div>
@@ -309,8 +216,10 @@
 
     <script>
     $(document).ready(function() {
-      
+
+        
         var $_GET = {};
+        var customerID = 0;
 
         document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function() {
                 function decode(s) {
@@ -319,13 +228,17 @@
                 $_GET[decode(arguments[1])] = decode(arguments[2]);
         });
 
+         
+        getStaff();
+        getCustomer();
         DateInit();
         Init();
+
         function Init() {
             var id = $_GET["Id"];
             $.ajax({
                 type: 'POST',
-                url: "/GetWarrantyData",
+                url: "/GetServiceData",
                 data: { Id: id },
                 cache: false,
                 async: true,
@@ -333,28 +246,81 @@
                 success: function(msg) {
                     var data = msg.data;
                     var startDate = moment(data.start_date).format("YYYY-MM-DD");
-                    $('#transactionID').val(data.transaction_id);
-                    $('#title').val(data.title);
-                    $('#mechanical').val(data.mechanical_warranty);
-                    $('#free').val(data.free_maintenance);    
-                    $('#num').val(data.num);            
+                    var licenseDate = moment(data.license_date).format("YYYY-MM-DD");
+
+                    $('#warrantyID').val(data.warranty_id);                  
                     $('#startDate').val(startDate);
-                    $('#contactor1').val(data.contactor1);
-                    $('#contactor2').val(data.contactor2);
-                    $('#contactor3').val(data.contactor3);
-                    $('#tel1').val(data.tel1);
-                    $('#tel2').val(data.tel2);
-                    $('#tel3').val(data.tel3);
-                    $('#address1').val(data.address1);
-                    $('#address2').val(data.address2);
-                    $('#address3').val(data.address3);
-                    $('#fax1').val(data.fax1);
-                    $('#fax2').val(data.fax2);
-                    $('#fax3').val(data.fax3);   
-  
+                    $('#mechanicalWarranty').val(data.mechanical_warranty);                      
+                    $('#hasLicense').val(data.has_license);            
+                    $('#licenseDate').val(licenseDate);        
+                    $('#note').val(data.note);
+                    $('#staffSelect').val(data.staff_id);
+                    $('#customer').val(data.customer_id);
+
+                    customerID = data.customer_id;                               
                 }
             });
         }
+
+        function getCustomer() {
+            $.ajax({
+                type: 'POST',
+                url: "/GetCustomerList",
+                dataType: 'json',
+                success: function(msg) {
+                  var data = msg.data;
+                  console.log(data);
+                  for(var i = 0; i < data.length; i++) {
+                    $('#customer').append(
+                        `
+                        <option class="text-center" value=${data[i].id}>${data[i].company}</option>
+                        `
+                    );
+                  }
+
+
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+                }).done(function() {
+                    $('#loading-cover').fadeOut(100);
+            });
+        }
+
+        function getStaff() {
+
+            $.ajax({
+            type: 'POST',
+            url: "/GetStaffData",
+
+            dataType: 'json',
+            success: function(msg) {
+            var data = msg.data;
+            var select = `
+            <select id="staffSelect"  class="form-control" disabled>
+                <option value="0" selected="selected">請選擇員工</option>
+            `;
+
+            for (var i=0; i < data.length; i++) {
+                select += `<option value=${data[i].id}>${data[i].name}</option>`;
+            }
+
+            select += `</select>`;
+
+            $('#staff').html(select);
+
+            },
+            error: function(xhr, desc, err) {
+                alert("HTTP Status code:" + xhr.status);
+            }
+            }).done(function() {
+                $('#loading-cover').fadeOut(100);
+            });
+        }
+
+       
+
 
         function QuickNotify(message, type) {
             var icon = "";
@@ -377,9 +343,6 @@
             });
         }
 
-
-
-
         function DateInit() {
             $('#startDate').daterangepicker({
                 autoUpdateInput: false,
@@ -391,7 +354,24 @@
                 singleDatePicker: true,
                 timePickerSeconds: true
             });
+            $('#licenseDate').daterangepicker({
+                autoUpdateInput: false,
+                locale: {
+                    cancelLabel: 'Clear'
+                },
+                timePicker: true,
+                timePicker24Hour: true,
+                singleDatePicker: true,
+                timePickerSeconds: true
+            });
         }
+
+        $('#licenseDate').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('YYYY-MM-DD'));
+        });
+        $('#licenseDate').on('cancel.daterangepicker', function(ev, picker) {
+            $(this).val('');
+        });
 
 
         $('#startDate').on('apply.daterangepicker', function(ev, picker) {
@@ -400,25 +380,24 @@
         $('#startDate').on('cancel.daterangepicker', function(ev, picker) {
             $(this).val('');
         });
-   
+ 
         function showPhoto() {
             var id = $_GET["Id"];
-            location.replace(`/PhotoView?tableType=2&tableId=${id}`);  
+            location.replace(`/PhotoView?tableType=3&tableId=${id}`);  
         }
-  
-        function switchEditPage() {
-            var id = $_GET["Id"];
-            location.replace(`/WarrantyEdit?Id=${id}`);            
-        }
- 
+
         function checkIsNullOrEmpty(obj) {
             if (obj == 'undefined' || obj == null || obj == 0 || obj == '')
                 return true;
             return false;
         }
 
-       // $(document).on('click', '#mEdit', switchEditPage);
-      //  $(document).on('click', '#mPhoto', showPhoto);
+        function showCustomerInfo() {  
+            location.href =`/CustomerView?Id=${customerID}`;            
+        }
+
+        $(document).on('click', '#showCustomer', showCustomerInfo);
+        $(document).on('click', '#mPhoto', showPhoto);
 
 
     });

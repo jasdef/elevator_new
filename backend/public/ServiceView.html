@@ -188,6 +188,15 @@
                                             </div>
                                         </div>
                                         <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">*客戶
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <select name="customer" id="customer" class="form-control" required="required" disabled>
+                                                    <option class="text-center" value="0" selected>請選擇</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">備註事項
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -200,6 +209,7 @@
                                                 <button class="btn btn-danger" onclick="history.back()">返回</button>
                                                 <button id="mEdit" class="btn btn-success">編輯</button>
                                                 <button id="mPhoto" class="btn btn-info">照片</button>
+                                                <button id="showCustomer" class="btn btn-info">客戶資訊</button>
                                             </div>
                                         </div>
                                     </div>
@@ -284,6 +294,7 @@
 
         
         var $_GET = {};
+        var customerID = 0;
 
         document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function() {
                 function decode(s) {
@@ -294,8 +305,10 @@
 
          
         getStaff();
+        getCustomer();
         DateInit();
         Init();
+
         function Init() {
             var id = $_GET["Id"];
             $.ajax({
@@ -321,6 +334,9 @@
                     $('#licenseDate').val(licenseDate);        
                     $('#note').val(data.note);
                     $('#staffSelect').val(data.staff_id);
+                    $('#customer').val(data.customer_id);
+
+                    customerID = data.customer_id;
                     
                     var items = JSON.parse(data.items);
  
@@ -335,6 +351,31 @@
             });
         }
 
+        function getCustomer() {
+            $.ajax({
+                type: 'POST',
+                url: "/GetCustomerList",
+                dataType: 'json',
+                success: function(msg) {
+                  var data = msg.data;
+                  console.log(data);
+                  for(var i = 0; i < data.length; i++) {
+                    $('#customer').append(
+                        `
+                        <option class="text-center" value=${data[i].id}>${data[i].company}</option>
+                        `
+                    );
+                  }
+
+
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+                }).done(function() {
+                    $('#loading-cover').fadeOut(100);
+            });
+        }
 
         function getStaff() {
 
@@ -486,6 +527,11 @@
             return false;
         }
 
+        function showCustomerInfo() {  
+            location.href =`/CustomerView?Id=${customerID}`;            
+        }
+
+        $(document).on('click', '#showCustomer', showCustomerInfo);
         $(document).on('click', '#mEdit', switchEditPage);
         $(document).on('click', '#mPhoto', showPhoto);
 

@@ -115,7 +115,7 @@ router.post('/EditService', function(req, res) {
             var requestData = JSON.parse(req.body.requestData);
             console.log(req.body);
             console.log(requestData);
-            var editServiceSQL = "update service_form set `start_date`=?, `left_price`=?, `total_price`=?, `note`=?, `warranty_id`=?, `mechanical_warranty`=?, `service_month`=?, `has_license`=?, `license_date`=?, `items`=?, `do_times`=?, `staff_id`=? where `id`=?;";
+            var editServiceSQL = "update service_form set `start_date`=?, `left_price`=?, `total_price`=?, `note`=?, `warranty_id`=?, `mechanical_warranty`=?, `service_month`=?, `has_license`=?, `license_date`=?, `items`=?, `do_times`=?, `staff_id`=?, `customer_id`=? where `id`=?;";
 
             var itemsJson = JSON.stringify(requestData.items);
             var serviceData = 
@@ -132,6 +132,7 @@ router.post('/EditService', function(req, res) {
                 itemsJson,
                 requestData.doTimes,
                 requestData.staff,
+                request.customerId,
                 requestData.id
             ];
   
@@ -424,7 +425,8 @@ router.post('/AddService', function(req, res) {//4
                 requestData.licenseDate,
                 itemsJson,
                 requestData.doTimes,
-                requestData.staff
+                requestData.staff,
+                requestData.customerId
             ];
   
             addServiceSQL = connection.format(addServiceSQL, serviceData);

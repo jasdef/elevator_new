@@ -188,6 +188,15 @@
                                             </div>
                                         </div>
                                         <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">*客戶
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <select name="customer" id="customer" class="form-control" required="required">
+                                                    <option class="text-center" value="0" selected>請選擇</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">備註事項
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -338,9 +347,37 @@
         }
 
         getStaff();
+        getCustomer();
         DateInit();
         Init();
         
+        function getCustomer() {
+            $.ajax({
+                type: 'POST',
+                url: "/GetCustomerList",
+                dataType: 'json',
+                success: function(msg) {
+                var data = msg.data;
+                console.log(data);
+                for(var i = 0; i < data.length; i++) {
+                    $('#customer').append(
+                        `
+                        <option class="text-center" value=${data[i].id}>${data[i].company}</option>
+                        `
+                    );
+                }
+
+
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+                }).done(function() {
+                    $('#loading-cover').fadeOut(100);
+            });
+        }
+
+
         function Init() {
             var id = $_GET["Id"];
             $.ajax({
@@ -366,6 +403,8 @@
                     $('#licenseDate').val(licenseDate);        
                     $('#note').val(data.note);
                     $('#staffSelect').val(data.staff_id);
+                    $('#customer').val(data.customer_id);
+
                     
                     var items = JSON.parse(data.items);
  
@@ -472,6 +511,7 @@
             $('#licenseDate').val("");        
             $('#note').val("");
             $('#staffSelect').val(0);
+            $('#customer').val(0);
         }
 
 
@@ -582,6 +622,12 @@
             var licenseDate = $('#licenseDate').val();
             var doTimes = $('#doTimes').val();
             var staff = $('#staff').val();
+            var customerId = $('#customer').val();
+
+            if (checkIsNullOrEmpty(customerId)) {
+                alert("客戶沒選!!");
+                return result;
+            }
 
             if (checkIsNullOrEmpty(startDate)) {
                 alert("簽約日期沒填!!");
@@ -629,6 +675,7 @@
             result.licenseDate = licenseDate;   
             result.doTimes = doTimes;         
             result.staff = staff;
+            result.customerId = customerId;
             result.items = getTableData();            
             result.r = true;
 

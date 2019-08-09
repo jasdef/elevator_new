@@ -140,13 +140,6 @@
                                             </div>
                                         </div>
                                         <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">統一編號
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="num" class="form-control col-md-7 col-xs-12" placeholder="" type="number" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">合約開始日期
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -161,105 +154,23 @@
                                             </div>
                                         </div>
                                         <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">聯絡人1
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="contactor1" class="form-control col-md-7 col-xs-12" value="" type="text" disabled>
-                                            </div>
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">*客戶
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <select name="customer" id="customer" class="form-control" required="required" disabled>
+                                                        <option class="text-center" value="0" selected>請選擇</option>
+                                                    </select>
+                                                </div>
                                         </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">聯絡人2
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="contactor2" id="contactor2" class="form-control" value="" disabled/>                               
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">聯絡人3
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="contactor3" id="contactor3" class="form-control" value="" disabled/>                               
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">地址1
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="address1" class="form-control col-md-7 col-xs-12" value="" type="text" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">地址2
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="address2" id="address2" class="form-control" value="" disabled/>                               
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">地址3
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="address3" id="address3" class="form-control" value="" disabled/>                               
-                                            </div>
-                                        </div> 
                                         <div class="ln_solid"></div>
                                         <div class="form-group">
                                             <div class="col-md-9 col-md-offset-4">
                                                 <button class="btn btn-danger" onclick="history.back()">返回</button>
                                                 <button id="mEdit" class="btn btn-success">編輯</button>
                                                 <button id="mPhoto" class="btn btn-info">照片</button>
+                                                <button id="showCustomer" class="btn btn-info">客戶資訊</button>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="x_panel">
-                                <div class="x_content">
-                                    <div class="form-horizontal form-label-left" novalidate>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">電話1
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="tel1" class="form-control col-md-7 col-xs-12" value="" type="text" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">電話2
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="tel2" id="tel2" class="form-control" value="" disabled/>                               
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">電話3
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="tel3" id="tel3" class="form-control" value="" disabled/>                               
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">傳真1
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="fax1" class="form-control col-md-7 col-xs-12" value="" type="text" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">傳真2
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="fax2" id="fax2" class="form-control" value="" disabled/>                               
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">傳真3
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="fax3" id="fax3" class="form-control" value="" disabled/>                               
-                                            </div>
-                                        </div>                                            
                                     </div>
                                 </div>
                             </div>
@@ -320,6 +231,7 @@
     $(document).ready(function() {
       
         var $_GET = {};
+        var customerID = 0;
 
         document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function() {
                 function decode(s) {
@@ -330,6 +242,7 @@
 
         getStaff();
         DateInit();
+        getCustomer();
         Init();
         function Init() {
             var id = $_GET["Id"];
@@ -346,24 +259,38 @@
                     $('#transactionID').val(data.transaction_id);
                     $('#title').val(data.title);
                     $('#mechanical').val(data.mechanical_warranty);
-                    $('#free').val(data.free_maintenance);    
-                    $('#num').val(data.num);            
+                    $('#free').val(data.free_maintenance);                            
                     $('#startDate').val(startDate);
-                    $('#contactor1').val(data.contactor1);
-                    $('#contactor2').val(data.contactor2);
-                    $('#contactor3').val(data.contactor3);
-                    $('#tel1').val(data.tel1);
-                    $('#tel2').val(data.tel2);
-                    $('#tel3').val(data.tel3);
-                    $('#address1').val(data.address1);
-                    $('#address2').val(data.address2);
-                    $('#address3').val(data.address3);
-                    $('#fax1').val(data.fax1);
-                    $('#fax2').val(data.fax2);
-                    $('#fax3').val(data.fax3);   
+                    $('#customer').val(data.customer_id);
                     $('#staffSelect').val(data.staff_id);
-  
+                    customerID = data.customer_id;
                 }
+            });
+        }
+
+        function getCustomer() {
+            $.ajax({
+                type: 'POST',
+                url: "/GetCustomerList",
+                dataType: 'json',
+                success: function(msg) {
+                  var data = msg.data;
+                  console.log(data);
+                  for(var i = 0; i < data.length; i++) {
+                    $('#customer').append(
+                        `
+                        <option class="text-center" value=${data[i].id}>${data[i].company}</option>
+                        `
+                    );
+                  }
+
+
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+                }).done(function() {
+                    $('#loading-cover').fadeOut(100);
             });
         }
 
@@ -419,9 +346,6 @@
             });
         }
 
-
-
-
         function DateInit() {
             $('#startDate').daterangepicker({
                 autoUpdateInput: false,
@@ -452,6 +376,10 @@
             var id = $_GET["Id"];
             location.replace(`/WarrantyEdit?Id=${id}`);            
         }
+
+        function showCustomerInfo() {  
+            location.href(`/CustomerView?Id=${id}`);            
+        }
  
         function checkIsNullOrEmpty(obj) {
             if (obj == 'undefined' || obj == null || obj == 0 || obj == '')
@@ -459,6 +387,7 @@
             return false;
         }
 
+        $(document).on('click', '#showCustomer', showCustomerInfo);
         $(document).on('click', '#mEdit', switchEditPage);
         $(document).on('click', '#mPhoto', showPhoto);
 

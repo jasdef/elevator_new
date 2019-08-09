@@ -63,7 +63,7 @@ router.post('/GetCustomerList', function (req, res) {
 });
 
 router.post('/GetCustomerData', function (req, res) {
-    common.CreateHtml("Customer_Transfer", req, res, function (err) {
+    common.CreateHtml("staff_Transfer", req, res, function (err) {
         common.BackendConnection(res, function (err, connection) {
             if (err) {
                 common.log(res.session['account'], err);

@@ -45,8 +45,8 @@ router.post('/GetWarrantyList', function (req, res) {
                 throw err;
             }
             
-            var dataSelect = "select * from warranty_form where is_delete=0;";
-            var countSelect = "select COUNT(*) as count from warranty_form where is_delete=0;";
+            var dataSelect = "select a.id, a.title, a.start_date, b.company, b.tel1, b.address1 from warranty_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;";
+            var countSelect = "select COUNT(*) as count from warranty_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;";
 
    
             var sql = countSelect + dataSelect;
@@ -341,7 +341,7 @@ router.post('/EditWarranty', function(req, res) {
             var requestData = JSON.parse(req.body.requestData);
             console.log(req.body);
             console.log(requestData);
-            var editWarrantySQL = "update warranty_form set `title`=?, `start_date`=?, `mechanical_warranty`=?, `transaction_id`=?, `free_maintenance`=?, `customer_id=?`, `staff_id`=? where `id`=?;";
+            var editWarrantySQL = "update warranty_form set `title`=?, `start_date`=?, `mechanical_warranty`=?, `transaction_id`=?, `free_maintenance`=?, `customer_id`=?, `staff_id`=? where `id`=?;";
 
           
             var warrantyData = 

@@ -307,7 +307,7 @@
         getStaff();
         getCustomer();
         DateInit();
-        Init();
+       // Init();
 
         function Init() {
             var id = $_GET["Id"];
@@ -367,7 +367,7 @@
                     );
                   }
 
-
+                  Init();
                 },
                 error: function(xhr, desc, err) {
                     alert("HTTP Status code:" + xhr.status);
@@ -398,7 +398,7 @@
             select += `</select>`;
 
             $('#staff').html(select);
-
+            Init();
             },
             error: function(xhr, desc, err) {
                 alert("HTTP Status code:" + xhr.status);

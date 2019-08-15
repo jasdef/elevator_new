@@ -243,7 +243,7 @@
         getStaff();
         DateInit();
         getCustomer();
-        Init();
+     //   Init();
         function Init() {
             var id = $_GET["Id"];
             $.ajax({
@@ -262,7 +262,7 @@
                     $('#free').val(data.free_maintenance);                            
                     $('#startDate').val(startDate);
                     $('#customer').val(data.customer_id);
-                    $('#staffSelect').val(data.staff_id);
+                    $('#staffSelect').val(data.staff_id);          
                     customerID = data.customer_id;
                 }
             });
@@ -283,7 +283,7 @@
                         `
                     );
                   }
-
+                  Init();
 
                 },
                 error: function(xhr, desc, err) {
@@ -315,7 +315,7 @@
             select += `</select>`;
 
             $('#staff').html(select);
-
+            Init();
             },
             error: function(xhr, desc, err) {
                 alert("HTTP Status code:" + xhr.status);

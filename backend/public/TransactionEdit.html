@@ -31,6 +31,7 @@
     <!-- At.js 套件(autocomplete))  -->
     <link href="../vendors/At.js/css/jquery.atwho.min.css" rel="stylesheet">
     <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/accountiing/accounting.js"></script>
 
 
     <style type="text/css" media="screen">
@@ -65,20 +66,27 @@
 
         function onItemPercentChange(element) {
             var total = $('#totalPrice').val();
-            var price = parseInt(total*(element.value*0.01));
+            var price = parseInt(total*(element.value*0.01));       
             $('#itemPrice'+element.name).val(price);
+            var temp = accounting.formatNumber(price);
+            $('#itemPriceText'+element.name).val(temp);
+
 
             console.log(element.value);
         }
 
         function onItemPriceChange(element) {
             var total = $('#totalPrice').val();
-            var percent = parseInt(element.value/total*100);
+            var percent = accounting.toFixed(element.value/total*100);
+            var temp = accounting.formatNumber(element.value);
+            $('#itemPriceText'+element.name).val(temp);
             $('#itemPercent'+element.name).val(percent);
         }
 
         function calculate() {
             var total = $('#totalPrice').val();
+            var priceText = accounting.formatNumber(total); 
+            $('#totalPriceText').val(priceText);
             var left = total;
             var tr_length = $('.table tr').length - 1; //tr 長度  扣掉head    
             var data = getTableData();
@@ -89,6 +97,8 @@
                     left -= data[i][2];
                 }
             }
+            var temp = accounting.formatNumber(left);
+            $('#leftPriceText').val(temp);
             $('#leftPrice').val(left);
         }
 
@@ -129,7 +139,9 @@
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">總價
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="totalPrice" class="form-control col-md-7 col-xs-12" placeholder="" type="number" onchange="calculate()">
+                                                <input id="totalPrice" class="form-control col-md-7 col-xs-12" placeholder="" type="number" oninput="calculate()">
+                                                <input id="totalPriceText" class="form-control col-md-7 col-xs-12" placeholder="" type="text" disabled>
+
                                             </div>
                                         </div>
                                         <div class="item form-group">
@@ -218,7 +230,8 @@
                                         </div>
                                         <div class="form-group">
                                             <label>剩餘款項 </label>
-                                            <input id="leftPrice"  type="number">                  
+                                            <input id="leftPrice"  type="number" >  
+                                            <input id="leftPriceText"  type="text" disabled>                  
                                         </div>
                                         <div class="form-group">              
                                             <label>上傳圖片</label>                                      
@@ -289,6 +302,7 @@
         $(document).on('click', '#upload', upload);
         
         var $_GET = {};
+        var transactionData;
 
         document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function() {
                 function decode(s) {
@@ -370,6 +384,10 @@
                 success: function(msg) {
                     var data = msg.data;
                     var startDate = moment(data.start_date).format("YYYY-MM-DD");
+                    var priceText = accounting.formatNumber(data.total_price); 
+                    var leftText = accounting.formatNumber(data.left_price); 
+                    $('#leftPriceText').val(leftText);            
+                    $('#totalPriceText').val(priceText);
                     $('#title').val(data.title);
                     $('#elevatorNum').val(data.elevator_num);
                     $('#totalPrice').val(data.total_price);
@@ -386,16 +404,19 @@
                     $('#note').val(data.note);
                     
                     var items = JSON.parse(data.items);
- 
+     
                     for (var i = 0; i < items.length; i++) {
                         addCurrentRow();
                         $('#itemTitle'+i).val(items[i][0]);
                         $('#itemPercent'+i).val(items[i][1]);
                         $('#itemPrice'+i).val(items[i][2]);
+                        var text = accounting.formatNumber(items[i][2]);
+                        $('#itemPriceText'+i).val(text);
                         $('#itemStatus'+i).val(items[i][3]);    
                       //  $('#itemStatus'+i).selectpicker('val', items[i][3]); 
                     }
-  
+                    
+                    transactionData = data;
                 }
             });
         }
@@ -407,10 +428,12 @@
             var trcomp=`
             <tr>
             <td width="100px"><input name="${tr_length}" id="itemTitle${tr_length}" type="text"/></td>
-            <td width="100px"><input name="${tr_length}" id="itemPercent${tr_length}" type="number" onchange="onItemPercentChange(this)"/></td>
-            <td width="100px"><input name="${tr_length}" id="itemPrice${tr_length}" type="number" onchange="onItemPriceChange(this)"/></td>
+            <td width="100px"><input name="${tr_length}" id="itemPercent${tr_length}" type="number" oninput="onItemPercentChange(this)"/></td>
+            <td width="100px"><input name="${tr_length}" id="itemPrice${tr_length}" type="number" oninput="onItemPriceChange(this)"/>
+                <input name="${tr_length}" id="itemPriceText${tr_length}" type="text" disabled/>
+                </td>
             <td width="100px">
-                <select name="${tr_length}" id="itemStatus${tr_length}" name="status" onchange="calculate()">
+                <select name="${tr_length}" id="itemStatus${tr_length}" name="status" oninput="calculate()">
                 　<option value="0" selected="selected">請選擇表單狀態</option>
                 　<option value="1">已開發票</option>
                 　<option value="2">已送請款單</option>

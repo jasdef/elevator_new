@@ -185,6 +185,17 @@
                                             </div>
                                         </div>
                                         <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">印花稅是否貼妥
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <select name="isStamp" id="isStamp" class="form-control" required="required">
+                                                    <option class="text-center" value="0" selected>請選擇</option>
+                                                    <option class="text-center" value="1">是</option>
+                                                    <option class="text-center" value="2">否</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">客戶
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -404,6 +415,8 @@
             $('#isDuty').selectpicker('refresh');
             $('#isReceipt').val(0);
             $('#isReceipt').selectpicker('refresh');
+            $('#isStamp').val(0);
+            $('#isStamp').selectpicker('isStamp');
             $('#customer').val(0);
             $('#customer').selectpicker('refresh');
             $('#note').val("");
@@ -467,6 +480,7 @@
             var isReceipt = parseInt($('#isReceipt').val());
             var customerId = parseInt($('#customer').val());
             var leftPrice = $('#leftPrice').val();
+            var isStamp = $('#isStamp').val();
 
             result.startDate = startDate;
             result.title = title;
@@ -477,7 +491,8 @@
             result.isReturn = isReturn;
             result.isReceipt = isReceipt;
             result.customerId = customerId;  
-            result.leftPrice = leftPrice;            
+            result.leftPrice = leftPrice;      
+            result.isStamp = isStamp;      
             result.items = getTableData();            
             result.r = true;
 

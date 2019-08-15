@@ -244,7 +244,7 @@ router.post('/EditTransaction', function(req, res) {
             var requestData = JSON.parse(req.body.requestData);
             console.log(req.body);
             console.log(requestData);
-            var editTransactionSQL = "update transaction_form set `title`=?, `left_price`=?, `total_price`=?, `start_date`=?, `is_return`=?, `is_duty`=?, `is_receipt`=?, `elevator_num`=?, `note`=?, `customer_id`=?, `items`=? where `id`=?;";
+            var editTransactionSQL = "update transaction_form set `title`=?, `left_price`=?, `total_price`=?, `start_date`=?, `is_return`=?, `is_duty`=?, `is_receipt`=?, `elevator_num`=?, `note`=?, `customer_id`=?, is_stamp, `items`=? where `id`=?;";
 
             var itemsJson = JSON.stringify(requestData.items);
             var transactionData = 
@@ -259,6 +259,7 @@ router.post('/EditTransaction', function(req, res) {
                 requestData.elevatorNum,
                 requestData.note,
                 requestData.customerId,
+                requestData.isSTamp,
                 itemsJson,
                 requestData.id
             ];
@@ -291,7 +292,7 @@ router.post('/AddTransaction', function(req, res) {//4
             var requestData = JSON.parse(req.body.requestData);
             console.log(req.body);
             console.log(requestData);
-            var addTransactionSQL = "insert into transaction_form (`title`, `left_price`, `total_price`, `start_date`, `is_return`, `is_duty`, `is_receipt`, `elevator_num`, `note`, `customer_id`, `items`) VALUES (?,?,?,?,?,?,?,?,?,?,?);";
+            var addTransactionSQL = "insert into transaction_form (`title`, `left_price`, `total_price`, `start_date`, `is_return`, `is_duty`, `is_receipt`, `elevator_num`, `note`, `customer_id`, `is_stamp`, `items`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);";
 
             var itemsJson = JSON.stringify(requestData.items);
             var transactionData = 
@@ -306,6 +307,7 @@ router.post('/AddTransaction', function(req, res) {//4
                 requestData.elevatorNum,
                 requestData.note,
                 requestData.customerId,
+                requestData.isStamp,
                 itemsJson
             ];
   

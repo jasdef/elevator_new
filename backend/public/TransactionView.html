@@ -175,6 +175,17 @@
                                             </div>
                                         </div>
                                         <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">印花稅是否貼妥
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <select name="isStamp" id="isStamp" class="form-control" required="required" disabled>
+                                                    <option class="text-center" value="0" selected>請選擇</option>
+                                                    <option class="text-center" value="1">是</option>
+                                                    <option class="text-center" value="2">否</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">客戶
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -336,6 +347,7 @@
                     $('#isReturn').val(data.is_return);
                     $('#isReturn').selectpicker('val', data.is_return);
                     $('#isDuty').val(data.is_duty);
+                    $('#isSTamp').val(data.is_stamp);
                    // $('#isDuty').selectpicker('val', data.is_duty);
                     $('#isReceipt').val(data.is_receipt);
                    // $('#isReceipt').selectpicker('val', data.is_receipt);

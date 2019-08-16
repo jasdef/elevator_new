@@ -350,6 +350,7 @@
                 dataType: 'json',
                 success: function(msg) {
                     alert(msg.msg);
+                    location.replace(`/Warranty`);            
                 },
                 error: function(xhr, desc, err) {
                     alert("HTTP Status code:" + xhr.status);

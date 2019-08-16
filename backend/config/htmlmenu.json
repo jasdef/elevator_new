@@ -35,6 +35,12 @@
                 "enable": true,
                 "autho": "admin",
                 "href": "ModifyProjectRemind"
+            },
+            "維修單提醒":
+            {
+                "enable": true,
+                "autho": "admin",
+                "href": "FixFormRemind"
             }
         }
     },
@@ -67,6 +73,12 @@
                 "enable": true,
                 "autho": "admin",
                 "href": "ModifyProject"
+            },
+            "維修單":
+            {
+                "enable": true,
+                "autho": "admin",
+                "href": "FixForm"
             }
         }
     },

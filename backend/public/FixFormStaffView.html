@@ -31,7 +31,6 @@
     <!-- At.js 套件(autocomplete))  -->
     <link href="../vendors/At.js/css/jquery.atwho.min.css" rel="stylesheet">
     <script src="../vendors/moment/min/moment.min.js"></script>
-    <script src="../vendors/accountiing/accounting.js"></script>
 
 
     <style type="text/css" media="screen">
@@ -77,22 +76,6 @@
             var percent = parseInt(element.value/total*100);
            // $('#itemPercent'+element.name).val(percent);
         }
-
-        function calculate() {
-            var total = $('#totalPrice').val();
-            var left = total;
-            var tr_length = $('.table tr').length - 1; //tr 長度  扣掉head    
-            var data = getTableData();
-
-            for (var i = 0; i < tr_length; i++) {
-
-                if (data[i][2] == 5) {
-                    left -= data[i][1];
-                }
-            }
-            $('#leftPrice').val(left);
-        }
-
 </script>
 <body class="nav-md">
     <div class="container body">
@@ -107,7 +90,7 @@
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>檢視保養單</h2>
+                                    <h2>保養單資訊</h2>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
@@ -118,14 +101,7 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <input id="warrantyID" class="date-picker form-control col-md-7 col-xs-12" placeholder="" type="text" disabled>
                                             </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">總價
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="totalPrice" class="form-control col-md-7 col-xs-12" placeholder="" type="text" onchange="calculate()" disabled>
-                                            </div>
-                                        </div>
+                                        </div>    
                                         <div class="item form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">簽約日期
                                             </label>
@@ -139,29 +115,6 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <input id="mechanicalWarranty" class="form-control col-md-7 col-xs-12" placeholder="" type="number" disabled>
                                             </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">月保養
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <select name="serviceMonth" id="serviceMonth" class="form-control" required="required" disabled>
-                                                    <option class="text-center" value="0" selected>請選擇月保養</option>
-                                                    <option class="text-center" value="1">每月保養</option>
-                                                    <option class="text-center" value="2">雙月保養</option>
-                                                    <option class="text-center" value="2">季保養</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">當月保養次數
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <select name="doTimes" id="doTimes" class="form-control" required="required" disabled>
-                                                        <option class="text-center" value="0" selected>請選擇保養次數</option>
-                                                        <option class="text-center" value="1">1次</option>
-                                                        <option class="text-center" value="2">2次</option>                                     
-                                                    </select>
-                                                </div>
                                         </div>
                                         <div class="item form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">有無許可證
@@ -182,14 +135,7 @@
                                             </div>
                                         </div>
                                         <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">*負責保養人
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12" id="staff">
-                                               
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">*客戶
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">客戶
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <select name="customer" id="customer" class="form-control" required="required" disabled>
@@ -207,33 +153,11 @@
                                         <div class="ln_solid"></div>
                                         <div class="form-group">
                                             <div class="col-md-9 col-md-offset-4">
-                                                <button class="btn btn-danger" onclick="history.back()">返回</button>
-                                                <button id="mEdit" class="btn btn-success">編輯</button>
+                                                <button class="btn btn-danger" onclick="history.back()">返回</button>                                   
                                                 <button id="mPhoto" class="btn btn-info">照片</button>
                                                 <button id="showCustomer" class="btn btn-info">客戶資訊</button>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="x_panel">
-                                <div class="x_content">
-                                    <div class="form-horizontal form-label-left" novalidate>
-                                        <div class="item form-group">
-                                                <table id="itemTable" class="table x_content">
-                                                        <tr>
-                                                            <th>繳款時間</th>
-                                                            <th>繳款金額</th>
-                                                            <th>狀態</th>
-                                                        </tr>
-                                                </table> 
-                                        </div>
-                                        <div class="form-group">
-                                            <label>剩餘款項 </label>
-                                            <input id="leftPrice"  type="text" disabled>                  
-                                        </div>                                          
                                     </div>
                                 </div>
                             </div>
@@ -308,7 +232,7 @@
         getStaff();
         getCustomer();
         DateInit();
-       // Init();
+        Init();
 
         function Init() {
             var id = $_GET["Id"];
@@ -323,33 +247,17 @@
                     var data = msg.data;
                     var startDate = moment(data.start_date).format("YYYY-MM-DD");
                     var licenseDate = moment(data.license_date).format("YYYY-MM-DD");
-                    var leftText = accounting.formatNumber(data.left_price);
-                    var totalText = accounting.formatNumber(data.total_price);
-                    $('#warrantyID').val(data.warranty_id);
-                    $('#totalPrice').val(totalText);
-                    $('#leftPrice').val(leftText);            
+
+                    $('#warrantyID').val(data.warranty_id);                  
                     $('#startDate').val(startDate);
-                    $('#mechanicalWarranty').val(data.mechanical_warranty);        
-                    $('#serviceMonth').val(data.service_month);
-                    $('#hasLicense').val(data.has_license);
-                    $('#doTimes').val(data.do_times);
+                    $('#mechanicalWarranty').val(data.mechanical_warranty);                      
+                    $('#hasLicense').val(data.has_license);            
                     $('#licenseDate').val(licenseDate);        
                     $('#note').val(data.note);
                     $('#staffSelect').val(data.staff_id);
                     $('#customer').val(data.customer_id);
 
-                    customerID = data.customer_id;
-                    
-                    var items = JSON.parse(data.items);
- 
-                    for (var i = 0; i < items.length; i++) {
-                        addCurrentRow();
-                        $('#payDate'+i).val(items[i][0]);  
-                        var priceText = accounting.formatNumber(items[i][1]);
-                        $('#itemPrice'+i).val(priceText);
-                        $('#itemStatus'+i).val(items[i][2]);    
-                    }
-  
+                    customerID = data.customer_id;                               
                 }
             });
         }
@@ -370,7 +278,7 @@
                     );
                   }
 
-                  //Init();
+
                 },
                 error: function(xhr, desc, err) {
                     alert("HTTP Status code:" + xhr.status);
@@ -401,7 +309,7 @@
             select += `</select>`;
 
             $('#staff').html(select);
-            Init();
+
             },
             error: function(xhr, desc, err) {
                 alert("HTTP Status code:" + xhr.status);
@@ -411,48 +319,7 @@
             });
         }
 
-        function addCurrentRow()
-        {
-            var tr_length = $('.table tr').length - 1; //tr 長度  扣掉head
-          
-            var trcomp=`
-            <tr>
-            <td width="100px"><input type="text" name="${tr_length}" id="payDate${tr_length}"  value="" disabled/></td>                               
-                
-            <td width="100px"><input name="${tr_length}" id="itemPrice${tr_length}" type="text" onchange="onItemPriceChange(this)" disabled/></td>
-            <td width="100px">
-                <select name="${tr_length}" id="itemStatus${tr_length}" name="status" onchange="calculate()" disabled>
-                　<option value="0" selected="selected">請選擇表單狀態</option>
-                　<option value="1">已開發票</option>
-                　<option value="2">已送請款單</option>
-                　<option value="3">已送請款單/發票</option>
-                　<option value="4">尚未收款</option>
-                　<option value="5">已收款</option>
-                </select>
-            </td>
-            </tr>
-            `;
-            $("#itemTable tr:last-child").after(trcomp);
-
-
-            $('#payDate'+tr_length).daterangepicker({
-                autoUpdateInput: false,
-                locale: {
-                    cancelLabel: 'Clear'
-                },
-                timePicker: true,
-                timePicker24Hour: true,
-                singleDatePicker: true,
-                timePickerSeconds: true
-            });        
-
-            $('#payDate'+tr_length).on('apply.daterangepicker', function(ev, picker) {
-                $(this).val(picker.startDate.format('YYYY-MM-DD'));
-            });
-            $('#payDate'+tr_length).on('cancel.daterangepicker', function(ev, picker) {
-                $(this).val('');
-            });
-        }
+       
 
 
         function QuickNotify(message, type) {
@@ -513,12 +380,7 @@
         $('#startDate').on('cancel.daterangepicker', function(ev, picker) {
             $(this).val('');
         });
-         
-        function switchEditPage() {
-            var id = $_GET["Id"];
-            location.replace(`/ServiceEdit?Id=${id}`);            
-        }
-
+ 
         function showPhoto() {
             var id = $_GET["Id"];
             location.replace(`/PhotoView?tableType=3&tableId=${id}`);  
@@ -535,7 +397,6 @@
         }
 
         $(document).on('click', '#showCustomer', showCustomerInfo);
-        $(document).on('click', '#mEdit', switchEditPage);
         $(document).on('click', '#mPhoto', showPhoto);
 
 

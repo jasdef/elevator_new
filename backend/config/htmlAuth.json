@@ -1422,5 +1422,46 @@
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/ModifyProjectRemind.html"
+    },
+    "FixFormView":
+    {
+        "autho": "admin",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/FixFormView.html"
+    },
+    "FixFormEdit":
+    {
+        "autho": "admin",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/FixFormEdit.html"
+    },
+    "FixFormAdd":
+    {
+        "autho": "admin",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/FixFormAdd.html"
+    },
+    "FixForm":
+    {
+        "autho": "admin",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/FixForm.html"
+    },
+    "FixForm_Transfer":
+    {
+        "autho": "admin",
+        "enable": true,
+        "type": "protocol"
+    },
+    "FixFormRemind":
+    {
+        "autho": "admin",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/FixFormRemind.html"
     }
 }

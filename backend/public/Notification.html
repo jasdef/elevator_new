@@ -153,6 +153,23 @@
                             <!-- /block -->
                         </div>
                     </div>
+                    <div class="row-fluid">
+    
+                        <div class="span6">
+                            <!-- block -->
+                            <div class="block">
+                                <div class="navbar navbar-inner block-header">
+                                    <div class="muted pull-left"><b><h4>維修單提醒</h4></b></div>                
+                                    <div class="pull-right" id="FixFormRemind">
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- /block -->
+                        </div>
+ 
+                    </div>
                 </div>
                 <!-- /page content -->
                 <!--footer-->
@@ -210,6 +227,7 @@
                 GetTransactionSigningList();
                 GetLicenseList();
                 GetModifyProjectRemindList();
+                GetFixFormRemindList();
                 function GetTransactionRemindList() {
   
                     $.ajax({
@@ -369,6 +387,26 @@
                         }).done(function() {
                             $('#loading-cover').fadeOut(100);
                     }); 
+                }
+
+                function GetFixFormRemindList() {
+  
+                $.ajax({
+                    type: 'POST',
+                    url: "/GetFixFormRemindList",                        
+                    cache: false,
+                    async: true,
+                    success: function(data) {
+                        var length = data.recordsFiltered;
+                        $('#FixFormRemind').append( `<a href="/FixFormRemind"><span class="badge badge-info">${length}</span></a>`);
+
+
+
+                        
+                    }
+                    }).done(function() {
+                        $('#loading-cover').fadeOut(100);
+                }); 
                 }
                 
             });

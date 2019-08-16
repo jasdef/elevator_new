@@ -46,7 +46,7 @@ CREATE TABLE `behavior_log` (
   `operator` varchar(45) DEFAULT NULL,
   `modifytime` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4100 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4151 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -113,33 +113,6 @@ CREATE TABLE `dispatch_status_log` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `example`
---
-
-DROP TABLE IF EXISTS `example`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `example` (
-  `id` int(11) DEFAULT NULL,
-  `company` text,
-  `contactor1` text CHARACTER SET utf8,
-  `contactor2` text,
-  `contactor3` text,
-  `address1` text,
-  `address2` text,
-  `address3` text,
-  `tel1` text,
-  `tel2` text,
-  `tel3` text,
-  `fax1` int(11) DEFAULT NULL,
-  `fax2` text,
-  `fax3` text,
-  `num` int(11) DEFAULT NULL,
-  `is_delete` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Table structure for table `file_mapping`
 --
 
@@ -155,6 +128,31 @@ CREATE TABLE `file_mapping` (
   `is_delete` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `fix_form`
+--
+
+DROP TABLE IF EXISTS `fix_form`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fix_form` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(45) DEFAULT NULL,
+  `total_price` int(11) DEFAULT NULL,
+  `left_price` int(11) DEFAULT NULL,
+  `num` int(11) DEFAULT NULL,
+  `type` int(11) DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  `fxi_item` varchar(45) DEFAULT NULL,
+  `note` varchar(45) DEFAULT NULL,
+  `staff_id` int(11) DEFAULT '0',
+  `customer_id` int(11) DEFAULT '0',
+  `is_delete` int(11) DEFAULT '0',
+  `items` tinytext,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -280,4 +278,4 @@ CREATE TABLE `warranty_form` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-08-16 15:09:48
+-- Dump completed on 2019-08-16 16:10:55

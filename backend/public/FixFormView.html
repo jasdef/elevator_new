@@ -107,103 +107,83 @@
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>檢視保養單</h2>
+                                    <h2>檢視維修單</h2>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
                                     <div class="form-horizontal form-label-left" novalidate>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">保固單編號
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="warrantyID" class="date-picker form-control col-md-7 col-xs-12" placeholder="" type="text" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">總價
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="totalPrice" class="form-control col-md-7 col-xs-12" placeholder="" type="text" onchange="calculate()" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">簽約日期
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="startDate" id="startDate" class="form-control" value="" disabled/>                               
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">簽約年限
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="mechanicalWarranty" class="form-control col-md-7 col-xs-12" placeholder="" type="number" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">月保養
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <select name="serviceMonth" id="serviceMonth" class="form-control" required="required" disabled>
-                                                    <option class="text-center" value="0" selected>請選擇月保養</option>
-                                                    <option class="text-center" value="1">每月保養</option>
-                                                    <option class="text-center" value="2">雙月保養</option>
-                                                    <option class="text-center" value="2">季保養</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">當月保養次數
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <select name="doTimes" id="doTimes" class="form-control" required="required" disabled>
-                                                        <option class="text-center" value="0" selected>請選擇保養次數</option>
-                                                        <option class="text-center" value="1">1次</option>
-                                                        <option class="text-center" value="2">2次</option>                                     
-                                                    </select>
+                                            <div class="item form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">名稱
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="title" class="form-control col-md-7 col-xs-12" placeholder="" type="text" disabled>
+                                                    </div>
                                                 </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">有無許可證
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <select name="hasLicense" id="hasLicense" class="form-control" required="required" disabled>
-                                                    <option class="text-center" value="0" selected>請選擇</option>
-                                                    <option class="text-center" value="1">有</option>
-                                                    <option class="text-center" value="2">無</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">許可證到期日
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="licenseDate" id="licenseDate" class="form-control" value="" disabled/>                               
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">*負責保養人
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12" id="staff">
-                                               
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">*客戶
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <select name="customer" id="customer" class="form-control" required="required" disabled>
-                                                    <option class="text-center" value="0" selected>請選擇</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">備註事項
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <textarea id="note" style="width:300px;height:100px;" disabled></textarea>
-                                            </div>
-                                        </div>
+                                                <div class="item form-group">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">統一編號
+                                                        </label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <input id="num" class="form-control col-md-7 col-xs-12" placeholder="" type="number" oninput="calculate()" disabled>
+                                                        </div>
+                                                </div>
+                                                <div class="item form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">總價
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="totalPrice" class="form-control col-md-7 col-xs-12" placeholder="" type="text" oninput="calculate()" disabled>                                               
+                                                    </div>
+                                                </div>
+                                                    <div class="item form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">昇降類別
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <select name="eleType" id="eleType" class="form-control" required="required" disabled>
+                                                            <option class="text-center" value="0" selected>請選擇</option>
+                                                            <option class="text-center" value="1">客梯</option>
+                                                            <option class="text-center" value="2">貨梯</option>
+                                                            <option class="text-center" value="3">菜梯</option>
+                                                            <option class="text-center" value="4">油壓梯</option>
+                                                            <option class="text-center" value="5">其他</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="item form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">維修項目及更換零件
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <textarea id="fixItem" style="width:300px;height:100px;" disabled></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="item form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">*負責保養人
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12" id="staff" disabled>
+                                                        
+                                                    </div>
+                                                </div>
+                                                <div class="item form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">*客戶
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <select name="customer" id="customer" class="form-control" required="required" disabled>
+                                                            <option class="text-center" value="0" selected>請選擇</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="item form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">處理狀況
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <textarea id="status" style="width:300px;height:100px;" disabled></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="item form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">故障原因
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <textarea id="note" style="width:300px;height:100px;" disabled></textarea>
+                                                    </div>
+                                                </div>
                                         <div class="ln_solid"></div>
                                         <div class="form-group">
                                             <div class="col-md-9 col-md-offset-4">
@@ -307,33 +287,30 @@
          
         getStaff();
         getCustomer();
-        DateInit();
+ 
        // Init();
 
         function Init() {
             var id = $_GET["Id"];
             $.ajax({
                 type: 'POST',
-                url: "/GetServiceData",
+                url: "/GetFixFormData",
                 data: { Id: id },
                 cache: false,
                 async: true,
                 dataType: 'json',
                 success: function(msg) {
                     var data = msg.data;
-                    var startDate = moment(data.start_date).format("YYYY-MM-DD");
-                    var licenseDate = moment(data.license_date).format("YYYY-MM-DD");
-                    var leftText = accounting.formatNumber(data.left_price);
-                    var totalText = accounting.formatNumber(data.total_price);
-                    $('#warrantyID').val(data.warranty_id);
-                    $('#totalPrice').val(totalText);
-                    $('#leftPrice').val(leftText);            
-                    $('#startDate').val(startDate);
-                    $('#mechanicalWarranty').val(data.mechanical_warranty);        
-                    $('#serviceMonth').val(data.service_month);
-                    $('#hasLicense').val(data.has_license);
-                    $('#doTimes').val(data.do_times);
-                    $('#licenseDate').val(licenseDate);        
+                    var priceText = accounting.formatNumber(data.total_price); 
+                    var leftText = accounting.formatNumber(data.left_price); 
+ 
+                    $('#totalPrice').val(priceText);
+                    $('#leftPrice').val(leftText);                
+                    $('#eleType').val(data.type);        
+                    $('#status').val(data.status);
+                    $('#fixItem').val(data.fix_item);
+                    $('#num').val(data.num);
+                    $('#title').val(data.title);        
                     $('#note').val(data.note);
                     $('#staffSelect').val(data.staff_id);
                     $('#customer').val(data.customer_id);
@@ -369,8 +346,6 @@
                         `
                     );
                   }
-
-                  //Init();
                 },
                 error: function(xhr, desc, err) {
                     alert("HTTP Status code:" + xhr.status);
@@ -475,48 +450,10 @@
                 delay: 6000,
             });
         }
-
-        function DateInit() {
-            $('#startDate').daterangepicker({
-                autoUpdateInput: false,
-                locale: {
-                    cancelLabel: 'Clear'
-                },
-                timePicker: true,
-                timePicker24Hour: true,
-                singleDatePicker: true,
-                timePickerSeconds: true
-            });
-            $('#licenseDate').daterangepicker({
-                autoUpdateInput: false,
-                locale: {
-                    cancelLabel: 'Clear'
-                },
-                timePicker: true,
-                timePicker24Hour: true,
-                singleDatePicker: true,
-                timePickerSeconds: true
-            });
-        }
-
-        $('#licenseDate').on('apply.daterangepicker', function(ev, picker) {
-            $(this).val(picker.startDate.format('YYYY-MM-DD'));
-        });
-        $('#licenseDate').on('cancel.daterangepicker', function(ev, picker) {
-            $(this).val('');
-        });
-
-
-        $('#startDate').on('apply.daterangepicker', function(ev, picker) {
-            $(this).val(picker.startDate.format('YYYY-MM-DD'));
-        });
-        $('#startDate').on('cancel.daterangepicker', function(ev, picker) {
-            $(this).val('');
-        });
          
         function switchEditPage() {
             var id = $_GET["Id"];
-            location.replace(`/ServiceEdit?Id=${id}`);            
+            location.replace(`/FixFormEdit?Id=${id}`);            
         }
 
         function showPhoto() {

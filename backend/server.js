@@ -21,6 +21,7 @@ var warranty = require('./js/warranty');
 var customer = require('./js/customer');
 var dispatch = require('./js/dispatch');
 var service = require('./js/service');
+var fixForm = require('./js/fixForm');
 var imgUpload = require('./js/uploadImg');
 var historyRecord = require('./js/historyRecordSearch');
 var listenPort = 8888;
@@ -53,6 +54,7 @@ app.use(loginform);
 app.use(notification);
 app.use(transaction);
 app.use(modifyProject);
+app.use(fixForm);
 app.use(warranty);
 app.use(historyRecord);
 app.get('/', function (req, res) {

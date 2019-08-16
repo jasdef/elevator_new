@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="../vendors/bootstrap-select/css/bootstrap-select.min.css">
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
+    <script src="../vendors/accountiing/accounting.js"></script>
+
     <style type="text/css" media="screen">
         #datatable tbody td {
             vertical-align: middle;
@@ -52,10 +54,6 @@
                                     <div class="clearfix"></div>
                                 </div>                                
                                 <div class="x_content">
-                                    <div class="col-sm-12">    
-                                        <a href="" target="_blank" id="addService" class="btn btn-success">新增保養單</a>
-                                                         
-                                    </div>
                                     <div class="x_content">
                                         <table id="datatable" class="table table-striped table-bordered">
                                             <thead>
@@ -143,7 +141,7 @@
                 ],
                 "columns": [
                     { "data": "id"},
-                    { "data": "title"},
+                    { "data": "company"},
                     { "data": "license_date" },
                     { "data": "total_price" },
                     { "data": "left_price" },
@@ -160,7 +158,9 @@
                     }               
                 ],
                 'rowCallback': function(row, data, dataIndex) {
-                            $('td:eq(2)', row).html(moment(data.start_date).format("YYYY-MM-DD HH:mm:ss"));      
+                    $('td:eq(2)', row).html(moment(data.start_date).format("YYYY-MM-DD HH:mm:ss"));      
+                    $('td:eq(3)', row).html(accounting.formatNumber(data.total_price));      
+                    $('td:eq(4)', row).html(accounting.formatNumber(data.left_price));      
                 },
                 "ajax": {
                     "url": "/GetLicenseRemindList",

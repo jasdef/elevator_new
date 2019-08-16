@@ -31,6 +31,7 @@
     <!-- At.js 套件(autocomplete))  -->
     <link href="../vendors/At.js/css/jquery.atwho.min.css" rel="stylesheet">
     <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/accountiing/accounting.js"></script>
 
 
     <style type="text/css" media="screen">
@@ -122,7 +123,7 @@
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">總價
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="totalPrice" class="form-control col-md-7 col-xs-12" placeholder="" type="number" onchange="calculate()" disabled>
+                                                <input id="totalPrice" class="form-control col-md-7 col-xs-12" placeholder="" type="text" onchange="calculate()" disabled>
                                             </div>
                                         </div>
                                         <div class="item form-group">
@@ -231,7 +232,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>剩餘款項 </label>
-                                            <input id="leftPrice"  type="number" disabled>                  
+                                            <input id="leftPrice"  type="text" disabled>                  
                                         </div>                                          
                                     </div>
                                 </div>
@@ -322,10 +323,11 @@
                     var data = msg.data;
                     var startDate = moment(data.start_date).format("YYYY-MM-DD");
                     var licenseDate = moment(data.license_date).format("YYYY-MM-DD");
-
+                    var leftText = accounting.formatNumber(data.left_price);
+                    var totalText = accounting.formatNumber(data.total_price);
                     $('#warrantyID').val(data.warranty_id);
-                    $('#totalPrice').val(data.total_price);
-                    $('#leftPrice').val(data.left_price);            
+                    $('#totalPrice').val(totalText);
+                    $('#leftPrice').val(leftText);            
                     $('#startDate').val(startDate);
                     $('#mechanicalWarranty').val(data.mechanical_warranty);        
                     $('#serviceMonth').val(data.service_month);
@@ -343,7 +345,8 @@
                     for (var i = 0; i < items.length; i++) {
                         addCurrentRow();
                         $('#payDate'+i).val(items[i][0]);  
-                        $('#itemPrice'+i).val(items[i][1]);
+                        var priceText = accounting.formatNumber(items[i][1]);
+                        $('#itemPrice'+i).val(priceText);
                         $('#itemStatus'+i).val(items[i][2]);    
                     }
   
@@ -416,7 +419,7 @@
             <tr>
             <td width="100px"><input type="text" name="${tr_length}" id="payDate${tr_length}"  value="" disabled/></td>                               
                 
-            <td width="100px"><input name="${tr_length}" id="itemPrice${tr_length}" type="number" onchange="onItemPriceChange(this)" disabled/></td>
+            <td width="100px"><input name="${tr_length}" id="itemPrice${tr_length}" type="text" onchange="onItemPriceChange(this)" disabled/></td>
             <td width="100px">
                 <select name="${tr_length}" id="itemStatus${tr_length}" name="status" onchange="calculate()" disabled>
                 　<option value="0" selected="selected">請選擇表單狀態</option>

@@ -132,7 +132,7 @@ router.post('/EditService', function(req, res) {
                 itemsJson,
                 requestData.doTimes,
                 requestData.staff,
-                request.customerId,
+                requestData.customerId,
                 requestData.id
             ];
   
@@ -409,7 +409,7 @@ router.post('/AddService', function(req, res) {//4
             var requestData = JSON.parse(req.body.requestData);
             console.log(req.body);
             console.log(requestData);
-            var addServiceSQL = "insert into service_form (`start_date`, `left_price`, `total_price`, `note`, `warranty_id`, `mechanical_warranty`, `service_month`, `has_license`, `license_date`, `items`, `do_times`, `staff_id`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);";
+            var addServiceSQL = "insert into service_form (`start_date`, `left_price`, `total_price`, `note`, `warranty_id`, `mechanical_warranty`, `service_month`, `has_license`, `license_date`, `items`, `do_times`, `staff_id`, `customer_id`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);";
 
             var itemsJson = JSON.stringify(requestData.items);
             var serviceData = 

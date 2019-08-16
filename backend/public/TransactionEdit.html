@@ -81,6 +81,7 @@
             var temp = accounting.formatNumber(element.value);
             $('#itemPriceText'+element.name).val(temp);
             $('#itemPercent'+element.name).val(percent);
+            calculate();
         }
 
         function calculate() {

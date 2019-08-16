@@ -163,7 +163,7 @@
                     }               
                 ],
                 'rowCallback': function(row, data, dataIndex) {
-                    $('td:eq(2)', row).html(moment(data.start_date).format("YYYY-MM-DD HH:mm:ss"));      
+                    $('td:eq(2)', row).html(moment(data.start_date).format("YYYY-MM-DD"));      
                     $('td:eq(3)', row).html(accounting.formatNumber(data.total_price));      
                     $('td:eq(4)', row).html(accounting.formatNumber(data.left_price));      
                 },

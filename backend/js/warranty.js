@@ -45,7 +45,7 @@ router.post('/GetWarrantyList', function (req, res) {
                 throw err;
             }
             
-            var dataSelect = "select a.id, a.title, a.start_date, b.company, b.tel1, b.address1 from warranty_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;";
+            var dataSelect = "select a.id, a.title, a.start_date, a.free_maintenance, b.company, b.tel1, b.address1 from warranty_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;";
             var countSelect = "select COUNT(*) as count from warranty_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;";
 
    
@@ -59,7 +59,7 @@ router.post('/GetWarrantyList', function (req, res) {
                     res.send({error : error});
                 }
                 else {
-                    var totallength = result[0][0].count;
+                    var totallength = result[0][0].count;                                    
                     res.send({ recordsTotal: totallength, recordsFiltered: totallength, data: result[1] });
                 }
                 connection.release();

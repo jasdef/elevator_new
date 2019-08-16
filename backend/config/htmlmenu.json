@@ -29,6 +29,12 @@
                 "enable": true,
                 "autho": "admin",
                 "href": "ServiceRemind"
+            },
+            "改修工程提醒":
+            {
+                "enable": true,
+                "autho": "admin",
+                "href": "ModifyProjectRemind"
             }
         }
     },
@@ -55,6 +61,12 @@
                 "enable": true,
                 "autho": "admin",
                 "href": "Service"
+            },
+            "改修工程":
+            {
+                "enable": true,
+                "autho": "admin",
+                "href": "ModifyProject"
             }
         }
     },

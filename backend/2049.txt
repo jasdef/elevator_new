@@ -1,1 +1,0 @@
-{"Time ":"13:54:44","User":"system","Data":"SELECT `MemberId` FROM `SuspensionList` WHERE `endTime` <= now() AND `Type` = 'S' AND `Del` = 'N'"}

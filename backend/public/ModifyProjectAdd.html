@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>利通電梯</title>      
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Datatables -->
+    <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap-select -->
+    <link rel="stylesheet" href="../vendors/bootstrap-select/css/bootstrap-select.min.css">
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- bootstrap-notify -->
+    <link href="../vendors/bootstrap-notify/animate.min.css" rel="stylesheet">
+    <!-- At.js 套件(autocomplete))  -->
+    <link href="../vendors/At.js/css/jquery.atwho.min.css" rel="stylesheet">
+    <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/accountiing/accounting.js"></script>
+
+
+    <style type="text/css" media="screen">
+    #datatable tbody td {
+        vertical-align: middle;
+    }
+    .alert h5{
+        margin: 0 0 0 15px;
+        font-size: 1.3em;
+    }
+    .alert i{
+        margin-right: 5px;
+    }
+    .modal textarea{
+        resize: vertical;
+    }
+    </style>
+</head>
+<script>
+        function getTableData() {
+            var Tbdata = {}; 
+            var tr_length = $('.table tr').length; //tr 長度
+  
+            for(var i=0; i < tr_length-1; i++){
+                var td_length = $('.table tr');                
+                Tbdata[i] = [$('#itemTitle'+i).val(), $('#itemPercent'+i).val(), $('#itemPrice'+i).val(), $('#itemStatus'+i).val()];               
+             }
+             Tbdata["length"] = tr_length-1;
+             console.log(Tbdata); 
+             return Tbdata;     
+        }
+
+        function onItemPercentChange(element) {
+            var total = $('#totalPrice').val();
+            var price = parseInt(total*(element.value*0.01));       
+            $('#itemPrice'+element.name).val(price);
+            var temp = accounting.formatNumber(price);
+            $('#itemPriceText'+element.name).val(temp);
+
+
+            console.log(element.value);
+        }
+
+        function onItemPriceChange(element) {
+            var total = $('#totalPrice').val();
+            var percent = accounting.toFixed(element.value/total*100);
+            var temp = accounting.formatNumber(element.value);
+            $('#itemPriceText'+element.name).val(temp);
+            $('#itemPercent'+element.name).val(percent);
+            calculate();
+        }
+
+        function calculate() {
+            var total = $('#totalPrice').val();
+            var priceText = accounting.formatNumber(total); 
+            $('#totalPriceText').val(priceText);
+            var left = total;
+            var tr_length = $('.table tr').length - 1; //tr 長度  扣掉head    
+            var data = getTableData();
+
+            for (var i = 0; i < tr_length; i++) {
+
+                if (data[i][3] == 5) {
+                    left -= data[i][2];
+                }
+            }
+            var temp = accounting.formatNumber(left);
+            $('#leftPriceText').val(temp);
+            $('#leftPrice').val(left);
+        }
+
+</script>
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <!--Menu-->
+            <!--Top-->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="row">
+                    <div class="clearfix"></div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>新增改修工程</h2>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <div class="form-horizontal form-label-left" novalidate>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">表單名稱
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="title" class="date-picker form-control col-md-7 col-xs-12" placeholder="" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">電梯數量
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="elevatorNum" class="form-control col-md-7 col-xs-12" placeholder="" type="number">
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">總價
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="totalPrice" class="form-control col-md-7 col-xs-12" placeholder="" type="number" oninput="calculate()">
+                                                <input id="totalPriceText" class="form-control col-md-7 col-xs-12" placeholder="" type="text" disabled>
+
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">簽約日期
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" name="startDate" id="startDate" class="form-control" value="" />                               
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">合約已回/未回
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <select name="isReturn" id="isReturn" class="form-control" required="required">
+                                                    <option class="text-center" value="0" selected>請選擇</option>
+                                                    <option class="text-center" value="1">已回</option>
+                                                    <option class="text-center" value="2">未回</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">含稅/未稅
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <select name="isDuty" id="isDuty" class="form-control" required="required">
+                                                    <option class="text-center" value="0" selected>請選擇</option>
+                                                    <option class="text-center" value="1">含稅</option>
+                                                    <option class="text-center" value="2">未稅</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">是否開發票
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <select name="isReceipt" id="isReceipt" class="form-control" required="required">
+                                                    <option class="text-center" value="0" selected>請選擇</option>
+                                                    <option class="text-center" value="1">是</option>
+                                                    <option class="text-center" value="2">否</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">印花稅是否貼妥
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <select name="isStamp" id="isStamp" class="form-control" required="required">
+                                                    <option class="text-center" value="0" selected>請選擇</option>
+                                                    <option class="text-center" value="1">是</option>
+                                                    <option class="text-center" value="2">否</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">客戶
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <select name="customer" id="customer" class="form-control" required="required">
+                                                    <option class="text-center" value="0" selected>請選擇</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">備註事項
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <textarea id="note" style="width:300px;height:100px;"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="ln_solid"></div>
+                                        <div class="form-group">
+                                            <div class="col-md-9 col-md-offset-4">
+                                                <button id="mClear" class="btn btn-danger">清除</button>
+                                                <button id="sendAdd" class="btn btn-success">新增</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_content">
+                                    <div class="form-horizontal form-label-left" novalidate>
+                                        <div class="item form-group">
+                                                <table id="itemTable" class="table x_content">
+                                                        <tr>
+                                                        <th>項目名稱</th>
+                                                        <th>金額百分比</th>
+                                                        <th>金額</th>
+                                                        <th>狀態</th>
+                                                        <th>操作</th>
+                                                        </tr>
+  
+                                                    </table> 
+                                                <button id="addBtn">新增</button>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>剩餘款項 </label>
+                                            <input id="leftPrice"  type="number" >  
+                                            <input id="leftPriceText"  type="text" disabled>                  
+                                        </div>                                         
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+            <!-- /page content -->
+            <!--footer-->
+        </div>
+    </div>
+    <div id="loading-cover" style="width: 100%; height: 100%; background: rgba(0,0,0,.5); position: fixed; display: none; z-index: 999999; top: 0; left: 0;">
+        <div id="loading-icon" style="width: 85px; height: 65px; margin: -42.5px 0 0 -32.5px; top: 50%; left: 50%; position: fixed;">
+            <i class="fa fa-circle-o-notch fa-spin fa-5x fa-fw" style="color: #FFF;"></i>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- validator -->
+    <script src="../vendors/validator/validator.js"></script>
+    <!-- Datatables -->
+    <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="../vendors/jszip/dist/jszip.min.js"></script>
+    <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/moment/min/moment-duration-format.min.js"></script>
+    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap-select -->
+    <script src="../vendors/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="../vendors/bootstrap-select/js/i18n/defaults-zh_TW.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+    <!-- bootstrap-notify -->
+    <script src="../vendors/bootstrap-notify/bootstrap-notify.min.js"></script>
+    <!-- At.js 套件(autocomplete))  -->
+    <script type="text/javascript" src="../vendors/At.js/js/jquerycaret.min.js"></script>
+    <script type="text/javascript" src="../vendors/At.js/js/jqueryatwho.min.js"></script>
+
+    <script>
+    $(document).ready(function() {
+
+        $(document).on('click', '#addBtn', addCurrentRow);
+        $(document).on('click', '#delBtn', deleteCurrentRow);
+        
+        var $_GET = {};
+        
+
+        document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function() {
+                function decode(s) {
+                    return decodeURIComponent(s.split("+").join(" "));
+                }
+                $_GET[decode(arguments[1])] = decode(arguments[2]);
+        });
+     
+        $.ajax({
+                type: 'POST',
+                url: "/GetCustomerList",
+                dataType: 'json',
+                success: function(msg) {
+                  var data = msg.data;
+                  console.log(data);
+                  for(var i = 0; i < data.length; i++) {
+                    $('#customer').append(
+                        `
+                        <option class="text-center" value=${data[i].id}>${data[i].company}</option>
+                        `
+                    );
+                  }
+
+
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+                }).done(function() {
+                    $('#loading-cover').fadeOut(100);
+        });
+
+        DateInit();
+ 
+        function addCurrentRow()
+        {
+            var tr_length = $('.table tr').length - 1; //tr 長度  扣掉head
+          
+            var trcomp=`
+            <tr>
+            <td width="100px"><input name="${tr_length}" id="itemTitle${tr_length}" type="text"/></td>
+            <td width="100px"><input name="${tr_length}" id="itemPercent${tr_length}" type="number" oninput="onItemPercentChange(this)"/></td>
+            <td width="100px"><input name="${tr_length}" id="itemPrice${tr_length}" type="number" oninput="onItemPriceChange(this)"/>
+                <input name="${tr_length}" id="itemPriceText${tr_length}" type="text" disabled/>
+                </td>
+            <td width="100px">
+                <select name="${tr_length}" id="itemStatus${tr_length}" name="status" oninput="calculate()">
+                　<option value="0" selected="selected">請選擇表單狀態</option>
+                　<option value="1">已開發票</option>
+                　<option value="2">已送請款單</option>
+                　<option value="3">已送請款單/發票</option>
+                　<option value="4">尚未收款</option>
+                　<option value="5">已收款</option>
+                </select>
+            </td>
+            <td><a id="delBtn"><font color='red'>刪除</font></a> </td>
+            </tr>
+            `;
+            $("#itemTable tr:last-child").after(trcomp);
+        }
+
+        function deleteCurrentRow()
+        {
+             var isDelete=confirm("真的要刪除嗎？");
+            if(isDelete)
+            {
+                var tr=this.parentNode.parentNode;
+                var tbody=tr.parentNode;
+                tbody.removeChild(tr);
+            }
+        }
+
+        function QuickNotify(message, type) {
+            var icon = "";
+            switch(type) {
+                case 'success':
+                    icon = 'fa-check-circle';
+                    break;
+                case 'danger':
+                    icon = 'fa-times-circle';
+                    break;
+                default: 
+                    icon = 'fa-exclamation-triangle';
+            }
+            $.notify({
+                message: '<h5><i class="fa ' + icon + '"></i> ' + message + '</h5>'
+            },{
+                type: type,
+                z_index: 20000,
+                delay: 6000,
+            });
+        }
+
+        function clear(e) {
+            e.preventDefault();
+            $('#title').val("");
+            $('#elevatorNum').val(0);
+            $('#totalPrice').val(0);
+            $('#leftPrice').val(0);            
+            $('#startDate').val("");
+            $('#isReturn').val(0);
+            $('#isReturn').selectpicker('refresh');
+            $('#isDuty').val(0);
+            $('#isDuty').selectpicker('refresh');
+            $('#isReceipt').val(0);
+            $('#isReceipt').selectpicker('refresh');
+            $('#isStamp').val(0);
+            $('#isStamp').selectpicker('isStamp');
+            $('#customer').val(0);
+            $('#customer').selectpicker('refresh');
+            $('#note').val("");
+        }
+
+
+        function DateInit() {
+            $('#startDate').daterangepicker({
+                autoUpdateInput: false,
+                locale: {
+                    cancelLabel: 'Clear'
+                },
+                timePicker: true,
+                timePicker24Hour: true,
+                singleDatePicker: true,
+                timePickerSeconds: true
+            });
+        }
+
+
+        $('#startDate').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('YYYY-MM-DD'));
+        });
+        $('#startDate').on('cancel.daterangepicker', function(ev, picker) {
+            $(this).val('');
+        });
+
+        function sendAddData() {
+            $('#loading-cover').fadeIn(100);
+            var checkData = datacheck();
+
+            if (checkData.r) {
+                $.ajax({
+                type: 'POST',
+                url: "/AddModifyProject",
+                data: {requestData: JSON.stringify(checkData)},
+                dataType: 'json',
+                success: function(msg) {
+                    alert(msg.msg);
+                    location.replace(`/ModifyProject`);            
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+                }).done(function() {
+                    $('#loading-cover').fadeOut(100);
+                });
+
+            }            
+        }
+ 
+        function datacheck() {
+            var result = { r: false };
+
+            var startDate = $('#startDate').val();;
+            var title = $('#title').val();
+            var elevatorNum = $('#elevatorNum').val();
+            var totalPrice = $('#totalPrice').val();
+            var note = $('#note').val();
+            var isDuty = parseInt($('#isDuty').val());
+            var isReturn = parseInt($('#isReturn').val());
+            var isReceipt = parseInt($('#isReceipt').val());
+            var customerId = parseInt($('#customer').val());
+            var leftPrice = $('#leftPrice').val();
+            var isStamp = $('#isStamp').val();
+
+            result.startDate = startDate;
+            result.title = title;
+            result.elevatorNum = elevatorNum;
+            result.totalPrice = totalPrice;
+            result.note = note;
+            result.isDuty = isDuty;
+            result.isReturn = isReturn;
+            result.isReceipt = isReceipt;
+            result.customerId = customerId;  
+            result.leftPrice = leftPrice;      
+            result.isStamp = isStamp;      
+            result.items = getTableData();            
+            result.r = true;
+
+            return result;
+        }
+
+
+        function checkIsNullOrEmpty(obj) {
+            if (obj == 'undefined' || obj == null || obj == 0 || obj == '')
+                return true;
+            return false;
+        }
+
+        $(document).on('click', '#sendAdd', sendAddData);
+        $(document).on('click', '#mClear', clear);
+
+    });
+    </script>
+</body>
+
+</html>

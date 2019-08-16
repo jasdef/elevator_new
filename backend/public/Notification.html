@@ -139,7 +139,19 @@
                             </div>
                             <!-- /block -->
                         </div>
-   
+                        <div class="span6">
+                            <!-- block -->
+                            <div class="block">
+                                <div class="navbar navbar-inner block-header">
+                                    <div class="muted pull-left"><b><h4>改修工程提醒</h4></b></div>                
+                                    <div class="pull-right" id="ModifyProjectRemind">
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- /block -->
+                        </div>
                     </div>
                 </div>
                 <!-- /page content -->
@@ -197,6 +209,7 @@
                 GetWarrantySigningList();
                 GetTransactionSigningList();
                 GetLicenseList();
+                GetModifyProjectRemindList();
                 function GetTransactionRemindList() {
   
                     $.ajax({
@@ -332,6 +345,26 @@
                         success: function(data) {
                             var length = data.recordsFiltered;
                             $('#LicenseRemind').append( `<a href="/LicenseRemind"><span class="badge badge-info">${length}</span></a>`);                            
+                        }
+                        }).done(function() {
+                            $('#loading-cover').fadeOut(100);
+                    }); 
+                }
+
+                function GetModifyProjectRemindList() {
+  
+                    $.ajax({
+                        type: 'POST',
+                        url: "/GetModifyProjectRemindList",                        
+                        cache: false,
+                        async: true,
+                        success: function(data) {
+                            var length = data.recordsFiltered;
+                            $('#ModifyProjectRemind').append( `<a href="/ModifyProjectRemind"><span class="badge badge-info">${length}</span></a>`);
+
+
+
+                            
                         }
                         }).done(function() {
                             $('#loading-cover').fadeOut(100);

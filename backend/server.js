@@ -16,6 +16,7 @@ var loginform = require('./js/login');
 var notification = require('./js/notification');
 var account = require('./js/account');
 var transaction = require('./js/transaction');
+var modifyProject = require('./js/modifyProject');
 var warranty = require('./js/warranty');
 var customer = require('./js/customer');
 var dispatch = require('./js/dispatch');
@@ -51,6 +52,7 @@ app.use(imgUpload);
 app.use(loginform);
 app.use(notification);
 app.use(transaction);
+app.use(modifyProject);
 app.use(warranty);
 app.use(historyRecord);
 app.get('/', function (req, res) {

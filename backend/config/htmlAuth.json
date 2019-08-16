@@ -1381,5 +1381,46 @@
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/DispatchEdit.html"
+    },
+    "ModifyProjectView":
+    {
+        "autho": "admin",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/ModifyProjectView.html"
+    },
+    "ModifyProjectEdit":
+    {
+        "autho": "admin",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/ModifyProjectEdit.html"
+    },
+    "ModifyProjectAdd":
+    {
+        "autho": "admin",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/ModifyProjectAdd.html"
+    },
+    "ModifyProject":
+    {
+        "autho": "admin",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/ModifyProject.html"
+    },
+    "ModifyProject_Transfer":
+    {
+        "autho": "admin",
+        "enable": true,
+        "type": "protocol"
+    },
+    "ModifyProjectRemind":
+    {
+        "autho": "admin",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/ModifyProjectRemind.html"
     }
 }

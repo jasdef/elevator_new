@@ -1,0 +1,257 @@
+{"Time ":"11:01:15","Data":"call Transaction edit"}
+{"Time ":"11:02:42","User":"system","Data":"admin: login OK"}
+{"Time ":"11:02:42","User":"admin","Data":"call Notification"}
+{"Time ":"11:02:42","User":"System","Data":"select * from warranty_form where is_remind=0 and is_delete=0;"}
+{"Time ":"11:02:42","User":"admin","Data":"select COUNT(*) as count from transaction_form where is_delete=0 and left_price>0 and is_signing=0;select * from transaction_form where is_delete=0 and left_price>0 and is_signing=0;"}
+{"Time ":"11:02:42","User":"admin","Data":"select COUNT(*) as count from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !=8;select * from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !=8;"}
+{"Time ":"11:02:42","User":"admin","Data":"select COUNT(*) as count from service_form where is_delete=0 and is_signing=1;select * from service_form where is_delete=0 and is_signing=1;"}
+{"Time ":"11:02:42","User":"admin","Data":"select * from service_form where is_remind=0 and is_delete=0;"}
+{"Time ":"11:02:42","User":"admin","Data":"select COUNT(*) as count from service_form as a inner join customer as b on a.customer_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month=8 or a.dispatch_month !=8;select a.id, a.mechanical_warranty, a.do_times, a.service_month, a.start_date, b.company, a.service_times from service_form as a inner join customer as b on a.customer_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month=8 or a.dispatch_month !=8;"}
+{"Time ":"11:02:42","User":"admin","Data":"select COUNT(*) as count from transaction_form where is_delete=0 and left_price=0 and is_signing=0;select * from transaction_form where is_delete=0 and left_price=0 and is_signing=0;"}
+{"Time ":"11:02:42","User":"admin","Data":"select COUNT(*) as count from warranty_form where is_delete=0 and is_signing=1;select * from warranty_form where is_delete=0 and is_signing=1;"}
+{"Time ":"11:02:42","User":"admin","Data":"select COUNT(*) as count from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and now() > a.license_date;select a.id, a.license_date, b.company, a.start_date, a.total_price, a.left_price from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and now() > a.license_date;"}
+{"Time ":"11:02:44","User":"admin","Data":"call Service remind"}
+{"Time ":"11:02:44","User":"admin","Data":"select COUNT(*) as count from service_form as a inner join customer as b on a.customer_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month=8 or a.dispatch_month !=8;select a.id, a.mechanical_warranty, a.do_times, a.service_month, a.start_date, b.company, a.service_times from service_form as a inner join customer as b on a.customer_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month=8 or a.dispatch_month !=8;"}
+{"Time ":"11:02:46","User":"admin","Data":"call Warranty remind"}
+{"Time ":"11:02:46","User":"admin","Data":"select COUNT(*) as count from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !=8;select * from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !=8;"}
+{"Time ":"11:02:49","User":"admin","Data":"call Warranty"}
+{"Time ":"11:02:50","User":"admin","Data":"select COUNT(*) as count from warranty_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;select a.id, a.title, a.start_date, b.company, b.tel1, b.address1 from warranty_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;"}
+{"Time ":"11:02:51","User":"admin","Data":"call Service"}
+{"Time ":"11:02:51","User":"admin","Data":"select COUNT(*) as count from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;select a.id, b.company, a.start_date, a.total_price, a.left_price from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;"}
+{"Time ":"11:15:46","User":"admin","Data":"call Service"}
+{"Time ":"11:15:47","User":"admin","Data":"select COUNT(*) as count from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;select a.id, b.company, a.start_date, a.total_price, a.left_price from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;"}
+{"Time ":"11:16:35","User":"admin","Data":"call Service"}
+{"Time ":"11:16:36","User":"admin","Data":"select COUNT(*) as count from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;select a.id, b.company, a.start_date, a.total_price, a.left_price from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;"}
+{"Time ":"11:16:40","User":"admin","Data":"call Service view"}
+{"Time ":"11:16:41","User":"admin","Data":"select * from account where autho='staff' and lock_status='N';"}
+{"Time ":"11:16:41","User":"admin","Data":"select COUNT(*) as count from customer  where is_delete=0;select * from customer where is_delete=0;"}
+{"Time ":"11:16:41","User":"admin","Data":"select * from service_form where id=1;"}
+{"Time ":"11:16:41","User":"admin","Data":"select * from service_form where id=1;"}
+{"Time ":"11:17:30","User":"admin","Data":"call Service edit"}
+{"Time ":"11:17:30","User":"admin","Data":"select * from account where autho='staff' and lock_status='N';"}
+{"Time ":"11:17:30","User":"admin","Data":"select COUNT(*) as count from customer  where is_delete=0;select * from customer where is_delete=0;"}
+{"Time ":"11:17:30","User":"admin","Data":"select * from service_form where id=1;"}
+{"Time ":"11:18:39","User":"admin","Data":"call Service edit"}
+{"Time ":"11:18:39","User":"admin","Data":"select * from account where autho='staff' and lock_status='N';"}
+{"Time ":"11:18:39","User":"admin","Data":"select COUNT(*) as count from customer  where is_delete=0;select * from customer where is_delete=0;"}
+{"Time ":"11:18:39","User":"admin","Data":"select * from service_form where id=1;"}
+{"Time ":"11:21:18","User":"admin","Data":"call Service edit"}
+{"Time ":"11:21:19","User":"admin","Data":"select * from account where autho='staff' and lock_status='N';"}
+{"Time ":"11:21:19","User":"admin","Data":"select COUNT(*) as count from customer  where is_delete=0;select * from customer where is_delete=0;"}
+{"Time ":"11:21:19","User":"admin","Data":"select * from service_form where id=1;"}
+{"Time ":"11:22:52","User":"admin","Data":"call Service edit"}
+{"Time ":"11:22:53","User":"admin","Data":"select * from account where autho='staff' and lock_status='N';"}
+{"Time ":"11:22:53","User":"admin","Data":"select COUNT(*) as count from customer  where is_delete=0;select * from customer where is_delete=0;"}
+{"Time ":"11:22:53","User":"admin","Data":"select * from service_form where id=1;"}
+{"Time ":"11:23:31","User":"admin","Data":"call Service"}
+{"Time ":"11:23:31","User":"admin","Data":"select COUNT(*) as count from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;select a.id, b.company, a.start_date, a.total_price, a.left_price from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;"}
+{"Time ":"11:23:33","User":"admin","Data":"call Service view"}
+{"Time ":"11:23:33","User":"admin","Data":"select COUNT(*) as count from customer  where is_delete=0;select * from customer where is_delete=0;"}
+{"Time ":"11:23:33","User":"admin","Data":"select * from account where autho='staff' and lock_status='N';"}
+{"Time ":"11:23:34","User":"admin","Data":"select * from service_form where id=4;"}
+{"Time ":"11:23:34","User":"admin","Data":"select * from service_form where id=4;"}
+{"Time ":"11:23:37","User":"admin","Data":"call Service"}
+{"Time ":"11:23:37","User":"admin","Data":"select COUNT(*) as count from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;select a.id, b.company, a.start_date, a.total_price, a.left_price from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;"}
+{"Time ":"11:23:40","User":"admin","Data":"call Service view"}
+{"Time ":"11:23:40","User":"admin","Data":"select * from account where autho='staff' and lock_status='N';"}
+{"Time ":"11:23:40","User":"admin","Data":"select COUNT(*) as count from customer  where is_delete=0;select * from customer where is_delete=0;"}
+{"Time ":"11:23:40","User":"admin","Data":"select * from service_form where id=2;"}
+{"Time ":"11:23:40","User":"admin","Data":"select * from service_form where id=2;"}
+{"Time ":"11:24:18","User":"admin","Data":"call Service view"}
+{"Time ":"11:24:18","User":"admin","Data":"select * from account where autho='staff' and lock_status='N';"}
+{"Time ":"11:24:18","User":"admin","Data":"select COUNT(*) as count from customer  where is_delete=0;select * from customer where is_delete=0;"}
+{"Time ":"11:24:18","User":"admin","Data":"select * from service_form where id=2;"}
+{"Time ":"11:24:18","User":"admin","Data":"select * from service_form where id=2;"}
+{"Time ":"11:26:28","User":"admin","Data":"call Service"}
+{"Time ":"11:26:28","User":"admin","Data":"select COUNT(*) as count from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;select a.id, b.company, a.start_date, a.total_price, a.left_price from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;"}
+{"Time ":"11:26:30","User":"admin","Data":"call Service add"}
+{"Time ":"11:26:30","User":"admin","Data":"select * from account where autho='staff' and lock_status='N';"}
+{"Time ":"11:26:30","User":"admin","Data":"select COUNT(*) as count from customer  where is_delete=0;select * from customer where is_delete=0;"}
+{"Time ":"11:27:15","User":"admin","Data":"insert into service_form (`start_date`, `left_price`, `total_price`, `note`, `warranty_id`, `mechanical_warranty`, `service_month`, `has_license`, `license_date`, `items`, `do_times`, `staff_id`) VALUES ('2019-08-16','98889','100000','stgrewtwe','','2','1','1','2019-08-16','{\\\"0\\\":[\\\"2019-03-25\\\",\\\"1111\\\",\\\"5\\\"],\\\"length\\\":1}','1','2');"}
+{"Time ":"11:27:22","User":"admin","Data":"call Service"}
+{"Time ":"11:27:22","User":"admin","Data":"select COUNT(*) as count from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;select a.id, b.company, a.start_date, a.total_price, a.left_price from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;"}
+{"Time ":"11:27:30","User":"admin","Data":"call Service view"}
+{"Time ":"11:27:30","User":"admin","Data":"select * from account where autho='staff' and lock_status='N';"}
+{"Time ":"11:27:30","User":"admin","Data":"select COUNT(*) as count from customer  where is_delete=0;select * from customer where is_delete=0;"}
+{"Time ":"11:27:31","User":"admin","Data":"select * from service_form where id=5;"}
+{"Time ":"11:27:31","User":"admin","Data":"select * from service_form where id=5;"}
+{"Time ":"11:27:35","User":"admin","Data":"call Service"}
+{"Time ":"11:27:36","User":"admin","Data":"select COUNT(*) as count from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;select a.id, b.company, a.start_date, a.total_price, a.left_price from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;"}
+{"Time ":"11:29:43","User":"admin","Data":"call Service add"}
+{"Time ":"11:29:43","User":"admin","Data":"select * from account where autho='staff' and lock_status='N';"}
+{"Time ":"11:29:43","User":"admin","Data":"select COUNT(*) as count from customer  where is_delete=0;select * from customer where is_delete=0;"}
+{"Time ":"11:30:16","User":"admin","Data":"insert into service_form (`start_date`, `left_price`, `total_price`, `note`, `warranty_id`, `mechanical_warranty`, `service_month`, `has_license`, `license_date`, `items`, `do_times`, `staff_id`) VALUES ('2019-08-16','11111','111111','dsfsdfsdf','1','1','1','1','2019-08-16','{\\\"0\\\":[\\\"2019-08-16\\\",\\\"100000\\\",\\\"5\\\"],\\\"length\\\":1}','1','4');"}
+{"Time ":"11:32:30","Data":"call Service"}
+{"Time ":"11:32:33","User":"system","Data":"admin: login OK"}
+{"Time ":"11:32:33","User":"admin","Data":"call Notification"}
+{"Time ":"11:32:34","User":"admin","Data":"select COUNT(*) as count from transaction_form where is_delete=0 and left_price>0 and is_signing=0;select * from transaction_form where is_delete=0 and left_price>0 and is_signing=0;"}
+{"Time ":"11:32:34","User":"admin","Data":"select COUNT(*) as count from service_form where is_delete=0 and is_signing=1;select * from service_form where is_delete=0 and is_signing=1;"}
+{"Time ":"11:32:34","User":"System","Data":"select * from warranty_form where is_remind=0 and is_delete=0;"}
+{"Time ":"11:32:34","User":"admin","Data":"select COUNT(*) as count from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !=8;select * from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !=8;"}
+{"Time ":"11:32:34","User":"admin","Data":"select * from service_form where is_remind=0 and is_delete=0;"}
+{"Time ":"11:32:34","User":"admin","Data":"select COUNT(*) as count from service_form as a inner join customer as b on a.customer_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month=8 or a.dispatch_month !=8;select a.id, a.mechanical_warranty, a.do_times, a.service_month, a.start_date, b.company, a.service_times from service_form as a inner join customer as b on a.customer_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month=8 or a.dispatch_month !=8;"}
+{"Time ":"11:32:34","User":"admin","Data":"select COUNT(*) as count from warranty_form where is_delete=0 and is_signing=1;select * from warranty_form where is_delete=0 and is_signing=1;"}
+{"Time ":"11:32:34","User":"admin","Data":"select COUNT(*) as count from transaction_form where is_delete=0 and left_price=0 and is_signing=0;select * from transaction_form where is_delete=0 and left_price=0 and is_signing=0;"}
+{"Time ":"11:32:34","User":"admin","Data":"select COUNT(*) as count from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and now() > a.license_date;select a.id, a.license_date, b.company, a.start_date, a.total_price, a.left_price from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and now() > a.license_date;"}
+{"Time ":"11:32:39","User":"admin","Data":"insert into service_form (`start_date`, `left_price`, `total_price`, `note`, `warranty_id`, `mechanical_warranty`, `service_month`, `has_license`, `license_date`, `items`, `do_times`, `staff_id`, `customer_id`) VALUES ('2019-08-16','11111','111111','dsfsdfsdf','1','1','1','1','2019-08-16','{\\\"0\\\":[\\\"2019-08-16\\\",\\\"100000\\\",\\\"5\\\"],\\\"length\\\":1}','1','4',1);"}
+{"Time ":"11:32:46","User":"admin","Data":"call Service"}
+{"Time ":"11:32:46","User":"admin","Data":"select COUNT(*) as count from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;select a.id, b.company, a.start_date, a.total_price, a.left_price from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;"}
+{"Time ":"11:45:05","User":"admin","Data":"call Service"}
+{"Time ":"11:45:05","User":"admin","Data":"select COUNT(*) as count from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;select a.id, b.company, a.start_date, a.total_price, a.left_price from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;"}
+{"Time ":"11:45:56","User":"admin","Data":"call Service"}
+{"Time ":"11:45:56","User":"admin","Data":"select COUNT(*) as count from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;select a.id, b.company, a.start_date, a.total_price, a.left_price from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;"}
+{"Time ":"11:47:33","User":"admin","Data":"call Transaction"}
+{"Time ":"11:47:34","User":"admin","Data":"select COUNT(*) as count from transaction_form where is_delete=0;select * from transaction_form where is_delete=0;"}
+{"Time ":"11:51:41","User":"admin","Data":"call Notification"}
+{"Time ":"11:51:42","User":"admin","Data":"select COUNT(*) as count from transaction_form where is_delete=0 and left_price>0 and is_signing=0;select * from transaction_form where is_delete=0 and left_price>0 and is_signing=0;"}
+{"Time ":"11:51:42","User":"admin","Data":"select COUNT(*) as count from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !=8;select * from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !=8;"}
+{"Time ":"11:51:42","User":"System","Data":"select * from warranty_form where is_remind=0 and is_delete=0;"}
+{"Time ":"11:51:42","User":"admin","Data":"select * from service_form where is_remind=0 and is_delete=0;"}
+{"Time ":"11:51:42","User":"admin","Data":"select COUNT(*) as count from service_form as a inner join customer as b on a.customer_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month=8 or a.dispatch_month !=8;select a.id, a.mechanical_warranty, a.do_times, a.service_month, a.start_date, b.company, a.service_times from service_form as a inner join customer as b on a.customer_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month=8 or a.dispatch_month !=8;"}
+{"Time ":"11:51:42","User":"admin","Data":"select COUNT(*) as count from service_form where is_delete=0 and is_signing=1;select * from service_form where is_delete=0 and is_signing=1;"}
+{"Time ":"11:51:42","User":"admin","Data":"select COUNT(*) as count from warranty_form where is_delete=0 and is_signing=1;select * from warranty_form where is_delete=0 and is_signing=1;"}
+{"Time ":"11:51:42","User":"admin","Data":"select COUNT(*) as count from transaction_form where is_delete=0 and left_price=0 and is_signing=0;select * from transaction_form where is_delete=0 and left_price=0 and is_signing=0;"}
+{"Time ":"11:51:42","User":"admin","Data":"select COUNT(*) as count from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and now() > a.license_date;select a.id, a.license_date, b.company, a.start_date, a.total_price, a.left_price from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and now() > a.license_date;"}
+{"Time ":"11:51:44","User":"admin","Data":"call License remind"}
+{"Time ":"11:51:44","User":"admin","Data":"select COUNT(*) as count from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and now() > a.license_date;select a.id, a.license_date, b.company, a.start_date, a.total_price, a.left_price from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and now() > a.license_date;"}
+{"Time ":"11:53:04","User":"admin","Data":"call License remind"}
+{"Time ":"11:53:05","User":"admin","Data":"select COUNT(*) as count from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and now() > a.license_date;select a.id, a.license_date, b.company, a.start_date, a.total_price, a.left_price from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and now() > a.license_date;"}
+{"Time ":"11:55:03","User":"admin","Data":"call Service"}
+{"Time ":"11:55:03","User":"admin","Data":"select COUNT(*) as count from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;select a.id, b.company, a.start_date, a.total_price, a.left_price from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;"}
+{"Time ":"11:55:05","User":"admin","Data":"call Service edit"}
+{"Time ":"11:55:06","User":"admin","Data":"select * from account where autho='staff' and lock_status='N';"}
+{"Time ":"11:55:06","User":"admin","Data":"select COUNT(*) as count from customer  where is_delete=0;select * from customer where is_delete=0;"}
+{"Time ":"11:55:06","User":"admin","Data":"select * from service_form where id=1;"}
+{"Time ":"11:55:29","User":"admin","Data":"call Warranty"}
+{"Time ":"11:55:29","User":"admin","Data":"select COUNT(*) as count from warranty_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;select a.id, a.title, a.start_date, b.company, b.tel1, b.address1 from warranty_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;"}
+{"Time ":"11:55:30","User":"admin","Data":"call Warranty add"}
+{"Time ":"11:55:31","User":"admin","Data":"select COUNT(*) as count from customer  where is_delete=0;select * from customer where is_delete=0;"}
+{"Time ":"11:55:31","User":"admin","Data":"select * from account where autho='staff' and lock_status='N';"}
+{"Time ":"11:55:36","User":"admin","Data":"call Notification"}
+{"Time ":"11:55:37","User":"admin","Data":"select COUNT(*) as count from transaction_form where is_delete=0 and left_price>0 and is_signing=0;select * from transaction_form where is_delete=0 and left_price>0 and is_signing=0;"}
+{"Time ":"11:55:37","User":"System","Data":"select * from warranty_form where is_remind=0 and is_delete=0;"}
+{"Time ":"11:55:37","User":"admin","Data":"select COUNT(*) as count from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !=8;select * from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !=8;"}
+{"Time ":"11:55:37","User":"admin","Data":"select * from service_form where is_remind=0 and is_delete=0;"}
+{"Time ":"11:55:37","User":"admin","Data":"select COUNT(*) as count from service_form as a inner join customer as b on a.customer_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month=8 or a.dispatch_month !=8;select a.id, a.mechanical_warranty, a.do_times, a.service_month, a.start_date, b.company, a.service_times from service_form as a inner join customer as b on a.customer_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month=8 or a.dispatch_month !=8;"}
+{"Time ":"11:55:37","User":"admin","Data":"select COUNT(*) as count from service_form where is_delete=0 and is_signing=1;select * from service_form where is_delete=0 and is_signing=1;"}
+{"Time ":"11:55:37","User":"admin","Data":"select COUNT(*) as count from warranty_form where is_delete=0 and is_signing=1;select * from warranty_form where is_delete=0 and is_signing=1;"}
+{"Time ":"11:55:37","User":"admin","Data":"select COUNT(*) as count from transaction_form where is_delete=0 and left_price=0 and is_signing=0;select * from transaction_form where is_delete=0 and left_price=0 and is_signing=0;"}
+{"Time ":"11:55:37","User":"admin","Data":"select COUNT(*) as count from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and now() > a.license_date;select a.id, a.license_date, b.company, a.start_date, a.total_price, a.left_price from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and now() > a.license_date;"}
+{"Time ":"11:58:32","User":"admin","Data":"call Warranty"}
+{"Time ":"11:58:32","User":"admin","Data":"select COUNT(*) as count from warranty_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;select a.id, a.title, a.start_date, b.company, b.tel1, b.address1 from warranty_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;"}
+{"Time ":"13:32:31","Data":"call Warranty view"}
+{"Time ":"13:32:34","User":"system","Data":"admin:　login ERROR"}
+{"Time ":"13:32:37","User":"system","Data":"admin: login OK"}
+{"Time ":"13:32:37","User":"admin","Data":"call Notification"}
+{"Time ":"13:32:38","User":"admin","Data":"select COUNT(*) as count from transaction_form where is_delete=0 and left_price>0 and is_signing=0;select * from transaction_form where is_delete=0 and left_price>0 and is_signing=0;"}
+{"Time ":"13:32:38","User":"System","Data":"select * from warranty_form where is_remind=0 and is_delete=0;"}
+{"Time ":"13:32:38","User":"admin","Data":"select * from service_form where is_remind=0 and is_delete=0;"}
+{"Time ":"13:32:38","User":"admin","Data":"select COUNT(*) as count from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !=8;select * from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !=8;"}
+{"Time ":"13:32:38","User":"admin","Data":"select COUNT(*) as count from service_form as a inner join customer as b on a.customer_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month=8 or a.dispatch_month !=8;select a.id, a.mechanical_warranty, a.do_times, a.service_month, a.start_date, b.company, a.service_times from service_form as a inner join customer as b on a.customer_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month=8 or a.dispatch_month !=8;"}
+{"Time ":"13:32:38","User":"admin","Data":"select COUNT(*) as count from service_form where is_delete=0 and is_signing=1;select * from service_form where is_delete=0 and is_signing=1;"}
+{"Time ":"13:32:38","User":"admin","Data":"select COUNT(*) as count from warranty_form where is_delete=0 and is_signing=1;select * from warranty_form where is_delete=0 and is_signing=1;"}
+{"Time ":"13:32:38","User":"admin","Data":"select COUNT(*) as count from transaction_form where is_delete=0 and left_price=0 and is_signing=0;select * from transaction_form where is_delete=0 and left_price=0 and is_signing=0;"}
+{"Time ":"13:32:38","User":"admin","Data":"select COUNT(*) as count from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and now() > a.license_date;select a.id, a.license_date, b.company, a.start_date, a.total_price, a.left_price from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and now() > a.license_date;"}
+{"Time ":"13:32:41","User":"admin","Data":"call Transaction"}
+{"Time ":"13:32:41","User":"admin","Data":"select COUNT(*) as count from transaction_form where is_delete=0;select * from transaction_form where is_delete=0;"}
+{"Time ":"13:32:42","User":"admin","Data":"call Warranty"}
+{"Time ":"13:32:42","User":"admin","Data":"select COUNT(*) as count from warranty_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;select a.id, a.title, a.start_date, b.company, b.tel1, b.address1 from warranty_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;"}
+{"Time ":"13:32:44","User":"admin","Data":"call Warranty view"}
+{"Time ":"13:32:44","User":"admin","Data":"select * from account where autho='staff' and lock_status='N';"}
+{"Time ":"13:32:44","User":"admin","Data":"select COUNT(*) as count from customer  where is_delete=0;select * from customer where is_delete=0;"}
+{"Time ":"13:32:44","User":"admin","Data":"select * from warranty_form where id=1;"}
+{"Time ":"13:32:44","User":"admin","Data":"select * from warranty_form where id=1;"}
+{"Time ":"13:45:25","User":"admin","Data":"call Customer"}
+{"Time ":"13:45:26","User":"admin","Data":"select COUNT(*) as count from customer  where is_delete=0;select * from customer where is_delete=0;"}
+{"Time ":"13:45:29","User":"admin","Data":"call Customer add"}
+{"Time ":"14:06:46","Data":"call Customer add"}
+{"Time ":"14:07:10","User":"system","Data":"admin: login OK"}
+{"Time ":"14:07:10","User":"admin","Data":"call Notification"}
+{"Time ":"14:07:11","User":"admin","Data":"select COUNT(*) as count from transaction_form where is_delete=0 and left_price>0 and is_signing=0;select * from transaction_form where is_delete=0 and left_price>0 and is_signing=0;"}
+{"Time ":"14:07:11","User":"System","Data":"select * from warranty_form where is_remind=0 and is_delete=0;"}
+{"Time ":"14:07:11","User":"admin","Data":"select COUNT(*) as count from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !=8;select * from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !=8;"}
+{"Time ":"14:07:11","User":"admin","Data":"select COUNT(*) as count from service_form as a inner join customer as b on a.customer_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month=8 or a.dispatch_month !=8;select a.id, a.mechanical_warranty, a.do_times, a.service_month, a.start_date, b.company, a.service_times from service_form as a inner join customer as b on a.customer_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month=8 or a.dispatch_month !=8;"}
+{"Time ":"14:07:11","User":"admin","Data":"select COUNT(*) as count from service_form where is_delete=0 and is_signing=1;select * from service_form where is_delete=0 and is_signing=1;"}
+{"Time ":"14:07:11","User":"admin","Data":"select * from service_form where is_remind=0 and is_delete=0;"}
+{"Time ":"14:07:11","User":"admin","Data":"select COUNT(*) as count from warranty_form where is_delete=0 and is_signing=1;select * from warranty_form where is_delete=0 and is_signing=1;"}
+{"Time ":"14:07:11","User":"admin","Data":"select COUNT(*) as count from transaction_form where is_delete=0 and left_price=0 and is_signing=0;select * from transaction_form where is_delete=0 and left_price=0 and is_signing=0;"}
+{"Time ":"14:07:11","User":"admin","Data":"select COUNT(*) as count from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and now() > a.license_date;select a.id, a.license_date, b.company, a.start_date, a.total_price, a.left_price from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and now() > a.license_date;"}
+{"Time ":"14:07:16","User":"admin","Data":"call Warranty"}
+{"Time ":"14:07:16","User":"admin","Data":"select COUNT(*) as count from warranty_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;select a.id, a.title, a.start_date, a.free_maintenance, b.company, b.tel1, b.address1 from warranty_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;"}
+{"Time ":"14:07:17","User":"admin","Data":"call Service"}
+{"Time ":"14:07:17","User":"admin","Data":"select COUNT(*) as count from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;select a.id, b.company, a.start_date, a.total_price, a.left_price from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;"}
+{"Time ":"14:07:19","User":"admin","Data":"call Warranty"}
+{"Time ":"14:07:20","User":"admin","Data":"select COUNT(*) as count from warranty_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;select a.id, a.title, a.start_date, a.free_maintenance, b.company, b.tel1, b.address1 from warranty_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;"}
+{"Time ":"14:08:23","User":"admin","Data":"call Warranty"}
+{"Time ":"14:08:24","User":"admin","Data":"select COUNT(*) as count from warranty_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;select a.id, a.title, a.start_date, a.free_maintenance, b.company, b.tel1, b.address1 from warranty_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;"}
+{"Time ":"14:08:40","User":"admin","Data":"call Warranty"}
+{"Time ":"14:08:41","User":"admin","Data":"select COUNT(*) as count from warranty_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;select a.id, a.title, a.start_date, a.free_maintenance, b.company, b.tel1, b.address1 from warranty_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;"}
+{"Time ":"14:08:47","User":"admin","Data":"call Warranty view"}
+{"Time ":"14:08:47","User":"admin","Data":"select * from account where autho='staff' and lock_status='N';"}
+{"Time ":"14:08:47","User":"admin","Data":"select COUNT(*) as count from customer  where is_delete=0;select * from customer where is_delete=0;"}
+{"Time ":"14:08:47","User":"admin","Data":"select * from warranty_form where id=2;"}
+{"Time ":"14:08:47","User":"admin","Data":"select * from warranty_form where id=2;"}
+{"Time ":"14:10:27","User":"admin","Data":"call Warranty"}
+{"Time ":"14:10:27","User":"admin","Data":"select COUNT(*) as count from warranty_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;select a.id, a.title, a.start_date, a.free_maintenance, b.company, b.tel1, b.address1 from warranty_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;"}
+{"Time ":"15:21:12","Data":"call Warranty"}
+{"Time ":"15:21:16","User":"system","Data":"admin: login OK"}
+{"Time ":"15:21:16","User":"admin","Data":"call Notification"}
+{"Time ":"15:21:17","User":"admin","Data":"select COUNT(*) as count from transaction_form where is_delete=0 and left_price>0 and is_signing=0;select * from transaction_form where is_delete=0 and left_price>0 and is_signing=0;"}
+{"Time ":"15:21:17","User":"System","Data":"select * from warranty_form where is_remind=0 and is_delete=0;"}
+{"Time ":"15:21:17","User":"admin","Data":"select * from service_form where is_remind=0 and is_delete=0;"}
+{"Time ":"15:21:17","User":"admin","Data":"select COUNT(*) as count from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !=8;select * from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !=8;"}
+{"Time ":"15:21:17","User":"admin","Data":"select COUNT(*) as count from service_form where is_delete=0 and is_signing=1;select * from service_form where is_delete=0 and is_signing=1;"}
+{"Time ":"15:21:17","User":"admin","Data":"select COUNT(*) as count from service_form as a inner join customer as b on a.customer_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month=8 or a.dispatch_month !=8;select a.id, a.mechanical_warranty, a.do_times, a.service_month, a.start_date, b.company, a.service_times from service_form as a inner join customer as b on a.customer_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month=8 or a.dispatch_month !=8;"}
+{"Time ":"15:21:17","User":"admin","Data":"select COUNT(*) as count from transaction_form where is_delete=0 and left_price=0 and is_signing=0;select * from transaction_form where is_delete=0 and left_price=0 and is_signing=0;"}
+{"Time ":"15:21:17","User":"admin","Data":"select COUNT(*) as count from warranty_form where is_delete=0 and is_signing=1;select * from warranty_form where is_delete=0 and is_signing=1;"}
+{"Time ":"15:21:17","User":"admin","Data":"select COUNT(*) as count from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and now() > a.license_date;select a.id, a.license_date, b.company, a.start_date, a.total_price, a.left_price from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and now() > a.license_date;"}
+{"Time ":"15:23:00","Data":"call Notification"}
+{"Time ":"15:23:03","User":"system","Data":"admin: login OK"}
+{"Time ":"15:23:03","User":"admin","Data":"call Notification"}
+{"Time ":"15:23:04","User":"admin","Data":"select COUNT(*) as count from transaction_form where is_delete=0 and left_price>0 and is_signing=0;select * from transaction_form where is_delete=0 and left_price>0 and is_signing=0;"}
+{"Time ":"15:23:04","User":"System","Data":"select * from warranty_form where is_remind=0 and is_delete=0;"}
+{"Time ":"15:23:04","User":"admin","Data":"select COUNT(*) as count from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !=8;select * from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !=8;"}
+{"Time ":"15:23:04","User":"admin","Data":"select * from service_form where is_remind=0 and is_delete=0;"}
+{"Time ":"15:23:04","User":"admin","Data":"select COUNT(*) as count from service_form as a inner join customer as b on a.customer_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month=8 or a.dispatch_month !=8;select a.id, a.mechanical_warranty, a.do_times, a.service_month, a.start_date, b.company, a.service_times from service_form as a inner join customer as b on a.customer_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month=8 or a.dispatch_month !=8;"}
+{"Time ":"15:23:04","User":"admin","Data":"select COUNT(*) as count from warranty_form where is_delete=0 and is_signing=1;select * from warranty_form where is_delete=0 and is_signing=1;"}
+{"Time ":"15:23:04","User":"admin","Data":"select COUNT(*) as count from service_form where is_delete=0 and is_signing=1;select * from service_form where is_delete=0 and is_signing=1;"}
+{"Time ":"15:23:04","User":"admin","Data":"select COUNT(*) as count from transaction_form where is_delete=0 and left_price=0 and is_signing=0;select * from transaction_form where is_delete=0 and left_price=0 and is_signing=0;"}
+{"Time ":"15:23:04","User":"admin","Data":"select COUNT(*) as count from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and now() > a.license_date;select a.id, a.license_date, b.company, a.start_date, a.total_price, a.left_price from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and now() > a.license_date;"}
+{"Time ":"15:23:04","User":"admin","Data":"select COUNT(*) as count from modify_project where is_delete=0 and left_price>0 and is_signing=0;select * from modify_project where is_delete=0 and left_price>0 and is_signing=0;"}
+{"Time ":"15:25:11","User":"admin","Data":"call Notification"}
+{"Time ":"15:25:12","User":"System","Data":"select * from warranty_form where is_remind=0 and is_delete=0;"}
+{"Time ":"15:25:12","User":"admin","Data":"select COUNT(*) as count from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !=8;select * from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !=8;"}
+{"Time ":"15:25:12","User":"admin","Data":"select * from service_form where is_remind=0 and is_delete=0;"}
+{"Time ":"15:25:12","User":"admin","Data":"select COUNT(*) as count from transaction_form where is_delete=0 and left_price>0 and is_signing=0;select * from transaction_form where is_delete=0 and left_price>0 and is_signing=0;"}
+{"Time ":"15:25:12","User":"admin","Data":"select COUNT(*) as count from service_form as a inner join customer as b on a.customer_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month=8 or a.dispatch_month !=8;select a.id, a.mechanical_warranty, a.do_times, a.service_month, a.start_date, b.company, a.service_times from service_form as a inner join customer as b on a.customer_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month=8 or a.dispatch_month !=8;"}
+{"Time ":"15:25:12","User":"admin","Data":"select COUNT(*) as count from service_form where is_delete=0 and is_signing=1;select * from service_form where is_delete=0 and is_signing=1;"}
+{"Time ":"15:25:12","User":"admin","Data":"select COUNT(*) as count from warranty_form where is_delete=0 and is_signing=1;select * from warranty_form where is_delete=0 and is_signing=1;"}
+{"Time ":"15:25:12","User":"admin","Data":"select COUNT(*) as count from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and now() > a.license_date;select a.id, a.license_date, b.company, a.start_date, a.total_price, a.left_price from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and now() > a.license_date;"}
+{"Time ":"15:25:12","User":"admin","Data":"select COUNT(*) as count from transaction_form where is_delete=0 and left_price=0 and is_signing=0;select * from transaction_form where is_delete=0 and left_price=0 and is_signing=0;"}
+{"Time ":"15:25:12","User":"admin","Data":"select COUNT(*) as count from modify_project where is_delete=0 and left_price>0 and is_signing=0;select * from modify_project where is_delete=0 and left_price>0 and is_signing=0;"}
+{"Time ":"15:26:29","User":"admin","Data":"call Notification"}
+{"Time ":"15:26:30","User":"admin","Data":"select COUNT(*) as count from transaction_form where is_delete=0 and left_price>0 and is_signing=0;select * from transaction_form where is_delete=0 and left_price>0 and is_signing=0;"}
+{"Time ":"15:26:30","User":"System","Data":"select * from warranty_form where is_remind=0 and is_delete=0;"}
+{"Time ":"15:26:30","User":"admin","Data":"select COUNT(*) as count from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !=8;select * from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !=8;"}
+{"Time ":"15:26:30","User":"admin","Data":"select * from service_form where is_remind=0 and is_delete=0;"}
+{"Time ":"15:26:30","User":"admin","Data":"select COUNT(*) as count from service_form as a inner join customer as b on a.customer_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month=8 or a.dispatch_month !=8;select a.id, a.mechanical_warranty, a.do_times, a.service_month, a.start_date, b.company, a.service_times from service_form as a inner join customer as b on a.customer_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month=8 or a.dispatch_month !=8;"}
+{"Time ":"15:26:30","User":"admin","Data":"select COUNT(*) as count from service_form where is_delete=0 and is_signing=1;select * from service_form where is_delete=0 and is_signing=1;"}
+{"Time ":"15:26:30","User":"admin","Data":"select COUNT(*) as count from warranty_form where is_delete=0 and is_signing=1;select * from warranty_form where is_delete=0 and is_signing=1;"}
+{"Time ":"15:26:30","User":"admin","Data":"select COUNT(*) as count from transaction_form where is_delete=0 and left_price=0 and is_signing=0;select * from transaction_form where is_delete=0 and left_price=0 and is_signing=0;"}
+{"Time ":"15:26:30","User":"admin","Data":"select COUNT(*) as count from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and now() > a.license_date;select a.id, a.license_date, b.company, a.start_date, a.total_price, a.left_price from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and now() > a.license_date;"}
+{"Time ":"15:26:30","User":"admin","Data":"select COUNT(*) as count from modify_project where is_delete=0 and left_price>0 and is_signing=0;select * from modify_project where is_delete=0 and left_price>0 and is_signing=0;"}
+{"Time ":"15:35:19","Data":"call Notification"}
+{"Time ":"15:35:23","User":"system","Data":"admin: login OK"}
+{"Time ":"15:35:23","User":"admin","Data":"call Notification"}
+{"Time ":"15:35:23","User":"admin","Data":"select COUNT(*) as count from transaction_form where is_delete=0 and left_price>0 and is_signing=0;select * from transaction_form where is_delete=0 and left_price>0 and is_signing=0;"}
+{"Time ":"15:35:23","User":"System","Data":"select * from warranty_form where is_remind=0 and is_delete=0;"}
+{"Time ":"15:35:23","User":"admin","Data":"select COUNT(*) as count from service_form as a inner join customer as b on a.customer_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month=8 or a.dispatch_month !=8;select a.id, a.mechanical_warranty, a.do_times, a.service_month, a.start_date, b.company, a.service_times from service_form as a inner join customer as b on a.customer_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month=8 or a.dispatch_month !=8;"}
+{"Time ":"15:35:23","User":"admin","Data":"select COUNT(*) as count from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !=8;select * from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !=8;"}
+{"Time ":"15:35:23","User":"admin","Data":"select * from service_form where is_remind=0 and is_delete=0;"}
+{"Time ":"15:35:23","User":"admin","Data":"select COUNT(*) as count from service_form where is_delete=0 and is_signing=1;select * from service_form where is_delete=0 and is_signing=1;"}
+{"Time ":"15:35:23","User":"admin","Data":"select COUNT(*) as count from transaction_form where is_delete=0 and left_price=0 and is_signing=0;select * from transaction_form where is_delete=0 and left_price=0 and is_signing=0;"}
+{"Time ":"15:35:23","User":"admin","Data":"select COUNT(*) as count from warranty_form where is_delete=0 and is_signing=1;select * from warranty_form where is_delete=0 and is_signing=1;"}
+{"Time ":"15:35:23","User":"admin","Data":"select COUNT(*) as count from modify_project where is_delete=0 and left_price>0 and is_signing=0;select * from modify_project where is_delete=0 and left_price>0 and is_signing=0;"}
+{"Time ":"15:35:23","User":"admin","Data":"select COUNT(*) as count from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and now() > a.license_date;select a.id, a.license_date, b.company, a.start_date, a.total_price, a.left_price from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and now() > a.license_date;"}
+{"Time ":"15:35:25","User":"admin","Data":"call ModifyProject remind"}
+{"Time ":"15:35:25","User":"admin","Data":"select COUNT(*) as count from modify_project where is_delete=0 and left_price>0 and is_signing=0;select * from modify_project where is_delete=0 and left_price>0 and is_signing=0;"}

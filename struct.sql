@@ -46,7 +46,7 @@ CREATE TABLE `behavior_log` (
   `operator` varchar(45) DEFAULT NULL,
   `modifytime` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4151 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4432 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -139,20 +139,20 @@ DROP TABLE IF EXISTS `fix_form`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `fix_form` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(45) DEFAULT NULL,
+  `title` varchar(45) CHARACTER SET utf8 DEFAULT NULL,
   `total_price` int(11) DEFAULT NULL,
   `left_price` int(11) DEFAULT NULL,
   `num` int(11) DEFAULT NULL,
   `type` int(11) DEFAULT NULL,
-  `status` varchar(45) DEFAULT NULL,
-  `fxi_item` varchar(45) DEFAULT NULL,
-  `note` varchar(45) DEFAULT NULL,
+  `status` varchar(45) CHARACTER SET utf8 DEFAULT NULL,
+  `fix_item` varchar(45) CHARACTER SET utf8 DEFAULT NULL,
+  `note` varchar(45) CHARACTER SET utf8 DEFAULT NULL,
   `staff_id` int(11) DEFAULT '0',
   `customer_id` int(11) DEFAULT '0',
   `is_delete` int(11) DEFAULT '0',
   `items` tinytext,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -278,4 +278,4 @@ CREATE TABLE `warranty_form` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-08-16 16:10:55
+-- Dump completed on 2019-08-17  0:16:46

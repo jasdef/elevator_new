@@ -284,10 +284,10 @@ router.post('/CompleteDispatch', function (req, res) {
                        var neeTimes =  data.mechanical_warranty * 12 / data.service_month * data.do_times; 
                        var serviceTimes = data.service_times+1;                                     
                        sql = "";
-                       if (neeTimes == serviceTimes) {
+                       /*if (neeTimes == serviceTimes) {
                             sql = "update service_form set is_remind=2, is_dispatch=0, is_signing=1, service_times="+serviceTimes+" where id="+tableID+";";
                        }
-                       else if (serviceTimes%data.do_times != 0) {
+                       else */if (serviceTimes%data.do_times != 0) {
                             sql = "update service_form set is_dispatch=0, service_times="+serviceTimes+" where id="+tableID+";";                            
                        }
                        else {

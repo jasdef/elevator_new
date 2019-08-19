@@ -190,6 +190,13 @@ router.post('/CheckServiceRemind', function(req, res) {
                                 updateRemindStatus += `update service_form set is_remind=1 where id=`+data[i].id+" and is_delete=0;";
                             }                           
                         }
+
+                        tempTime.setDate(tempTime.getDate()+ data.mechanical_warranty * 365); // 檢查是否已經快到合約結束的前一個月
+                        tempTime.setMonth(tempTime.getMonth() - 1);
+
+                        if (tempTime < new Date()) {
+                            updateRemindStatus += "update service_form set is_remind=2, is_dispatch=0, is_signing=1, where id="+data[i].id+";";
+                        }
                     }
                     
                     if (updateRemindStatus != "") {

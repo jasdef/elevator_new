@@ -99,7 +99,7 @@ router.post('/EditCustomer', function(req, res) {
     common.CreateHtml("Customer_Transfer", req, res, function (err) {
     common.BackendConnection(res, function(err, connection) {
             var requestData = JSON.parse(req.body.requestData);
-            var editCustomerSQL = "update customer set `company`=?, `num`=?, `contactor1`=?, `contactor2`=?, `contactor3`=?, `tel1`=?, `tel2`=?, `tel3`=?, `address1`=?, `address2`=?, `address3`=?, `fax1`=?, `fax2`=?, `fax3`=? where `id`=?;";
+            var editCustomerSQL = "update customer set `company`=?, `num`=?, `contactor1`=?, `contactor2`=?, `contactor3`=?, `tel1`=?, `tel2`=?, `tel3`=?, `address1`=?, `address2`=?, `address3`=?, `fax1`=?, `fax2`=?, `fax3`=?, `note`=? where `id`=?;";
 
             var CustomerData = 
             [
@@ -117,6 +117,7 @@ router.post('/EditCustomer', function(req, res) {
                 requestData.fax1,            
                 requestData.fax2,            
                 requestData.fax3,
+                requestData.note,
                 requestData.id
             ];
   
@@ -148,7 +149,7 @@ router.post('/AddCustomer', function(req, res) {//4
             var requestData = JSON.parse(req.body.requestData);
             console.log(req.body);
             console.log(requestData);
-            var addCustomerSQL = "insert into customer (`company`, `num`, `contactor1`, `contactor2`, `contactor3`, `tel1`, `tel2`, `tel3`, `address1`, `address2`, `address3`,`fax1`,`fax2`,`fax3`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+            var addCustomerSQL = "insert into customer (`company`, `num`, `contactor1`, `contactor2`, `contactor3`, `tel1`, `tel2`, `tel3`, `address1`, `address2`, `address3`,`fax1`,`fax2`,`fax3`,`note`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 
             var CustomerData = 
             [
@@ -165,7 +166,8 @@ router.post('/AddCustomer', function(req, res) {//4
                 requestData.address3,            
                 requestData.fax1,            
                 requestData.fax2,            
-                requestData.fax3
+                requestData.fax3,
+                requestData.note
             ];
   
             addCustomerSQL = connection.format(addCustomerSQL, CustomerData);

@@ -122,7 +122,13 @@
                                                 <input type="text" name="address3" id="address3" class="form-control" value="" />                               
                                             </div>
                                         </div>
-  
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">備註事項
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <textarea id="note" style="width:300px;height:100px;"></textarea>
+                                            </div>
+                                        </div>
                                         <div class="ln_solid"></div>
                                         <div class="form-group">
                                             <div class="col-md-9 col-md-offset-4">
@@ -278,6 +284,7 @@
             $('#fax1').val("");
             $('#fax2').val("");
             $('#fax3').val("");
+            $('#note').val("");
         }
 
    
@@ -324,7 +331,7 @@
             var fax1 = $('#fax1').val();
             var fax2 = $('#fax2').val();
             var fax3 = $('#fax3').val();
-
+            var note = $('#note').val();
             if (checkIsNullOrEmpty(company)) {
                 alert("公司名稱不能為空");
                 return result;
@@ -343,7 +350,8 @@
             result.address3 = address3;            
             result.fax1 = fax1;            
             result.fax2 = fax2;            
-            result.fax3 = fax3;                    
+            result.fax3 = fax3;                 
+            result.note = note;   
             result.r = true;
 
             return result;

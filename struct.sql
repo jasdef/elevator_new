@@ -46,7 +46,7 @@ CREATE TABLE `behavior_log` (
   `operator` varchar(45) DEFAULT NULL,
   `modifytime` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4432 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4446 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,14 +65,15 @@ CREATE TABLE `customer` (
   `address1` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `address2` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `address3` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `tel1` varchar(255) DEFAULT NULL,
+  `tel1` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `tel2` varchar(255) DEFAULT NULL,
-  `tel3` varchar(255) DEFAULT NULL,
-  `fax1` varchar(255) DEFAULT NULL,
-  `fax2` varchar(255) DEFAULT NULL,
-  `fax3` varchar(255) DEFAULT NULL,
-  `num` varchar(255) DEFAULT NULL,
+  `tel3` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `fax1` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `fax2` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `fax3` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `num` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `is_delete` int(11) DEFAULT '0',
+  `note` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -278,4 +279,4 @@ CREATE TABLE `warranty_form` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-08-17  0:16:46
+-- Dump completed on 2019-08-19 17:02:34

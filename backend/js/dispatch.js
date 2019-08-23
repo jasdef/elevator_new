@@ -141,10 +141,10 @@ router.post('/GetDispatchTW', function (req, res) {
             var tableNameSelect = "";
 
             if (data.table_type == 2) {
-                tableNameSelect = "select * from warranty_form where id="+data.table_id+";";
+                tableNameSelect = "select a.id, a.title, a.start_date, a.free_maintenance, b.company, b.tel1, b.address1 from warranty_form as a, customer as b where a.customer_id = b.id and a.id="+data.table_id+";";
             }
             else {
-                 tableNameSelect = "select * from service_form as a inner join warranty_form as b on a.warranty_id=b.id where a.id="+data.table_id+";";
+                tableNameSelect = "select a.id, b.company, a.start_date, a.total_price, a.left_price from service_form as a, customer as b where a.customer_id = b.id and a.id="+data.table_id+";";
             }
            
             var sql = accountSelect + tableNameSelect;
@@ -174,7 +174,7 @@ router.post('/GetDispatchTW', function (req, res) {
                         actionName = "尚未確認完成";
                     }
            
-                    res.send({ tableName:result[2][0].title, dispatcher:dispatcher, principal:principal, actionName: actionName});
+                    res.send({ tableName:result[2][0].company, dispatcher:dispatcher, principal:principal, actionName: actionName});
                 }
                 connection.release();
                 res.end();

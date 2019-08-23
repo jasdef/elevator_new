@@ -148,7 +148,7 @@ router.post('/GetWarrantyRemindList', function (req, res) { //取得這個月需
                 throw err;
             }
             
-            var nowMonth = new Date().toLocaleString().split("-")[1];
+            var nowMonth = new Date().getMonth()+1;
             var dataSelect = "select * from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !="+nowMonth+";";
             var countSelect = "select COUNT(*) as count from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !="+nowMonth+";";
             var sql = countSelect + dataSelect;
@@ -187,7 +187,7 @@ router.post('/DispatchAllWarranty', function (req, res) {
                 throw err;
             }
             
-            var nowMonth = new Date().toLocaleString().split("-")[1];           
+            var nowMonth = new Date().getMonth()+1;           
             var dataSelect = "select * from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !="+nowMonth+";";
             var countSelect = "select COUNT(*) as count from warranty_form where is_delete=0 and is_remind=1 and is_dispatch=0 and modify_month !="+nowMonth+";";
             var sql = countSelect + dataSelect;

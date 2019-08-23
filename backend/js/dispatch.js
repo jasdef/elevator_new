@@ -245,7 +245,7 @@ router.post('/CompleteDispatch', function (req, res) {
                        var data = result[1][0];
                        var neeTimes = data.free_maintenance * 12;
                        var doTimes = data.warranty_times+1;
-                       var nowMonth = new Date().toLocaleString().split("-")[1];
+                       var nowMonth = new Date().getMonth()+1;
                        sql = "";
                        if (neeTimes == doTimes) {
                            sql = "update warranty_form set is_remind=2, is_dispatch=0, is_signing=1, modify_month="+nowMonth+", warranty_times="+doTimes+" where id="+tableID+";";
@@ -415,7 +415,7 @@ router.post('/AddDispatch', function(req, res) {
     common.CreateHtml("Dispatch_Transfer", req, res, function (err) {
     common.BackendConnection(res, function(err, connection) {
             var requestData = JSON.parse(req.body.requestData);
-            var nowMonth = new Date().toLocaleString().split("-")[1];
+            var nowMonth = new Date().getMonth()+1;
 
             var addDispatchSQL = "insert into dispatch_log (`table_type`, `table_id`, `dispatcher`, `principal`) VALUES (?,?,?,?);";
             var updateForm;

@@ -272,7 +272,7 @@ router.post('/DispatchAllService', function (req, res) {
                 throw err;
             }
             
-            var nowMonth = new Date().toLocaleString().split("-")[1];           
+            var nowMonth = new Date().getMonth()+1;           
             var dataSelect = "select a.id, a.mechanical_warranty, a.do_times, a.service_month, a.start_date, b.company, a.service_times, a.staff_id from service_form as a inner join customer as b on a.customer_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month !="+nowMonth+";";
             var countSelect = "select COUNT(*) as count from service_form as a inner join customer as b on a.customer_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month !="+nowMonth+";";   
             var sql = countSelect + dataSelect;
@@ -342,7 +342,7 @@ router.post('/GetServiceRemindList', function (req, res) {
                 throw err;
             }
             
-            var nowMonth = new Date().toLocaleString().split("-")[1];
+            var nowMonth = new Date().getMonth()+1;
 
             var dataSelect = "select a.id, a.mechanical_warranty, a.do_times, a.service_month, a.start_date, b.company, a.service_times from service_form as a inner join customer as b on a.customer_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month="+nowMonth+" or a.dispatch_month !="+nowMonth+";";
             var countSelect = "select COUNT(*) as count from service_form as a inner join customer as b on a.customer_id=b.id where a.is_delete=0 and a.is_remind=1 and a.is_dispatch=0 and a.dispatch_month="+nowMonth+" or a.dispatch_month !="+nowMonth+";";   

@@ -120,6 +120,13 @@
                                                     </div>
                                                 </div>
                                                 <div class="item form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">維修日期
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input type="text" name="startDate" id="startDate" class="form-control" value="" disabled/>                               
+                                                    </div>
+                                                </div>
+                                                <div class="item form-group">
                                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">統一編號
                                                         </label>
                                                         <div class="col-md-6 col-sm-6 col-xs-12">
@@ -155,7 +162,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="item form-group">
-                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">*負責保養人
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">*維修人員
                                                     </label>
                                                     <div class="col-md-6 col-sm-6 col-xs-12" id="staff" disabled>
                                                         
@@ -303,6 +310,7 @@
                     var data = msg.data;
                     var priceText = accounting.formatNumber(data.total_price); 
                     var leftText = accounting.formatNumber(data.left_price); 
+                    var startDate = moment(data.start_date).format("YYYY-MM-DD");
  
                     $('#totalPrice').val(priceText);
                     $('#leftPrice').val(leftText);                
@@ -314,6 +322,7 @@
                     $('#note').val(data.note);
                     $('#staffSelect').val(data.staff_id);
                     $('#customer').val(data.customer_id);
+                    $('#startDate').val(startDate);
 
                     customerID = data.customer_id;
                     

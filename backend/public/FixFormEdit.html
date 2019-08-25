@@ -127,6 +127,13 @@
                                                 </div>
                                             </div>
                                             <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">維修日期
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input type="text" name="startDate" id="startDate" class="form-control" value="" />                               
+                                                </div>
+                                            </div>
+                                            <div class="item form-group">
                                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">統一編號
                                                     </label>
                                                     <div class="col-md-6 col-sm-6 col-xs-12">
@@ -163,7 +170,7 @@
                                                 </div>
                                             </div>
                                             <div class="item form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">*負責保養人
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">*維修人員
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12" id="staff">
                                                     
@@ -301,6 +308,30 @@
                 $_GET[decode(arguments[1])] = decode(arguments[2]);
         });
 
+
+        DateInit();
+
+        function DateInit() {
+            $('#startDate').daterangepicker({
+                autoUpdateInput: false,
+                locale: {
+                    cancelLabel: 'Clear'
+                },
+                timePicker: true,
+                timePicker24Hour: true,
+                singleDatePicker: true,
+                timePickerSeconds: true
+            });
+        }
+
+
+        $('#startDate').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('YYYY-MM-DD'));
+        });
+        $('#startDate').on('cancel.daterangepicker', function(ev, picker) {
+            $(this).val('');
+        });
+
         function upload() {
             var myPhoto = $('#imageFile')[0].files[0];
             var oMyForm = new FormData();
@@ -380,6 +411,8 @@
                     var data = msg.data;
                     var priceText = accounting.formatNumber(data.total_price); 
                     var leftText = accounting.formatNumber(data.left_price); 
+                    var startDate = moment(data.start_date).format("YYYY-MM-DD");
+
                     $('#totalPriceText').val(priceText);
                     $('#leftPriceText').val(leftText); 
                     $('#totalPrice').val(data.total_price);
@@ -392,7 +425,7 @@
                     $('#note').val(data.note);
                     $('#staffSelect').val(data.staff_id);
                     $('#customer').val(data.customer_id);
-
+                    $('#startDate').val(startDate);
                     
                     var items = JSON.parse(data.items);
  
@@ -500,6 +533,7 @@
             $('#fixItem').val("");
             $('#num').val("");
             $('#title').val("");
+            $('#startDate').val("");
         }
 
         function sendEditData() {
@@ -571,6 +605,8 @@
             var fixItem = $('#fixItem').val();
             var num = $('#num').val();
             var title = $('#title').val();
+            var startDate = $('#startDate').val();
+
 
             result.num = num;
             result.title = title;
@@ -582,6 +618,7 @@
             result.type = eleType;      
             result.staff = staff;
             result.customerId = customerId;  
+            result.startDate = startDate;  
             result.items = getTableData();            
             result.r = true;
 

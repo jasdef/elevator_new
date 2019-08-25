@@ -39,7 +39,7 @@ router.post('/GetFixFormList', function (req, res) {
                 throw err;
             }
             
-            var dataSelect = "select a.id, b.company, a.total_price, a.left_price from fix_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;";
+            var dataSelect = "select a.id, b.company, a.start_date, a.total_price, a.left_price from fix_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;";
             var countSelect = "select COUNT(*) as count from fix_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;";
 
    
@@ -102,7 +102,7 @@ router.post('/EditFixForm', function(req, res) {
     common.CreateHtml("FixForm_Transfer", req, res, function (err) {
     common.BackendConnection(res, function(err, connection) {
             var requestData = JSON.parse(req.body.requestData);
-            var editFixFormSQL = "update fix_form set `title`=?, `left_price`=?, `total_price`=?, `num`=?, `type`=?, `status`=?, `fix_item`=?, `note`=?, `items`=?, `staff_id`=?, `customer_id`=? where `id`=?;";
+            var editFixFormSQL = "update fix_form set `title`=?, `left_price`=?, `total_price`=?, `num`=?, `type`=?, `status`=?, `fix_item`=?, `note`=?, `items`=?, `staff_id`=?, `customer_id`=?, `start_date`=? where `id`=?;";
 
             var itemsJson = JSON.stringify(requestData.items);
             var fixFormData = 
@@ -118,6 +118,7 @@ router.post('/EditFixForm', function(req, res) {
                 itemsJson,
                 requestData.staff,
                 requestData.customerId,
+                requestData.startDate,
                 requestData.id
             ];
   
@@ -151,7 +152,7 @@ router.post('/GetFixFormRemindList', function (req, res) {
                 throw err;
             }
             
-            var dataSelect = "select a.id, a.title, a.total_price, a.left_price, b.company from fix_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and left_price>0;";
+            var dataSelect = "select a.id, a.title, a.start_date, a.total_price, a.left_price, b.company from fix_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and left_price>0;";
             var countSelect = "select COUNT(*) as count  from fix_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and left_price>0;";
 
    
@@ -183,7 +184,7 @@ router.post('/AddFixForm', function(req, res) {//4
             var requestData = JSON.parse(req.body.requestData);
             console.log(req.body);
             console.log(requestData);
-            var addFixFormSQL = "insert into fix_form (`title`, `left_price`, `total_price`, `num`, `type`, `status`, `fix_item`, `note`, `items`, `staff_id`, `customer_id`) VALUES (?,?,?,?,?,?,?,?,?,?,?);";
+            var addFixFormSQL = "insert into fix_form (`title`, `left_price`, `total_price`, `num`, `type`, `status`, `fix_item`, `note`, `items`, `staff_id`, `customer_id`, `start_date`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);";
 
             var itemsJson = JSON.stringify(requestData.items);
             var fixFormData = 
@@ -198,7 +199,8 @@ router.post('/AddFixForm', function(req, res) {//4
                 requestData.note,
                 itemsJson,
                 requestData.staff,
-                requestData.customerId
+                requestData.customerId,
+                requestData.startDate
             ];
   
             addFixFormSQL = connection.format(addFixFormSQL, fixFormData);

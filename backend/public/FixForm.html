@@ -64,7 +64,8 @@
                                             <thead>
                                                 <tr>
                                                     <th>單號</th> 
-                                                    <th>客戶名稱</th>                                                     
+                                                    <th>客戶名稱</th>  
+                                                    <th>維修日期</th>                                                     
                                                     <th>總價</th>
                                                     <th>剩餘款項</th>   
                                                     <th>檢視</th>                                         
@@ -146,6 +147,7 @@
                 "columns": [
                     { "data": "id"},
                     { "data": "company"},
+                    { "data": "start_date"},
                     { "data": "total_price" },
                     { "data": "left_price" },
                     { "defaultContent": 
@@ -161,9 +163,10 @@
                     }               
                 ],
                 'rowCallback': function(row, data, dataIndex) {
-                //    $('td:eq(2)', row).html(moment(data.start_date).format("YYYY-MM-DD"));      
-                    $('td:eq(2)', row).html(accounting.formatNumber(data.total_price));      
-                    $('td:eq(3)', row).html(accounting.formatNumber(data.left_price));      
+                    console.log(data.total_price);
+                    $('td:eq(2)', row).html(moment(data.start_date).format("YYYY-MM-DD"));      
+                    $('td:eq(3)', row).html(accounting.formatNumber(data.total_price));      
+                    $('td:eq(4)', row).html(accounting.formatNumber(data.left_price));      
                 },
                 "ajax": {
                     "url": "/GetFixFormList",

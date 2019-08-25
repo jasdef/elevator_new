@@ -87,8 +87,8 @@ router.post('/GetDispatchList', function (req, res) {
                 throw err;
             }
             
-            var dataSelect = "select * from dispatch_log;";
-            var countSelect = "select COUNT(*) as count from dispatch_log;";
+            var dataSelect = "select * from dispatch_log where action_type != 3;";
+            var countSelect = "select COUNT(*) as count from dispatch_log where action_type !=3;";
 
    
             var sql = countSelect + dataSelect;

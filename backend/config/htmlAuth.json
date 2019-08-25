@@ -452,5 +452,19 @@
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/ShowStaffWarrantyList.html"
+    },
+    "WarrantyCompleteHistory":
+    {
+        "autho": "admin",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/WarrantyCompleteHistory.html"
+    },
+    "ServiceCompleteHistory":
+    {
+        "autho": "admin",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/ServiceCompleteHistory.html"
     }
 }

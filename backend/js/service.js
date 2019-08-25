@@ -42,6 +42,11 @@ router.get('/LicenseRemind', function(req, res) {
     common.CreateHtml("LicenseRemind", req, res);
 });
 
+router.get('/ServiceCompleteHistory', function(req, res) {
+    common.log(req.session['account'], 'call ServiceCompleteHistory');
+    common.CreateHtml("ServiceCompleteHistory", req, res);
+});
+
 router.post('/GetServiceList', function (req, res) {
     common.CreateHtml("Service_Transfer", req, res, function (err) {
         common.BackendConnection(res, function (err, connection) {
@@ -75,6 +80,40 @@ router.post('/GetServiceList', function (req, res) {
     });
 
 });
+
+router.post('/GetServiceHistoryCompleteList', function (req, res) {
+    common.CreateHtml("staff_Transfer", req, res, function (err) {
+        common.BackendConnection(res, function (err, connection) {
+            if (err) {
+                common.log(res.session['account'], err);
+                throw err;
+            }
+            var serviceID = req.body.Id;
+            
+            var dataSelect = "select * from dispatch_log where table_type=3 and action_type=3 and table_id="+serviceID+";";
+            var countSelect = "select count(*) from dispatch_log where table_type=3 and action_type=3 and table_id="+serviceID+";";   
+            var sql = countSelect + dataSelect;
+
+            common.log(req.session['account'], sql);
+
+            connection.query(sql, function (error, result, fields) {
+                if (error) {
+                    common.log(req.session['account'], error);
+                    res.send({error : error});
+                }
+                else {
+                    var totallength = result[0][0].count;
+
+                    res.send({ recordsTotal: totallength, recordsFiltered: totallength, data: result[1] });
+                }
+                connection.release();
+                res.end();
+            });
+
+        });        
+    });
+});
+
 
 router.post('/GetServiceData', function (req, res) {
     common.CreateHtml("staff_Transfer", req, res, function (err) {

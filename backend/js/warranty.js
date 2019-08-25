@@ -37,6 +37,11 @@ router.get('/WarrantySigning', function(req, res) {
     common.CreateHtml("WarrantySigning", req, res);
 });
 
+router.get('/WarrantyCompleteHistory', function(req, res) {
+    common.log(req.session['account'], 'call WarrantyCompleteHistory');
+    common.CreateHtml("WarrantyCompleteHistory", req, res);
+});
+
 router.post('/GetWarrantyList', function (req, res) {
     common.CreateHtml("Warranty_Transfer", req, res, function (err) {
         common.BackendConnection(res, function (err, connection) {
@@ -70,6 +75,40 @@ router.post('/GetWarrantyList', function (req, res) {
     });
 
 });
+
+router.post('/GetWarrantyHistoryCompleteList', function (req, res) {
+    common.CreateHtml("staff_Transfer", req, res, function (err) {
+        common.BackendConnection(res, function (err, connection) {
+            if (err) {
+                common.log(res.session['account'], err);
+                throw err;
+            }
+            var warrantyID = req.body.Id;
+            
+            var dataSelect = "select * from dispatch_log where table_type=2 and action_type=3 and table_id="+warrantyID+";";
+            var countSelect = "select count(*) from dispatch_log where table_type=2 and action_type=3 and table_id="+warrantyID+";";   
+            var sql = countSelect + dataSelect;
+
+            common.log(req.session['account'], sql);
+
+            connection.query(sql, function (error, result, fields) {
+                if (error) {
+                    common.log(req.session['account'], error);
+                    res.send({error : error});
+                }
+                else {
+                    var totallength = result[0][0].count;
+
+                    res.send({ recordsTotal: totallength, recordsFiltered: totallength, data: result[1] });
+                }
+                connection.release();
+                res.end();
+            });
+
+        });        
+    });
+});
+
 
 router.post('/GetWarrantyData', function (req, res) {
     common.CreateHtml("staff_Transfer", req, res, function (err) {

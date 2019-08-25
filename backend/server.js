@@ -7,9 +7,7 @@ var app = express();
 var fs = require('fs');
 var https = require('https');
 
-
 common = require("./js/common");
-timer = require("./js/timer");
 
 
 var loginform = require('./js/login');

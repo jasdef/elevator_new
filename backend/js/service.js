@@ -240,8 +240,8 @@ router.post('/GetLicenseRemindList', function (req, res) {
                 throw err;
             }
      
-            var dataSelect = "select a.id, a.license_date, b.company, a.start_date, a.total_price, a.left_price from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and now() > a.license_date;";
-            var countSelect = "select COUNT(*) as count from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and now() > a.license_date;";
+            var dataSelect = "select a.id, a.license_date, b.company, a.start_date, a.total_price, a.left_price from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and DATEDIFF (now(), a.license_date) <= 30 and now() <= a.license_date ;";
+            var countSelect = "select COUNT(*) as count from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and DATEDIFF (now(), a.license_date) <= 30 and now() <= a.license_date ;";
             
             var sql = countSelect + dataSelect;
 

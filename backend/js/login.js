@@ -23,7 +23,7 @@ router.get('/ChangePasswordForm', function (req, res) {
     res.sendFile(path.join(__dirname + './../public/changepassword.html'));
 });
 
-router.post('/SCGBackendLogin', function (req, res) {
+router.post('/BackendLogin', function (req, res) {
     common.BackendConnection(res, function (err, connection) {
         connection.query("SELECT * FROM account where account=?", [req.body.Username], function (error, dbresults, fields) {
             connection.release();

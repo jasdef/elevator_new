@@ -48,7 +48,7 @@
                         <div class="col-md-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>任務列表</h2>
+                                    <h2>員工列表</h2>
                                     <div class="clearfix"></div>
                                 </div>                                
                                 <div class="x_content">
@@ -56,11 +56,10 @@
                                         <table id="datatable" class="table table-striped table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th>單號</th>                       
-                                                    <th>客戶名稱</th>   
-                                                    <th>檢視</th>                                         
-                                                    <th>回報完成</th>
-                                                    <th>更換人員</th>
+                                                    <th>id</th>
+                                                    <th>員工帳號</th>
+                                                    <th>員工名稱</th>                                    
+                                                    <th>功能</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -137,43 +136,19 @@
                 ],
                 "columns": [
                     { "data": "id"},
-                    { "data": "id" },
+                    { "data": "account"},
+                    { "data": "name" },
                     { "defaultContent": 
                         `<div class="btn-group btn-group-sm" style="display: flex;">
-                            <button class="btn btn-info"  id='viewitem' title="檢視"><i class="fa fa-eye" aria-hidden="true"></i> 檢視</button> 
+                            <button class="btn btn-info" id='service' title="保養單"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 保養單</button>                            
+                            <button class="btn btn-danger active" id='warranty' title="保固單"><i class="fa fa-ban" aria-hidden="true"></i>保固單</button>
                         </div>`
-                    } ,
-                    { "defaultContent": 
-                        `<div class="btn-group btn-group-sm" style="display: flex;">
-                            <button class="btn btn-info" id='confirm' title="回報"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>回報已完成</button>                            
-                        </div>`
-                    } ,
-                    { "defaultContent": 
-                        `<div class="btn-group btn-group-sm" style="display: flex;">
-                            <button class="btn btn-info" id='changeMember' title="更改人員"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>請求更換人員</button>                            
-                        </div>`
-                    }                
+                    }               
                 ],
                 'rowCallback': function(row, data, dataIndex) {
-                    $.ajax({
-                        type: 'POST',
-                        url: "/GetDispatchTW",
-                        data:  data,
-                        dataType: 'json',
-                        success: function(data) {
-  
-                          $('td:eq(1)', row).html(data.tableName);      
- 
-                        },
-                        error: function(xhr, desc, err) {
-                            alert("HTTP Status code:" + xhr.status);
-                        }
-                        }).done(function() {
-                            $('#loading-cover').fadeOut(100);
-                    });
                 },
                 "ajax": {
-                    "url": "/GetOwnDispatchList",
+                    "url": "/GetStaffList",
                     "type": "POST",
                     //"data": { requestData: JSON.stringify(requestData) },
                     "cache": "false",
@@ -181,7 +156,7 @@
                     "dataType": 'json'
                 }
             });
-        }
+            };
 
             $('#datatable').on( 'processing.dt', function ( e, settings, processing ) {
             if(processing){
@@ -190,62 +165,16 @@
                 $('#loading-cover').fadeOut(100);
             }
             }).dataTable(); 
-        
-        
-
-        function updateDispatchStatus(id) {
-            $.ajax({
-                type: 'POST',
-                url: "/UpdateDispatchStatus",
-                data:  {actionType: 2, id:id},
-                dataType: 'json',
-                success: function(data) {
-                    location.href="/DispatchOwn";
-                },
-                error: function(xhr, desc, err) {
-                    alert("HTTP Status code:" + xhr.status);
-                }
-                }).done(function() {
-                    $('#loading-cover').fadeOut(100);
-            });
-
-        }
-
-        function changeMember(id) {
-            $.ajax({
-                type: 'POST',
-                url: "/changeMember",
-                data:  {actionType: 4, id:id},
-                dataType: 'json',
-                success: function(data) {
-                    location.href="/DispatchOwn";
-                },
-                error: function(xhr, desc, err) {
-                    alert("HTTP Status code:" + xhr.status);
-                }
-                }).done(function() {
-                    $('#loading-cover').fadeOut(100);
-            });
-        }
+      
 
         $('#datatable tbody').on('click', 'button', function(e) {
             var data = table.row($(this).parents('tr')).data();
             switch ($(this).attr('id')) {
-                case "changeMember":
-                    location.replace(`/ServiceEdit?Id=${data.id}`);
+                case "service":
+                    location.href=`/ShowStaffServiceList?staffId=${data.id}`;
                     break;
-                case "confirm":
-                    if (confirm("確定保養已完成?")) {                      
-                        updateDispatchStatus(data.id);
-                    }
-                    break;
-                case "viewitem":
-                    if (data.table_type == 2) {
-                        location.href =`/WarrantyStaffView?Id=${data.table_id}`; 
-                    }
-                    else {
-                        location.href =`/ServiceStaffView?Id=${data.table_id}`; 
-                    }                                      
+                case "warranty":
+                    location.href=`/ShowStaffWarrantyList?staffId=${data.id}`;
                     break;
             }
 

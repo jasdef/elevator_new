@@ -431,5 +431,26 @@
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/FixFormRemind.html"
+    },
+    "StaffList":
+    {
+        "autho": "admin",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/StaffList.html"
+    },
+    "ShowStaffServiceList":
+    {
+        "autho": "admin",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/ShowStaffServiceList.html"
+    },
+    "ShowStaffWarrantyList":
+    {
+        "autho": "admin",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/ShowStaffWarrantyList.html"
     }
 }

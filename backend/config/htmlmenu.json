@@ -171,7 +171,13 @@
                 "enable": true,
                 "autho": "admin",
                 "href": "AuthList"
-            }      
+            },
+            "員工列表":
+            {
+                "enable": true,
+                "autho": "admin",
+                "href": "StaffList"
+            }   
         }
     },
     "報表系統":

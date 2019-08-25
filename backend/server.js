@@ -21,6 +21,7 @@ var dispatch = require('./js/dispatch');
 var service = require('./js/service');
 var fixForm = require('./js/fixForm');
 var imgUpload = require('./js/uploadImg');
+var staff = require('./js/staff');
 var historyRecord = require('./js/historyRecordSearch');
 var listenPort = 8888;
 var key = fs.readFileSync('certificate/ca.key', 'utf8');
@@ -55,6 +56,8 @@ app.use(modifyProject);
 app.use(fixForm);
 app.use(warranty);
 app.use(historyRecord);
+app.use(staff);
+
 app.get('/', function (req, res) {
     if (typeof (req.session['account']) === "undefined") {
         res.redirect('/LoginForm');

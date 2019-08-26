@@ -140,7 +140,7 @@ router.post('/EditModifyProject', function(req, res) {
             var requestData = JSON.parse(req.body.requestData);
             console.log(req.body);
             console.log(requestData);
-            var editModifyProjectSQL = "update modify_project set `title`=?, `left_price`=?, `total_price`=?, `start_date`=?, `is_return`=?, `is_duty`=?, `is_receipt`=?, `elevator_num`=?, `note`=?, `customer_id`=?, is_stamp, `items`=? where `id`=?;";
+            var editModifyProjectSQL = "update modify_project set `title`=?, `left_price`=?, `total_price`=?, `start_date`=?, `is_return`=?, `is_duty`=?, `is_receipt`=?, `elevator_num`=?, `note`=?, `customer_id`=?, `is_stamp`=?, `items`=? where `id`=?;";
 
             var itemsJson = JSON.stringify(requestData.items);
             var modifyProjectData = 
@@ -155,7 +155,7 @@ router.post('/EditModifyProject', function(req, res) {
                 requestData.elevatorNum,
                 requestData.note,
                 requestData.customerId,
-                requestData.isSTamp,
+                requestData.isStamp,
                 itemsJson,
                 requestData.id
             ];

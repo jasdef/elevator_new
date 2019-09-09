@@ -72,9 +72,9 @@ router.post('/CreateWarranty', function (req, res) {
                 throw err;
             }
             var transactionID = req.body.Id;
-            
+            var customerId = req.body.CustomerID;
             var updateTransaction = "update transaction_form set `is_signing`=1 where id="+transactionID+";";
-            var insertWarranty = "insert into warranty_form (`transaction_id`) values("+transactionID+");";
+            var insertWarranty = "insert into warranty_form (`transaction_id`, `customer_id`) values("+transactionID+", "+customerId+");";
             var getId = "SELECT LAST_INSERT_ID() as warranty_id;"
 
    

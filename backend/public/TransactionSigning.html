@@ -195,11 +195,11 @@
             });
         }
 
-        function CreateWarranty(id) {
+        function CreateWarranty(id, customer) {
             $.ajax({
                 type: 'POST',
                 url: "/CreateWarranty",
-                data: { Id: id },
+                data: { Id: id, CustomerID: customer },
                 cache: false,
                 async: true,
                 dataType: 'json',
@@ -221,7 +221,7 @@
                     break;
                 case "cancel":
                     if (confirm("確定取消保固嗎?")) {                      
-                        CancelTransaction(data.id);
+                        CancelTransaction(data.id, data.customer_id);
                     }
                     break;
                 case "viewitem":

@@ -207,6 +207,7 @@
                                                 <button class="btn btn-danger" onclick="history.back()">返回</button>
                                                 <button id="mEdit" class="btn btn-success">編輯</button>
                                                 <button id="mPhoto" class="btn btn-info">照片</button>
+                                                <button id="showCustomer" class="btn btn-info">客戶資訊</button>                                              
                                             </div>
                                         </div>
                                     </div>
@@ -325,6 +326,7 @@
 
         DateInit();
         Init();
+        var customerID = 0;
         function Init() {
             var id = $_GET["Id"];
             $.ajax({
@@ -354,6 +356,7 @@
                     $('#customer').val(data.customer_id);
                    // $('#customer').selectpicker('val', data.customer_id);
                     $('#note').val(data.note);
+                    customerID = data.customer_id;
                     
                     var items = JSON.parse(data.items);
  
@@ -440,6 +443,10 @@
             $(this).val('');
         });
 
+        function showCustomerInfo() {  
+            location.href =`/CustomerView?Id=${customerID}`;            
+        }
+
         function switchEditPage() {
             var id = $_GET["Id"];
             location.replace(`/ModifyProjectEdit?Id=${id}`);            
@@ -458,8 +465,7 @@
 
         $(document).on('click', '#mEdit', switchEditPage);
         $(document).on('click', '#mPhoto', showPhoto);
-
-  
+        $(document).on('click', '#showCustomer', showCustomerInfo);  
 
     });
     </script>

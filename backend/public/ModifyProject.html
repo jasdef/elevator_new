@@ -202,8 +202,12 @@
                 }
             });
         }
-    
-        $('#addModifyProject').attr('href', `/ModifyProjectAdd`);           
+         
+        $('#addModifyProject').on('click', TransToAddPage);           
+
+        function TransToAddPage() {
+            location.href =`/ModifyProjectAdd`;                    
+        }     
 
         $('#datatable tbody').on('click', 'button', function(e) {
             var data = table.row($(this).parents('tr')).data();

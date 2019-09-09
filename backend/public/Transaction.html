@@ -203,7 +203,11 @@
             });
         }
     
-        $('#addTransaction').attr('href', `/TransactionAdd`);           
+        $('#addTransaction').on('click', TransToAddPage);           
+
+        function TransToAddPage() {
+            location.href =`/TransactionAdd`;                    
+        }
 
         $('#datatable tbody').on('click', 'button', function(e) {
             var data = table.row($(this).parents('tr')).data();

@@ -203,9 +203,13 @@
                     }
                 }
             });
-        }
-    
-        $('#addFixForm').attr('href', `/FixFormAdd`);           
+        } 
+        
+        $('#addFixForm').on('click', TransToAddPage);           
+
+        function TransToAddPage() {
+            location.href =`/FixFormAdd`;                    
+        }    
 
         $('#datatable tbody').on('click', 'button', function(e) {
             var data = table.row($(this).parents('tr')).data();

@@ -204,8 +204,12 @@
                 }
             });
         }
-    
-        $('#addWarranty').attr('href', `/WarrantyAdd`);           
+               
+        $('#addWarranty').on('click', TransToAddPage);           
+
+        function TransToAddPage() {
+            location.href =`/WarrantyAdd`;                    
+        }        
 
         $('#datatable tbody').on('click', 'button', function(e) {
             var data = table.row($(this).parents('tr')).data();

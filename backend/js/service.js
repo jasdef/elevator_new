@@ -279,8 +279,8 @@ router.post('/GetLicenseRemindList', function (req, res) {
                 throw err;
             }
      
-            var dataSelect = "select a.id, a.license_date, b.company, a.start_date, a.total_price, a.left_price from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and DATEDIFF (now(), a.license_date) <= 30 and now() <= a.license_date ;";
-            var countSelect = "select COUNT(*) as count from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0 and DATEDIFF (now(), a.license_date) <= 30 and now() <= a.license_date ;";
+            var dataSelect = "select a.id, a.license_date, b.company, a.start_date, a.total_price, a.left_price from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;";
+            var countSelect = "select COUNT(*) as count from service_form as a, customer as b where a.customer_id = b.id and a.is_delete=0;";
             
             var sql = countSelect + dataSelect;
 
@@ -293,7 +293,18 @@ router.post('/GetLicenseRemindList', function (req, res) {
                 }
                 else {
                     var totallength = result[0][0].count;
-                    res.send({ recordsTotal: totallength, recordsFiltered: totallength, data: result[1] });
+                    var data = result[1];
+                    var final = [];
+                    for (var i = 0; i < data.length; i++) {
+                        var license = new Date(data[i].license_date);
+                        var tempTime = license.setMonth(license.getMonth()-1);
+
+                        if (tempTime <= new Date()) {
+                            final.push(data[i]);
+                        }
+                    }
+
+                    res.send({ recordsTotal: totallength, recordsFiltered: totallength, data: final });
                 }
                 connection.release();
                 res.end();

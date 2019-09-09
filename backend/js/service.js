@@ -230,11 +230,11 @@ router.post('/CheckServiceRemind', function(req, res) {
                             }                           
                         }
 
-                        tempTime.setDate(tempTime.getDate()+ data.mechanical_warranty * 365); // 檢查是否已經快到合約結束的前一個月
+                        tempTime.setDate(tempTime.getDate()+ data[i].mechanical_warranty * 365); // 檢查是否已經快到合約結束的前一個月
                         tempTime.setMonth(tempTime.getMonth() - 1);
-
+                        console.log(tempTime);
                         if (tempTime < new Date()) {
-                            updateRemindStatus += "update service_form set is_remind=2, is_dispatch=0, is_signing=1, where id="+data[i].id+";";
+                            updateRemindStatus += "update service_form set is_remind=2, is_dispatch=0, is_signing=1 where id="+data[i].id+";";
                         }
                     }
                     
@@ -558,9 +558,8 @@ router.post('/GetServiceSigningList', function (req, res) {
                 throw err;
             }
 
-            var dataSelect = "select * from service_form where is_delete=0 and is_signing=1;";
-            var countSelect = "select COUNT(*) as count from service_form where is_delete=0 and is_signing=1;";
-
+            var dataSelect = "select a.id, a.mechanical_warranty, a.do_times, a.service_month, a.start_date, b.company, a.service_times from service_form as a inner join customer as b on a.customer_id=b.id where a.is_delete=0 and a.is_remind=1;";
+            var countSelect = "select COUNT(*) as count from service_form as a inner join customer as b on a.customer_id=b.id where a.is_delete=0 and a.is_remind=1;";   
    
             var sql = countSelect + dataSelect;
 

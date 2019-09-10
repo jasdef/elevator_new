@@ -73,8 +73,10 @@ router.post('/CreateWarranty', function (req, res) {
             }
             var transactionID = req.body.Id;
             var customerId = req.body.CustomerID;
+            var m = req.body.Mechanical;
+            var free = req.body.Free;
             var updateTransaction = "update transaction_form set `is_signing`=1 where id="+transactionID+";";
-            var insertWarranty = "insert into warranty_form (`transaction_id`, `customer_id`) values("+transactionID+", "+customerId+");";
+            var insertWarranty = "insert into warranty_form (`transaction_id`, `customer_id`, `mechanical_warranty`, `free_maintenance`) values("+transactionID+", "+customerId+", "+m+", "+free+");";
             var getId = "SELECT LAST_INSERT_ID() as warranty_id;"
 
    

@@ -195,11 +195,11 @@
             });
         }
 
-        function CreateWarranty(id, customer) {
+        function CreateWarranty(id, customer, m, free) {
             $.ajax({
                 type: 'POST',
                 url: "/CreateWarranty",
-                data: { Id: id, CustomerID: customer },
+                data: { Id: id, CustomerID: customer, Mechanical: m, Free: free },
                 cache: false,
                 async: true,
                 dataType: 'json',
@@ -217,7 +217,7 @@
             var data = table.row($(this).parents('tr')).data();
             switch ($(this).attr('id')) {
                 case "create":
-                CreateWarranty(data.id)
+                CreateWarranty(data.id, data.customer_id, data.mechanical_warranty, data.free_maintenance);
                     break;
                 case "cancel":
                     if (confirm("確定取消保固嗎?")) {                      

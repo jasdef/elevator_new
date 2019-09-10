@@ -94,8 +94,8 @@
 
             for (var i = 0; i < tr_length; i++) {
 
-                if (data[i][3] == 5) {
-                    left -= data[i][2];
+                if (data[i][4] == 5) {
+                    left -= data[i][3];
                 }
             }
             var temp = accounting.formatNumber(left);
@@ -194,6 +194,20 @@
                                                     <option class="text-center" value="1">是</option>
                                                     <option class="text-center" value="2">否</option>
                                                 </select>
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">*機件保固(年)
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="mechanical" class="form-control col-md-7 col-xs-12" placeholder="" type="number">
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">*免費保養(年)
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="free" class="form-control col-md-7 col-xs-12" placeholder="" type="number">
                                             </div>
                                         </div>
                                         <div class="item form-group">
@@ -417,7 +431,8 @@
                     $('#customer').val(data.customer_id);
                    // $('#customer').selectpicker('val', data.customer_id);
                     $('#note').val(data.note);
-                    
+                    $('#mechanical').val(data.mechanical_warranty);
+                    $('#free').val(data.free_maintenance);    
                     var items = JSON.parse(data.items);
      
                     for (var i = 0; i < items.length; i++) {
@@ -533,6 +548,8 @@
             $('#customer').val(0);
             $('#customer').selectpicker('refresh');
             $('#note').val("");
+            $('#mechanical').val(0);
+            $('#free').val(0); 
         }
 
 
@@ -595,7 +612,8 @@
             var customerId = parseInt($('#customer').val());
             var leftPrice = $('#leftPrice').val();
             var isStamp = $('#isStamp').val();
-
+            var mechanical = $('#mechanical').val();
+            var free = $('#free').val();      
 
             result.startDate = startDate;
             result.title = title;
@@ -607,7 +625,9 @@
             result.isReceipt = isReceipt;
             result.customerId = customerId;  
             result.leftPrice = leftPrice;       
-            result.isStamp = isStamp;     
+            result.isStamp = isStamp;   
+            result.mechanical = mechanical;
+            result.free = free;  
             result.items = getTableData();            
             result.r = true;
 

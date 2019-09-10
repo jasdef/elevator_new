@@ -87,8 +87,8 @@
 
             for (var i = 0; i < tr_length; i++) {
 
-                if (data[i][3] == 5) {
-                    left -= data[i][2];
+                if (data[i][4] == 5) {
+                    left -= data[i][3];
                 }
             }
             $('#leftPrice').val(left);
@@ -183,6 +183,20 @@
                                                     <option class="text-center" value="1">是</option>
                                                     <option class="text-center" value="2">否</option>
                                                 </select>
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">*機件保固(年)
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="mechanical" class="form-control col-md-7 col-xs-12" placeholder="" type="number" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">*免費保養(年)
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="free" class="form-control col-md-7 col-xs-12" placeholder="" type="number" disabled>
                                             </div>
                                         </div>
                                         <div class="item form-group">
@@ -352,6 +366,8 @@
                     $('#isReturn').selectpicker('val', data.is_return);
                     $('#isDuty').val(data.is_duty);
                     $('#isSTamp').val(data.is_stamp);
+                    $('#mechanical').val(data.mechanical_warranty);
+                    $('#free').val(data.free_maintenance);    
                    // $('#isDuty').selectpicker('val', data.is_duty);
                     $('#isReceipt').val(data.is_receipt);
                    // $('#isReceipt').selectpicker('val', data.is_receipt);

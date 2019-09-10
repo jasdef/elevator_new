@@ -105,7 +105,7 @@
                 <div class="row">
                     <div class="clearfix"></div>
                     <div class="row">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-md-5">
                             <div class="x_panel">
                                 <div class="x_title">
                                     <h2>檢視買賣單</h2>
@@ -214,13 +214,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-md-7">
                             <div class="x_panel">
                                 <div class="x_content">
                                     <div class="form-horizontal form-label-left" novalidate>
                                         <div class="item form-group">
                                                 <table id="itemTable" class="table x_content">
                                                         <tr>
+                                                        <th>繳款時間</th>
                                                         <th>項目名稱</th>
                                                         <th>金額百分比</th>
                                                         <th>金額</th>
@@ -359,15 +360,16 @@
                     $('#note').val(data.note);
                     customerID = data.customer_id;
                     var items = JSON.parse(data.items);
- 
+
                     for (var i = 0; i < items.length; i++) {
                         addCurrentRow();
-                        $('#itemTitle'+i).val(items[i][0]);
-                        $('#itemPercent'+i).val(items[i][1]);
-                    var priceText = accounting.formatNumber(items[i][2]);
+                        $('#payDate'+i).val(items[i][0]);  
+                        $('#itemTitle'+i).val(items[i][1]);
+                        $('#itemPercent'+i).val(items[i][2]);
+                    var priceText = accounting.formatNumber(items[i][3]);
 
                         $('#itemPrice'+i).val(priceText);
-                        $('#itemStatus'+i).val(items[i][3]);    
+                        $('#itemStatus'+i).val(items[i][4]);    
                       //  $('#itemStatus'+i).selectpicker('val', items[i][3]); 
                     }
                     transactionData = data;
@@ -381,6 +383,7 @@
           
             var trcomp=`
             <tr>
+            <td width="50px"><input type="text" name="${tr_length}" id="payDate${tr_length}"  value="" /></td>                  
             <td width="100px"><input name="${tr_length}" id="itemTitle${tr_length}" type="text" disabled/></td>
             <td width="100px"><input name="${tr_length}" id="itemPercent${tr_length}" type="number" onchange="onItemPercentChange(this)" disabled/></td>
             <td width="100px"><input name="${tr_length}" id="itemPrice${tr_length}" type="text" onchange="onItemPriceChange(this)" disabled/></td>

@@ -57,7 +57,7 @@
   
             for(var i=0; i < tr_length-1; i++){
                 var td_length = $('.table tr');                
-                Tbdata[i] = [$('#itemTitle'+i).val(), $('#itemPercent'+i).val(), $('#itemPrice'+i).val(), $('#itemStatus'+i).val()];               
+                Tbdata[i] = [$('#payDate'+i).val(), $('#itemTitle'+i).val(), $('#itemPercent'+i).val(), $('#itemPrice'+i).val(), $('#itemStatus'+i).val()];               
              }
              Tbdata["length"] = tr_length-1;
              console.log(Tbdata); 
@@ -114,7 +114,7 @@
                 <div class="row">
                     <div class="clearfix"></div>
                     <div class="row">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-md-5">
                             <div class="x_panel">
                                 <div class="x_title">
                                     <h2>編輯買賣單</h2>
@@ -223,20 +223,21 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-md-7">
                             <div class="x_panel">
                                 <div class="x_content">
-                                    <div class="form-horizontal form-label-left" novalidate>
+                                    <div class="form-horizontal form-label-left" novalidate></div>
                                         <div class="item form-group">
                                                 <table id="itemTable" class="table x_content">
                                                         <tr>
+                                                        <th>繳款時間</th>
                                                         <th>項目名稱</th>
                                                         <th>金額百分比</th>
                                                         <th>金額</th>
                                                         <th>狀態</th>
                                                         <th>操作</th>
                                                         </tr>
-  
+    
                                                     </table> 
                                                 <button id="addBtn">新增</button>
                                         </div>
@@ -421,12 +422,13 @@
      
                     for (var i = 0; i < items.length; i++) {
                         addCurrentRow();
-                        $('#itemTitle'+i).val(items[i][0]);
-                        $('#itemPercent'+i).val(items[i][1]);
-                        $('#itemPrice'+i).val(items[i][2]);
-                        var text = accounting.formatNumber(items[i][2]);
+                        $('#payDate'+i).val(items[i][0]);  
+                        $('#itemTitle'+i).val(items[i][1]);
+                        $('#itemPercent'+i).val(items[i][2]);
+                        $('#itemPrice'+i).val(items[i][3]);
+                        var text = accounting.formatNumber(items[i][3]);
                         $('#itemPriceText'+i).val(text);
-                        $('#itemStatus'+i).val(items[i][3]);    
+                        $('#itemStatus'+i).val(items[i][4]);    
                       //  $('#itemStatus'+i).selectpicker('val', items[i][3]); 
                     }
                     
@@ -441,12 +443,13 @@
           
             var trcomp=`
             <tr>
-            <td width="100px"><input name="${tr_length}" id="itemTitle${tr_length}" type="text"/></td>
-            <td width="100px"><input name="${tr_length}" id="itemPercent${tr_length}" type="number" oninput="onItemPercentChange(this)"/></td>
-            <td width="100px"><input name="${tr_length}" id="itemPrice${tr_length}" type="number" oninput="onItemPriceChange(this)"/>
+            <td width="50px"><input type="text" name="${tr_length}" id="payDate${tr_length}"  value="" /></td>  
+            <td width="50px"><input name="${tr_length}" id="itemTitle${tr_length}" type="text"/></td>
+            <td width="50px"><input name="${tr_length}" id="itemPercent${tr_length}" type="number" oninput="onItemPercentChange(this)"/></td>
+            <td width="50px"><input name="${tr_length}" id="itemPrice${tr_length}" type="number" oninput="onItemPriceChange(this)"/>
                 <input name="${tr_length}" id="itemPriceText${tr_length}" type="text" disabled/>
                 </td>
-            <td width="100px">
+            <td width="50px">
                 <select name="${tr_length}" id="itemStatus${tr_length}" name="status" oninput="calculate()">
                 　<option value="0" selected="selected">請選擇表單狀態</option>
                 　<option value="1">已開發票</option>
@@ -460,6 +463,24 @@
             </tr>
             `;
             $("#itemTable tr:last-child").after(trcomp);
+
+            $('#payDate'+tr_length).daterangepicker({
+                autoUpdateInput: false,
+                locale: {
+                    cancelLabel: 'Clear'
+                },
+                timePicker: true,
+                timePicker24Hour: true,
+                singleDatePicker: true,
+                timePickerSeconds: true
+            });        
+
+            $('#payDate'+tr_length).on('apply.daterangepicker', function(ev, picker) {
+                $(this).val(picker.startDate.format('YYYY-MM-DD'));
+            });
+            $('#payDate'+tr_length).on('cancel.daterangepicker', function(ev, picker) {
+                $(this).val('');
+            });
         }
 
         function deleteCurrentRow()

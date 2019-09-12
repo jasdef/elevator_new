@@ -62,7 +62,41 @@ router.post('/GetFixFormList', function (req, res) {
 
         });        
     });
+});
 
+router.post('/GetCustomerFixromList', function (req, res) {
+    common.CreateHtml("FixForm_Transfer", req, res, function (err) {
+        common.BackendConnection(res, function (err, connection) {
+            if (err) {
+                common.log(res.session['account'], err);
+                throw err;
+            }
+            
+            var customerId = req.body.Id;
+
+            var dataSelect = "select * from fix_form where customer_id="+customerId+" and is_delete=0;";
+            var countSelect = "select COUNT(*) as count from fix_form where customer_id="+customerId+" and is_delete=0;";
+
+   
+            var sql = countSelect + dataSelect;
+
+            common.log(req.session['account'], sql);
+
+            connection.query(sql, function (error, result, fields) {
+                if (error) {
+                    common.log(req.session['account'], err);
+                    res.send({error : err});
+                }
+                else {
+                    var totallength = result[0][0].count;
+                    res.send({ recordsTotal: totallength, recordsFiltered: totallength, data: result[1] });
+                }
+                connection.release();
+                res.end();
+            });
+
+        });        
+    });
 });
 
 router.post('/GetFixFormData', function (req, res) {

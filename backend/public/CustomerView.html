@@ -137,6 +137,7 @@
                                                 <button class="btn btn-danger" onclick="history.back()">返回</button>
                                                 <button id="mEdit" class="btn btn-success">編輯</button>
                                                 <button id="mPhoto" class="btn btn-info">照片</button>
+                                                <button id="mElevator" class="btn btn-info">電梯規格列表</button>
                                             </div>
                                         </div>
                                     </div>
@@ -320,8 +321,15 @@
             location.replace(`/CustomerEdit?Id=${id}`);            
         }
         
+        function showElevator() {
+            var id = $_GET["Id"];
+            location.href =`/CustomerElevatorList?Id=${id}`;                    
+        }
+
         $(document).on('click', '#mEdit', switchEditPage);
         $(document).on('click', '#mPhoto', showPhoto);
+        $(document).on('click', '#mElevator', showElevator);
+
 
         function showPhoto() {
             var id = $_GET["Id"];

@@ -500,5 +500,12 @@
         "autho": "admin",
         "enable": true,
         "type": "protocol"
+    },
+    "CustomerElevatorList":
+    {
+        "autho": "admin",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/CustomerElevatorList.html"
     }
 }

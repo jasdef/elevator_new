@@ -66,10 +66,10 @@ router.post('/GetCustomerElevatorList', function (req, res) {
                 throw err;
             }
             
-            var customerID = req.body.CustomerID;
+            var customerID = req.body.Id;
 
-            var dataSelect = "select b.company, a.note, a.id, a.customer_id from elevator as a, customer as b where a.customer_id = b.id and a.cusomter_id="+customerID+" and a.is_delete=0;";
-            var countSelect = "select COUNT(*) as count from elevator  cusomter_id="+customerID+"a nd is_delete=0;";
+            var dataSelect = "select b.company, a.note, a.id, a.customer_id from elevator as a, customer as b where a.customer_id = b.id and a.customer_id="+customerID+" and a.is_delete=0;";
+            var countSelect = "select COUNT(*) as count from elevator where customer_id="+customerID+" and is_delete=0;";
 
    
             var sql = countSelect + dataSelect;

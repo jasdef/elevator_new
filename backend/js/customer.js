@@ -22,6 +22,11 @@ router.get('/CustomerEdit', function(req, res) {
 
 });
 
+router.get('/CustomerElevatorList', function(req, res) {
+    common.log(req.session['account'], 'call CustomerElevatorList edit');
+    common.CreateHtml("CustomerElevatorList", req, res);
+});
+
 router.get('/CustomerView', function(req, res) {
     common.log(req.session['account'], 'call Customer view');
     common.CreateHtml("CustomerView", req, res);

@@ -187,7 +187,12 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <input type="text" name="fax3" id="fax3" class="form-control" value="" />                               
                                             </div>
-                                        </div>                                          
+                                        </div>    
+                                        <div class="form-group">              
+                                            <label>上傳圖片</label>                                      
+                                            <input type="file" id="imageFile"/></br>
+                                            <button id="upload">上傳</button>
+                                        </div>                                        
                                     </div>
                                 </div>
                             </div>
@@ -254,6 +259,43 @@
                 }
                 $_GET[decode(arguments[1])] = decode(arguments[2]);
         });
+
+        $(document).on('click', '#upload', upload);
+
+        function upload() {
+            var myPhoto = $('#imageFile')[0].files[0];
+            var oMyForm = new FormData();
+
+            oMyForm.append("userfile", myPhoto);
+            $.ajax({
+                type : 'POST',
+                url : '/UploadImg',
+                cache : false,  
+                processData : false,    
+                contentType : false, 
+                data : oMyForm,
+                dataType : 'json'
+            }).done(function(data){
+                console.log(data);
+               // alert(data.errMsg);
+                var Path = data.fielPath;
+
+                $.ajax({
+                    type: 'POST',
+                    url: "/InsertImgMapping",          
+                    cache: false,
+                    async: true,
+                    data : {TableType: 5, TableId: $_GET["Id"], Path: Path} ,
+                    dataType: 'json',
+                    success: function(msg) {
+                        alert("上傳成功");
+
+                    }                 
+                });
+            }).fail(function(err){
+                console.error(err);
+            });
+        }
 
         Init();
         function Init() {

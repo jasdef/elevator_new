@@ -136,6 +136,7 @@
                                             <div class="col-md-9 col-md-offset-4">
                                                 <button class="btn btn-danger" onclick="history.back()">返回</button>
                                                 <button id="mEdit" class="btn btn-success">編輯</button>
+                                                <button id="mPhoto" class="btn btn-info">照片</button>
                                             </div>
                                         </div>
                                     </div>
@@ -298,7 +299,12 @@
         }
         
         $(document).on('click', '#mEdit', switchEditPage);
+        $(document).on('click', '#mPhoto', showPhoto);
 
+        function showPhoto() {
+            var id = $_GET["Id"];
+            location.replace(`/PhotoView?tableType=5&tableId=${id}`);  
+        }
 
     });
     </script>

@@ -197,6 +197,55 @@ router.post('/AddCustomer', function(req, res) {//4
     });
 });
 
+router.post('/ImportCustomer', function(req, res) {//4
+    common.CreateHtml("Customer_Transfer", req, res, function (err) {
+    common.BackendConnection(res, function(err, connection) {
+            var data = JSON.parse(req.body.data);
+            var sql = "";
+            Object.keys(data).forEach(function(index) {
+                var requestData = data[index];
+                var addCustomerSQL = "insert into customer (`company`, `num`, `contactor1`, `contactor2`, `contactor3`, `tel1`, `tel2`, `tel3`, `address1`, `address2`, `address3`,`fax1`,`fax2`,`fax3`,`note`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+
+                var CustomerData = 
+                [
+                    requestData.company,
+                    requestData.num,
+                    requestData.contactor1,
+                    requestData.contactor2,
+                    requestData.contactor3,
+                    requestData.tel1,
+                    requestData.tel2,
+                    requestData.tel3,
+                    requestData.address1,  
+                    requestData.address2,     
+                    requestData.address3,            
+                    requestData.fax1,            
+                    requestData.fax2,            
+                    requestData.fax3,
+                    requestData.note
+                ];
+      
+                addCustomerSQL = connection.format(addCustomerSQL, CustomerData);
+                sql += addCustomerSQL;
+            });
+
+            common.log(req.session['account'], sql);
+            connection.query(sql, function (error, result, fields) {
+                if (error) {
+                    common.log(req.session['account'], error);
+                    connection.release();                    
+                    res.send({ code: -1, msg: "新增失敗", err: error }).end();
+
+                }
+                else {
+                    connection.release();                    
+                    res.send({ code: 0, msg: "新增成功!" }).end();
+                }
+            });
+
+    });
+    });
+});
 
 router.post('/DeleteCustomer', function (req, res){
     common.CreateHtml("Customer_Transfer", req, res, function (err) {

@@ -52,10 +52,12 @@
                                     <div class="clearfix"></div>
                                 </div>                                
                                 <div class="x_content">
-                                    <div class="col-sm-12">    
-                                        <a href="" target="_blank" id="addCustomer" class="btn btn-success">新增客戶</a>
-                                                         
+                                    <div class="col-sm-12"> 
+                                        <h4>匯入客戶資料</h4>   
+                                        <input type="file" id="excel-file"></html></br>                                            
+                                        <a href="" target="_blank" id="addCustomer" class="btn btn-success">新增客戶</a>     
                                     </div>
+ 
                                     <div class="x_content">
                                         <table id="datatable" class="table table-striped table-bordered">
                                             <thead>
@@ -117,6 +119,7 @@
     <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
     <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
     <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/excel/xlsx.core.min.js"></script>
     <!-- bootstrap-select -->
     <script src="../vendors/bootstrap-select/js/bootstrap-select.min.js"></script>
     <script src="../vendors/bootstrap-select/js/i18n/defaults-zh_TW.min.js"></script>
@@ -217,7 +220,53 @@
                     break;
             }
 
-        });        
+        });      
+        $('#excel-file').change(function(e) {
+            var files = e.target.files;
+            var fileReader = new FileReader();
+            fileReader.onload = function(ev) {
+                try {
+                    var data = ev.target.result,
+                        workbook = XLSX.read(data, {
+                            type: 'binary'
+                        }), // 以二进制流方式读取得到整份excel表格对象
+                        persons = []; // 存储获取到的数据
+                } catch (e) {
+                    console.log('文件类型不正确');
+                    return;
+                }
+                // 表格的表格范围，可用于判断表头是否数量是否正确
+                var fromTo = '';
+                // 遍历每张表读取
+                for (var sheet in workbook.Sheets) {
+                    if (workbook.Sheets.hasOwnProperty(sheet)) {
+                        fromTo = workbook.Sheets[sheet]['!ref'];
+                        console.log(fromTo);
+                        persons = persons.concat(XLSX.utils.sheet_to_json(workbook.Sheets[sheet]));
+                        // break; // 如果只取第一张表，就取消注释这行
+                    }
+                }
+                
+                $.ajax({
+                type: 'POST',
+                url: "/ImportCustomer",
+                data: { data: JSON.stringify(persons) },
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(msg) {
+                    if (msg.code == -1) { msg.msg } else {
+                        alert(msg.msg);
+                    
+                    }
+                    }
+                });
+
+
+            };
+            // 以二进制方式打开文件
+            fileReader.readAsBinaryString(files[0]);
+        });
     });
 
     </script>

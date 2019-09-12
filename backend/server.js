@@ -19,6 +19,7 @@ var warranty = require('./js/warranty');
 var customer = require('./js/customer');
 var dispatch = require('./js/dispatch');
 var service = require('./js/service');
+var elevator = require('./js/elevator');
 var fixForm = require('./js/fixForm');
 var imgUpload = require('./js/uploadImg');
 var staff = require('./js/staff');
@@ -57,7 +58,7 @@ app.use(fixForm);
 app.use(warranty);
 app.use(historyRecord);
 app.use(staff);
-
+app.use(elevator);
 app.get('/', function (req, res) {
     if (typeof (req.session['account']) === "undefined") {
         res.redirect('/LoginForm');

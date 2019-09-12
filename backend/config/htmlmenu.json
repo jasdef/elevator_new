@@ -140,6 +140,20 @@
             }
         }
     },
+    "電梯": 
+    {
+        "autho": "admin",
+        "enable": true,
+        "child":
+        {
+            "電梯管理":
+            {
+                "enable": true,
+                "autho": "admin",
+                "href": "Elevator"
+            }
+        }
+    },
     "處理派遣任務": 
     {
         "autho": "staff",

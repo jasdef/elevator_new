@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>利通電梯</title>      
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Datatables -->
+    <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap-select -->
+    <link rel="stylesheet" href="../vendors/bootstrap-select/css/bootstrap-select.min.css">
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- bootstrap-notify -->
+    <link href="../vendors/bootstrap-notify/animate.min.css" rel="stylesheet">
+    <!-- At.js 套件(autocomplete))  -->
+    <link href="../vendors/At.js/css/jquery.atwho.min.css" rel="stylesheet">
+
+    <style type="text/css" media="screen">
+    #datatable tbody td {
+        vertical-align: middle;
+    }
+    .alert h5{
+        margin: 0 0 0 15px;
+        font-size: 1.3em;
+    }
+    .alert i{
+        margin-right: 5px;
+    }
+    .modal textarea{
+        resize: vertical;
+    }
+    </style>
+</head>
+<script>
+        function getTableData() {
+            var Tbdata = {}; 
+            var tr_length = $('.table tr').length; //tr 長度
+  
+            for(var i=0; i < tr_length-1; i++){
+                var td_length = $('.table tr');                
+                Tbdata[i] = [$('#itemTitle'+i).val(), $('#itemPercent'+i).val(), $('#itemPrice'+i).val(), $('#itemStatus'+i).val()];               
+             }
+             Tbdata["length"] = tr_length-1;
+             console.log(Tbdata); 
+             return Tbdata;     
+        }
+
+        function onItemPercentChange(element) {
+            var total = $('#totalPrice').val();
+            var price = parseInt(total*(element.value*0.01));
+            $('#itemPrice'+element.name).val(price);
+
+            console.log(element.value);
+        }
+
+        function onItemPriceChange(element) {
+            var total = $('#totalPrice').val();
+            var percent = parseInt(element.value/total*100);
+            $('#itemPercent'+element.name).val(percent);
+        }
+
+        function calculate() {
+            var total = $('#totalPrice').val();
+            var left = total;
+            var tr_length = $('.table tr').length - 1; //tr 長度  扣掉head    
+            var data = getTableData();
+
+            for (var i = 0; i < tr_length; i++) {
+
+                if (data[i][3] == 5) {
+                    left -= data[i][2];
+                }
+            }
+            $('#leftPrice').val(left);
+        }
+
+</script>
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <!--Menu-->
+            <!--Top-->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="row">
+                    <div class="clearfix"></div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>檢視電梯規格</h2>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <div class="form-horizontal form-label-left" novalidate>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">馬力
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="horsepower" class="date-picker form-control col-md-7 col-xs-12" placeholder="" type="text" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">電源
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="power" class="form-control col-md-7 col-xs-12" placeholder="" type="text" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">安培
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="current" class="form-control col-md-7 col-xs-12" placeholder="" type="text" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">鋼索(mm)
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="steelCableMM" class="form-control col-md-7 col-xs-12" placeholder="" type="text" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">鋼索(條)
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" name="steelCable" id="steelCable" class="form-control" value="" disabled/>                               
+                                            </div>
+                                        </div> 
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">額定載重
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" name="kg" id="kg" class="form-control" value="" disabled/>                               
+                                            </div>
+                                        </div> 
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">額定人數
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="people" class="form-control col-md-7 col-xs-12" placeholder="" type="text" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">額定速度(m/min)
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="speed" class="form-control col-md-7 col-xs-12" placeholder="" type="text" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">升降行程(m)
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="lifting" class="form-control col-md-7 col-xs-12" placeholder="" type="text" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">樓層(F)
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="floor" class="form-control col-md-7 col-xs-12" placeholder="" type="text" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">停數(S)
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="stop" class="form-control col-md-7 col-xs-12" placeholder="" type="text" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">*客戶
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <select name="customer" id="customer" class="form-control" required="required" disabled>
+                                                    <option class="text-center" value="0" selected>請選擇</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="ln_solid"></div>
+                                        <div class="form-group">
+                                            <div class="col-md-9 col-md-offset-4">
+                                                <button class="btn btn-danger" onclick="history.back()">返回</button>
+                                                <button id="mEdit" class="btn btn-success">編輯</button>
+                                                <button id="mPhoto" class="btn btn-info">照片</button>
+                                                <button id="showCustomer" class="btn btn-info">客戶資訊</button>
+                                            </div>       
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="x_panel">
+                                <div class="x_content">
+                                    <div class="form-horizontal form-label-left" novalidate>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">出入口尺寸(W，H) 
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="exit" class="form-control col-md-7 col-xs-12" placeholder="" type="text" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">車廂尺寸(W，D，H)
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="carSize" class="form-control col-md-7 col-xs-12" placeholder="" type="text" disabled>
+                                            </div>
+                                        </div>             
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">供行動不便(是or否)
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <select name="isAction" id="isAction" class="form-control" required="required" disabled>
+                                                    <option class="text-center" value="0" selected>請選擇</option>
+                                                    <option class="text-center" value="1">是</option>
+                                                    <option class="text-center" value="2">否</option>
+                                                </select>
+                                            </div>
+                                        </div>   
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">無機房昇降(是or否)
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <select name="hasLifting" id="hasLifting" class="form-control" required="required" disabled>
+                                                    <option class="text-center" value="0" selected>請選擇</option>
+                                                    <option class="text-center" value="1">是</option>
+                                                    <option class="text-center" value="2">否</option>
+                                                </select>
+                                            </div>
+                                        </div>                                   
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">油壓昇降(是or否)
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <select name="isOilLifting" id="isOilLifting" class="form-control" required="required" disabled>
+                                                    <option class="text-center" value="0" selected>請選擇</option>
+                                                    <option class="text-center" value="1">是</option>
+                                                    <option class="text-center" value="2">否</option>
+                                                </select>
+                                            </div>
+                                        </div>                                   
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">乘場門具防火性((是or否)
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <select name="isFire" id="isFire" class="form-control" required="required" disabled>
+                                                    <option class="text-center" value="0" selected>請選擇</option>
+                                                    <option class="text-center" value="1">是</option>
+                                                    <option class="text-center" value="2">否</option>
+                                                </select>
+                                            </div>
+                                        </div>   
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">備註事項
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <textarea id="note" style="width:300px;height:100px;" disabled></textarea>
+                                            </div>
+                                        </div>                                                                                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+            <!-- /page content -->
+            <!--footer-->
+        </div>
+    </div>
+    <div id="loading-cover" style="width: 100%; height: 100%; background: rgba(0,0,0,.5); position: fixed; display: none; z-index: 999999; top: 0; left: 0;">
+        <div id="loading-icon" style="width: 85px; height: 65px; margin: -42.5px 0 0 -32.5px; top: 50%; left: 50%; position: fixed;">
+            <i class="fa fa-circle-o-notch fa-spin fa-5x fa-fw" style="color: #FFF;"></i>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- validator -->
+    <script src="../vendors/validator/validator.js"></script>
+    <!-- Datatables -->
+    <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="../vendors/jszip/dist/jszip.min.js"></script>
+    <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/moment/min/moment-duration-format.min.js"></script>
+    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap-select -->
+    <script src="../vendors/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="../vendors/bootstrap-select/js/i18n/defaults-zh_TW.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+    <!-- bootstrap-notify -->
+    <script src="../vendors/bootstrap-notify/bootstrap-notify.min.js"></script>
+    <!-- At.js 套件(autocomplete))  -->
+    <script type="text/javascript" src="../vendors/At.js/js/jquerycaret.min.js"></script>
+    <script type="text/javascript" src="../vendors/At.js/js/jqueryatwho.min.js"></script>
+
+    <script>
+    $(document).ready(function() {
+
+        var $_GET = {};
+        var customerID = 0;
+
+        document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function() {
+                function decode(s) {
+                    return decodeURIComponent(s.split("+").join(" "));
+                }
+                $_GET[decode(arguments[1])] = decode(arguments[2]);
+        });
+
+        function QuickNotify(message, type) {
+            var icon = "";
+            switch(type) {
+                case 'success':
+                    icon = 'fa-check-circle';
+                    break;
+                case 'danger':
+                    icon = 'fa-times-circle';
+                    break;
+                default: 
+                    icon = 'fa-exclamation-triangle';
+            }
+            $.notify({
+                message: '<h5><i class="fa ' + icon + '"></i> ' + message + '</h5>'
+            },{
+                type: type,
+                z_index: 20000,
+                delay: 6000,
+            });
+        }
+                       
+        getCustomer();
+        Init();
+        function Init() {
+            var id = $_GET["Id"];
+            $.ajax({
+                type: 'POST',
+                url: "/GetElevatorData",
+                data: { Id: id },
+                cache: false,
+                async: true,
+                dataType: 'json',
+                success: function(msg) {
+                    var data = msg.data;
+
+                    $('#horsepower').val(data.horsepower);
+                    $('#power').val(data.power);
+                    $('#current').val(data.current);            
+                    $('#steelCableMM').val(data.steel_cable_mm);
+                    $('#steelCable').val(data.steel_cable);                         
+                    $('#kg').val(data.kg);  
+                    $('#people').val(data.people);
+                    $('#speed').val(data.speed);
+                    $('#lifting').val(data.lifting);
+                    $('#floor').val(data.floor);
+                    $('#stop').val(data.stop);
+                    $('#exit').val(data.exit);
+                    $('#carSize').val(data.car_size);
+                    $('#isAction').val(data.is_action);            
+                    $('#hasLifting').val(data.has_lifting);             
+                    $('#isOilLifting').val(data.is_oil_lifting);            
+                    $('#isFire').val(data.is_fire);                    
+                    $('#note').val(data.note);
+                    $('#customer').val(data.customer_id);
+                    customerID = data.customer_id;
+                }
+            });
+        }
+
+
+        $('#startDate').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('YYYY-MM-DD'));
+        });
+        $('#startDate').on('cancel.daterangepicker', function(ev, picker) {
+            $(this).val('');
+        });
+
+        function getCustomer() {
+            $.ajax({
+                type: 'POST',
+                url: "/GetCustomerList",
+                dataType: 'json',
+                success: function(msg) {
+                  var data = msg.data;
+                  console.log(data);
+                  for(var i = 0; i < data.length; i++) {
+                    $('#customer').append(
+                        `
+                        <option class="text-center" value=${data[i].id}>${data[i].company}</option>
+                        `
+                    );
+                  }
+                },
+                error: function(xhr, desc, err) {
+                    alert("HTTP Status code:" + xhr.status);
+                }
+                }).done(function() {
+                    $('#loading-cover').fadeOut(100);
+            });
+        }
+
+        function switchEditPage() {
+            var id = $_GET["Id"];
+            location.replace(`/ElevatorEdit?Id=${id}`);            
+        }
+
+        function showPhoto() {
+            var id = $_GET["Id"];
+            location.replace(`/PhotoView?tableType=3&tableId=${id}`);  
+        }
+
+ 
+        function checkIsNullOrEmpty(obj) {
+            if (obj == 'undefined' || obj == null || obj == 0 || obj == '')
+                return true;
+            return false;
+        }
+
+        function showCustomerInfo() {  
+            location.href =`/CustomerView?Id=${customerID}`;            
+        }
+
+
+        $(document).on('click', '#showCustomer', showCustomerInfo);
+        $(document).on('click', '#mEdit', switchEditPage);
+        $(document).on('click', '#mPhoto', showPhoto);
+     
+
+    });
+    </script>
+</body>
+
+</html>

@@ -466,5 +466,39 @@
         "enable": true,
         "type": "view",
         "htmlpath": "./../public/ServiceCompleteHistory.html"
+    },
+    "ElevatorView":
+    {
+        "autho": "admin",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/ElevatorView.html"
+    },
+    "ElevatorEdit":
+    {
+        "autho": "admin",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/ElevatorEdit.html"
+    },
+    "ElevatorAdd":
+    {
+        "autho": "admin",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/ElevatorAdd.html"
+    },
+    "Elevator":
+    {
+        "autho": "admin",
+        "enable": true,
+        "type": "view",
+        "htmlpath": "./../public/Elevator.html"
+    },
+    "Elevator_Transfer":
+    {
+        "autho": "admin",
+        "enable": true,
+        "type": "protocol"
     }
 }

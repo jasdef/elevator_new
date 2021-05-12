@@ -14,7 +14,7 @@
     "formidable": "^1.2.1",
     "mongodb": "^3.0.7",
     "mysql": "^2.15.0",
-    "nodemailer": "^4.6.4",
+    "nodemailer": "^6.4.16",
     "request": "^2.83.0",
     "sfs2x-api": "1.7.11",
     "ws": "5.2.2"

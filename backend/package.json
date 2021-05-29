@@ -17,7 +17,7 @@
     "nodemailer": "^4.6.4",
     "request": "^2.83.0",
     "sfs2x-api": "1.7.11",
-    "ws": "5.2.2"
+    "ws": "7.4.6"
   },
   "author": {
     "name": "arieswang"

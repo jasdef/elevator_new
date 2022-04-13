@@ -4,7 +4,7 @@
   "description": "backend",
   "main": "server.js",
   "dependencies": {
-    "async": "^2.5.0",
+    "async": "^3.2.2",
     "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.3",
     "dateformat": "^3.0.3",
